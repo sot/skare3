@@ -1,0 +1,33 @@
+{% set data = load_setup_py_data() %}
+
+package:
+  name: ska.shell  # lower case name of package, may contain '-' but no spaces
+  version: {{ data.get('version') }}
+
+build:
+  preserve_egg_dir: yes
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/Ska.Shell
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+
+  run:
+    - python
+    - six
+    - pexpect
+
+test:
+  imports:
+    - Ska.Shell
+
+about:
+  home: https://github.com/sot/Ska.Shell
+  license: BSD
+  summary: No summary available

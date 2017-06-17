@@ -1,0 +1,45 @@
+{% set data = load_setup_py_data() %}
+
+package:
+  name: pyyaks
+  version:  {{ data.get('version') }}
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/pyyaks
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - jinja2
+
+test:
+  requires:
+    - pytest
+    - six
+  imports:
+    - pyyaks
+    - pyyaks.context
+    - pyyaks.logger
+    - pyyaks.fileutil
+    - pyyaks.task
+
+about:
+  home: https://github.com/sot/pyyaks
+  license: BSD
+  summary: Pipeline running tools
+

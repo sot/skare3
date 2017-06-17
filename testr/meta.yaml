@@ -1,0 +1,45 @@
+{% set data = load_setup_py_data() %}
+
+package:
+  name: testr
+  version:  {{ data.get('version') }}
+
+build:
+  entry_points:
+    - entry = conda_version_test.manual_entry:main
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/testr
+
+build:
+  preserve_egg_dir: yes # (default no)
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - ska.file
+    - ska.shell
+    - pyyaks
+    - astropy
+    - pytest
+
+test:
+  imports:
+    - testr
+
+
+about:
+  home: https://github.com/sot/testr
+  license: BSD
+  summary: Chandra Time package

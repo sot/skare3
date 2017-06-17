@@ -1,0 +1,31 @@
+{% set data = load_setup_py_data() %}
+
+package:
+  name: ska_path  # lower case name of package, may contain '-' but no spaces
+  version: {{ data.get('version') }}
+
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/ska_path
+
+
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+
+test:
+  imports:
+    - ska_path
+
+about:
+  home: https://github.com/sot/ska_path
+  license: BSD
+  summary: No summary available
