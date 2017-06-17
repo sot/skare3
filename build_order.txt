@@ -4,3 +4,9 @@ pyyaks
 ska_path
 testr
 chandra.time
+ska.dbi
+ska.ftp
+ska.numpy
+quaternion
+ska.engarchive
+kadi

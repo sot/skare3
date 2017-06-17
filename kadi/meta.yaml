@@ -1,0 +1,53 @@
+{% set data = load_setup_py_data() %}
+
+package:
+  name: kadi
+  version:  {{ data.get('version') }}
+
+build:
+  script_env:
+    - USER
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/kadi
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - six
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - six
+    - pytables
+    - configobj
+    - requests
+    - django
+    - pyyaks
+    - ska.dbi
+    - ska.file
+    - ska.ftp
+    - ska.numpy
+    - astropy
+    - quaternion
+    - chandra.time
+    - ska.engarchive
+    - numpy
+    - testr
+
+test:
+  imports:
+    - kadi
+
+
+about:
+  home: https://github.com/sot/Chandra.Time
+  license: BSD
+  summary: Chandra Time package

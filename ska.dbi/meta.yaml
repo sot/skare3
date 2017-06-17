@@ -1,0 +1,46 @@
+{% set data = load_setup_py_data() %}
+
+package:
+  name: ska.dbi
+  version:  {{ data.get('version') }}
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+  preserve_egg_dir: yes # (default no)
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/Ska.DBI
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - six
+    - sqlite
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - six
+    - sqlite
+    - pytest
+    - testr
+
+test:
+  requires:
+    - numpy
+  imports:
+    - Ska.DBI
+
+
+about:
+  home: https://github.com/sot/Ska.DBI
+  license: BSD
+  summary: Chandra Time package
