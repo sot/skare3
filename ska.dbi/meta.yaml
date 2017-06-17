@@ -39,8 +39,7 @@ test:
   imports:
     - Ska.DBI
 
-
 about:
   home: https://github.com/sot/Ska.DBI
-  license: BSD
-  summary: Chandra Time package
+
+

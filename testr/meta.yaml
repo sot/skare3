@@ -13,8 +13,6 @@ build:
 source:
   path: {{ SKA_TOP_SRC_DIR }}/testr
 
-build:
-  preserve_egg_dir: yes # (default no)
 
 # the build and runtime requirements. Dependencies of these requirements
 # are included automatically.
@@ -41,5 +39,4 @@ test:
 
 about:
   home: https://github.com/sot/testr
-  license: BSD
-  summary: Chandra Time package
+

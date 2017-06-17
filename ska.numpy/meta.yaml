@@ -41,5 +41,4 @@ test:
 
 about:
   home: https://github.com/sot/Ska.Numpy
-  license: BSD
-  summary: Chandra Time package
+
