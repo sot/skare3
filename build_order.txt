@@ -10,3 +10,8 @@ ska.numpy
 quaternion
 ska.engarchive
 kadi
+ska.matplotlib
+ska.quatutil
+ska.sun
+agasc
+chandra_aca
