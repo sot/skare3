@@ -1,0 +1,3 @@
+import agasc
+agasc.test()
+
