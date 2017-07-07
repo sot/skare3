@@ -3,7 +3,9 @@ ska.file
 pyyaks
 ska_path
 testr
+ska.tdb
 chandra.time
+ska.parsecm
 ska.dbi
 ska.ftp
 ska.numpy
@@ -13,5 +15,7 @@ kadi
 ska.matplotlib
 ska.quatutil
 ska.sun
+chandra.maneuver
+cmd_states
 agasc
 chandra_aca
