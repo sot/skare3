@@ -1,0 +1,3 @@
+import xija
+xija.test()
+

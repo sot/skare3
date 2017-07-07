@@ -1,0 +1,44 @@
+{% set data = load_setup_py_data() %}
+
+package:
+  name: xija
+  version:  {{ data.get('version') }}
+
+build:
+  script_env:
+    - USER
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/xija
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - six
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - six
+    - numpy
+    - testr
+    - matplotlib
+    - pyyaks
+    - sherpa
+    - chandra.time
+
+test:
+  imports:
+    - xija
+
+
+about:
+  home: https://github.com/sot/xija
