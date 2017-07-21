@@ -1,8 +1,6 @@
-{% set data = load_setup_py_data() %}
-
 package:
   name: ska.parsecm
-  version:  {{ data.get('version') }}
+  version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
   script_env:
@@ -22,6 +20,7 @@ requirements:
     - python
     - setuptools
     - six
+    - chandra.time
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:

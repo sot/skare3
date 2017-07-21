@@ -1,8 +1,6 @@
-{% set data = load_setup_py_data() %}
-
 package:
   name: testr
-  version:  {{ data.get('version') }}
+  version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
   entry_points:

@@ -1,8 +1,6 @@
-{% set data = load_setup_py_data() %}
-
 package:
   name: ska.file  # lower case name of package, may contain '-' but no spaces
-  version: {{ data.get('version') }}
+  version: {{ GIT_DESCRIBE_TAG }}
 
 
 build:
