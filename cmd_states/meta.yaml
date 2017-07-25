@@ -20,6 +20,13 @@ requirements:
     - python
     - setuptools
     - six
+    - numpy
+    - ska.file
+    - ska.dbi
+    - chandra.time
+    - chandra.maneuver
+    - ska.parsecm
+    - ska.numpy
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -36,7 +43,6 @@ requirements:
     - ska.numpy
     - ska.ftp
     - kadi
-    - ska.table
 
 test:
   imports:
