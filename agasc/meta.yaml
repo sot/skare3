@@ -20,6 +20,11 @@ requirements:
     - python
     - setuptools
     - six
+    - numpy
+    - numexpr
+    - pytables
+    - ska_path
+    - chandra.time
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
