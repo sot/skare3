@@ -1,0 +1,39 @@
+ska.parsecm: no tests to run by testr
+
+ska.ftp: two errors on Mac:
+
+============================================================= ERRORS ==============================================================
+__________________________________________ ERROR collecting Ska/ftp/tests/test_basic.py ___________________________________________
+Ska/ftp/tests/test_basic.py:12: in <module>
+    USER = NETRC['lucky']['login']
+E   KeyError: 'lucky'
+___________________________________________ ERROR collecting Ska/ftp/tests/test_tar.py ____________________________________________
+test_tar.py:12: in <module>
+    USER = NETRC['lucky']['login']
+E   KeyError: 'lucky'
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Presumably due to lack of proper netrc file on my machine
+
+kadi: will only pass tests if AstroPy < 2.0 is used due to no AstroPy 2.0 config file in /proj/sot/ska/data/config/astropy
+
+ska.matplotlib: no tests to run by testr
+ska.quatutil: no tests to run by testr
+ska.sun: no tests to run by testr
+
+agasc: tests failed with:
+
+===== testing package: agasc-3.5-py36hf76bb57_0 =====
+running run_test.py
+Traceback (most recent call last):
+  File "/Users/jzuhone/Projects/ska/builds/agasc_1501006954379/test_tmp/run_test.py", line 6, in <module>
+    agasc.test()
+  File "/Users/jzuhone/Projects/ska/builds/agasc_1501006954379/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/lib/python3.6/site-packages/agasc-3.5.1-py3.6.egg/agasc/__init__.py", line 11, in test
+  File "/Users/jzuhone/Projects/ska/builds/agasc_1501006954379/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/lib/python3.6/site-packages/testr/runner.py", line 116, in test
+    with chdir(os.path.join(*pkg_paths)):
+  File "/Users/jzuhone/Projects/ska/builds/agasc_1501006954379/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/lib/python3.6/contextlib.py", line 81, in __enter__
+    return next(self.gen)
+  File "/Users/jzuhone/Projects/ska/builds/agasc_1501006954379/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/lib/python3.6/site-packages/testr/runner.py", line 78, in chdir
+    os.chdir(dirname)
+NotADirectoryError: [Errno 20] Not a directory: '/Users/jzuhone/Projects/ska/builds/agasc_1501006954379/_test_env_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_placehold_/lib/python3.6/site-packages/agasc-3.5.1-py3.6.egg/agasc/..'
+TESTS FAILED: agasc-3.5-py36hf76bb57_0.tar.bz2
