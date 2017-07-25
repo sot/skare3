@@ -19,6 +19,8 @@ requirements:
     - setuptools
     - six
     - matplotlib
+    - chandra.time
+    - numpy
 
   run:
     - python
