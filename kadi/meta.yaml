@@ -33,7 +33,7 @@ requirements:
     - ska.file
     - ska.ftp
     - ska.numpy
-    - astropy
+    - astropy 1.3
     - quaternion
     - chandra.time
     - ska.engarchive
