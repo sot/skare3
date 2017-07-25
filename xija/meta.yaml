@@ -20,15 +20,21 @@ requirements:
     - python
     - setuptools
     - six
+    - numpy
+    - scipy
+    - pyyaks
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
     - setuptools
     - six
+    - scipy
     - numpy
     - testr
     - matplotlib
+    - ska.matplotlib
+    - ska.numpy
     - pyyaks
     - sherpa
     - chandra.time

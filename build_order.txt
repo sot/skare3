@@ -17,5 +17,6 @@ ska.quatutil
 ska.sun
 chandra.maneuver
 cmd_states
+xija
 #agasc
 #chandra_aca
