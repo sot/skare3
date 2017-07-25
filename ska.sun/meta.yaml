@@ -18,7 +18,9 @@ requirements:
   build:
     - python
     - setuptools
-
+    - quaternion
+    - chandra.time
+    - ska.quatutil
   run:
     - python
     - setuptools

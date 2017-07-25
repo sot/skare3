@@ -20,6 +20,8 @@ requirements:
     - python
     - setuptools
     - six
+    - numpy
+    - quaternion
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:

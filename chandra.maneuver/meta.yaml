@@ -21,13 +21,15 @@ requirements:
     - setuptools
     - numpy
     - six
+    - chandra.time
+    - quaternion
+    - ska.sun
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
     - setuptools
     - six
-    - cython
     - testr
     - quaternion
     - chandra.time
