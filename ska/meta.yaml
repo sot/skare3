@@ -1,0 +1,29 @@
+package:
+  name: ska
+  version: 1.0
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - ska.shell
+    - ska.file
+    - pyyaks
+    - ska_path
+    - testr
+    - ska.tdb
+    - chandra.time
+    - ska.parsecm
+    - ska.dbi
+    - ska.ftp
+    - ska.numpy
+    - quaternion
+    - ska.engarchive
+    - kadi
+    - ska.matplotlib
+    - ska.quatutil
+    - ska.sun
+    - chandra.maneuver
+    - cmd_states
+    - xija
+
