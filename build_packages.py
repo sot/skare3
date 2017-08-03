@@ -39,7 +39,15 @@ class SkaBuilder(object):
 
 
     def build_updated_packages(self):
-        pass
+        with open(build_list, "r") as f:
+            for line in f.readlines():
+                pkg_name = line.strip()
+                if not pkg_name.startswith("#"):
+                    repo = git.Repo(os.path.join(self.ska_src_dir, pkg_name))
+                    current_tag = repo.tags[-1].name
+                    repo.remote().pull()
+                    if repo.tags[-1].name != current_tag:
+                        self.build_one_package(pkg_name)
 
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
