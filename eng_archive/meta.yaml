@@ -35,6 +35,7 @@ requirements:
     - ska.numpy
     - ska.dbi
     - testr
+    - astropy
 
 test:
   imports:
@@ -42,6 +43,6 @@ test:
 
 
 about:
-  home: https://github.com/sot/Ska.engarchive
+  home: https://github.com/sot/eng_archive
 
 
