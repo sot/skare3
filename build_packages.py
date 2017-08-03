@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
-import conda.cli
 import os
 import argparse
+import git
+import subprocess
 
 build_list = "build_order.txt"
 
@@ -16,17 +17,18 @@ class SkaBuilder(object):
             ska_root = "/data/acis/ska3_pkg/"
         self.ska_root = ska_root
         self.ska_build_dir = os.path.join(self.ska_root, "builds")
-        os.environ["SKA_TOP_SRC_DIR"] = os.path.join(self.ska_root, "src")
+        self.ska_src_dir = os.path.join(self.ska_root, "src")
+        os.environ["SKA_TOP_SRC_DIR"] = self.ska_src_dir
 
     def build_one_package(self, name):
 
         print("Building package %s." % name)
 
-        cmd_list = ["conda-build", 
-                    "--croot %s/builds" % self.ska_root,
-                    "--no-anaconda-upload", name]
+        cmd_list = ["conda", "build", name, "--croot",
+                    self.ska_build_dir,
+                    "--no-anaconda-upload"]
 
-        conda.cli.main(*cmd_list)
+        subprocess.run(cmd_list)
 
     def build_all_packages(self):
         with open(build_list, "r") as f:
