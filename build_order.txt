@@ -6,10 +6,10 @@ testr
 Ska.tdb
 Chandra.Time
 Ska.ParseCM
-Ska.dbi
+Ska.DBI
 Ska.ftp
 Ska.Numpy
-quaternion
+Quaternion
 eng_archive
 kadi
 Ska.Matplotlib
