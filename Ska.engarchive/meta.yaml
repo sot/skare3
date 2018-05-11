@@ -8,7 +8,7 @@ build:
   preserve_egg_dir: yes # (default no)
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/eng_archive
+  path: {{ SKA_TOP_SRC_DIR }}/Ska.engarchive
 
 
 # the build and runtime requirements. Dependencies of these requirements
