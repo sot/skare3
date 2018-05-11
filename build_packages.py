@@ -35,6 +35,8 @@ class SkaBuilder(object):
             for line in f.readlines():
                 pkg_name = line.strip()
                 if not pkg_name.startswith("#"):
+                    repo = git.Repo(os.path.join(self.ska_src_dir, pkg_name))
+                    repo.remote().pull()
                     self.build_one_package(pkg_name)
 
 
