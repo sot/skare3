@@ -10,7 +10,7 @@ Ska.DBI
 Ska.ftp
 Ska.Numpy
 Quaternion
-eng_archive
+Ska.engarchive
 kadi
 Ska.Matplotlib
 Ska.quatutil
