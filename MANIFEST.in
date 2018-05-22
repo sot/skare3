@@ -1,0 +1,2 @@
+include ska_conda/pkg_spec/*
+include ska_conda/build_order.txt
