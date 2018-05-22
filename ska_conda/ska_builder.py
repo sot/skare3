@@ -1,11 +1,11 @@
 import os
 import subprocess
 import git
+import yaml
 
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
 build_list = os.path.join(ska_conda_path, "build_order.txt")
-
 
 class SkaBuilder(object):
 
@@ -18,9 +18,21 @@ class SkaBuilder(object):
         os.environ["SKA_TOP_SRC_DIR"] = self.ska_src_dir
 
     def _clone_repo(self, name):
-        print("Cloning package %s." % name)
-        git.Repo.clone_from("http://github.com/sot/%s" % name,
-                            os.path.join(self.ska_src_dir, name))
+        print("Cloning source %s." % name)
+        clone_path = os.path.join(self.ska_src_dir, name)
+        if os.path.exists(clone_path):
+            print("Source %s exists, skipping." % name)
+            return
+        yml = os.path.join(pkg_defs_path, name, "meta.yaml")
+        with open(yml) as f:
+            requires = False
+            while not requires:
+                line = f.readline().strip()
+                if line.startswith("path:"):
+                    requires = True
+            data = yaml.load(f)
+            url = data['about']['home']
+            git.Repo.clone_from(url, clone_path)
 
     def clone_one_package(self, name):
         self._clone_repo(name)
