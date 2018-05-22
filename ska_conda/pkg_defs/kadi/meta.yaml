@@ -19,6 +19,8 @@ requirements:
   build:
     - python
     - six
+    - cython
+    - numpy
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
