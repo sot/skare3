@@ -60,7 +60,7 @@ class SkaBuilder(object):
         pkg_path = os.path.join(pkg_defs_path, name)
         cmd_list = ["conda", "build", pkg_path, "--croot",
                     self.ska_build_dir, "--no-anaconda-upload",
-                    "--no-test"]
+                    "--build-only"]
         subprocess.run(cmd_list)
 
     def build_one_package(self, name):
