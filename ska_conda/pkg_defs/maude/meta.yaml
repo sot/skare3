@@ -1,0 +1,47 @@
+package:
+  name: maude
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  script_env:
+    - USER
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/maude
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - six
+    - numpy
+    - pyyaks
+    - chandra.time
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - six
+    - scipy
+    - numpy
+    - testr
+    - pyyaks
+    - ska.ftp
+    - ska.tdb
+    - chandra.time
+    - pytest
+
+test:
+  imports:
+    - maude
+
+
+about:
+  home: https://github.com/sot/maude

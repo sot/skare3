@@ -18,6 +18,7 @@ Ska.Sun
 Chandra.Maneuver
 cmd_states
 xija
+maude
 #agasc
 #chandra_aca
 ska

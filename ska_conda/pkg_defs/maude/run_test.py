@@ -1,0 +1,3 @@
+import maude
+maude.test()
+
