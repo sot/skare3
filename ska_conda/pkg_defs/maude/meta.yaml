@@ -6,6 +6,8 @@ build:
   script_env:
     - USER
     - SKA_TOP_SRC_DIR
+  preserve_egg_dir: yes # (default no)
+
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/maude
@@ -19,6 +21,7 @@ requirements:
   build:
     - python
     - setuptools
+    - requests
     - six
     - numpy
     - pyyaks
