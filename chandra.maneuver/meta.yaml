@@ -1,0 +1,45 @@
+package:
+  name: chandra.maneuver
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+  preserve_egg_dir: yes # (default no)
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/Chandra.Maneuver
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - numpy
+    - six
+    - chandra.time
+    - quaternion
+    - ska.sun
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - six
+    - testr
+    - quaternion
+    - chandra.time
+    - ska.sun
+
+test:
+  imports:
+    - Chandra.Maneuver
+
+
+about:
+  home: https://github.com/sot/Chandra.Maneuver
+

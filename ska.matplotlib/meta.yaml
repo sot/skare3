@@ -1,0 +1,38 @@
+package:
+  name: ska.matplotlib  # lower case name of package, may contain '-' but no spaces
+  version: {{ GIT_DESCRIBE_TAG }}
+
+
+build:
+  preserve_egg_dir: yes
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/Ska.Matplotlib
+
+
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - six
+    - matplotlib
+    - chandra.time
+    - numpy
+
+  run:
+    - python
+    - setuptools
+    - six
+    - matplotlib
+    - chandra.time
+    - numpy
+
+test:
+  imports:
+    - Ska.Matplotlib
+
+about:
+  home: https://github.com/sot/Ska.Matplotlib

@@ -1,0 +1,27 @@
+package:
+  name: ska_path  # lower case name of package, may contain '-' but no spaces
+  version: {{ GIT_DESCRIBE_TAG }}
+
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/ska_path
+
+
+
+requirements:
+  build:
+    - python
+  run:
+    - python
+
+
+test:
+  imports:
+    - ska_path
+
+about:
+  home: https://github.com/sot/ska_path

@@ -1,0 +1,38 @@
+package:
+  name: ska.ftp
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+  preserve_egg_dir: yes # (default no)
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/Ska.ftp
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - six
+    - pycrypto
+    - paramiko
+    - testr
+
+test:
+  imports:
+    - Ska.ftp
+
+
+about:
+  home: https://github.com/sot/Ska.ftp

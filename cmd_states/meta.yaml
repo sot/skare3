@@ -1,0 +1,53 @@
+package:
+  name: cmd_states
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+  preserve_egg_dir: yes # (default no)
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/cmd_states
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - six
+    - numpy
+    - ska.file
+    - ska.dbi
+    - chandra.time
+    - chandra.maneuver
+    - ska.parsecm
+    - ska.numpy
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - six
+    - chandra.time
+    - ska.dbi
+    - ska.file
+    - chandra.maneuver
+    - quaternion
+    - ska.sun
+    - ska.parsecm
+    - ska.numpy
+    - ska.ftp
+    - kadi
+
+test:
+  imports:
+    - Chandra.cmd_states
+
+
+about:
+  home: https://github.com/sot/cmd_states
