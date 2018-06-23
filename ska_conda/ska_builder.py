@@ -11,7 +11,7 @@ class SkaBuilder(object):
 
     def __init__(self, ska_root=None):
         if ska_root is None:
-            ska_root = "/data/acis/ska3_pkg/"
+            ska_root = "/tmp/ska3_pkg/"
         self.ska_root = ska_root
         self.ska_build_dir = os.path.join(self.ska_root, "builds")
         self.ska_src_dir = os.path.join(self.ska_root, "src")
