@@ -17,26 +17,48 @@ class SkaBuilder(object):
         self.ska_src_dir = os.path.join(self.ska_root, "src")
         os.environ["SKA_TOP_SRC_DIR"] = self.ska_src_dir
 
-    def _clone_repo(self, name):
+    def _clone_repo(self, name, tag=None):
         if name == "ska":
             return
         print("Cloning source %s." % name)
         clone_path = os.path.join(self.ska_src_dir, name)
-        if os.path.exists(clone_path):
-            print("Source %s exists, skipping." % name)
-            return
-        yml = os.path.join(pkg_defs_path, name, "meta.yaml")
-        with open(yml) as f:
-            requires = False
-            while not requires:
-                line = f.readline().strip()
-                if line.startswith("path:"):
-                    requires = True
-            data = yaml.load(f)
-            url = data['about']['home']
-            git.Repo.clone_from(url, clone_path)
+        if not os.path.exists(clone_path):
+            # Try ssh first to avoid needing passwords for the private repos
+            # We could add these ssh strings to the meta.yaml for convenience
+            try:
+                git_ssh_path = 'git@github.com:sot/' + name + '.git'
+                repo = git.Repo.clone_from(git_ssh_path, clone_path)
+                assert not repo.bare
+            except:
+                yml = os.path.join(pkg_defs_path, name, "meta.yaml")
+                with open(yml) as f:
+                    requires = False
+                    while not requires:
+                        line = f.readline().strip()
+                        if line.startswith("path:"):
+                            requires = True
+                    data = yaml.load(f)
+                    url = data['about']['home']
+                repo = git.Repo.clone_from(url, clone_path)
+        else:
+            repo = git.Repo(clone_path)
+        assert not repo.is_dirty()
+        # I think we want the commit/tag with the most recent date, though
+        # if we actually want the most recently created tag, that would probably be
+        # tags = sorted(repo.tags, key=lambda t: t.tag.tagged_date)
+        # I suppose we could also use github to get the most recent release (not tag)
+        if tag is None:
+            tags = sorted(repo.tags, key=lambda t: t.commit.committed_datetime)
+            repo.git.checkout(tags[-1].name)
+            if tags[-1].commit == repo.heads.master.commit:
+                print("Auto-checked out at {} which is also tip of master".format(tags[-1].name))
+            else:
+                print("Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
+        else:
+            repo.git.checkout(tag)
+            print("Checked out at {}".format(tag))
 
-    def clone_one_package(self, name):
+    def clone_one_package(self, name, tag=None):
         self._clone_repo(name)
 
     def clone_all_packages(self):
