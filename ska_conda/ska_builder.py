@@ -12,8 +12,8 @@ class SkaBuilder(object):
     def __init__(self, build_root='.', user='sot', git_repo_path='git@github.com:{user}/{name}.git'):
         self.user = user
         self.git_repo_path = git_repo_path
-        self.build_dir = os.path.join(build_root, "builds")
-        self.src_dir = os.path.join(build_root, "src")
+        self.build_dir = os.path.abspath(os.path.join(build_root, "builds"))
+        self.src_dir = os.path.abspath(os.path.join(build_root, "src"))
         os.environ["SKA_TOP_SRC_DIR"] = self.src_dir
 
     def _clone_repo(self, name, tag=None):
