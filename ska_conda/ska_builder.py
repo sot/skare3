@@ -9,25 +9,23 @@ build_list = os.path.join(ska_conda_path, "build_order.txt")
 
 class SkaBuilder(object):
 
-    def __init__(self, ska_root=None):
-        if ska_root is None:
-            ska_root = "/tmp/ska3_pkg/"
-        self.ska_root = ska_root
-        self.ska_build_dir = os.path.join(self.ska_root, "builds")
-        self.ska_src_dir = os.path.join(self.ska_root, "src")
-        os.environ["SKA_TOP_SRC_DIR"] = self.ska_src_dir
+    def __init__(self, build_root='.', user='sot', git_repo_path='git@github.com:{user}/{name}.git'):
+        self.user = user
+        self.git_repo_path = git_repo_path
+        self.build_dir = os.path.join(build_root, "builds")
+        self.src_dir = os.path.join(build_root, "src")
+        os.environ["SKA_TOP_SRC_DIR"] = self.src_dir
 
     def _clone_repo(self, name, tag=None):
         if name == "ska":
             return
         print("Cloning source %s." % name)
-        clone_path = os.path.join(self.ska_src_dir, name)
+        clone_path = os.path.join(self.src_dir, name)
         if not os.path.exists(clone_path):
             # Try ssh first to avoid needing passwords for the private repos
             # We could add these ssh strings to the meta.yaml for convenience
             try:
-                git_ssh_path = 'git@github.com:sot/' + name + '.git'
-                repo = git.Repo.clone_from(git_ssh_path, clone_path)
+                repo = git.Repo.clone_from(self.git_repo_path.format(user=self.user, name=name), clone_path)
                 assert not repo.bare
             except:
                 yml = os.path.join(pkg_defs_path, name, "meta.yaml")
@@ -73,7 +71,7 @@ class SkaBuilder(object):
     def _get_repo(self, name):
         if name == "ska":
             return None
-        repo_path = os.path.join(self.ska_src_dir, name)
+        repo_path = os.path.join(self.src_dir, name)
         if not os.path.exists(repo_path):
             self._clone_repo(name)
         repo = git.Repo(repo_path)
