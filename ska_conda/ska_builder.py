@@ -81,14 +81,12 @@ class SkaBuilder(object):
         print("Building package %s." % name)
         pkg_path = os.path.join(pkg_defs_path, name)
         cmd_list = ["conda", "build", pkg_path, "--croot",
-                    self.ska_build_dir, "--no-test",
-                    "--no-anaconda-upload"]
+                    self.build_dir, "--no-test",
+                    "--no-anaconda-upload", "--skip-existing"]
         subprocess.run(cmd_list)
 
     def build_one_package(self, name):
         repo = self._get_repo(name)
-        if repo is not None:
-            repo.remote().pull()
         self._build_package(name)
 
     def build_updated_packages(self, new_only=True):
@@ -96,15 +94,7 @@ class SkaBuilder(object):
             for line in f.readlines():
                 pkg_name = line.strip()
                 if not pkg_name.startswith("#"):
-                    repo = self._get_repo(pkg_name)
-                    if repo is None:
-                        build = True
-                    else:
-                        current_tag = repo.tags[-1].name
-                        repo.remote().pull()
-                        build = repo.tags[-1].name != current_tag
-                    if build or not new_only:
-                        self._build_package(pkg_name)
+                    self._build_package(pkg_name)
 
     def build_all_packages(self):
         self.build_updated_packages(new_only=False)
