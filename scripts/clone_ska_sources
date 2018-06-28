@@ -8,13 +8,13 @@ parser = argparse.ArgumentParser(description="Clone Ska Conda sources.")
 
 parser.add_argument("mode", type=str, help="The clone mode. Either 'all' for all "
                                            "packages, or a specific package name.")
-parser.add_argument("--ska_root", type=str,
+parser.add_argument("--build_root", default=".", type=str,
                     help="The path to the root directory for the Ska packages. "
-                         "Default: /data/acis/ska3_pkg")
+                         "Default: '.'")
 
 args = parser.parse_args()
 
-ska_builder = SkaBuilder(ska_root=args.ska_root)
+ska_builder = SkaBuilder(build_root=args.build_root)
 
 if args.mode == "all":
     ska_builder.clone_all_packages()
