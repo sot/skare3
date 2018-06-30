@@ -28,4 +28,4 @@ Ska.astro
 mica
 cxotime
 annie
-ska
+ska-flight
