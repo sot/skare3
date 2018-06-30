@@ -28,11 +28,12 @@ requirements:
     - python
     - setuptools
     - six
-    - cython
-    - nose
-    - testr
+    - numpy
 
 test:
+  requires:
+    - nose
+    - testr
   imports:
     - Ska.Numpy
 

@@ -3,10 +3,9 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   script_env:
-    - USER
     - SKA_TOP_SRC_DIR
-  preserve_egg_dir: yes # (default no)
 
 
 source:
@@ -31,17 +30,19 @@ requirements:
   run:
     - python
     - setuptools
+    - requests
     - six
     - scipy
     - numpy
-    - testr
     - pyyaks
     - ska.ftp
     - ska.tdb
     - chandra.time
-    - pytest
 
 test:
+  requires:
+    - testr
+    - pytest
   imports:
     - maude
 

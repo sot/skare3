@@ -4,6 +4,7 @@ package:
   version: {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   preserve_egg_dir: yes
   script_env:
     - SKA_TOP_SRC_DIR
@@ -23,6 +24,8 @@ requirements:
     - pexpect
 
 test:
+  requires:
+    - testr
   imports:
     - Ska.Shell
 

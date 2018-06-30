@@ -1,2 +1,3 @@
+import sys
 import Quaternion
-Quaternion.test()
+sys.exit(Quaternion.test())

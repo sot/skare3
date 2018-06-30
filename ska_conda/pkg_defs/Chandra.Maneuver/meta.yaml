@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
   preserve_egg_dir: yes # (default no)
@@ -30,12 +31,15 @@ requirements:
     - python
     - setuptools
     - six
-    - testr
     - quaternion
     - chandra.time
     - ska.sun
 
 test:
+  requires:
+    - agasc
+    - ska.engarchive
+    - testr
   imports:
     - Chandra.Maneuver
 

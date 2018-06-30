@@ -4,6 +4,7 @@ package:
 
 
 build:
+  noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
 

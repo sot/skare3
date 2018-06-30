@@ -1,14 +1,14 @@
 package:
-  name: cmd_states
+  name: tables3_api
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
-  preserve_egg_dir: yes # (default no)
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/cmd_states
+  path: {{ SKA_TOP_SRC_DIR }}/tables3_api
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -19,35 +19,22 @@ requirements:
   build:
     - python
     - setuptools
-    - six
-    - numpy
-    - ska.file
-    - ska.dbi
-    - chandra.time
-    - chandra.maneuver
-    - ska.parsecm
-    - ska.numpy
+    - pytables
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
     - setuptools
-    - six
-    - chandra.time
-    - ska.dbi
-    - ska.file
-    - chandra.maneuver
-    - quaternion
-    - ska.sun
-    - ska.parsecm
-    - ska.numpy
-    - ska.ftp
-    - kadi
+    - pytables
+
 
 test:
+  requires:
+    - testr
   imports:
-    - Chandra.cmd_states
+    - tables3_api
 
 
 about:
-  home: https://github.com/sot/cmd_states
+  home: https://github.com/sot/tables3_api
+

@@ -1,2 +1,3 @@
+import sys
 import Ska.engarchive
-Ska.engarchive.test()
+sys.exit(Ska.engarchive.test())

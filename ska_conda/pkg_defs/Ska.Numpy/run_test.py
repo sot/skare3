@@ -1,2 +1,3 @@
+import sys
 import Ska.Numpy
-Ska.Numpy.test()
+sys.exit(Ska.Numpy.test())

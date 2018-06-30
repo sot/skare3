@@ -1,2 +1,3 @@
+import sys
 import Ska.tdb
-Ska.tdb.test()
+sys.exit(Ska.tdb.test())

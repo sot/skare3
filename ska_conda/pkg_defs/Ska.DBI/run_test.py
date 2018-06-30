@@ -1,2 +1,3 @@
+import sys
 import Ska.DBI
-Ska.DBI.test()
+sys.exit(Ska.DBI.test())

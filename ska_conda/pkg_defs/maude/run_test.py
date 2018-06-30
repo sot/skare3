@@ -1,3 +1,4 @@
+import sys
 import maude
-maude.test()
+sys.exit(maude.test())
 

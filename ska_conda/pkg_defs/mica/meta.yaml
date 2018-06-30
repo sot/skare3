@@ -1,0 +1,61 @@
+package:
+  name: mica
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  noarch: python
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/mica
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - testr
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - six
+    - setuptools
+    - matplotlib
+    - numpy
+    - pytest
+    - django
+    - jinja2
+    - astropy
+    - ska.shell
+    - chandra.time
+    - chandra_aca
+    - quaternion
+    - agasc
+    - ska.dbi
+    - pytables
+    - tables3_api
+    - quaternion
+    - ska.quatutil
+    - ska.matplotlib
+    - ska.engarchive
+    - kadi
+    - pyyaks
+
+test:
+  requires:
+    - testr
+    - ska.arc5gl
+    - ska.astro
+  imports:
+    - mica
+
+
+about:
+  home: https://github.com/sot/mica
+

@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
   preserve_egg_dir: yes # (default no)
@@ -31,13 +32,15 @@ requirements:
     - ipython
     - ipyparallel
     - pytables
+    - tables3_api
     - chandra.time
     - ska.numpy
     - ska.dbi
-    - testr
     - astropy
 
 test:
+  requires:
+    - testr
   imports:
     - Ska.engarchive
 

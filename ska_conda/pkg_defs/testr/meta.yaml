@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   entry_points:
     - entry = conda_version_test.manual_entry:main
   script_env:

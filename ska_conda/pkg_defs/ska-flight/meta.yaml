@@ -1,0 +1,38 @@
+package:
+  name: ska-flight
+  version: 0.1
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - ska.shell ==3.3.3
+    - ska.file ==3.4.1
+    - pyyaks ==3.3.4
+    - ska_path ==3.1
+    - testr ==3.2
+    - tables3_api ==0.1
+    - ska.tdb ==3.5.1
+    - chandra.time ==3.20.1
+    - ska.parsecm ==3.3.1
+    - parse_cm ==3.3.2
+    - ska.dbi ==3.8.2
+    - ska.ftp ==3.5
+    - ska.numpy ==3.8.1
+    - quaternion ==3.4.1
+    - ska.engarchive ==3.43.1
+    - kadi ==3.15.4
+    - ska.matplotlib ==3.11.2
+    - ska.quatutil ==3.3.1
+    - ska.sun ==3.5
+    - chandra.maneuver ==3.7
+    - chandra.cmd_states ==3.14
+    - xija ==3.10
+    - mica ==3.14.0
+    - cxotime ==3.1
+    - chandra_aca ==3.22
+    - maude ==3.1
+    - agasc ==3.5.2
+    - ska.arc5gl ==3.1.1
+    - ska.astro ==3.2.1
+    - annie

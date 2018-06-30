@@ -1,3 +1,4 @@
+import sys
 import agasc
-agasc.test()
+sys.exit(agasc.test())
 
