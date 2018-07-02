@@ -6,33 +6,33 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-    - ska.shell ==3.3.3
-    - ska.file ==3.4.1
-    - pyyaks ==3.3.4
-    - ska_path ==3.1
-    - testr ==3.2
-    - tables3_api ==0.1
-    - ska.tdb ==3.5.1
-    - chandra.time ==3.20.1
-    - ska.parsecm ==3.3.1
-    - parse_cm ==3.3.2
-    - ska.dbi ==3.8.2
-    - ska.ftp ==3.5
-    - ska.numpy ==3.8.1
-    - quaternion ==3.4.1
-    - ska.engarchive ==3.43.1
-    - kadi ==3.15.4
-    - ska.matplotlib ==3.11.2
-    - ska.quatutil ==3.3.1
-    - ska.sun ==3.5
-    - chandra.maneuver ==3.7
-    - chandra.cmd_states ==3.14
-    - xija ==3.10
-    - mica ==3.14.0
-    - cxotime ==3.1
-    - chandra_aca ==3.22
-    - maude ==3.1
     - agasc ==3.5.2
+    - annie
+    - chandra_aca ==3.22
+    - chandra.cmd_states ==3.14
+    - chandra.maneuver ==3.7
+    - chandra.time ==3.20.1
+    - cxotime ==3.1
+    - kadi ==3.15.4
+    - maude ==3.1
+    - mica ==3.14.0
+    - parse_cm ==3.3.2
+    - pyyaks ==3.3.4
+    - quaternion ==3.4.1
     - ska.arc5gl ==3.1.1
     - ska.astro ==3.2.1
-    - annie
+    - ska.dbi ==3.8.2
+    - ska.engarchive ==3.43.1
+    - ska.file ==3.4.1
+    - ska.ftp ==3.5
+    - ska.numpy ==3.8.1
+    - ska.matplotlib ==3.11.2
+    - ska.parsecm ==3.3.1
+    - ska_path ==3.1
+    - ska.quatutil ==3.3.1
+    - ska.shell ==3.3.3
+    - ska.sun ==3.5
+    - ska.tdb ==3.5.1
+    - tables3_api ==0.1
+    - testr ==3.2
+    - xija ==3.10
