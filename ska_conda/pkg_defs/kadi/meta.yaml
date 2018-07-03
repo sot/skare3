@@ -3,8 +3,8 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   script_env:
-    - USER
     - SKA_TOP_SRC_DIR
 
 source:
@@ -19,7 +19,6 @@ requirements:
   build:
     - python
     - six
-    - cython
     - numpy
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
@@ -29,7 +28,8 @@ requirements:
     - pytables
     - configobj
     - requests
-    - django
+    - tables3_api
+    - django <2.0
     - pyyaks
     - ska.dbi
     - ska.file
@@ -39,15 +39,17 @@ requirements:
     - quaternion
     - chandra.time
     - ska.engarchive
+    - chandra.cmd_states
     - numpy
-    - testr
 
 test:
+  requires:
+    - testr
   imports:
     - kadi
 
 
 about:
-  home: https://github.com/sot/Chandra.Time
+  home: https://github.com/sot/kadi
   license: BSD
-  summary: Chandra Time package
+  summary: kadi

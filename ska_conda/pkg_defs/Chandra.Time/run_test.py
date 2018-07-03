@@ -1,2 +1,3 @@
+import sys
 import Chandra.Time
-Chandra.Time.test()
+sys.exit(Chandra.Time.test())

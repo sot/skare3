@@ -1,3 +1,4 @@
+import sys
 import xija
-xija.test()
+sys.exit(xija.test())
 

@@ -31,10 +31,11 @@ requirements:
     - setuptools
     - six
     - numpy
-    - astropy
-    - testr
 
 test:
+  requires:
+    - testr
+
   imports:
     - Chandra.Time
 

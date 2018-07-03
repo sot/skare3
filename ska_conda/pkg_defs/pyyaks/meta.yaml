@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
 
@@ -27,6 +28,7 @@ requirements:
 
 test:
   requires:
+    - testr
     - pytest
     - six
   imports:

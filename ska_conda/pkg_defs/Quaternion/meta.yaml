@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
 
@@ -27,9 +28,10 @@ requirements:
     - setuptools
     - six
     - numpy
-    - testr
 
 test:
+  requires:
+    - testr
   imports:
     - Quaternion
 

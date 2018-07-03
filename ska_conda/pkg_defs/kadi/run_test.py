@@ -1,3 +1,0 @@
-import kadi
-kadi.test()
-

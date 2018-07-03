@@ -3,8 +3,8 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  noarch: python
   script_env:
-    - USER
     - SKA_TOP_SRC_DIR
 
 source:
@@ -19,6 +19,9 @@ requirements:
   build:
     - python
     - six
+    - numpy
+    - chandra.time
+    - quaternion
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -38,6 +41,8 @@ requirements:
 
 
 test:
+  requires:
+    - mica
   imports:
     - chandra_aca
 

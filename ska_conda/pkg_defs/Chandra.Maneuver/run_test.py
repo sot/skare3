@@ -1,2 +1,3 @@
+import sys
 import Chandra.Maneuver
-Chandra.Maneuver.test()
+sys.exit(Chandra.Maneuver.test())

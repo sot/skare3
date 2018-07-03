@@ -4,7 +4,6 @@ package:
 
 build:
   script_env:
-    - USER
     - SKA_TOP_SRC_DIR
 
 source:
@@ -31,15 +30,15 @@ requirements:
     - six
     - scipy
     - numpy
-    - testr
     - matplotlib
     - ska.matplotlib
     - ska.numpy
     - pyyaks
-    - sherpa
     - chandra.time
 
 test:
+  requires:
+    - testr
   imports:
     - xija
 

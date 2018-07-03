@@ -1,0 +1,51 @@
+package:
+  name: annie
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  noarch: python
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/annie
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - chandra_aca
+    - mica
+    - testr
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools
+    - numpy
+    - numba
+    - astropy
+    - pytest
+    - chandra_aca
+    - ska.quatutil
+    - chandra.time
+    - quaternion
+    - agasc
+    - ska.matplotlib
+    - ska.engarchive
+    - mica
+    - testr
+
+test:
+  imports:
+    - annie
+
+
+about:
+  home: https://github.com/sot/annie
+
