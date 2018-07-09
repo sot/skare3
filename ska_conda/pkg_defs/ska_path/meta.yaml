@@ -4,6 +4,7 @@ package:
 
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index ."
   noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
@@ -15,6 +16,7 @@ source:
 
 requirements:
   build:
+    - pip
     - python
   run:
     - python

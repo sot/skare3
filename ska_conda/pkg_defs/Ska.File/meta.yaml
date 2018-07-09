@@ -4,6 +4,7 @@ package:
 
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index --egg ."
   noarch: python
   preserve_egg_dir: yes
   script_env:
@@ -13,15 +14,14 @@ source:
   path: {{ SKA_TOP_SRC_DIR }}/Ska.File
 
 
-
 requirements:
   build:
     - python
-    - setuptools
+    - pip <10.0
 
   run:
     - python
-    - setuptools
+
 
 test:
   imports:

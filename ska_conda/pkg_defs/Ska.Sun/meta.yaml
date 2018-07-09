@@ -5,6 +5,7 @@ package:
 
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index --egg ."
   noarch: python
   preserve_egg_dir: yes
   script_env:
@@ -17,6 +18,7 @@ source:
 
 requirements:
   build:
+    - pip <10.0
     - python
     - setuptools
     - quaternion
@@ -25,7 +27,6 @@ requirements:
     - numpy
   run:
     - python
-    - setuptools
     - ska.quatutil
     - chandra.time
     - quaternion
