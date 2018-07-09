@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index --egg ."
   script_env:
     - SKA_TOP_SRC_DIR
   preserve_egg_dir: yes # (default no)
@@ -17,6 +18,7 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
+    - pip <10.0
     - python
     - setuptools
     - numpy
@@ -29,11 +31,10 @@ requirements:
     - setuptools
     - six
     - numpy
-
-test:
-  requires:
     - nose
     - testr
+
+test:
   imports:
     - Ska.Numpy
 

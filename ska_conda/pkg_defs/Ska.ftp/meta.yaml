@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index --egg ."
   noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
@@ -18,20 +19,19 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
+    - pip <10.0
     - python
     - setuptools
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - setuptools
     - six
     - pycrypto
     - paramiko
+    - testr
 
 test:
-  requires:
-    - testr
   imports:
     - Ska.ftp
 

@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index  ."
   noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
@@ -19,6 +20,7 @@ requirements:
   build:
     - python
     - setuptools
+    - pip
     - six
     - numpy
     - numexpr
@@ -39,10 +41,9 @@ requirements:
     - ska_path
     - astropy
     - h5py
+    - testr
 
 test:
-  requires:
-    - testr
   imports:
     - agasc
 

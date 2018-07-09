@@ -1,0 +1,8 @@
+package:
+  name: ska-flight
+  version: 0.1
+
+requirements:
+  run:
+    - ska-core ==0.1
+    - astropy ==2.0.1

@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index ."
   noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
@@ -18,6 +19,7 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
+    - pip
     - setuptools
     - chandra_aca
     - mica
@@ -26,7 +28,6 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - setuptools
     - numpy
     - numba
     - astropy

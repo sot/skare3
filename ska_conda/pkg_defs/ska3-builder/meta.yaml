@@ -1,0 +1,16 @@
+package:
+  name: ska3-builder
+  version: 0.1
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python ==3.6.2
+    - ipython
+    - pip <10.0
+    - gitpython
+    - git
+    - numpy ==1.12.1
+    - conda-build
+    - conda ==4.3.21

@@ -4,6 +4,7 @@ package:
   version: {{ GIT_DESCRIBE_TAG }}
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index --egg ."
   noarch: python
   preserve_egg_dir: yes
   script_env:
@@ -15,17 +16,16 @@ source:
 requirements:
   build:
     - python
-    - setuptools
+    - pip <10.0
     - six
 
   run:
     - python
     - six
     - pexpect
+    - testr
 
 test:
-  requires:
-    - testr
   imports:
     - Ska.Shell
 

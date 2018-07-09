@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  script: "pip install --no-deps --verbose --no-binary :all: --no-index ."
   noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
@@ -17,6 +18,7 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
+    - pip
     - python
     - setuptools
     - testr
@@ -25,11 +27,9 @@ requirements:
   run:
     - python
     - six
-    - setuptools
     - matplotlib
     - numpy
     - pytest
-    - django
     - jinja2
     - astropy
     - ska.shell
@@ -46,12 +46,11 @@ requirements:
     - ska.engarchive
     - kadi
     - pyyaks
-
-test:
-  requires:
     - testr
     - ska.arc5gl
     - ska.astro
+
+test:
   imports:
     - mica
 
