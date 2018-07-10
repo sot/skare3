@@ -9,7 +9,7 @@ build:
   preserve_egg_dir: yes # (default no)
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/cmd_states
+  path: {{ SKA_TOP_SRC_DIR }}/Chandra.cmd_states
 
 
 # the build and runtime requirements. Dependencies of these requirements
