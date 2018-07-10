@@ -83,7 +83,7 @@ class SkaBuilder(object):
         cmd_list = ["conda", "build", pkg_path, "--croot",
                     self.build_dir, "--no-test",
                     "--no-anaconda-upload", "--skip-existing"]
-        subprocess.run(cmd_list)
+        subprocess.run(cmd_list, check=True)
 
     def build_one_package(self, name):
         repo = self._get_repo(name)
