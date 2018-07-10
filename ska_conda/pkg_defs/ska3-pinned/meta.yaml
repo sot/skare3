@@ -11,4 +11,5 @@ requirements:
     - numpy ==1.12.1
     - conda ==4.3.21
     - llvmlite ==0.18.0
-    - sherpa ==4.9.1
+
+#    - sherpa ==4.9.1
