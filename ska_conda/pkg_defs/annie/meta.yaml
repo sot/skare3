@@ -18,6 +18,7 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
+    - pip
     - setuptools
     - chandra_aca
     - mica
@@ -26,7 +27,6 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - setuptools
     - numpy
     - numba
     - astropy

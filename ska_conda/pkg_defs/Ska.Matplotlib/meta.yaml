@@ -16,8 +16,8 @@ source:
 
 requirements:
   build:
+    - pip <10.0
     - python
-    - setuptools
     - six
     - matplotlib
     - chandra.time
@@ -25,7 +25,6 @@ requirements:
 
   run:
     - python
-    - setuptools
     - six
     - matplotlib
     - chandra.time

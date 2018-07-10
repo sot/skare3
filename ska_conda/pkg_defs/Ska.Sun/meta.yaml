@@ -17,6 +17,7 @@ source:
 
 requirements:
   build:
+    - pip <10.0
     - python
     - setuptools
     - quaternion
@@ -25,7 +26,6 @@ requirements:
     - numpy
   run:
     - python
-    - setuptools
     - ska.quatutil
     - chandra.time
     - quaternion

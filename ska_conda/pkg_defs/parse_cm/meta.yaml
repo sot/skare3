@@ -17,8 +17,8 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
+    - pip
     - python
-    - setuptools
     - astropy
     - numpy
     - six
@@ -26,14 +26,12 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - setuptools
     - six
     - numpy
     - astropy
+    - testr
 
 test:
-  requires:
-    - testr
   imports:
     - parse_cm
 

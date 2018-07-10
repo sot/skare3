@@ -17,11 +17,11 @@ source:
 requirements:
   build:
     - python
-    - setuptools
+    - pip <10.0
 
   run:
     - python
-    - setuptools
+
 
 test:
   imports:

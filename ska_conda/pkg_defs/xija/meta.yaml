@@ -16,6 +16,7 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
+    - pip
     - python
     - setuptools
     - six
@@ -26,7 +27,6 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - setuptools
     - six
     - scipy
     - numpy
@@ -35,10 +35,9 @@ requirements:
     - ska.numpy
     - pyyaks
     - chandra.time
+    - testr
 
 test:
-  requires:
-    - testr
   imports:
     - xija
 
