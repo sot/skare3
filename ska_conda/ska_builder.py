@@ -25,9 +25,12 @@ class SkaBuilder(object):
         if not os.path.exists(clone_path):
             # Try ssh first to avoid needing passwords for the private repos
             # We could add these ssh strings to the meta.yaml for convenience
+            # The default ssh is not going to work if the package name doesn't match the
+            # top-level git repo name (cmd_states, eng_archive)
             try:
                 repo = git.Repo.clone_from(self.git_repo_path.format(user=self.user, name=name), clone_path)
                 assert not repo.bare
+                print("Clonied via default ssh git")
             except:
                 yml = os.path.join(pkg_defs_path, name, "meta.yaml")
                 with open(yml) as f:
@@ -39,6 +42,7 @@ class SkaBuilder(object):
                     data = yaml.load(f)
                     url = data['about']['home']
                 repo = git.Repo.clone_from(url, clone_path)
+                print("Cloned from url {}".format(url))
         else:
             repo = git.Repo(clone_path)
             repo.remotes.origin.fetch()
@@ -58,22 +62,12 @@ class SkaBuilder(object):
             repo.git.checkout(tag)
             print("Checked out at {}".format(tag))
 
-    def clone_one_package(self, name, tag=None):
-        self._clone_repo(name)
-
-    def clone_all_packages(self):
-        with open(build_list, "r") as f:
-            for line in f.readlines():
-                pkg_name = line.strip()
-                if not pkg_name.startswith("#"):
-                    self._clone_repo(pkg_name)
 
     def _get_repo(self, name):
         if name in no_source_pkgs:
             return None
         repo_path = os.path.join(self.src_dir, name)
-        if not os.path.exists(repo_path):
-            self._clone_repo(name)
+        self._clone_repo(name)
         repo = git.Repo(repo_path)
         return repo
 
@@ -89,12 +83,12 @@ class SkaBuilder(object):
         repo = self._get_repo(name)
         self._build_package(name)
 
-    def build_updated_packages(self, new_only=True):
+    def build_list_packages(self):
         with open(build_list, "r") as f:
             for line in f.readlines():
                 pkg_name = line.strip()
                 if not pkg_name.startswith("#"):
-                    self._build_package(pkg_name)
+                    self.build_one_package(pkg_name)
 
     def build_all_packages(self):
-        self.build_updated_packages(new_only=False)
+        self.build_list_packages()
