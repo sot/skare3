@@ -6,6 +6,7 @@ import yaml
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
 build_list = os.path.join(ska_conda_path, "build_order.txt")
+no_source_pkgs = ['ska3-flight', 'ska3-core', 'ska3-template']
 
 class SkaBuilder(object):
 
@@ -17,7 +18,7 @@ class SkaBuilder(object):
         os.environ["SKA_TOP_SRC_DIR"] = self.src_dir
 
     def _clone_repo(self, name, tag=None):
-        if name == "ska":
+        if name in no_source_pkgs:
             return
         print("Cloning source %s." % name)
         clone_path = os.path.join(self.src_dir, name)
@@ -68,7 +69,7 @@ class SkaBuilder(object):
                     self._clone_repo(pkg_name)
 
     def _get_repo(self, name):
-        if name == "ska":
+        if name in no_source_pkgs:
             return None
         repo_path = os.path.join(self.src_dir, name)
         if not os.path.exists(repo_path):
