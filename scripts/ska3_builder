@@ -14,7 +14,7 @@ parser.add_argument("package", type=str, nargs="?",
                     help="Package to build.  All we be built as needed if no package supplied")
 parser.add_argument("--tag", type=str,
                     help="Optional tag, branch, commit for git checkout.  Only applies to single package build")
-parser.add_argument("--build_root", default=".", type=str,
+parser.add_argument("--build-root", default=".", type=str,
                     help="The path to the root directory for the Ska packages. "
                          "Default: '.'")
 
