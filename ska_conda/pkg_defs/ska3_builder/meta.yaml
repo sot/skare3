@@ -1,5 +1,5 @@
 package:
-  name: ska3-builder
+  name: ska3_builder
   version: {{ GIT_DESCRIBE_TAG }}
 
 build:
@@ -8,7 +8,7 @@ build:
     - SKA_TOP_SRC_DIR
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/skare3
+  path: {{ SKA_TOP_SRC_DIR }}/ska3_builder
 
 
 requirements:
@@ -22,3 +22,6 @@ requirements:
     - git
     - conda-build
     - ska3-pinned ==0.1
+
+about:
+  home: https://github.com/sot/skare3
