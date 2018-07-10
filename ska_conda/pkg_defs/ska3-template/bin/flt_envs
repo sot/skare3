@@ -1,0 +1,80 @@
+#!PREFIXPYTHON -E
+
+"""
+Print to stdout the appropriate shell commands to initialize the standalone
+Ska environment.
+
+Usage::
+
+  usage: flt_envs [-h] [--shell SHELL]
+
+  Set flight environment vars
+
+  optional arguments:
+    --shell SHELL  Shell name (csh|tcsh|bash|sh|ksh) default=bash
+"""
+
+import os
+from os.path import dirname, abspath
+import sys
+
+
+SHELL = 'bash'
+for idx, arg in enumerate(sys.argv):
+    if arg == '-shell':
+        SHELL = sys.argv[idx + 1]
+if SHELL not in ['csh', 'tcsh', 'bash', 'sh', 'ksh']:
+    raise ValueError("shell '%s; not supported" % SHELL)
+
+
+# Use the convention that flt_envs must be in $SKA/bin to derive SKA and
+# OVERRIDE any existing value.
+ska = dirname(dirname(abspath(__file__)))  # from $SKA/bin/flt_envs to $SKA
+
+# Set environment vars
+envs = dict(('SKA_' + suffix.upper(), os.path.join(ska, suffix))
+        for suffix in ('arch', 'data', 'lib', 'share', 'bin', 'idl'))
+envs['SKA'] = ska
+envs['SYBASE_OCS'] = 'OCS-15_0'
+envs['PGPLOT_DIR'] = os.path.join(ska, 'pgplot')
+envs['SYBASE'] = '/soft/SYBASE15.7'
+envs['CFITSIO'] = ska
+
+def prepend_unique_path(new_items, old_path):
+    """
+    Prepend new strings of individual paths in the new_items list
+    to the path in old_path (old_path should be a colon-separated path string
+    """
+    paths = old_path.split(":")
+    for item in new_items:
+        if item in paths:
+            paths.remove(item)
+    for item in new_items[::-1]:
+        paths.insert(0, item)
+    # Cut any empty strings
+    paths = [x for x in paths if x]
+    return ":".join(paths)
+
+# Add all of the new ska-based paths to an env_paths dictionary
+# and then prepend these paths to any existing paths
+env_paths = {}
+env_paths['PERL5LIB'] = [os.path.join(ska, 'lib', 'perl'),
+                         os.path.join(ska, 'lib', 'perl', 'lib')]
+env_paths['LD_LIBRARY_PATH'] = [os.path.join(ska, 'lib'),
+                                os.path.join(ska, 'pgplot'),
+                                os.path.join(envs['SYBASE'], envs['SYBASE_OCS'], 'lib')]
+env_paths['PATH'] = [os.path.join(ska, 'bin'),
+                     os.path.join(ska_arch_os, 'bin')]
+for libpath in env_paths:
+    old_path = ""
+    if libpath in os.environ and os.environ[libpath] != '':
+        old_path = os.environ[libpath]
+    envs[libpath] = prepend_unique_path(env_paths[libpath],
+                                        old_path)
+
+# Print environment vars correctly for specified shell
+for name, val in envs.items():
+    if SHELL in ('tcsh', 'csh'):
+        print("setenv %s %s;" % (name, val))
+    else:
+        print("%s=%s; export %s;" % (name, val, name))
