@@ -8,12 +8,13 @@ requirements:
   run:
     - ska3-core ==0.1
     - agasc ==3.5.2
-    - annie
+    - annie ==0.5
     - chandra_aca ==3.22
     - chandra.cmd_states ==3.14
     - chandra.maneuver ==3.7
     - chandra.time ==3.20.1
     - cxotime ==3.1
+    - hopper ==0.3
     - kadi ==3.15.4
     - maude ==3.1
     - mica ==3.14.0
