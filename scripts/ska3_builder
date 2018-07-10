@@ -11,9 +11,10 @@ if os.uname().sysname == "Darwin":
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
 parser.add_argument("package", type=str, nargs="?",
-                    help="Package to build.  All we be built as needed if none supplied")
-
-parser.add_argument("--build_root", default=".", type=str, 
+                    help="Package to build.  All we be built as needed if no package supplied")
+parser.add_argument("--tag", type=str,
+                    help="Optional tag, branch, commit for git checkout.  Only applies to single package build")
+parser.add_argument("--build_root", default=".", type=str,
                     help="The path to the root directory for the Ska packages. "
                          "Default: '.'")
 
@@ -22,7 +23,7 @@ args = parser.parse_args()
 ska_builder = SkaBuilder(build_root=args.build_root)
 
 if getattr(args, 'package'):
-    ska_builder.build_one_package(args.package)
+    ska_builder.build_one_package(args.package, tag=args.tag)
 else:
     ska_builder.build_all_packages()
 

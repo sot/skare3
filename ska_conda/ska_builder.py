@@ -63,11 +63,11 @@ class SkaBuilder(object):
             print("Checked out at {}".format(tag))
 
 
-    def _get_repo(self, name):
+    def _get_repo(self, name, tag):
         if name in no_source_pkgs:
             return None
         repo_path = os.path.join(self.src_dir, name)
-        self._clone_repo(name)
+        self._clone_repo(name, tag)
         repo = git.Repo(repo_path)
         return repo
 
@@ -79,8 +79,8 @@ class SkaBuilder(object):
                     "--no-anaconda-upload", "--skip-existing"]
         subprocess.run(cmd_list, check=True)
 
-    def build_one_package(self, name):
-        repo = self._get_repo(name)
+    def build_one_package(self, name, tag=None):
+        repo = self._get_repo(name, tag)
         self._build_package(name)
 
     def build_list_packages(self):
