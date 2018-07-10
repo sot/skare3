@@ -1,2 +1,1 @@
-python setup.py install
-
+pip install --no-deps --verbose --no-binary :all: --no-index --egg .

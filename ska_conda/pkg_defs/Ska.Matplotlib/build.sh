@@ -1,5 +1,1 @@
-#!/bin/bash
-
-# Build script for Ska.File
-
-$PYTHON setup.py install
+pip install --no-deps --verbose --no-binary :all: --no-index --egg .
