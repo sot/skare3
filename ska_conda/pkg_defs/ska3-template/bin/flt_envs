@@ -63,8 +63,7 @@ env_paths['PERL5LIB'] = [os.path.join(ska, 'lib', 'perl'),
 env_paths['LD_LIBRARY_PATH'] = [os.path.join(ska, 'lib'),
                                 os.path.join(ska, 'pgplot'),
                                 os.path.join(envs['SYBASE'], envs['SYBASE_OCS'], 'lib')]
-env_paths['PATH'] = [os.path.join(ska, 'bin'),
-                     os.path.join(ska_arch_os, 'bin')]
+env_paths['PATH'] = [os.path.join(ska, 'bin')]
 for libpath in env_paths:
     old_path = ""
     if libpath in os.environ and os.environ[libpath] != '':
