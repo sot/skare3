@@ -7,6 +7,7 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - ska3-core ==0.1
+    - ska3-template ==0.1
     - agasc ==3.5.2
     - annie ==0.5
     - chandra_aca ==3.22
