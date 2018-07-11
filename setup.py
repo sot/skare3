@@ -16,6 +16,7 @@ setup(name='ska_conda',
       url='http://github.com/sot/ska_conda',
       download_url=url,
       scripts=scripts,
+      include_package_data=True,
       install_requires=["gitpython","pyyaml"],
       classifiers=[
           'Intended Audience :: Science/Research',
