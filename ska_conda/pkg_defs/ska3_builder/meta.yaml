@@ -13,6 +13,12 @@ source:
 requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
+  build:
+    - python
+    - pip
+    - pyyaml
+    - gitpython
+    - git
   run:
     - python
     - ipython
