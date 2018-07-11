@@ -11,11 +11,11 @@ if os.uname().sysname == "Darwin":
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
 parser.add_argument("package", type=str, nargs="?",
-                    help="Package to build.  All we be built as needed if no package supplied")
+                    help="Package to build.  All updated packages will be built if no package supplied")
 parser.add_argument("--tag", type=str,
-                    help="Optional tag, branch, commit for git checkout.  Only applies to single package build")
+                    help="Optional tag, branch, or commit to build for single package build (default is tag with most recent commit)")
 parser.add_argument("--build-root", default=".", type=str,
-                    help="The path to the root directory for the Ska packages. "
+                    help="Path to root directory for output conda build packages."
                          "Default: '.'")
 
 args = parser.parse_args()
