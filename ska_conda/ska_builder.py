@@ -46,6 +46,7 @@ class SkaBuilder(object):
         else:
             repo = git.Repo(clone_path)
             repo.remotes.origin.fetch()
+            repo.remotes.origin.fetch("--tags")
         assert not repo.is_dirty()
         # I think we want the commit/tag with the most recent date, though
         # if we actually want the most recently created tag, that would probably be
