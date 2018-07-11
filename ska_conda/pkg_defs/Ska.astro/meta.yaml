@@ -1,6 +1,6 @@
 package:
   name: ska.astro
-  version:  {{ GIT_DESCRIBE_TAG }}
+  version:  {{ GIT_DESCRIBE_TAG }}{% if GIT_DESCRIBE_NUMBER != '0'%}_dev{{GIT_DESCRIBE_NUMBER}}{% endif %}
 
 build:
   noarch: python

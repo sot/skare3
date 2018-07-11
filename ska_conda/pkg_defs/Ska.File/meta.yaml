@@ -1,6 +1,6 @@
 package:
   name: ska.file  # lower case name of package, may contain '-' but no spaces
-  version: {{ GIT_DESCRIBE_TAG }}
+  version: {{ GIT_DESCRIBE_TAG }}{% if GIT_DESCRIBE_NUMBER != '0'%}_dev{{GIT_DESCRIBE_NUMBER}}{% endif %}
 
 
 build:
