@@ -35,6 +35,7 @@ ska = dirname(dirname(abspath(__file__)))  # from $SKA/bin/flt_envs to $SKA
 envs = dict(('SKA_' + suffix.upper(), os.path.join(ska, suffix))
         for suffix in ('arch', 'data', 'lib', 'share', 'bin', 'idl'))
 envs['SKA'] = ska
+envs['SKA_ARCH_OS'] = ska
 envs['SYBASE_OCS'] = 'OCS-15_0'
 envs['PGPLOT_DIR'] = os.path.join(ska, 'pgplot')
 envs['SYBASE'] = '/soft/SYBASE15.7'
