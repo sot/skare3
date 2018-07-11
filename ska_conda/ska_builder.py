@@ -30,7 +30,7 @@ class SkaBuilder(object):
             try:
                 repo = git.Repo.clone_from(self.git_repo_path.format(user=self.user, name=name), clone_path)
                 assert not repo.bare
-                print("Clonied via default ssh git")
+                print("Cloned via default ssh git")
             except:
                 yml = os.path.join(pkg_defs_path, name, "meta.yaml")
                 with open(yml) as f:
