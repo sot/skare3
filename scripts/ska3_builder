@@ -25,5 +25,7 @@ ska_builder = SkaBuilder(build_root=args.build_root)
 if getattr(args, 'package'):
     ska_builder.build_one_package(args.package, tag=args.tag)
 else:
+    if args.tag is not None:
+        raise ValueError("Cannot supply '--tag' without specific package'")
     ska_builder.build_all_packages()
 
