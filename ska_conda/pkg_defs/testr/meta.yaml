@@ -4,8 +4,6 @@ package:
 
 build:
   noarch: python
-  entry_points:
-    - entry = conda_version_test.manual_entry:main
   script_env:
     - SKA_TOP_SRC_DIR
 
@@ -20,11 +18,11 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
+    - pip
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - setuptools
     - ska.file
     - ska.shell
     - pyyaks

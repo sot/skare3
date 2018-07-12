@@ -1,0 +1,32 @@
+package:
+  name: ska3_builder
+  version: {{ GIT_DESCRIBE_TAG }}
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/ska3_builder
+
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  build:
+    - python
+    - pip
+    - pyyaml
+    - gitpython
+    - git
+  run:
+    - python
+    - ipython
+    - pyyaml
+    - gitpython
+    - git
+    - conda-build
+    - ska3-pinned ==0.1
+
+about:
+  home: https://github.com/sot/skare3

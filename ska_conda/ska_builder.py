@@ -6,6 +6,7 @@ import yaml
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
 build_list = os.path.join(ska_conda_path, "build_order.txt")
+no_source_pkgs = ['ska3-flight', 'ska3-core', 'ska3-dev', 'ska3-pinned', 'ska3-template']
 
 class SkaBuilder(object):
 
@@ -17,16 +18,19 @@ class SkaBuilder(object):
         os.environ["SKA_TOP_SRC_DIR"] = self.src_dir
 
     def _clone_repo(self, name, tag=None):
-        if name == "ska":
+        if name in no_source_pkgs:
             return
         print("Cloning source %s." % name)
         clone_path = os.path.join(self.src_dir, name)
         if not os.path.exists(clone_path):
             # Try ssh first to avoid needing passwords for the private repos
             # We could add these ssh strings to the meta.yaml for convenience
+            # The default ssh is not going to work if the package name doesn't match the
+            # top-level git repo name (cmd_states, eng_archive)
             try:
                 repo = git.Repo.clone_from(self.git_repo_path.format(user=self.user, name=name), clone_path)
                 assert not repo.bare
+                print("Cloned via default ssh git")
             except:
                 yml = os.path.join(pkg_defs_path, name, "meta.yaml")
                 with open(yml) as f:
@@ -38,9 +42,11 @@ class SkaBuilder(object):
                     data = yaml.load(f)
                     url = data['about']['home']
                 repo = git.Repo.clone_from(url, clone_path)
+                print("Cloned from url {}".format(url))
         else:
             repo = git.Repo(clone_path)
             repo.remotes.origin.fetch()
+            repo.remotes.origin.fetch("--tags")
         assert not repo.is_dirty()
         # I think we want the commit/tag with the most recent date, though
         # if we actually want the most recently created tag, that would probably be
@@ -57,22 +63,12 @@ class SkaBuilder(object):
             repo.git.checkout(tag)
             print("Checked out at {}".format(tag))
 
-    def clone_one_package(self, name, tag=None):
-        self._clone_repo(name)
 
-    def clone_all_packages(self):
-        with open(build_list, "r") as f:
-            for line in f.readlines():
-                pkg_name = line.strip()
-                if not pkg_name.startswith("#"):
-                    self._clone_repo(pkg_name)
-
-    def _get_repo(self, name):
-        if name == "ska":
+    def _get_repo(self, name, tag):
+        if name in no_source_pkgs:
             return None
         repo_path = os.path.join(self.src_dir, name)
-        if not os.path.exists(repo_path):
-            self._clone_repo(name)
+        self._clone_repo(name, tag)
         repo = git.Repo(repo_path)
         return repo
 
@@ -82,18 +78,18 @@ class SkaBuilder(object):
         cmd_list = ["conda", "build", pkg_path, "--croot",
                     self.build_dir, "--no-test",
                     "--no-anaconda-upload", "--skip-existing"]
-        subprocess.run(cmd_list)
+        subprocess.run(cmd_list, check=True)
 
-    def build_one_package(self, name):
-        repo = self._get_repo(name)
+    def build_one_package(self, name, tag=None):
+        repo = self._get_repo(name, tag)
         self._build_package(name)
 
-    def build_updated_packages(self, new_only=True):
+    def build_list_packages(self):
         with open(build_list, "r") as f:
             for line in f.readlines():
                 pkg_name = line.strip()
                 if not pkg_name.startswith("#"):
-                    self._build_package(pkg_name)
+                    self.build_one_package(pkg_name)
 
     def build_all_packages(self):
-        self.build_updated_packages(new_only=False)
+        self.build_list_packages()

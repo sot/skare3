@@ -28,4 +28,10 @@ Ska.astro
 mica
 cxotime
 annie
+hopper
+ska3-template
+ska3-pinned
+ska3_builder
+ska3-core
 ska3-flight
+ska3-dev

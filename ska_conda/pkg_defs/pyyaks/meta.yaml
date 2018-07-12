@@ -18,19 +18,16 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
-    - setuptools
+    - pip
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - setuptools
+    - six
     - jinja2
+    - testr
 
 test:
-  requires:
-    - testr
-    - pytest
-    - six
   imports:
     - pyyaks
     - pyyaks.context

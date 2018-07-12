@@ -6,8 +6,6 @@ build:
   script_env:
     - SKA_TOP_SRC_DIR
   preserve_egg_dir: yes # (default no)
-  entry_points:
-    - entry = conda_version_test.manual_entry:main
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Chandra.Time
@@ -20,7 +18,7 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
-    - setuptools
+    - pip <10.0
     - cython >=0.20.1
     - six
     - numpy
@@ -28,14 +26,11 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - setuptools
     - six
     - numpy
-
-test:
-  requires:
     - testr
 
+test:
   imports:
     - Chandra.Time
 

@@ -5,7 +5,7 @@ import glob
 
 scripts = glob.glob("scripts/*")
 
-url = 'https://github.com/sot/ska_conda/tarball/{}'.format(__version__)
+url = 'https://github.com/sot/skare3/tarball/{}'.format(__version__)
 
 setup(name='ska_conda',
       packages=['ska_conda'],
@@ -16,6 +16,7 @@ setup(name='ska_conda',
       url='http://github.com/sot/ska_conda',
       download_url=url,
       scripts=scripts,
+      include_package_data=True,
       install_requires=["gitpython","pyyaml"],
       classifiers=[
           'Intended Audience :: Science/Research',

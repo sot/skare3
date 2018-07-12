@@ -19,6 +19,7 @@ requirements:
   build:
     - python
     - setuptools
+    - pip
     - six
     - numpy
     - numexpr
@@ -39,10 +40,9 @@ requirements:
     - ska_path
     - astropy
     - h5py
+    - testr
 
 test:
-  requires:
-    - testr
   imports:
     - agasc
 

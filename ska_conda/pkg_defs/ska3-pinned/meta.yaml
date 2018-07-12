@@ -1,0 +1,15 @@
+package:
+  name: ska3-pinned
+  version: 0.1
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python ==3.6.2
+    - pip <10.0
+    - numpy ==1.12.1
+    - conda ==4.3.21
+    - llvmlite ==0.18.0
+
+#    - sherpa ==4.9.1

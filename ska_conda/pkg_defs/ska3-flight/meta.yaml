@@ -6,19 +6,23 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
+    - ska3-core ==0.1
+    - ska3-template ==0.1
     - agasc ==3.5.2
-    - annie
+    - annie ==0.5
     - chandra_aca ==3.22
     - chandra.cmd_states ==3.14
     - chandra.maneuver ==3.7
     - chandra.time ==3.20.1
     - cxotime ==3.1
+    - hopper ==0.3
     - kadi ==3.15.4
     - maude ==3.1
     - mica ==3.14.0
     - parse_cm ==3.3.2
     - pyyaks ==3.3.4
     - quaternion ==3.4.1
+    - sherpa ==4.9.1
     - ska.arc5gl ==3.1.1
     - ska.astro ==3.2.1
     - ska.dbi ==3.8.2
