@@ -1,4 +1,4 @@
-#!%{PREFIX}%/bin/python -E
+#!/opt/anaconda1anaconda2anaconda3/bin/python -E
 
 """
 Print to stdout the appropriate shell commands to initialize the standalone
