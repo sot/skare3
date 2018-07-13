@@ -6,7 +6,7 @@ import yaml
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
 build_list = os.path.join(ska_conda_path, "build_order.txt")
-no_source_pkgs = ['ska3-flight', 'ska3-core', 'ska3-dev', 'ska3-pinned', 'ska3-template']
+no_source_pkgs = ['ska3-flight', 'ska3-core', 'ska3-dev', 'ska3-pinned', 'ska3-template', 'openssh']
 
 class SkaBuilder(object):
 

@@ -1,0 +1,7 @@
+package:
+  name: openssh
+  version: 6.5p1
+
+source:
+  url: https://ftp4.usa.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.5p1.tar.gz
+  md5: a084e7272b8cbd25afe0f5dce4802fef
