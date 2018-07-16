@@ -2,6 +2,9 @@ package:
   name: ska3-flight
   version: 0.1
 
+build:
+  noarch: generic
+
 requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
