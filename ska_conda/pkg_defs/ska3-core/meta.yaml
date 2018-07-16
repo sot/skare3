@@ -9,6 +9,9 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
+   - html5lib
+   - libsodium
+   - zeromq
    - alabaster ==0.7.10
    - asn1crypto ==0.22.0
    - astroid ==1.5.3
@@ -25,7 +28,6 @@ requirements:
    - cycler ==0.10.0
    - cython ==0.26
    - db ==5.3.28
-   - dbus ==1.10.20
    - decorator ==4.1.2
    - django ==1.11.3
    - docutils ==0.14
@@ -35,11 +37,8 @@ requirements:
    - freetype ==2.5.5
    - git ==2.11.1
    - glib ==2.50.2
-   - gst-plugins-base ==1.8.0
-   - gstreamer ==1.8.0
    - h5py ==2.7.0
    - hdf5 ==1.8.17
-   - html5lib ==0.9999999
    - icu ==54.1
    - idna ==2.2
    - imagesize ==0.7.1
@@ -65,10 +64,8 @@ requirements:
    - libgfortran ==3.0.0
    - libiconv ==1.14
    - libpng ==1.6.30
-   - libsodium ==1.0.10
    - libssh2 ==1.8.0
    - libtiff ==4.0.6
-   - libxcb ==1.12
    - libxml2 ==2.9.4
    - libxslt ==1.1.29
    - line_profiler ==2.0
@@ -79,7 +76,6 @@ requirements:
    - mistune ==0.7.4
    - mkl ==2017.0.3
    - mpi4py ==2.0.0
-   - mpich2 ==1.4.1p1
    - nbconvert ==5.2.1
    - nbformat ==4.4.0
    - networkx ==1.11
@@ -159,6 +155,4 @@ requirements:
    - wrapt ==1.10.11
    - xz ==5.2.2
    - yaml ==0.1.6
-   - zeromq ==4.1.5
    - zlib ==1.2.11
-
