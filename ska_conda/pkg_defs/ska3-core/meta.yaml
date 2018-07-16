@@ -1,6 +1,6 @@
 package:
   name: ska3-core
-  version: 0.1
+  version: 2018.07.16
 
 build:
   noarch: generic
