@@ -27,7 +27,7 @@ requirements:
     - gitpython
     - git
     - conda-build
-    - ska3-pinned ==0.1
+    - ska3-pinned ==2018.07.16
 
 about:
   home: https://github.com/sot/skare3
