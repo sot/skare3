@@ -1,0 +1,12 @@
+#!${PREFIX}/bin/python
+
+import subprocess
+import json
+# Conda list output appears already sorted by package name
+pkgs_json = subprocess.check_output(["conda", "list", "--json"])
+pkgs = json.loads(pkgs_json)
+ska3_pkgs = []
+for pkg in pkgs:
+    if pkg['name'].startswith('ska3-'):
+        ska3_pkgs.append("{}-{}".format(pkg['name'].lstrip('ska3-'), pkg['version']))
+print(":".join(ska3_pkgs))
