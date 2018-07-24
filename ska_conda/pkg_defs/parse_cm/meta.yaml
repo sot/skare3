@@ -35,7 +35,6 @@ test:
   imports:
     - parse_cm
 
-
 about:
-  home: https://github.com/sot/parse_cm
+  home: git@github.com:sot/parse_cm
 
