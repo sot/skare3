@@ -70,11 +70,20 @@ class SkaBuilder(object):
         self._build_package(name)
 
     def build_list_packages(self):
+        failures = []
         with open(build_list, "r") as f:
             for line in f.readlines():
                 pkg_name = line.strip()
                 if not pkg_name.startswith("#"):
-                    self.build_one_package(pkg_name)
+                    try:
+                        self.build_one_package(pkg_name)
+                    # Just try to build the rest if there's a failure, but record the name
+                    except:
+                        failures.append(pkg_name)
+                        continue
+        if len(failures):
+            raise ValueError("Packages {} failed".format(",".join(failures)))
+
 
     def build_all_packages(self):
         self.build_list_packages()
