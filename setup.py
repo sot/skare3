@@ -17,7 +17,7 @@ setup(name='ska_conda',
       download_url=url,
       scripts=scripts,
       include_package_data=True,
-      install_requires=["gitpython","pyyaml"],
+      install_requires=["gitpython"],
       classifiers=[
           'Intended Audience :: Science/Research',
           'Operating System :: OS Independent',
