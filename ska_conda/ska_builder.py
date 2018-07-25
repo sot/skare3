@@ -77,10 +77,14 @@ class SkaBuilder(object):
                 if not pkg_name.startswith("#"):
                     try:
                         self.build_one_package(pkg_name)
-                    # Just try to build the rest if there's a failure, but record the name
+                    # If there's a failure, confirm before continuing
                     except:
-                        failures.append(pkg_name)
-                        continue
+                        print(f'{pkg_name} failed, continue anyway (y/n)?')
+                        if input().lower().strip().startswith('y'):
+                            failures.append(pkg_name)
+                            continue
+                        else:
+                            raise ValueError(f"{pkg_name} failed")
         if len(failures):
             raise ValueError("Packages {} failed".format(",".join(failures)))
 
