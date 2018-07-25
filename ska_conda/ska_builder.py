@@ -24,7 +24,7 @@ class SkaBuilder(object):
             metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
             # It isn't clean yaml at this point, so just extract the string we want after "home:"
             meta = open(metayml).read()
-            url = re.search("home:\s?(\S+)", meta).group(1)
+            url = re.search("home:\s*(\S+)", meta).group(1)
             repo = git.Repo.clone_from(url, clone_path)
             print("Cloned from url {}".format(url))
         else:
