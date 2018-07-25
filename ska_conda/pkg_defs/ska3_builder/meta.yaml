@@ -17,13 +17,11 @@ requirements:
   build:
     - python
     - pip
-    - pyyaml
     - gitpython
     - git
   run:
     - python
     - ipython
-    - pyyaml
     - gitpython
     - git
     - conda-build
