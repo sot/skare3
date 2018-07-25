@@ -1,6 +1,6 @@
 package:
   name: ska3-dev
-  version: 0.1.1
+  version: 0.1.2
 
 build:
   noarch: generic
@@ -91,4 +91,4 @@ requirements:
    - sqlite
    - tk
    - yaml
-
+   - zeromq
