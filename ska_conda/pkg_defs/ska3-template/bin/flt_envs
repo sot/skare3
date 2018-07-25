@@ -1,4 +1,4 @@
-#!%{PREFIX}%/bin/python -E
+#!%{PREFIX}%%{MYPY}%
 
 """
 Print to stdout the appropriate shell commands to initialize the standalone
