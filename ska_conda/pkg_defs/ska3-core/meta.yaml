@@ -153,5 +153,6 @@ requirements:
    - wrapt ==1.10.11
    - xz ==5.2.3
    - yaml ==0.1.6
+   - zeromq ==4.1.3 [osx]
    - zeromq ==4.1.5 [linux]
    - zlib ==1.2.11
