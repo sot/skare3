@@ -1,6 +1,6 @@
 package:
   name: ska3-pinned
-  version: 2018.07.16
+  version: 2018.07.24
 
 build:
   noarch: generic
@@ -12,5 +12,4 @@ requirements:
     - python ==3.6.2
     - pip <10.0
     - numpy ==1.12.1
-    - conda ==4.3.21
     - llvmlite ==0.18.0

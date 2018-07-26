@@ -24,8 +24,10 @@ requirements:
     - ipython
     - gitpython
     - git
+    - conda ==4.3.21
     - conda-build
-    - ska3-pinned ==2018.07.16
+    - conda-verify
+    - ska3-pinned ==2018.07.24
 
 about:
   home: https://github.com/sot/skare3
