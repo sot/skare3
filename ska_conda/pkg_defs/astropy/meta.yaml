@@ -28,13 +28,16 @@ requirements:
   build:
     - python
     - setuptools
-    - numpy 1.12.*  # [py36]
-
+    - numpy ==1.12.1
+    - llvmlite ==0.18.0
+    - gcc ==4.8.5 [linux]
+    - libgcc ==4.8.5 [linux]
   run:
     - python
-    - numpy >=1.11  # [py36]
+    - llvmlite ==0.18.0
+    - numpy ==1.12.1
     - pytest-astropy
-
+    - libgcc ==4.8.5 [linux]
 test:
   commands:
     - fits2bitmap --help
