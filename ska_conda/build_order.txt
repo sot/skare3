@@ -1,3 +1,9 @@
+pytest-arraydiff
+pytest-doctestplus
+pytest-openfiles
+pytest-remotedata
+pytest-astropy
+astropy
 Ska.Shell
 Ska.File
 pyyaks
