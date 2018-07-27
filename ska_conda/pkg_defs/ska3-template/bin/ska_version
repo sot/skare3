@@ -1,4 +1,4 @@
-#!${PREFIX}/bin/python
+#!%{PREFIX}%/bin/python
 """
 Create and return an environment version string based on the ska3-* conda
 packages in an environment.

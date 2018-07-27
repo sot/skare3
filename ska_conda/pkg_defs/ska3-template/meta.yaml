@@ -1,6 +1,10 @@
 package:
   name: ska3-template
-  version:  0.1
+  version:  2018.07.27
 
 build:
   noarch: generic
+
+requirements:
+  run:
+   - python
