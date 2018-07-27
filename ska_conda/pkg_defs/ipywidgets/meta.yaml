@@ -1,0 +1,47 @@
+{% set version = "7.3.0" %}
+{% set sha256 = "3ce93db970a94f06f38121da70757cdbcce884ecd14f79a4dd9bc49a47e0f33b" %}
+
+package:
+  name: ipywidgets
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/i/ipywidgets/ipywidgets-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: python -m pip install --no-deps .
+
+requirements:
+  build:
+    - python
+    - pip
+  run:
+    - python
+    - ipython >=4.0.0
+    - ipykernel >=4.5.1
+    - traitlets >=4.3.1,<5.0.0
+    - nbformat >=4.2.0
+    - widgetsnbextension >=3.3.0,<3.4.0
+
+test:
+  imports:
+    - ipywidgets
+
+about:
+  home: https://github.com/ipython/ipywidgets
+  license: BSD 3-clause
+  license_file: LICENSE
+  summary: Jupyter Interactive Widgets
+
+extra:
+  recipe-maintainers:
+    - jakirkham
+    - minrk
+    - pelson
+    - SylvainCorlay
+    - willingc
+    - jasongrout
+    - maartenbreddels
+    - pbugnion
