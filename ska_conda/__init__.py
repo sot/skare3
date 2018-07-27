@@ -1,3 +1,3 @@
-__version__ = "2018.07.16"
+__version__ = "0.1"
 
 from .ska_builder import SkaBuilder
