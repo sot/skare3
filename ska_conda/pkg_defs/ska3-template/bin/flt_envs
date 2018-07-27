@@ -1,5 +1,10 @@
 #!%{PREFIX}%%{MYPY}%
 
+# If updating the ska3-template conda package that provides this
+# script, see the build.sh and the post-link.sh for the substitutions
+# that were used to construct the shebang
+
+
 """
 Print to stdout the appropriate shell commands to initialize the standalone
 Ska environment.
