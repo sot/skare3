@@ -25,8 +25,8 @@ requirements:
     - gitpython
     - git
     - conda ==4.3.21
-    - conda-build
-    - conda-verify
+    - conda-build ==3.0.19
+    - conda-verify ==2.0.0
     - ska3-pinned ==2018.07.24
 
 about:
