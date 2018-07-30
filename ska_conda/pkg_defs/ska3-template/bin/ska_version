@@ -6,7 +6,7 @@ followed by a sha based on the versions of the other packages.
 
 Example:
 
-core-2018.07.16:flight-2018.07.16:pinned-2018.07.16:template-0.1:pkgs_sha-f272ef6
+core-2018.07.16:flight-2018.07.16:pinned-2018.07.16:template-0.1:sha-f272ef6
 
 """
 
@@ -29,5 +29,5 @@ for line in conda_list:
     if b'<pip>' in line:
         all_pkgs += line
 # Append a sha of the pkgs in the environment
-ska3_pkgs.append("pkgs_sha-{}".format(hashlib.sha1(all_pkgs).hexdigest()[0:7]))
+ska3_pkgs.append("sha-{}".format(hashlib.sha1(all_pkgs).hexdigest()[0:7]))
 print(":".join(ska3_pkgs))
