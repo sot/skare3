@@ -1,19 +1,33 @@
 #!%{PREFIX}%/bin/python
 """
-Create and return an environment version string based on the ska3-* conda
-packages in an environment.
+Create and return an environment version string based on the packages
+in an environment.  The ska3-* package versions are called out explicitly,
+followed by a sha based on the versions of the other packages.
 
 Example:
 
-core-2018.07.16:flight-2018.07.16:pinned-2018.07.16:template-0.1
+core-2018.07.16:flight-2018.07.16:pinned-2018.07.16:template-0.1:pkgs_sha-f272ef6
 
 """
 
 import subprocess
 import json
+import hashlib
 # Conda list output appears already sorted by package name
 pkgs_json = subprocess.check_output(["conda", "list", "--json"])
 pkgs = json.loads(pkgs_json)
 ska3_pkgs = [f"{pkg['name'].lstrip('ska3-')}-{pkg['version']}"
              for pkg in pkgs if pkg['name'].startswith('ska3-')]
+# Get a list of all the other conda pkgs and their versions (not builds or channels)
+all_pkgs = [f"{pkg['name']}-{pkg['version']}"
+            for pkg in pkgs if not pkg['name'].startswith('ska3-')]]
+# Make this list into a bytestring for hashlib
+all_pkgs = " ".join(all_pkgs).encode('utf-8')
+# Do a separate 'conda list' just to get the pip-installed pkgs
+conda_list = subprocess.check_output(["conda", "list"]).splitlines()
+for line in conda_list:
+    if b'<pip>' in line:
+        all_pkgs += line
+# Append a sha of the pkgs in the environment
+ska3_pkgs.append("pkgs_sha-{}".format(hashlib.sha1(all_pkgs).hexdigest()[0:7]))
 print(":".join(ska3_pkgs))
