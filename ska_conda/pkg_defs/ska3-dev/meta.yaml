@@ -13,6 +13,7 @@ requirements:
    - agasc
    - annie
    - acisfp_check
+   - acis_taco
    - acis_thermal_check
    - backstop_history
    - chandra.cmd_states
