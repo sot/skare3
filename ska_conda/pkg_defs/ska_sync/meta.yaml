@@ -1,0 +1,32 @@
+package:
+  name: ska_sync
+  version: {{ GIT_DESCRIBE_TAG }}
+
+
+build:
+  noarch: python
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/ska_sync
+
+
+
+requirements:
+  build:
+    - pip
+    - python
+    - setuptools
+  run:
+    - python
+    - yaml
+    - ska_path
+
+
+test:
+  imports:
+    - ska_sync
+
+about:
+  home: https://github.com/sot/ska_sync

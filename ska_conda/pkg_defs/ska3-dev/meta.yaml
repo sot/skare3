@@ -38,6 +38,7 @@ requirements:
    - ska.tdb
    - ska3-template
    - ska_path
+   - ska_sync
    - pyyaks
    - tables3_api
    - testr
