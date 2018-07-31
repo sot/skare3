@@ -37,6 +37,13 @@ mica
 cxotime
 annie
 hopper
+backstop_history
+acis_thermal_check
+acis_taco
+acisfp_check
+psmc_check
+dea_check
+dpa_check
 ska3-template
 ska3-pinned
 ska3_builder

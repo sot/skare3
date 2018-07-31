@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2018.07.30.1
+  version: 2018.08.01
 
 build:
   noarch: generic
@@ -13,16 +13,22 @@ requirements:
     - ska3-template ==2018.07.30
     - agasc ==3.5.2
     - annie ==0.5
+    - acisfp_check ==v2.4.0
+    - acis_thermal_check ==v2.7.0
+    - backstop_history ==v1.1.0
     - chandra_aca ==3.22
     - chandra.cmd_states ==3.14.1
     - chandra.maneuver ==3.7
     - chandra.time ==3.20.1
     - cxotime ==3.1
+    - dea_check ==v2.2.0
+    - dpa_check ==v2.3.0
     - hopper ==0.3
     - kadi ==3.15.5
     - maude ==3.2
     - mica ==3.14.0
     - parse_cm ==3.4
+    - psmc_check ==v1.2.0
     - pyyaks ==3.3.4
     - quaternion ==3.4.1
     - sherpa ==4.9.1
