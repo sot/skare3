@@ -1,0 +1,69 @@
+package:
+  name: acis_thermal_check
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  noarch: python
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/acis_thermal_check
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - pip
+    - python
+    - six
+    - setuptools
+    # Looks like this needs to import acis_thermal_check.main to install
+    - numpy
+    - matplotlib
+    - ska.dbi
+    - ska.numpy
+    - chandra.time
+    - ska.matplotlib
+    - ska.engarchive
+    - astropy
+    - kadi
+
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - six
+    - numpy
+    - matplotlib
+    - pytest
+    - jinja2
+    - requests
+    - docutils
+    - astropy
+    - backstop_history
+    - chandra.cmd_states
+    - chandra.time
+    - kadi
+    - ska.dbi
+    - ska.engarchive
+    - ska.file
+    - ska.numpy
+    - ska.matplotlib
+    - ska.parsecm
+    - ska.sun
+    - ska.shell
+    - testr
+    - xija
+
+
+test:
+  imports:
+    - acis_thermal_check
+
+about:
+  home: https://github.com/acisops/acis_thermal_check
+

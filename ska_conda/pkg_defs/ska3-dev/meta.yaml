@@ -1,6 +1,6 @@
 package:
   name: ska3-dev
-  version: 0.1.3
+  version: 0.1.4
 
 build:
   noarch: generic
@@ -12,16 +12,23 @@ requirements:
   # Ska packages
    - agasc
    - annie
+   - acisfp_check
+   - acis_taco
+   - acis_thermal_check
+   - backstop_history
    - chandra.cmd_states
    - chandra.maneuver
    - chandra.time
    - chandra_aca
    - cxotime
+   - dea_check
+   - dpa_check
    - hopper
    - kadi
    - maude
    - mica
    - parse_cm
+   - psmc_check
    - quaternion
    - ska.arc5gl
    - ska.astro
