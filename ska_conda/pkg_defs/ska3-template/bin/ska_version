@@ -35,8 +35,10 @@ else:
     ska3_pkgs = [pkg['version']
                  for pkg in pkgs if pkg['name'] == 'ska3-flight']
 
-# Get a list of all conda pkgs and their versions (not builds or channels)
-all_pkgs = [f"{pkg['name']}-{pkg['version']}" for pkg in pkgs]
+# Get a list of all non-ska3-* metapackages conda pkgs and their versions
+# (not builds or channels)
+all_pkgs = [f"{pkg['name']}-{pkg['version']}" for pkg in pkgs
+            if not pkg['name'].startswith('ska3-')]
 
 # Add the 'pip' installed packages to that list
 pkgs = subprocess.check_output(["conda", "list"], encoding='utf-8').splitlines()
