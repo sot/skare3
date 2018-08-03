@@ -6,24 +6,46 @@ followed by a sha based on the versions of the other packages.
 
 Example:
 
+$ ska_version
+2018.07.16-f272ef6
+
+$ ska_version --full
 core-2018.07.16:flight-2018.07.16:pinned-2018.07.16:template-0.1:sha-f272ef6
 
 """
-
 import subprocess
 import json
 import hashlib
+import argparse
+
+parser = argparse.ArgumentParser(description='Get Ska3 version tag')
+parser.add_argument('--full',
+                    action='store_true',
+                    help='Output full version string')
+args = parser.parse_args()
+
 # Conda list output appears already sorted by package name
+# NOTE: conda JSON list does not include pip packages for some reason.
 pkgs_json = subprocess.check_output(["conda", "list", "--json"])
 pkgs = json.loads(pkgs_json)
-ska3_pkgs = [f"{pkg['name'].lstrip('ska3-')}-{pkg['version']}"
-             for pkg in pkgs if pkg['name'].startswith('ska3-')]
-# Get a list of all the other conda pkgs and their versions (not builds or channels)
-all_pkgs = [f"{pkg['name']}-{pkg['version']}"
-            for pkg in pkgs if not pkg['name'].startswith('ska3-')]
-pkgs = subprocess.check_output(["conda", "list"], encoding='utf-8').splitlines()
+if args.full:
+    ska3_pkgs = [f"{pkg['name'].lstrip('ska3-')}-{pkg['version']}"
+                 for pkg in pkgs if pkg['name'].startswith('ska3-')]
+else:
+    ska3_pkgs = [pkg['version']
+                 for pkg in pkgs if pkg['name'] == 'ska3-flight']
+
+# Get a list of all non-ska3-* metapackages conda pkgs and their versions
+# (not builds or channels)
+all_pkgs = [f"{pkg['name']}-{pkg['version']}" for pkg in pkgs
+            if not pkg['name'].startswith('ska3-')]
+
 # Add the 'pip' installed packages to that list
+pkgs = subprocess.check_output(["conda", "list"], encoding='utf-8').splitlines()
 all_pkgs.extend(pkg for pkg in pkgs if '<pip>' in pkg)
+
+# SHA1 tag for all packages
 sha_tag = hashlib.sha1(''.join(all_pkgs).encode('utf-8')).hexdigest()[0:7]
-ska3_pkgs.append(f'sha-{sha_tag}')
-print(":".join(ska3_pkgs))
+ska3_pkgs.append(f'sha-{sha_tag}' if args.full else sha_tag)
+
+print("-".join(ska3_pkgs))
