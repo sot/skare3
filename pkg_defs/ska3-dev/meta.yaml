@@ -1,6 +1,6 @@
 package:
   name: ska3-dev
-  version: 0.1.4
+  version: 0.1.5
 
 build:
   noarch: generic
@@ -69,6 +69,7 @@ requirements:
    - jupyter_console
    - line_profiler
    - llvmlite
+   - lxml
    - matplotlib
    - nb_conda
    - nbconvert
