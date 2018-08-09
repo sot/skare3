@@ -9,7 +9,7 @@ source:
   url: https://pypi.io/packages/source/a/astropy/astropy-{{version}}.tar.gz
   sha256: 6af07abe5e263820a3dec93832a6ad74005013071490e125afbc6514411721da
   patches:
-    - old_gcc_cfitsio_patch.txt [linux32]
+    - old_gcc_cfitsio_patch.txt # [linux32]
 
 build:
   detect_binary_files_with_prefix: False
@@ -31,14 +31,14 @@ requirements:
     - setuptools
     - numpy ==1.12.1
     - llvmlite ==0.18.0
-    - gcc ==4.8.5 [linux64]
-    - libgcc ==4.8.5 [linux64]
+    - gcc ==4.8.5 # [linux64]
+    - libgcc ==4.8.5 # [linux64]
   run:
     - python
     - llvmlite ==0.18.0
     - numpy ==1.12.1
     - pytest-astropy
-    - libgcc ==4.8.5 [linux64]
+    - libgcc ==4.8.5 # [linux64]
 test:
   commands:
     - fits2bitmap --help
