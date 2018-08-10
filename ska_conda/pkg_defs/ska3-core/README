@@ -1,0 +1,22 @@
+The combine_arch.py script was intended to help to make a combined
+package list.  
+
+The intent is that one builds a ska3-dev environment on the two
+platforms (linux and osx), exports the package list, and then creates
+a combined list using the script.
+
+It is set with the logic that for shared packages the lowest-common
+package version is "hopefully" appropriate for the full environment.
+However, this may not be true (wasn't for the zeromq package) and also
+doesn't neatly scale to adding new operating systems (linux32 and
+windows).  The script should probably be updated so that it will have
+a single entry/version if all OS naturally share the version and an
+explicit version per OS otherwise.
+
+In the interim, manual updates to the ska3-core list are OK.
+
+Note that sherpa has been added to ska3-core but is not in the
+"defaults" channel.  Care should be taken so it is not accidentally
+removed.
+
+ 
