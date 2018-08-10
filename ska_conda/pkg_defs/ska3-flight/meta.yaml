@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2018.08.02
+  version: 2018.08.08
 
 build:
   noarch: generic
@@ -25,7 +25,7 @@ requirements:
     - dea_check ==v2.2.0
     - dpa_check ==v2.3.0
     - hopper ==0.3
-    - kadi ==3.15.5
+    - kadi ==3.16
     - maude ==3.2
     - mica ==3.14.0
     - parse_cm ==3.4
