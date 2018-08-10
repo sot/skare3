@@ -150,6 +150,7 @@ requirements:
    - scipy ==0.19.1
    - setuptools ==27.2.0 # [linux32]
    - setuptools ==36.4.0 # [linux64 and osx]
+   - sherpa ==4.9.1 [linux64 and osx]
    - simplegeneric ==0.8.1
    - singledispatch ==3.4.0.3
    - sip ==4.18
