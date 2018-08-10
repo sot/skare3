@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2018.08.08
+  version: 2018.08.10
 
 build:
   noarch: generic
@@ -9,7 +9,7 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-    - ska3-core ==2018.07.27.1
+    - ska3-core ==2018.08.10
     - ska3-template ==2018.08.02
     - agasc ==3.5.2
     - annie ==0.5
@@ -32,7 +32,6 @@ requirements:
     - psmc_check ==v1.2.0
     - pyyaks ==3.3.4
     - quaternion ==3.4.1
-    - sherpa ==4.9.1
     - ska.arc5gl ==3.1.1
     - ska.astro ==3.2.1
     - ska.dbi ==3.8.2
