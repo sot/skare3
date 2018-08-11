@@ -27,6 +27,8 @@ raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
 BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*#", b)]
+# And any that are just whitespace
+BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*$", b)]
 
 if os.uname().sysname == "Darwin":
     os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
