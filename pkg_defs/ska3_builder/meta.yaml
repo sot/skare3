@@ -1,15 +1,9 @@
 package:
   name: ska3_builder
-  version: {{ GIT_DESCRIBE_TAG }}
+  version: 2018.08.11
 
 build:
-  noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
-
-source:
-  path: {{ SKA_TOP_SRC_DIR }}/ska3_builder
-
+  noarch: generic
 
 requirements:
   # Packages required to run the package. These are the dependencies that
@@ -28,6 +22,3 @@ requirements:
     - conda-build ==3.0.19
     - conda-verify ==2.0.0
     - ska3-pinned ==2018.07.24
-
-about:
-  home: https://github.com/sot/skare3
