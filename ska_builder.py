@@ -35,15 +35,6 @@ if os.uname().sysname == "Darwin":
         if pkg in BUILD_LIST:
             BUILD_LIST.remove(pkg)
 
-ska_builder = SkaBuilder(build_root=args.build_root)
-
-if getattr(args, 'package'):
-    ska_builder.build_one_package(args.package, tag=args.tag)
-else:
-    if args.tag is not None:
-        raise ValueError("Cannot supply '--tag' without specific package'")
-    ska_builder.build_all_packages()
-
 
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
@@ -126,10 +117,23 @@ class SkaBuilder(object):
                     failures.append(pkg_name)
                     continue
                 else:
-                        raise ValueError(f"{pkg_name} failed")
+                    raise ValueError(f"{pkg_name} failed")
         if len(failures):
             raise ValueError("Packages {} failed".format(",".join(failures)))
 
 
     def build_all_packages(self):
         self.build_list_packages()
+
+
+ska_builder = SkaBuilder(build_root=args.build_root)
+
+if getattr(args, 'package'):
+    ska_builder.build_one_package(args.package, tag=args.tag)
+else:
+    if args.tag is not None:
+        raise ValueError("Cannot supply '--tag' without specific package'")
+    ska_builder.build_all_packages()
+
+
+
