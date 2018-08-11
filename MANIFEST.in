@@ -1,2 +1,0 @@
-recursive-include ska_conda/pkg_defs *
-include ska_conda/build_order.txt
