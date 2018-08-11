@@ -1,0 +1,25 @@
+package:
+  name: task_schedule
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/task_schedule
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - perl-core-deps
+    - perl-ska-classic # has Ska::Process and CXC::Envs::Flight
+
+
+about:
+  home: https://github.com/sot/task_schedule
+
