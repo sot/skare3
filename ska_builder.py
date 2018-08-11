@@ -38,10 +38,6 @@ else:
 
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
-no_source_pkgs = ['ska3-flight', 'ska3-core', 'ska3-dev', 'ska3-pinned', 'ska3-template',
-                  'pytest-arraydiff', 'pytest-doctestplus', 'pytest-openfiles', 'pytest-remotedata',
-                  'pytest-astropy', 'astropy',
-                  'ipywidgets', 'widgetsnbextension']
 
 class SkaBuilder(object):
 
@@ -85,7 +81,12 @@ class SkaBuilder(object):
 
 
     def _get_repo(self, name, tag):
-        if name in no_source_pkgs:
+        # Scan the meta.yaml for GIT_DESCRIBE_TAG and if it isn't there, return None for the,
+        # repo.  That will proceed with a traditional conda build without git fetch etc
+        metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
+        meta = open(metayml).read()
+        has_git = re.search("GIT_DESCRIBE_TAG", meta)
+        if not has_git:
             return None
         repo_path = os.path.join(self.src_dir, name)
         self._clone_repo(name, tag)
