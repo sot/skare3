@@ -5,10 +5,7 @@ import re
 import os
 import argparse
 
-from ska_conda import SkaBuilder
 
-if os.uname().sysname == "Darwin":
-    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
 
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
@@ -25,7 +22,19 @@ parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
 
 args = parser.parse_args()
 
-BUILD_LIST = args.build_list
+PERL = '5.26.2'
+raw_build_list = open(args.build_list).read()
+BUILD_LIST = raw_build_list.split("\n")
+# Remove any that are commented out for some reason
+BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*#", b)]
+
+if os.uname().sysname == "Darwin":
+    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
+    # Don't try to do pgplot on osx
+    for pkg in ['pgpplot', 'perl-pgplot']:
+        if pkg in BUILD_LIST:
+            BUILD_LIST.remove(pkg)
+
 ska_builder = SkaBuilder(build_root=args.build_root)
 
 if getattr(args, 'package'):
@@ -98,7 +107,7 @@ class SkaBuilder(object):
         pkg_path = os.path.join(pkg_defs_path, name)
         cmd_list = ["conda", "build", pkg_path, "--croot",
                     self.build_dir, "--no-test", "--old-build-string",
-                    "--no-anaconda-upload", "--skip-existing"]
+                    "--no-anaconda-upload", "--skip-existing", "--perl", PERL]
         subprocess.run(cmd_list, check=True)
 
     def build_one_package(self, name, tag=None):
@@ -107,20 +116,17 @@ class SkaBuilder(object):
 
     def build_list_packages(self):
         failures = []
-        with open(BUILD_LIST, "r") as f:
-            for line in f.readlines():
-                pkg_name = line.strip()
-                if not pkg_name.startswith("#"):
-                    try:
-                        self.build_one_package(pkg_name)
-                    # If there's a failure, confirm before continuing
-                    except:
-                        print(f'{pkg_name} failed, continue anyway (y/n)?')
-                        if input().lower().strip().startswith('y'):
-                            failures.append(pkg_name)
-                            continue
-                        else:
-                            raise ValueError(f"{pkg_name} failed")
+        for pkg_name in BUILD_LIST:
+            try:
+                self.build_one_package(pkg_name)
+            # If there's a failure, confirm before continuing
+            except:
+                print(f'{pkg_name} failed, continue anyway (y/n)?')
+                if input().lower().strip().startswith('y'):
+                    failures.append(pkg_name)
+                    continue
+                else:
+                        raise ValueError(f"{pkg_name} failed")
         if len(failures):
             raise ValueError("Packages {} failed".format(",".join(failures)))
 
