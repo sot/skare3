@@ -19,9 +19,13 @@ parser.add_argument("--tag", type=str,
 parser.add_argument("--build-root", default=".", type=str,
                     help="Path to root directory for output conda build packages."
                          "Default: '.'")
+parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
+                    help="List of packages to build (in order)")
+
 
 args = parser.parse_args()
 
+BUILD_LIST = args.build_list
 ska_builder = SkaBuilder(build_root=args.build_root)
 
 if getattr(args, 'package'):
@@ -32,10 +36,8 @@ else:
     ska_builder.build_all_packages()
 
 
-
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
-build_list = os.path.join(ska_conda_path, "ska3_flight_build_order.txt")
 no_source_pkgs = ['ska3-flight', 'ska3-core', 'ska3-dev', 'ska3-pinned', 'ska3-template',
                   'pytest-arraydiff', 'pytest-doctestplus', 'pytest-openfiles', 'pytest-remotedata',
                   'pytest-astropy', 'astropy',
@@ -104,7 +106,7 @@ class SkaBuilder(object):
 
     def build_list_packages(self):
         failures = []
-        with open(build_list, "r") as f:
+        with open(BUILD_LIST, "r") as f:
             for line in f.readlines():
                 pkg_name = line.strip()
                 if not pkg_name.startswith("#"):
