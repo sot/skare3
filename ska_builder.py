@@ -49,14 +49,15 @@ class SkaBuilder(object):
         os.environ["SKA_TOP_SRC_DIR"] = self.src_dir
 
     def _clone_repo(self, name, tag=None):
-        if name in no_source_pkgs:
-            return
         print("Cloning or updating source source %s." % name)
         clone_path = os.path.join(self.src_dir, name)
         if not os.path.exists(clone_path):
             metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
-            # It isn't clean yaml at this point, so just extract the string we want after "home:"
             meta = open(metayml).read()
+            has_git = re.search("GIT_DESCRIBE_TAG", meta)
+            if not has_git:
+                return None
+            # It isn't clean yaml at this point, so just extract the string we want after "home:"
             url = re.search("home:\s*(\S+)", meta).group(1)
             repo = git.Repo.clone_from(url, clone_path)
             print("Cloned from url {}".format(url))
