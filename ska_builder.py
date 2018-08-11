@@ -2,6 +2,36 @@ import os
 import subprocess
 import git
 import re
+import os
+import argparse
+
+from ska_conda import SkaBuilder
+
+if os.uname().sysname == "Darwin":
+    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
+
+parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
+
+parser.add_argument("package", type=str, nargs="?",
+                    help="Package to build.  All updated packages will be built if no package supplied")
+parser.add_argument("--tag", type=str,
+                    help="Optional tag, branch, or commit to build for single package build (default is tag with most recent commit)")
+parser.add_argument("--build-root", default=".", type=str,
+                    help="Path to root directory for output conda build packages."
+                         "Default: '.'")
+
+args = parser.parse_args()
+
+ska_builder = SkaBuilder(build_root=args.build_root)
+
+if getattr(args, 'package'):
+    ska_builder.build_one_package(args.package, tag=args.tag)
+else:
+    if args.tag is not None:
+        raise ValueError("Cannot supply '--tag' without specific package'")
+    ska_builder.build_all_packages()
+
+
 
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
