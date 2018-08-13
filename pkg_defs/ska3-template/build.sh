@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for file in flt_envs ska_envs.sh ska_envs.csh ska_version skare
+for file in flt_envs ska_envs.sh ska_envs.csh ska_version skare perlska
    do
     cp -a ${RECIPE_DIR}/bin/${file} ${PREFIX}/bin
     chmod +x ${PREFIX}/bin/${file}

@@ -1,6 +1,6 @@
 package:
   name: ska3-template
-  version:  2018.08.12
+  version:  2018.08.13
 
 build:
   noarch: generic
