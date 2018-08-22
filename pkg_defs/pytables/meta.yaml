@@ -1,0 +1,75 @@
+{% set version = "3.4.4" %}
+
+package:
+  name: pytables
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/t/tables/tables-{{ version }}.tar.gz
+  sha256: bdc5c073712af2a43babd139c4855fc99496bb2c3f3f5d1b4770a985e6f9ce29
+  patches:
+      - noavx2.patch
+
+build:
+  number: 1
+  entry_points:
+    - pt2to3 = tables.scripts.pt2to3:main
+    - ptdump = tables.scripts.ptdump:main
+    - ptrepack = tables.scripts.ptrepack:main
+    - pttree = tables.scripts.pttree:main
+
+requirements:
+  build:
+    - python
+    - pip
+    - cython
+    - numpy ==1.12.1
+    - zlib
+    - lzo  # [linux]
+    - bzip2
+    - hdf5
+    - numexpr
+    - llvmlite ==0.18.0
+#    - blosc
+  run:
+    - python
+    - six
+    - numpy ==1.12.1
+    - numexpr
+    - hdf5
+    - zlib
+    - lzo  # [linux]
+    - bzip2
+ #   - blosc
+    - llvmlite ==0.18.0
+
+test:
+  requires:
+    - setuptools
+    - mock
+  commands:
+    - pt2to3 -h
+    - ptdump -h
+    - ptrepack -h
+    - pttree -h
+
+
+about:
+  home: http://www.pytables.org
+  license: BSD 3-Clause
+  license_file: LICENSE.txt
+  summary: 'Brings together Python, HDF5 and NumPy to easily handle large amounts of data.'
+  description: |
+    PyTables is a package for managing hierarchical datasets and designed to
+    efficiently and easily cope with extremely large amounts of data. PyTables
+    is built on top of the HDF5 library, using the Python language and the
+    NumPy package.
+  doc_url: http://www.pytables.org/
+  dev_url: https://github.com/PyTables
+
+extra:
+  recipe-maintainers:
+    - msarahan
+    - ocefpaf
+    - tomkooij
+    - scopatz
