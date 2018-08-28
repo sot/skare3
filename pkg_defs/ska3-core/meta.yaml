@@ -1,6 +1,6 @@
 package:
   name: ska3-core
-  version: 2018.08.13
+  version: 2018.08.27
 
 requirements:
   # Packages required to run the package. These are the dependencies that
@@ -34,6 +34,7 @@ requirements:
    - babel ==2.5.0
    - beautifulsoup4 ==4.6.0
    - bkcharts ==0.2
+   - blas ==1.0
    - bleach ==1.5.0
    - bokeh ==0.12.7
    - certifi ==2016.2.28 # [not linux32]
