@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2018.08.16
+  version: 2018.08.27
 
 build:
   noarch: generic
