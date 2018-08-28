@@ -17,7 +17,7 @@ requirements:
     - acis_taco ==4.0
     - acis_thermal_check ==v2.7.0
     - backstop_history ==v1.1.0
-    - chandra_aca ==3.22
+    - chandra_aca ==4.23
     - chandra.cmd_states ==3.14.1
     - chandra.maneuver ==3.7
     - chandra.time ==3.20.1
