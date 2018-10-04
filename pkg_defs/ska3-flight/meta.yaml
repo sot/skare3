@@ -27,7 +27,7 @@ requirements:
     - hopper ==0.3
     - kadi ==3.16.2
     - maude ==3.2
-    - mica ==3.14.0
+    - mica ==3.15
     - parse_cm ==3.4
     - psmc_check ==v1.2.0
     - pyyaks ==3.3.4
