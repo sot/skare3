@@ -1,0 +1,23 @@
+package:
+  name: ska3-perl
+  version: 2018.11.19
+
+requirements:
+  run:
+    - cfitsio
+    - xtime
+    - pgplot [linux]
+    - perl ==5.26.2
+    - perl-extutils-f77
+    - perl-app-cpanminus
+    - perl-core-deps
+    - perl-pgplot [linux]
+    - perl-ska-convert
+    - perl-chandra-time
+    - perl-app-env-ascds
+    - perl-cxc-sysarch
+    - perl-ska-agasc
+    - perl-ska-classic
+    - watch_cron_logs ==4.1
+    - task_schedule ==4.1
+    - starcheck ==12.0
