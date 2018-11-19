@@ -31,6 +31,7 @@ requirements:
     - pyyaks
     - chandra.maneuver
     - chandra.time
+    - cxotime
     - parse_cm
     - astropy
     - testr
