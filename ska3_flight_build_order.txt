@@ -50,3 +50,4 @@ ska3_builder
 ska3-core
 ska3-flight
 ska3-dev
+ska3-perl
