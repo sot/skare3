@@ -18,9 +18,19 @@ requirements:
   # listed explicitly if they are required.
   build:
     - pip
-    - python
     - setuptools
+    - python
+    - six
+    - quaternion
+    - chandra_aca
+    - pyyaks
+    - chandra.maneuver
+    - chandra.time
+    - cxotime
+    - parse_cm
+    - astropy
     - testr
+
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
