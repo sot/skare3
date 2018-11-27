@@ -24,7 +24,7 @@ requirements:
     - cxotime ==3.1
     - dea_check ==v2.2.0
     - dpa_check ==v2.3.0
-    - hopper ==0.3
+    - hopper ==4.4
     - jplephem ==2.8
     - kadi ==3.16.2
     - maude ==3.2
