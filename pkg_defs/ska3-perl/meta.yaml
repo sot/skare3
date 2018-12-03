@@ -20,4 +20,4 @@ requirements:
     - perl-ska-classic ==0.5
     - watch_cron_logs ==4.1
     - task_schedule ==4.1
-    - starcheck ==12.0
+    - starcheck ==12.1
