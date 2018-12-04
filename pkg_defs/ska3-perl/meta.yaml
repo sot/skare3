@@ -1,6 +1,6 @@
 package:
   name: ska3-perl
-  version: 2018.12.03
+  version: 2018.12.04
 
 requirements:
   run:
@@ -18,6 +18,6 @@ requirements:
     - perl-cxc-sysarch ==1.0
     - perl-ska-agasc ==3.5.0
     - perl-ska-classic ==0.5
-    - watch_cron_logs ==4.1
-    - task_schedule ==4.1
-    - starcheck ==12.1
+    - watch_cron_logs ==4.1 # [linux]
+    - task_schedule ==4.1 # [linux]
+    - starcheck ==12.1 # [linux]
