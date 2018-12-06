@@ -51,4 +51,4 @@ requirements:
     - ska.tdb ==3.5.1
     - tables3_api ==0.1
     - testr ==3.2
-    - xija ==3.12
+    - xija ==4.13
