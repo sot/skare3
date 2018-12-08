@@ -33,8 +33,10 @@ BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*$", b)]
 
 if os.uname().sysname == "Darwin":
     os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
-    # Don't try to do pgplot on osx
-    for pkg in ['pgpplot', 'perl-pgplot']:
+
+if os.uname().machine == 'i686':
+    # Skip starcheck and ska3-perl on 32 bit
+    for pkg in ['starcheck', 'ska3-perl']:
         if pkg in BUILD_LIST:
             BUILD_LIST.remove(pkg)
 

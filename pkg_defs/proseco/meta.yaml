@@ -1,5 +1,5 @@
 package:
-  name: hopper
+  name: proseco
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
@@ -8,7 +8,7 @@ build:
     - SKA_TOP_SRC_DIR
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/hopper
+  path: {{ SKA_TOP_SRC_DIR }}/proseco
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -17,39 +17,27 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
+    - python
     - pip
     - setuptools
-    - python
-    - six
-    - quaternion
-    - chandra_aca
-    - pyyaks
-    - chandra.maneuver
-    - chandra.time
-    - cxotime
-    - parse_cm
-    - astropy
     - testr
-
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - six
-    - quaternion
-    - chandra_aca
-    - pyyaks
-    - chandra.maneuver
-    - chandra.time
-    - cxotime
-    - parse_cm
+    - numpy
+    - scipy
     - astropy
+    - chandra_aca
+    - agasc
+    - mica
     - testr
 
 test:
   imports:
-    - hopper
+    - proseco
+
 
 about:
-  home: https://github.com/sot/hopper
+  home: git@github.com:sot/proseco
 
