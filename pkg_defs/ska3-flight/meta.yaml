@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2018.12.06
+  version: 2018.12.12
 
 build:
   noarch: generic
@@ -30,7 +30,7 @@ requirements:
     - maude ==3.2
     - mica ==3.15
     - parse_cm ==3.4
-    - proseco ==4.2
+    - proseco ==4.3
     - psmc_check ==v1.2.0
     - pyyaks ==3.3.4
     - quaternion ==3.4.1
