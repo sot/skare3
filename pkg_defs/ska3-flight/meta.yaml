@@ -44,7 +44,7 @@ requirements:
     - ska.matplotlib ==3.11.2
     - ska.parsecm ==3.3.1
     - ska_path ==3.1
-    - ska_sync ==4.2
+    - ska_sync ==4.3
     - ska.quatutil ==3.3.1
     - ska.shell ==3.3.3
     - ska.sun ==3.5
