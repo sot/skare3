@@ -37,7 +37,7 @@ requirements:
     - ska.arc5gl ==3.1.1
     - ska.astro ==3.2.1
     - ska.dbi ==3.8.2
-    - ska.engarchive ==4.44
+    - ska.engarchive ==4.44.1
     - ska.file ==3.4.1
     - ska.ftp ==3.5
     - ska.numpy ==3.8.1
