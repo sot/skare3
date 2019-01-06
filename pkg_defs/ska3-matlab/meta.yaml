@@ -1,0 +1,54 @@
+package:
+  name: ska3-matlab
+  version: 2019.01.05
+
+build:
+  noarch: generic
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - ska3-core ==2018.08.27
+    - ska3-template ==2018.08.12
+    - agasc ==4.7
+    - annie ==0.5
+    - acisfp_check ==v2.4.0
+    - acis_taco ==4.0
+    - acis_thermal_check ==v2.8.0
+    - backstop_history ==v1.1.0
+    - chandra_aca ==4.24
+    - chandra.cmd_states ==3.14.2
+    - chandra.maneuver ==3.7.1
+    - chandra.time ==3.20.3
+    - cxotime ==3.1
+    - dea_check ==v2.2.0
+    - dpa_check ==v2.3.0
+    - hopper ==4.4
+    - jplephem ==2.8
+    - kadi ==3.16.3
+    - maude ==3.2
+    - mica ==3.15
+    - parse_cm ==3.4
+    - proseco ==4.3.2
+    - psmc_check ==v1.2.0
+    - pyyaks ==3.3.4
+    - quaternion ==3.4.1
+    - ska.arc5gl ==3.1.1
+    - ska.astro ==3.2.1
+    - ska.dbi ==3.8.2
+    - ska.engarchive ==4.44.1
+    - ska.file ==3.4.1
+    - ska.ftp ==3.5
+    - ska.numpy ==3.8.1
+    - ska.matplotlib ==3.11.2
+    - ska.parsecm ==3.3.1
+    - ska_path ==3.1
+    - ska_sync ==4.2
+    - ska.quatutil ==3.3.1
+    - ska.shell ==3.3.3
+    - ska.sun ==3.5
+    - ska.tdb ==3.5.1
+    - tables3_api ==0.1
+    - testr ==3.2
+    - xija ==4.13
