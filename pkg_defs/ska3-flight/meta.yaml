@@ -14,7 +14,7 @@ requirements:
     - agasc ==4.7
     - annie ==0.5
     - acisfp_check ==v2.4.0
-    - acis_taco ==4.0
+    - acis_taco ==4.0.1
     - acis_thermal_check ==v2.8.0
     - backstop_history ==v1.1.0
     - chandra_aca ==4.24
