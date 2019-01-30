@@ -1,0 +1,46 @@
+package:
+  name: aca_preview
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  noarch: python
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/aca_preview
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - pip
+    - setuptools
+    - chandra_aca
+    - proseco
+    - testr
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - numpy
+    - matplotlib
+    - astropy
+    - pytest
+    - chandra_aca
+    - proseco
+    - quaternion
+    - testr
+
+test:
+  imports:
+    - aca_preview
+
+
+about:
+  home: git@github.com:sot/aca_preview
+

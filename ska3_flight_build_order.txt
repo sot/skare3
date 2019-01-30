@@ -45,6 +45,7 @@ psmc_check
 dea_check
 dpa_check
 proseco
+aca_preview
 ska3-template
 ska3-pinned
 ska3_builder
