@@ -28,7 +28,7 @@ requirements:
     - jplephem ==2.8
     - kadi ==3.16.3
     - maude ==3.2
-    - mica ==3.15
+    - mica ==3.16
     - parse_cm ==3.4
     - proseco ==4.4
     - psmc_check ==v1.2.0
