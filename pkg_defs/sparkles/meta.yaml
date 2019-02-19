@@ -1,5 +1,5 @@
 package:
-  name: aca_preview
+  name: sparkles
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
@@ -8,7 +8,7 @@ build:
     - SKA_TOP_SRC_DIR
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/aca_preview
+  path: {{ SKA_TOP_SRC_DIR }}/sparkles
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -38,9 +38,9 @@ requirements:
 
 test:
   imports:
-    - aca_preview
+    - sparkles
 
 
 about:
-  home: git@github.com:sot/aca_preview
+  home: git@github.com:sot/sparkles
 
