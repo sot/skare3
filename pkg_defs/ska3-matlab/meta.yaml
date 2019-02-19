@@ -11,7 +11,6 @@ requirements:
   run:
     - ska3-core ==2018.08.27
     - ska3-template ==2018.08.12
-    - aca_preview ==4.0
     - agasc ==4.7
     - annie ==0.5
     - acisfp_check ==v2.4.0
@@ -50,6 +49,7 @@ requirements:
     - ska.shell ==3.3.3
     - ska.sun ==3.5
     - ska.tdb ==3.5.1
+    - sparkles ==4.1
     - tables3_api ==0.1
     - testr ==3.2
     - xija ==4.13
