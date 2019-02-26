@@ -1,6 +1,6 @@
 package:
   name: ska3-matlab
-  version: 2019.02.19
+  version: 2019.02.26
 
 build:
   noarch: generic
