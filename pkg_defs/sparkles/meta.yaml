@@ -23,16 +23,19 @@ requirements:
     - chandra_aca
     - proseco
     - testr
+    - llvmlite ==0.18.0
+    - numpy ==1.12.1
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - numpy
+    - numpy ==1.12.1
     - matplotlib
     - astropy
     - pytest
     - chandra_aca
     - proseco
+    - llvmlite ==0.18.0
     - quaternion
     - testr
 
