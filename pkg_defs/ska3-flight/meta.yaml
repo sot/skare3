@@ -32,7 +32,7 @@ requirements:
     - parse_cm ==3.4
     - proseco ==4.4.1
     - psmc_check ==v1.2.0
-    - pyyaks ==3.3.4
+    - pyyaks ==3.3.5
     - quaternion ==3.4.1
     - ska.arc5gl ==3.1.1
     - ska.astro ==3.2.1
