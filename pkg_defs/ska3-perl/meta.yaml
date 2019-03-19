@@ -17,7 +17,8 @@ requirements:
     - perl-app-env-ascds ==0.4
     - perl-cxc-sysarch ==1.0
     - perl-ska-agasc ==3.5.0
-    - perl-ska-classic ==0.5
+    - perl-ska-classic ==0.6
+    - perl-ska-convert ==4.3
     - watch_cron_logs ==4.1 # [linux]
     - task_schedule ==4.1 # [linux]
     - starcheck ==13.0 # [linux]
