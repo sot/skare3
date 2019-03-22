@@ -29,10 +29,12 @@ requirements:
     - perl ==5.26.2
     - perl-core-deps
     - perl-ska-classic
+    - perl-ska-convert
     - perl-chandra-time
     - chandra_aca
     - hopper
     - agasc
+    - proseco
     - ska.matplotlib
     - testr
 
