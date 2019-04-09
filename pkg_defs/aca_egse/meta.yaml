@@ -1,0 +1,22 @@
+package:
+  name: aca_egse
+  version:  {{ GIT_DESCRIBE_TAG }}
+
+build:
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/aca_egse
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  run:
+    - perl
+
+
+about:
+  home: git@github.com:sot/aca_egse.git
+
