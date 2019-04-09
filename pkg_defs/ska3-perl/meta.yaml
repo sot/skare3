@@ -1,6 +1,6 @@
 package:
   name: ska3-perl
-  version: 2019.03.19
+  version: 2019.04.09
 
 requirements:
   run:
@@ -19,6 +19,7 @@ requirements:
     - perl-ska-agasc ==3.5.0
     - perl-ska-classic ==0.6
     - perl-ska-convert ==4.3
+    - perl-ska-web ==4.0
     - watch_cron_logs ==4.1 # [linux]
     - task_schedule ==4.1 # [linux]
     - starcheck ==13.1 # [linux]
