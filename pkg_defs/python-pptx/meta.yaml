@@ -1,0 +1,53 @@
+{% set version = "0.6.17" %}
+
+package:
+  name: python-pptx
+  version: {{ version }}
+
+source:
+  url: https://pypi.org/packages/source/p/python-pptx/python-pptx-{{ version }}.tar.gz
+  sha256: 1f2d5d1d923d91f50a1f0ed794935e7d670993fdcb6c12c81cc83977c1f23e14
+
+build:
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - pip
+  run:
+    - python
+    - lxml >=3.1.0
+    - pillow >=2.6.1
+    - xlsxwriter >=0.5.7
+    - libiconv
+
+test:
+  imports:
+    - pptx
+    - pptx.chart
+    - pptx.compat
+    - pptx.dml
+    - pptx.enum
+    - pptx.opc
+    - pptx.oxml
+    - pptx.oxml.chart
+    - pptx.oxml.dml
+    - pptx.oxml.shapes
+    - pptx.parts
+    - pptx.shapes
+    - pptx.text
+
+about:
+  home: http://github.com/scanny/python-pptx
+  license_file: LICENSE
+  license: MIT
+  license_family: MIT
+  summary: 'Generate and manipulate Open XML PowerPoint (.pptx) files'
+  dev_url: http://github.com/scanny/python-pptx
+  doc_url: https://python-pptx.readthedocs.io
+
+extra:
+  recipe-maintainers:
+    - pmlandwehr
+    - synapticarbors

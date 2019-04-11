@@ -1,6 +1,6 @@
 package:
   name: ska3-core
-  version: 2019.02.20
+  version: 2019.04.11
 
 requirements:
   # Packages required to run the package. These are the dependencies that
@@ -150,6 +150,7 @@ requirements:
    - python ==3.6.2
    - python-dateutil ==2.6.1
    - python.app ==1.2 # [osx]
+   - python-pptx ==0.6.17 [linux64]
    - pytz ==2017.2
    - pyyaml ==3.12
    - pyzmq ==16.0.2
@@ -185,6 +186,7 @@ requirements:
    - wcwidth ==0.1.7
    - wheel ==0.29.0
    - wrapt ==1.10.11
+   - xlsxwriter ==0.9.8 [linux64]
    - xz ==5.2.2 # [linux32]
    - xz ==5.2.3 # [linux64 or osx]
    - yaml ==0.1.6
