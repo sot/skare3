@@ -25,12 +25,11 @@ requirements:
     - llvmlite ==0.18.0
     - gcc ==4.8.5 # [linux64]
     - libgcc ==4.8.5 # [linux64]
-    - astropy
+    - astropy >=2.0
   run:
     - python
     - llvmlite ==0.18.0
     - numpy ==1.12.1
-    - astropy >=2.0
     - libgcc ==4.8.5
     - astropy >=2.0
 
