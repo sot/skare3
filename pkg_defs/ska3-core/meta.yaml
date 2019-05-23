@@ -1,6 +1,6 @@
 package:
   name: ska3-core
-  version: 2019.02.20
+  version: 2019.05.23
 
 requirements:
   # Packages required to run the package. These are the dependencies that
