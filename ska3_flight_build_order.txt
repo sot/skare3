@@ -4,6 +4,7 @@ pytest-openfiles
 pytest-remotedata
 pytest-astropy
 astropy
+astropy-healpix
 widgetsnbextension
 ipywidgets
 Ska.Shell
