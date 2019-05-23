@@ -52,4 +52,4 @@ requirements:
     - sparkles ==4.2.1
     - tables3_api ==0.1
     - testr ==3.2
-    - xija ==4.13
+    - xija ==4.14
