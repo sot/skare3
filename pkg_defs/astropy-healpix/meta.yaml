@@ -22,12 +22,14 @@ requirements:
     - python
     - setuptools
     - numpy ==1.12.1
+    # Pin llvmlite at 0.18.0 version for old gcc and centos5 compatibility
     - llvmlite ==0.18.0
     - gcc ==4.8.5 # [linux64]
     - libgcc ==4.8.5 # [linux64]
     - astropy >=2.0
   run:
     - python
+    # Pin llvmlite at 0.18.0 version for old gcc and centos5 compatibility
     - llvmlite ==0.18.0
     - numpy ==1.12.1
     - libgcc ==4.8.5
