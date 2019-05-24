@@ -20,7 +20,9 @@ requirements:
     - python
     - setuptools
     - six
-    - numpy
+    - llvmlite ==0.18.0
+    - numba
+    - numpy ==1.12.1
     - scipy
     - pyyaks
   # Packages required to run the package. These are the dependencies that
@@ -29,7 +31,9 @@ requirements:
     - python
     - six
     - scipy
-    - numpy
+    - llvmlite ==0.18.0
+    - numba
+    - numpy ==1.12.1
     - matplotlib
     - ska.matplotlib
     - ska.numpy
