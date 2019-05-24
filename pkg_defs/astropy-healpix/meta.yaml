@@ -23,6 +23,7 @@ requirements:
     - setuptools
     - numpy ==1.12.1
     # Pin llvmlite at 0.18.0 version for old gcc and centos5 compatibility
+    # This is in ska3-pinned but doesn't seem respected in build context.
     - llvmlite ==0.18.0
     - gcc ==4.8.5 # [linux64]
     - libgcc ==4.8.5 # [linux64]
