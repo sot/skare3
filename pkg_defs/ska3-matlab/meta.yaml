@@ -1,6 +1,6 @@
 package:
   name: ska3-matlab
-  version: 2019.06.06
+  version: 2019.06.07
 
 build:
   noarch: generic
@@ -49,7 +49,7 @@ requirements:
     - ska.shell ==3.3.3
     - ska.sun ==3.5
     - ska.tdb ==3.5.1
-    - sparkles ==4.2
+    - sparkles ==4.2.1
     - tables3_api ==0.1
     - testr ==3.2
     - xija ==4.14
