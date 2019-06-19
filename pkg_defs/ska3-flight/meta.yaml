@@ -13,7 +13,7 @@ requirements:
     - ska3-template ==2018.08.12
     - agasc ==4.7
     - annie ==0.5
-    - acisfp_check ==v2.5.0
+    - acisfp_check ==v2.6.0
     - acis_taco ==4.0.1
     - acis_thermal_check ==v2.9.0
     - backstop_history ==v1.1.0
