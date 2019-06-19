@@ -1,6 +1,6 @@
 package:
   name: ska3-core
-  version: 2019.02.20
+  version: 2019.05.23
 
 requirements:
   # Packages required to run the package. These are the dependencies that
@@ -16,6 +16,7 @@ requirements:
   # it will be fine to move to those default packages and deprecate the
   # skare3 builds
    - astropy ==3.0.3
+   - astropy-healpix ==0.4
    - ipywidgets ==7.3.0
    - widgetsnbextension ==3.3.0
    - pytest-arraydiff ==0.2
