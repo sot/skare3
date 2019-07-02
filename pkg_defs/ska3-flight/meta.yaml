@@ -26,7 +26,7 @@ requirements:
     - dpa_check ==v2.4.0
     - hopper ==4.4
     - jplephem ==2.8
-    - kadi ==3.16.4
+    - kadi ==4.17
     - maude ==3.2
     - mica ==3.17
     - parse_cm ==3.4
