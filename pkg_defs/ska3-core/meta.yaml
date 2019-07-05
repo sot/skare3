@@ -166,6 +166,7 @@ requirements:
    - scipy ==0.19.1
    - setuptools ==27.2.0 # [linux32]
    - setuptools ==36.4.0 # [linux64 or osx]
+   - setuptools_scm ==1.15.0
    - simplegeneric ==0.8.1
    - singledispatch ==3.4.0.3
    - sip ==4.18
