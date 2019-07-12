@@ -42,7 +42,6 @@ requirements:
    - cffi ==1.10.0
    - chardet ==3.0.4
    - clyent ==1.2.2
-   - conda ==4.3.21
    - configobj ==5.0.6
    - cryptography ==1.8.1
    - curl ==7.54.1
