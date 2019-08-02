@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  number: 1
   noarch: generic
   script_env:
     - SKA_TOP_SRC_DIR
@@ -27,7 +28,7 @@ requirements:
     - python
     - six
     - matplotlib
-    - numpy ==1.12.1
+    - numpy >=1.12.1
     - pytest
     - jinja2
     - astropy
