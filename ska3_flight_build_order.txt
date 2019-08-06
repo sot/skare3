@@ -36,8 +36,8 @@ Ska.arc5gl
 Ska.astro
 mica
 cxotime
-annie
 hopper
+starcheck
 backstop_history
 acis_thermal_check
 acis_taco
@@ -47,6 +47,7 @@ dea_check
 dpa_check
 proseco
 sparkles
+annie
 ska3-template
 ska3-pinned
 ska3_builder
@@ -54,5 +55,4 @@ ska3-core
 ska3-flight
 ska3-matlab
 ska3-dev
-starcheck
 ska3-perl
