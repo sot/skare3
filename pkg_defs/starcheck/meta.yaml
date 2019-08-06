@@ -3,6 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
+  number: 1
   noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
@@ -26,15 +27,9 @@ requirements:
   run:
     - python
     - numpy
-    - perl ==5.26.2
-    - perl-core-deps
-    - perl-ska-classic
-    - perl-ska-convert
-    - perl-chandra-time
     - chandra_aca
     - hopper
     - agasc
-    - proseco
     - ska.matplotlib
     - testr
 
