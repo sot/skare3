@@ -108,7 +108,6 @@ requirements:
    - nb_conda_kernels ==2.1.0
    - nbconvert ==5.2.1
    - nbformat ==4.4.0
-   - nbpresent ==3.0.2
    - networkx ==1.11
    - nose ==1.3.7
    - notebook ==5.0.0
