@@ -23,7 +23,7 @@ requirements:
     - chandra.maneuver ==3.7.1
     - chandra.time ==3.20.3
     - cxotime ==3.1
-    - dea_check ==v2.2.0
+    - dea_check ==v2.3.0
     - dpa_check ==v2.4.0
     - hopper ==4.4
     - jplephem ==2.8
