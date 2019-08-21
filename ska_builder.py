@@ -24,6 +24,7 @@ parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
 args = parser.parse_args()
 
 PERL = '5.26.2'
+NUMPY = '1.12'
 raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
@@ -103,7 +104,9 @@ def build_package(name):
     pkg_path = os.path.join(pkg_defs_path, name)
     cmd_list = ["conda", "build", pkg_path, "--croot",
                 BUILD_DIR, "--no-test", "--old-build-string",
-                "--no-anaconda-upload", "--skip-existing", "--perl", PERL]
+                "--no-anaconda-upload", "--skip-existing",
+                "--numpy", NUMPY,
+                "--perl", PERL]
     subprocess.run(cmd_list, check=True)
 
 
