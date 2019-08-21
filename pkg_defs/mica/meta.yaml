@@ -27,7 +27,7 @@ requirements:
     - python
     - six
     - matplotlib
-    - numpy ==1.12.1
+    - numpy >=1.12.1
     - pytest
     - jinja2
     - astropy
