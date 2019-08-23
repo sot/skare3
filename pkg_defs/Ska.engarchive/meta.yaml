@@ -38,6 +38,8 @@ requirements:
     - ska.dbi
     - astropy
     - testr
+    - jinja2
+    - pyyaks
 
 test:
   imports:
