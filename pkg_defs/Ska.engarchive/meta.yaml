@@ -3,7 +3,7 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
-  noarch: python
+  noarch: generic
   script_env:
     - SKA_TOP_SRC_DIR
   preserve_egg_dir: yes # (default no)
