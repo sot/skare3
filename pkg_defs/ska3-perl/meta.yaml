@@ -22,4 +22,3 @@ requirements:
     - perl-ska-web ==4.0
     - watch_cron_logs ==4.1 # [linux]
     - task_schedule ==4.1 # [linux]
-    - starcheck ==13.4 # [linux]
