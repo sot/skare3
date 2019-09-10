@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2019.08.19
+  version: 2019.09.09
 
 build:
   noarch: generic
