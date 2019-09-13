@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2019.08.19
+  version: 2019.09.09
 
 build:
   noarch: generic
@@ -10,16 +10,16 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - ska3-core ==2019.07.22
-    - ska3-template ==2018.08.12
+    - ska3-template ==2019.09.03
     - acdc ==4.2
     - agasc ==4.7
-    - annie ==0.5
+    - annie ==0.7
     - acisfp_check ==v2.6.0
     - acis_taco ==4.0.1
     - acis_thermal_check ==v2.9.0
     - backstop_history ==v1.1.0
-    - chandra_aca ==4.26.1
-    - chandra.cmd_states ==3.14.2
+    - chandra_aca ==4.27
+    - chandra.cmd_states ==3.15
     - chandra.maneuver ==3.7.1
     - chandra.time ==3.20.3
     - cxotime ==3.1
@@ -31,14 +31,14 @@ requirements:
     - maude ==3.2
     - mica ==4.18
     - parse_cm ==3.5
-    - proseco ==4.5
+    - proseco ==4.6
     - psmc_check ==v1.2.0
     - pyyaks ==4.4
     - quaternion ==3.4.1
     - ska.arc5gl ==3.1.1
     - ska.astro ==3.2.1
-    - ska.dbi ==3.8.2
-    - ska.engarchive ==4.44.2
+    - ska.dbi ==4.0
+    - ska.engarchive ==4.45
     - ska.file ==3.4.1
     - ska.ftp ==3.5
     - ska.numpy ==3.8.1
@@ -50,7 +50,7 @@ requirements:
     - ska.shell ==3.3.3
     - ska.sun ==3.5
     - ska.tdb ==3.5.1
-    - sparkles ==4.2.1
+    - sparkles ==4.3
     - tables3_api ==0.1
     - testr ==3.2
     - xija ==4.15
