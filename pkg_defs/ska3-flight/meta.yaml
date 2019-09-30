@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2019.09.09
+  version: 2019.09.30
 
 build:
   noarch: generic
@@ -11,7 +11,7 @@ requirements:
   run:
     - ska3-core ==2019.07.22
     - ska3-template ==2019.09.03
-    - acdc ==4.2
+    - acdc ==4.3
     - agasc ==4.7
     - annie ==0.7
     - acisfp_check ==v2.6.0
@@ -27,9 +27,9 @@ requirements:
     - dpa_check ==v2.4.0
     - hopper ==4.4
     - jplephem ==2.8
-    - kadi ==4.17
+    - kadi ==4.18.1
     - maude ==3.2
-    - mica ==4.18
+    - mica ==4.19
     - parse_cm ==3.5
     - proseco ==4.6
     - psmc_check ==v1.2.0
@@ -38,7 +38,7 @@ requirements:
     - ska.arc5gl ==3.1.1
     - ska.astro ==3.2.1
     - ska.dbi ==4.0
-    - ska.engarchive ==4.45
+    - ska.engarchive ==4.45.1
     - ska.file ==3.4.1
     - ska.ftp ==3.5
     - ska.numpy ==3.8.1
