@@ -40,7 +40,7 @@ requirements:
     - ska.dbi ==4.0
     - ska.engarchive ==4.45.1
     - ska.file ==3.4.1
-    - ska.ftp ==3.5
+    - ska.ftp ==3.5.1
     - ska.numpy ==3.8.1
     - ska.matplotlib ==3.11.2
     - ska.parsecm ==3.3.1
