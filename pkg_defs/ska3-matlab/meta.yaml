@@ -16,6 +16,7 @@ requirements:
     - acisfp_check ==v2.7.0
     - acis_taco ==4.0.1
     - acis_thermal_check ==v2.9.0
+    - annie ==0.9
     - backstop_history ==v1.1.0
     - chandra_aca ==4.27
     - chandra.cmd_states ==3.15
