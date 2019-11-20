@@ -54,5 +54,5 @@ requirements:
     - sparkles ==4.3
     - starcheck ==13.5
     - tables3_api ==0.1
-    - testr ==3.2
+    - testr ==4.3
     - xija ==4.15
