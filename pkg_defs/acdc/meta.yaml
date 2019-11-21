@@ -3,7 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  noarch: generic
+  noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
 

@@ -5,6 +5,7 @@ import subprocess
 import git
 import re
 import argparse
+import platform
 
 
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
@@ -19,8 +20,13 @@ parser.add_argument("--build-root", default=".", type=str,
                          "Default: '.'")
 parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
                     help="List of packages to build (in order)")
-parser.add_argument("--force", action="store_true",
-                    help="Ignore already built packages, build them again.")
+parser.add_argument("--test",
+                    action="store_true",
+                    help="Run test during build process")
+parser.add_argument("--force",
+                    action="store_true",
+                    help="Force build of package even if it exists")
+
 
 args = parser.parse_args()
 
@@ -29,14 +35,14 @@ NUMPY = '1.12'
 raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
-BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*#", b)]
+BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*#", b)]
 # And any that are just whitespace
-BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*$", b)]
+BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*$", b)]
 
-if os.uname().sysname == "Darwin":
+if platform.uname().system == "Darwin":
     os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
 
-if os.uname().machine == 'i686':
+if platform.uname().machine == 'i686':
     # Skip starcheck and ska3-perl on 32 bit
     for pkg in ['starcheck', 'ska3-perl']:
         if pkg in BUILD_LIST:
@@ -61,7 +67,7 @@ def clone_repo(name, tag=None):
         if not has_git:
             return None
         # It isn't clean yaml at this point, so just extract the string we want after "home:"
-        url = re.search("home:\s*(\S+)", meta).group(1)
+        url = re.search(r"home:\s*(\S+)", meta).group(1)
         repo = git.Repo.clone_from(url, clone_path)
         print("  - Cloned from url {}".format(url))
     else:
@@ -98,11 +104,14 @@ def build_package(name):
     os.environ['SKA_PKG_VERSION'] = version
     print(f'  - SKA_PKG_VERSION={version}')
 
-    cmd_list = ["conda", "build", pkg_path, "--croot",
-                BUILD_DIR, "--no-test", "--old-build-string",
+    cmd_list = ["conda", "build", pkg_path,
+                "--croot", BUILD_DIR,
+                "--old-build-string",
                 "--no-anaconda-upload",
                 "--numpy", NUMPY,
                 "--perl", PERL]
+    if not args.test:
+        cmd_list.append("--no-test")
     if not args.force:
         cmd_list += ["--skip-existing"]
     cmd = ' '.join(cmd_list)
