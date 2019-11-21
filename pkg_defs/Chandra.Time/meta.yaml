@@ -3,13 +3,11 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  script_env:
-    - SKA_TOP_SRC_DIR
   preserve_egg_dir: yes # (default no)
+  script: python setup.py install
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Chandra.Time
-
 
 # the build and runtime requirements. Dependencies of these requirements
 # are included automatically.
@@ -18,11 +16,10 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
-    - pip <10.0
-    - cython >=0.20.1
-    - six
-    - numpy
+    - setuptools
     - setuptools_scm
+    - setuptools_scm_git_archive
+    - cython
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:

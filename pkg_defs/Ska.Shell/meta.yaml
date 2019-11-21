@@ -6,8 +6,7 @@ package:
 build:
   noarch: python
   preserve_egg_dir: yes
-  script_env:
-    - SKA_TOP_SRC_DIR
+  script: python setup.py install
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Ska.Shell
@@ -15,9 +14,9 @@ source:
 requirements:
   build:
     - python
-    - pip <10.0
-    - six
+    - setuptools
     - setuptools_scm
+    - setuptools_scm_git_archive
 
   run:
     - python

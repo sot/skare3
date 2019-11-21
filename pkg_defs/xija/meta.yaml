@@ -3,8 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  script_env:
-    - SKA_TOP_SRC_DIR
+  script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/xija
@@ -19,11 +18,7 @@ requirements:
     - python
     - setuptools
     - setuptools_scm
-    - six
-    - numba
-    - numpy >=1.12.1
-    - scipy
-    - pyyaks
+    - setuptools_scm_git_archive
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -31,13 +26,14 @@ requirements:
     - six
     - scipy
     - numba
-    - numpy >=1.12.1
+    - numpy
     - matplotlib
     - ska.matplotlib
     - ska.numpy
     - pyyaks
     - chandra.time
     - testr
+    - ska.engarchive
 
 test:
   imports:

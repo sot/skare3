@@ -153,7 +153,7 @@ requirements:
    - pyqt ==5.6.0
    - pytables ==3.4.2
    - pytest ==3.2.1
-   - python ==3.6.2
+   - python ==3.8.1
    - python-dateutil ==2.6.1
    - python.app ==1.2 # [osx]
    - pytz ==2017.2

@@ -4,9 +4,8 @@ package:
 
 build:
   number: 1
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/find_attitude
@@ -21,6 +20,7 @@ requirements:
     - python
     - setuptools
     - setuptools_scm
+    - setuptools_scm_git_archive
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -33,6 +33,7 @@ requirements:
     - pyyaks
     - quaternion
     - ska.quatutil
+#   - sherpa
     - ska_helpers
 
 test:
@@ -41,5 +42,5 @@ test:
 
 
 about:
-  home: git@github.com:sot/find_attitude
+  home: https://github.com/sot/find_attitude
 

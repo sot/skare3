@@ -5,12 +5,13 @@ import subprocess
 import git
 import re
 import argparse
+import platform
 
 
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
 parser.add_argument("package", type=str, nargs="?",
-                    help="Package to build.  All updated packages will be built if no package supplied")
+                    help="Package to build (default=build all packages)")
 parser.add_argument("--tag", type=str,
                     help="Optional tag, branch, or commit to build for single package build"
                          " (default is tag with most recent commit)")
@@ -19,31 +20,35 @@ parser.add_argument("--build-root", default=".", type=str,
                          "Default: '.'")
 parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
                     help="List of packages to build (in order)")
-parser.add_argument("--force", action="store_true",
-                    help="Ignore already built packages, build them again.")
+parser.add_argument("--test",
+                    action="store_true",
+                    help="Run test during build process")
+parser.add_argument("--force",
+                    action="store_true",
+                    help="Force build of package even if it exists")
+parser.add_argument("--python",
+                    default="3.8",
+                    help="Target version of Python (default=3.8)")
+parser.add_argument("--perl",
+                    default="5.26.2",
+                    help="Target version of Perl (default=5.26.2)")
+parser.add_argument("--numpy",
+                    default="1.18",
+                    help="Build version of NumPy")
 parser.add_argument("--github-https", action="store_true", default=False,
                     help="Authenticate using basic auth and https. Default is ssh.")
 
 args = parser.parse_args()
 
-PERL = '5.26.2'
-NUMPY = '1.12'
 raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
-BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*#", b)]
+BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*#", b)]
 # And any that are just whitespace
-BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*$", b)]
+BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*$", b)]
 
-if os.uname().sysname == "Darwin":
-    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
-
-if os.uname().machine == 'i686':
-    # Skip starcheck and ska3-perl on 32 bit
-    for pkg in ['starcheck', 'ska3-perl']:
-        if pkg in BUILD_LIST:
-            BUILD_LIST.remove(pkg)
-
+if platform.uname().system == "Darwin":
+    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
 
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
@@ -62,7 +67,7 @@ def clone_repo(name, tag=None):
         if not has_git:
             return None
         # It isn't clean yaml at this point, so just extract the string we want after "home:"
-        url = re.search("home:\s*(\S+)", meta).group(1)
+        url = re.search(r"home:\s*(\S+)", meta).group(1)
         if args.github_https:
             url = url.replace('git@github.com:', 'https://github.com/')
         else:
@@ -92,27 +97,37 @@ def clone_repo(name, tag=None):
 
 
 def build_package(name):
+    print('*' * 80)
+    print(name)
+    print()
     pkg_path = os.path.join(pkg_defs_path, name)
 
     try:
         version = subprocess.check_output(['python', 'setup.py', '--version'],
-                                           cwd = os.path.join(SRC_DIR, name))
+                                          cwd=os.path.join(SRC_DIR, name))
         version = version.decode().split()[-1].strip()
-    except:
+    except Exception:
         version = ''
     os.environ['SKA_PKG_VERSION'] = version
     print(f'  - SKA_PKG_VERSION={version}')
 
-    cmd_list = ["conda", "build", pkg_path, "--croot",
-                BUILD_DIR, "--no-test", "--old-build-string",
+    cmd_list = ["conda", "build", pkg_path,
+                "--croot", BUILD_DIR,
+                "--old-build-string",
                 "--no-anaconda-upload",
-                "--numpy", NUMPY,
-                "--perl", PERL]
+                "--python", args.python,
+                "--numpy", args.numpy,
+                "--perl", args.perl]
+
+    if not args.test:
+        cmd_list.append("--no-test")
     if not args.force:
         cmd_list += ["--skip-existing"]
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
-    subprocess.run(cmd_list, check=True).check_returncode()
+    print('*' * 80)
+    is_windows = os.name == 'nt'  # Need shell below for Windows
+    subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
 def build_one_package(name, tag=None):
@@ -128,7 +143,7 @@ def build_list_packages():
         try:
             build_one_package(pkg_name)
         # If there's a failure, confirm before continuing
-        except:
+        except Exception:
             print(f'{pkg_name} failed, continue anyway (y/n)?')
             if input().lower().strip().startswith('y'):
                 failures.append(pkg_name)

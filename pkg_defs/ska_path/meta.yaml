@@ -4,9 +4,8 @@ package:
 
 
 build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/ska_path
@@ -18,6 +17,7 @@ requirements:
     - python
     - setuptools
     - setuptools_scm
+    - setuptools_scm_git_archive
   run:
     - python
 
