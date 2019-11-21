@@ -5,6 +5,7 @@ import subprocess
 import git
 import re
 import argparse
+import platform
 
 
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
@@ -28,14 +29,14 @@ NUMPY = '1.12'
 raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
-BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*#", b)]
+BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*#", b)]
 # And any that are just whitespace
-BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*$", b)]
+BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*$", b)]
 
-if os.uname().sysname == "Darwin":
+if platform.uname().sysname == "Darwin":
     os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
 
-if os.uname().machine == 'i686':
+if platform.uname().machine == 'i686':
     # Skip starcheck and ska3-perl on 32 bit
     for pkg in ['starcheck', 'ska3-perl']:
         if pkg in BUILD_LIST:
@@ -60,7 +61,7 @@ def clone_repo(name, tag=None):
         if not has_git:
             return None
         # It isn't clean yaml at this point, so just extract the string we want after "home:"
-        url = re.search("home:\s*(\S+)", meta).group(1)
+        url = re.search(r"home:\s*(\S+)", meta).group(1)
         repo = git.Repo.clone_from(url, clone_path)
         print("Cloned from url {}".format(url))
     else:
@@ -104,14 +105,13 @@ def build_package(name):
     pkg_path = os.path.join(pkg_defs_path, name)
     cmd_list = ["conda", "build", pkg_path, "--croot",
                 BUILD_DIR, "--no-test", "--old-build-string",
-                "--no-anaconda-upload", "--skip-existing",
-                "--numpy", NUMPY,
-                "--perl", PERL]
-    subprocess.run(cmd_list, check=True)
+                "--python", "3.6",
+                "--no-anaconda-upload", "--skip-existing", "--perl", PERL]
+    subprocess.run(cmd_list, check=True, shell=True)
 
 
 def build_one_package(name, tag=None):
-    repo = get_repo(name, tag)
+    get_repo(name, tag)
     build_package(name)
 
 
