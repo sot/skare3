@@ -109,7 +109,7 @@ def build_package(name):
                 "--old-build-string",
                 "--python", "3.6",
                 "--no-anaconda-upload",
-                "--skip-existing",
+                # "--skip-existing",
                 "--perl", PERL
                 ]
     subprocess.run(cmd_list, check=True, shell=True)
