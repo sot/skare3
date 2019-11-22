@@ -6,6 +6,7 @@ build:
   script_env:
     - SKA_TOP_SRC_DIR
   preserve_egg_dir: yes # (default no)
+  script: python setup.py install
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Chandra.Time
