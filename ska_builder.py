@@ -103,13 +103,13 @@ def get_repo(name, tag):
 def build_package(name):
     print("Building package %s." % name)
     pkg_path = os.path.join(pkg_defs_path, name)
-    cmd_list = ["conda", "build", pkg_path, 
-                "--croot", BUILD_DIR, 
-                "--no-test", 
+    cmd_list = ["conda", "build", pkg_path,
+                "--croot", BUILD_DIR,
+                "--no-test",
                 "--old-build-string",
                 "--python", "3.6",
-                "--no-anaconda-upload", 
-                "--skip-existing", 
+                "--no-anaconda-upload",
+                "--skip-existing",
                 "--perl", PERL
                 ]
     subprocess.run(cmd_list, check=True, shell=True)
