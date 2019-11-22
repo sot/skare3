@@ -122,6 +122,7 @@ def build_package(name):
     if not args.force:
         cmd_list.append("--skip-existing")
 
+    print('Running:\n' + ' '.join(cmd_list) + '\n')
     subprocess.run(cmd_list, check=True, shell=True)
 
 
