@@ -2,13 +2,15 @@ package:
   name: chandra.time
   version:  {{ GIT_DESCRIBE_TAG }}
 
-build:
-  script_env:
-    - SKA_TOP_SRC_DIR
-  preserve_egg_dir: yes # (default no)
+#build:
+# script_env:
+#   - SKA_TOP_SRC_DIR
+# preserve_egg_dir: yes # (default no)
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Chandra.Time
+  #path: {{ SKA_TOP_SRC_DIR }}/Chandra.Time
+  git_rev: "3.20.3"
+  git_url: https://github.com/sot/chandra.time
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -18,10 +20,9 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
-    - pip <10.0
     - cython >=0.20.1
     - six
-    - numpy
+    - numpy =1.12
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:

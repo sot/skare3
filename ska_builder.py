@@ -33,7 +33,7 @@ BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*#", b)]
 # And any that are just whitespace
 BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*$", b)]
 
-if platform.uname().sysname == "Darwin":
+if platform.uname().system == "Darwin":
     os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
 
 if platform.uname().machine == 'i686':
