@@ -105,7 +105,7 @@ def build_package(name):
     pkg_path = os.path.join(pkg_defs_path, name)
     cmd_list = ["conda", "build", pkg_path,
                 "--croot", BUILD_DIR,
-                "--no-test",
+                # "--no-test",
                 "--old-build-string",
                 "--python", "3.6",
                 "--no-anaconda-upload",
