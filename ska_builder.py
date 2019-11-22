@@ -110,6 +110,7 @@ def build_package(name):
                 "--python", "3.6",
                 "--no-anaconda-upload",
                 # "--skip-existing",
+                "--numpy", NUMPY,
                 "--perl", PERL
                 ]
     subprocess.run(cmd_list, check=True, shell=True)
