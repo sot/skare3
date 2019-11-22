@@ -20,6 +20,12 @@ parser.add_argument("--build-root", default=".", type=str,
                          "Default: '.'")
 parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
                     help="List of packages to build (in order)")
+parser.add_argument("--test",
+                    action="store_true",
+                    help="Run test during build process")
+parser.add_argument("--force",
+                    action="store_true",
+                    help="Force build of package even if it exists")
 
 
 args = parser.parse_args()
@@ -105,14 +111,17 @@ def build_package(name):
     pkg_path = os.path.join(pkg_defs_path, name)
     cmd_list = ["conda", "build", pkg_path,
                 "--croot", BUILD_DIR,
-                # "--no-test",
                 "--old-build-string",
                 "--python", "3.6",
                 "--no-anaconda-upload",
-                # "--skip-existing",
                 "--numpy", NUMPY,
                 "--perl", PERL
                 ]
+    if not args.test:
+        cmd_list.append("--no-test")
+    if not args.force:
+        cmd_list.append("--skip-existing")
+
     subprocess.run(cmd_list, check=True, shell=True)
 
 
