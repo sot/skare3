@@ -1,6 +1,6 @@
 package:
   name: ska3-win
-  version: 0.8
+  version: 0.9
 
 build:
   noarch: generic
@@ -50,3 +50,71 @@ requirements:
    - tables3_api
    - testr
    - xija
+
+   # Adapted from the list from M. Baski pkgs3.conda
+   # (see email Windows Python install script Nov 14 2019)
+   - astropy
+   - beautifulsoup4
+   - configobj
+   - cryptography
+   - cython
+   - decorator
+   - docutils
+   - ipyparallel
+   - notebook
+   - jinja2
+   - jpeg
+   - jupyter
+   - libtiff
+   - lxml
+   - matplotlib
+   - networkx
+   - nose
+   - numba
+   - numpy =1.12.1
+   - openssl
+   - pandas
+   - paramiko
+   - pep8
+   - pillow
+   - ply
+   - psutil
+   - pycrypto
+   - pyflakes
+   - pygments
+   - pyparsing
+   - pyqt
+   - pytest
+   - python =3.6.2
+   - python-dateutil
+   - pytz
+   - pyyaml
+   - pyzmq
+   - qt
+   - requests
+   - runipy
+   - scipy
+   - six
+   - sphinx
+   - sqlalchemy
+   - sqlite
+   - yaml
+   - zlib
+   - setuptools
+   - conda
+   - conda-env
+   - pip
+   - libpng
+   - cffi
+   - mistune
+   - py
+   - pycparser
+   - tornado
+   - markupsafe
+   - h5py
+   - numexpr
+   - pytables
+   - git
+   - ipython=6.1.0
+   - pylint
+   - conda-build
