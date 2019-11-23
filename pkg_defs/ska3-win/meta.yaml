@@ -1,0 +1,52 @@
+package:
+  name: ska3-win
+  version: 0.8
+
+build:
+  noarch: generic
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+  # Ska packages
+   - agasc
+   - annie
+   - acisfp_check
+   - acis_taco
+   - acis_thermal_check
+   - backstop_history
+   - chandra.cmd_states
+   - chandra.maneuver
+   - chandra.time
+   - chandra_aca
+   - cxotime
+   - dea_check
+   - dpa_check
+   - hopper
+   - kadi
+   - maude
+   - mica
+   - parse_cm
+   - psmc_check
+   - quaternion
+   - ska.arc5gl
+   - ska.astro
+   - ska.dbi
+   - ska.engarchive
+   - ska.file
+   - ska.ftp
+   - ska.matplotlib
+   - ska.numpy
+   - ska.parsecm
+   - ska.quatutil
+   - ska.shell
+   - ska.sun
+   - ska.tdb
+   - ska3-template
+   - ska_path
+   - ska_sync
+   - pyyaks
+   - tables3_api
+   - testr
+   - xija
