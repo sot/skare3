@@ -51,7 +51,7 @@ requirements:
     - ska.sun ==3.5
     - ska.tdb ==3.5.1
     - sparkles ==4.3
-    - starcheck ==13.4
+    - starcheck ==13.5
     - tables3_api ==0.1
     - testr ==3.2
     - xija ==4.15
