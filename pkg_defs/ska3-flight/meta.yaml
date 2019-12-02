@@ -31,7 +31,7 @@ requirements:
     - maude ==3.2
     - mica ==4.19
     - parse_cm ==3.5
-    - proseco ==4.6
+    - proseco ==4.7.1
     - psmc_check ==v1.2.0
     - pyyaks ==4.4
     - quaternion ==3.4.1
