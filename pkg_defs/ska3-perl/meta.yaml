@@ -1,6 +1,6 @@
 package:
   name: ska3-perl
-  version: 2019.09.09
+  version: 2019.12.10
 
 requirements:
   run:
