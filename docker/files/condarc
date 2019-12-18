@@ -1,4 +1,0 @@
-binstar_upload: false
-channels:
-  - https://icxc.harvard.edu/aspect/ska3-conda/
-  - https://icxc.harvard.edu/aspect/ska3-conda/core-pkg-repo

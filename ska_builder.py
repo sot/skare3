@@ -19,8 +19,7 @@ parser.add_argument("--build-root", default=".", type=str,
                          "Default: '.'")
 parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
                     help="List of packages to build (in order)")
-parser.add_argument("--force", action="store_true",
-                    help="Ignore already built packages, build them again.")
+
 
 args = parser.parse_args()
 
@@ -48,12 +47,11 @@ pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
 
 BUILD_DIR = os.path.abspath(os.path.join(args.build_root, "builds"))
 SRC_DIR = os.path.abspath(os.path.join(args.build_root, "src"))
-LOG_DIR = os.path.abspath(os.path.join(args.build_root, "logs"))
 os.environ["SKA_TOP_SRC_DIR"] = SRC_DIR
 
 
 def clone_repo(name, tag=None):
-    print("  - Cloning or updating source source %s." % name)
+    print("Cloning or updating source source %s." % name)
     clone_path = os.path.join(SRC_DIR, name)
     if not os.path.exists(clone_path):
         metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
@@ -63,15 +61,13 @@ def clone_repo(name, tag=None):
             return None
         # It isn't clean yaml at this point, so just extract the string we want after "home:"
         url = re.search("home:\s*(\S+)", meta).group(1)
-        # this is to simplify my life, not permanent:
-        url = url.replace('git@github.com:', 'https://github.com/')
         repo = git.Repo.clone_from(url, clone_path)
-        print("  - Cloned from url {}".format(url))
+        print("Cloned from url {}".format(url))
     else:
         repo = git.Repo(clone_path)
         repo.remotes.origin.fetch()
         repo.remotes.origin.fetch("--tags")
-        print("  - Updated repo in {}".format(clone_path))
+        print("Updated repo in {}".format(clone_path))
     assert not repo.is_dirty()
     # I think we want the commit/tag with the most recent date, though
     # if we actually want the most recently created tag, that would probably be
@@ -81,44 +77,42 @@ def clone_repo(name, tag=None):
         tags = sorted(repo.tags, key=lambda t: t.commit.committed_datetime)
         repo.git.checkout(tags[-1].name)
         if tags[-1].commit == repo.heads.master.commit:
-            print("  - Auto-checked out at {} which is also tip of master".format(tags[-1].name))
+            print("Auto-checked out at {} which is also tip of master".format(tags[-1].name))
         else:
-            print("  - Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
+            print("Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
     else:
         repo.git.checkout(tag)
-        print("  - Checked out at {}".format(tag))
+        print("Checked out at {}".format(tag))
+
+
+def get_repo(name, tag):
+    # Scan the meta.yaml for GIT_DESCRIBE_TAG and if it isn't there, return None for the,
+    # repo.  That will proceed with a traditional conda build without git fetch etc
+    metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
+    meta = open(metayml).read()
+    has_git = re.search("GIT_DESCRIBE_TAG", meta)
+    if not has_git:
+        return None
+    repo_path = os.path.join(SRC_DIR, name)
+    clone_repo(name, tag)
+    repo = git.Repo(repo_path)
+    return repo
 
 
 def build_package(name):
+    print("Building package %s." % name)
     pkg_path = os.path.join(pkg_defs_path, name)
-
-    try:
-        version = subprocess.check_output(['python', 'setup.py', '--version'],
-                                          cwd = os.path.join( SRC_DIR, name)).decode().strip()
-    except:
-        version = ''
-    os.environ['SKA_PKG_VERSION'] = version
-
     cmd_list = ["conda", "build", pkg_path, "--croot",
                 BUILD_DIR, "--no-test", "--old-build-string",
-                "--no-anaconda-upload",
+                "--no-anaconda-upload", "--skip-existing",
                 "--numpy", NUMPY,
                 "--perl", PERL]
-    if not args.force:
-        cmd_list += ["--skip-existing"]
-    if not os.path.exists(LOG_DIR):
-        os.makedirs(LOG_DIR)
-    with open(os.path.join(LOG_DIR, f'{name}.log'), 'w') as log_file:
-        cmd = ' '.join(cmd_list)
-        print(f'  - {cmd}')
-        subprocess.run(cmd_list, check=True, stdout=log_file, stderr=log_file).check_returncode()
+    subprocess.run(cmd_list, check=True)
 
 
 def build_one_package(name, tag=None):
-    print("- Building package %s." % name)
-    clone_repo(name, tag)
+    repo = get_repo(name, tag)
     build_package(name)
-    print('')
 
 
 def build_list_packages():
