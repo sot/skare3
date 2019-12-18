@@ -6,7 +6,7 @@ import git
 import re
 import argparse
 import platform
-
+from tempfile import TemporaryDirectory
 
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
@@ -151,10 +151,13 @@ def build_list_packages():
 def build_all_packages():
     build_list_packages()
 
+with TemporaryDirectory() as tempska:
+    os.makedirs(os.path.join(tempska, 'data', 'eng_archive', 'data'))
+    os.environ['SKA'] = tempska
 
-if getattr(args, 'package'):
-    build_one_package(args.package, tag=args.tag)
-else:
-    if args.tag is not None:
-        raise ValueError("Cannot supply '--tag' without specific package'")
-    build_all_packages()
+    if getattr(args, 'package'):
+        build_one_package(args.package, tag=args.tag)
+    else:
+        if args.tag is not None:
+            raise ValueError("Cannot supply '--tag' without specific package'")
+        build_all_packages()
