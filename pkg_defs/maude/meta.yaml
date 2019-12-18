@@ -4,9 +4,6 @@ package:
 
 build:
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
-
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/maude
@@ -20,7 +17,6 @@ requirements:
   build:
     - pip
     - python
-    - setuptools
     - requests
     - six
     - numpy

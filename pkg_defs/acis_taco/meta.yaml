@@ -3,8 +3,6 @@ package:
   version:  {{ GIT_DESCRIBE_TAG }}
 
 build:
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/acis_taco
@@ -18,7 +16,6 @@ requirements:
   build:
     - pip
     - python
-    - setuptools
     - six
     - numpy
     - matplotlib

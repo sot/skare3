@@ -4,8 +4,6 @@ package:
 
 build:
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/hopper
@@ -18,7 +16,6 @@ requirements:
   # listed explicitly if they are required.
   build:
     - pip
-    - setuptools
     - python
     - six
     - quaternion

@@ -6,8 +6,6 @@ package:
 build:
   noarch: python
   preserve_egg_dir: yes
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Ska.File
@@ -17,7 +15,6 @@ source:
 requirements:
   build:
     - python
-    - pip <10.0
 
   run:
     - python

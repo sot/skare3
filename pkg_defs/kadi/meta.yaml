@@ -4,8 +4,6 @@ package:
 
 build:
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/kadi
@@ -30,7 +28,7 @@ requirements:
     - configobj
     - requests
     - tables3_api
-    - django <2.0
+    - django
     - pyyaks
     - ska.dbi
     - ska.file
@@ -42,7 +40,9 @@ requirements:
     - ska.engarchive
     - chandra.cmd_states
     - numpy
+    - parse_cm
     - testr
+
 
 test:
   imports:

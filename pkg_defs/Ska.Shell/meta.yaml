@@ -6,7 +6,7 @@ package:
 build:
   noarch: python
   preserve_egg_dir: yes
-  script: python setup.py install
+  script: python setup.py install --old-and-unmanageable
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Ska.Shell

@@ -4,8 +4,6 @@ package:
 
 build:
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/proseco
@@ -19,7 +17,6 @@ requirements:
   build:
     - python
     - pip
-    - setuptools
     - testr
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.

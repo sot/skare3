@@ -5,7 +5,7 @@ package:
 build:
   noarch: python
   script_env:
-    - SKA_TOP_SRC_DIR
+     - SKA
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/acis_thermal_check
@@ -20,7 +20,6 @@ requirements:
     - pip
     - python
     - six
-    - setuptools
     # Looks like this needs to import acis_thermal_check.main to install
     - numpy
     - matplotlib

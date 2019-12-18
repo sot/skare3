@@ -4,8 +4,6 @@ package:
 
 build:
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
   preserve_egg_dir: yes # (default no)
 
 source:
@@ -18,7 +16,6 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - pip <10.0
     - python
     - six
     - sqlite

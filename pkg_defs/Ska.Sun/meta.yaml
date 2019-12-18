@@ -7,8 +7,6 @@ package:
 build:
   noarch: python
   preserve_egg_dir: yes
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Ska.Sun
@@ -17,9 +15,7 @@ source:
 
 requirements:
   build:
-    - pip <10.0
     - python
-    - setuptools
     - quaternion
     - chandra.time
     - ska.quatutil

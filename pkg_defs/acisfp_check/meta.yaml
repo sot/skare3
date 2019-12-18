@@ -5,7 +5,7 @@ package:
 build:
   noarch: python
   script_env:
-    - SKA_TOP_SRC_DIR
+     - SKA
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/acisfp_check
@@ -19,7 +19,6 @@ requirements:
   build:
     - pip
     - python
-    - setuptools
     - six
     - numpy
     - matplotlib

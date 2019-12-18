@@ -18,7 +18,7 @@ requirements:
     - python
     - six
     - numba
-    - numpy =1.12
+    - numpy >=1.12
     - scipy
     - pyyaks
   # Packages required to run the package. These are the dependencies that
@@ -28,7 +28,7 @@ requirements:
     - six
     - scipy
     - numba
-    - numpy =1.12
+    - numpy >=1.12
     - matplotlib
     - ska.matplotlib
     - ska.numpy
