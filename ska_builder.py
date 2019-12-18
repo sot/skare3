@@ -31,7 +31,7 @@ parser.add_argument("--force",
 args = parser.parse_args()
 
 PERL = '5.26.2'
-NUMPY = '1.12'
+NUMPY = '1.17'
 raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
@@ -111,8 +111,7 @@ def build_package(name):
     pkg_path = os.path.join(pkg_defs_path, name)
     cmd_list = ["conda", "build", pkg_path,
                 "--croot", BUILD_DIR,
-                "--old-build-string",
-                "--python", "3.6",
+                "--python", "3.7",
                 "--no-anaconda-upload",
                 "--numpy", NUMPY,
                 "--perl", PERL
