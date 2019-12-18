@@ -123,7 +123,7 @@ def build_package(name):
         cmd_list.append("--skip-existing")
 
     print('Running:\n' + ' '.join(cmd_list) + '\n')
-    subprocess.run(cmd_list, check=True, shell=True)
+    subprocess.run(cmd_list, check=True, shell=(os.name == 'nt'))
 
 
 def build_one_package(name, tag=None):
