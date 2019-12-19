@@ -1,6 +1,6 @@
 package:
   name: ska.arc5gl
-  version:  {{ GIT_DESCRIBE_TAG }}
+  version:  {{ SKA_PKG_VERSION }}
 
 build:
   noarch: python
