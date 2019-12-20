@@ -1,0 +1,28 @@
+package:
+  name: ska_helpers
+  version: {{ SKA_PKG_VERSION }}
+
+
+build:
+  noarch: python
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/ska_helpers
+
+
+
+requirements:
+  build:
+    - pip
+    - python
+    - pytest
+    - setuptools_scm
+  run:
+    - python
+    - setuptools_scm
+
+
+about:
+  home: https://github.com/sot/ska_helpers
