@@ -1,0 +1,40 @@
+# Recipe borrowed from https://github.com/conda-forge/asgiref-feedstock
+
+{% set name = "asgiref" %}
+{% set version = "3.2.3" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 7e06d934a7718bf3975acbf87780ba678957b87c7adc056f13b6215d610695a0
+
+build:
+  noarch: python
+  number: 0
+  script: python setup.py install
+
+requirements:
+  host:
+    - python
+  run:
+    - python
+
+test:
+  imports:
+    - asgiref
+
+about:
+  home: https://github.com/django/asgiref
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'ASGI in-memory channel layer'
+  doc_url: https://asgi.readthedocs.io/en/latest/
+
+extra:
+  recipe-maintainers:
+    - dhirschfeld
+    - carlodri
