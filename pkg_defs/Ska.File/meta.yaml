@@ -1,6 +1,6 @@
 package:
   name: ska.file  # lower case name of package, may contain '-' but no spaces
-  version: {{ GIT_DESCRIBE_TAG }}
+  version: {{ SKA_PKG_VERSION }}
 
 
 build:

@@ -1,6 +1,6 @@
 package:
   name: ska.numpy
-  version:  {{ GIT_DESCRIBE_TAG }}
+  version:  {{ SKA_PKG_VERSION }}
 
 build:
   script_env:

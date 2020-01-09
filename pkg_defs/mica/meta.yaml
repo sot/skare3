@@ -1,6 +1,6 @@
 package:
   name: mica
-  version:  {{ GIT_DESCRIBE_TAG }}
+  version:  {{ SKA_PKG_VERSION }}
 
 build:
   noarch: generic

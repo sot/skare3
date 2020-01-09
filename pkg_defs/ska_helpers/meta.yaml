@@ -1,5 +1,5 @@
 package:
-  name: ska_sync
+  name: ska_helpers
   version: {{ SKA_PKG_VERSION }}
 
 
@@ -9,7 +9,7 @@ build:
     - SKA_TOP_SRC_DIR
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/ska_sync
+  path: {{ SKA_TOP_SRC_DIR }}/ska_helpers
 
 
 
@@ -17,16 +17,12 @@ requirements:
   build:
     - pip
     - python
-    - setuptools
+    - pytest
+    - setuptools_scm
   run:
     - python
-    - yaml
-    - ska_path
+    - setuptools_scm
 
-
-test:
-  imports:
-    - ska_sync
 
 about:
-  home: https://github.com/sot/ska_sync
+  home: https://github.com/sot/ska_helpers
