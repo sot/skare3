@@ -30,7 +30,7 @@ requirements:
     - configobj
     - requests
     - tables3_api
-    - django <2.0
+    - django >= 3.0.1
     - pyyaks
     - ska.dbi
     - ska.file
