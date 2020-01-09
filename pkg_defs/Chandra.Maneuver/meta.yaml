@@ -20,12 +20,6 @@ requirements:
   build:
     - pip <10.0
     - python
-    - setuptools
-    - numpy
-    - six
-    - chandra.time
-    - quaternion
-    - ska.sun
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -34,7 +28,7 @@ requirements:
     - quaternion
     - chandra.time
     - ska.sun
-
+    - ska_helpers
 test:
   requires:
     - agasc
