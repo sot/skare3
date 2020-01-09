@@ -47,7 +47,7 @@ requirements:
     - ska_path ==3.1
     - ska_sync ==4.5
     - ska.quatutil ==3.3.1
-    - ska.shell ==3.3.4
+    - ska.shell ==3.3.5
     - ska.sun ==3.5
     - ska.tdb ==3.5.1
     - sparkles ==4.3
