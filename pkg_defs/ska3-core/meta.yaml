@@ -15,6 +15,7 @@ requirements:
   # If the versions we request become available in conda default channels,
   # it will be fine to move to those default packages and deprecate the
   # skare3 builds
+   - asgiref ==3.2.3
    - astropy ==3.0.3
    - astropy-healpix ==0.4
    - ipywidgets ==7.3.0
@@ -49,7 +50,7 @@ requirements:
    - cython ==0.26
    - dbus ==1.10.20 # [linux]
    - decorator ==4.1.2
-   - django ==1.11.3
+   - django ==3.0.1
    - docutils ==0.14
    - entrypoints ==0.2.3
    - expat ==2.1.0
@@ -179,6 +180,7 @@ requirements:
    - spyder ==3.2.2 # [linux32]
    - spyder ==3.2.3 # [linux64 or osx]
    - sqlite ==3.13.0
+   - sqlparse ==0.3.0
    - terminado ==0.6
    - testpath ==0.3.1
    - tk ==8.5.18
