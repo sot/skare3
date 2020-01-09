@@ -21,10 +21,11 @@ requirements:
     - chandra_aca ==4.28
     - chandra.cmd_states ==3.15
     - chandra.maneuver ==3.7.2
-    - chandra.time ==3.20.3
+    - chandra.time ==3.20.4
     - cxotime ==3.1
     - dea_check ==v2.3.0
     - dpa_check ==v2.5.0
+    - find_attitude ==3.3.1
     - hopper ==4.4
     - jplephem ==2.8
     - kadi ==4.18.1
