@@ -48,6 +48,7 @@ requirements:
     - testr
     - ska.arc5gl
     - ska.astro
+    - ska_helpers
 
 test:
   imports:
