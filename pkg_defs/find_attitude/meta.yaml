@@ -27,7 +27,7 @@ requirements:
     - astropy
     - numpy
     - networkx
-    - tables
+    - pytables
     - pyyaks
     - quaternion
     - ska.quatutil
