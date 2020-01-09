@@ -22,7 +22,7 @@ requirements:
     - python
     - yaml
     - ska_path
-
+    - ska_helpers
 
 test:
   imports:
