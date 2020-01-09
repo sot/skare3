@@ -28,7 +28,7 @@ requirements:
     - find_attitude ==3.3.1
     - hopper ==4.4
     - jplephem ==2.8
-    - kadi ==4.18.1
+    - kadi ==5.0
     - maude ==3.3
     - mica ==4.20
     - parse_cm ==3.5
