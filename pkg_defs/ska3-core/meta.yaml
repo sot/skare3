@@ -177,8 +177,6 @@ requirements:
    - sphinx ==1.6.3
    - sphinxcontrib ==1.0
    - sphinxcontrib-websupport ==1.0.1
-   - spyder ==3.2.2 # [linux32]
-   - spyder ==3.2.3 # [linux64 or osx]
    - sqlite ==3.13.0
    - sqlparse ==0.3.0
    - terminado ==0.6
