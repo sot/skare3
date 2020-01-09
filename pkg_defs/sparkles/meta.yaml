@@ -19,11 +19,6 @@ requirements:
   build:
     - python
     - pip
-    - setuptools
-    - chandra_aca
-    - proseco
-    - testr
-    - numpy >=1.12.1
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -36,6 +31,7 @@ requirements:
     - proseco
     - quaternion
     - testr
+    - ska_helpers
 
 test:
   imports:
