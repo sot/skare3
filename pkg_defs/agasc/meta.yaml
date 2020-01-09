@@ -18,15 +18,7 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
-    - setuptools
     - pip
-    - six
-    - numpy
-    - numexpr
-    - pytables
-    - ska_path
-    - chandra.time
-    - astropy
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -41,6 +33,7 @@ requirements:
     - astropy
     - h5py
     - testr
+    - ska_helpers
 
 test:
   imports:
