@@ -50,7 +50,7 @@ requirements:
     - ska.shell ==3.3.5
     - ska.sun ==3.5
     - ska.tdb ==3.5.1
-    - sparkles ==4.3
+    - sparkles ==4.4
     - starcheck ==13.5
     - tables3_api ==0.1
     - testr ==4.3
