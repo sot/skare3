@@ -9,7 +9,7 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-    - ska3-core ==2019.07.22
+    - ska3-core ==2020.01.09
     - ska3-template ==2019.09.03
     - acdc ==4.4
     - agasc ==4.8
