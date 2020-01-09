@@ -23,6 +23,7 @@ requirements:
     - six
     - pexpect
     - testr
+    - ska_helpers
 
 test:
   imports:
