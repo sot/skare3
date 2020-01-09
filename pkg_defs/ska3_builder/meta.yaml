@@ -14,6 +14,7 @@ requirements:
     - gitpython
     - git
   run:
+    - cython
     - python
     - ipython
     - gitpython
