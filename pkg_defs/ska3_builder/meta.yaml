@@ -1,6 +1,6 @@
 package:
   name: ska3_builder
-  version: 2018.08.11
+  version: 2020.01.13
 
 build:
   noarch: generic
