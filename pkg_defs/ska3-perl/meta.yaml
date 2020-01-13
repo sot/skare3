@@ -1,6 +1,6 @@
 package:
   name: ska3-perl
-  version: 2020.01.10
+  version: 2020.01.13
 
 requirements:
   run:
@@ -20,5 +20,5 @@ requirements:
     - perl-ska-classic ==0.6
     - perl-ska-convert ==4.3
     - perl-ska-web ==4.0
-    - watch_cron_logs ==4.2 # [linux]
-    - task_schedule ==4.2 # [linux]
+    - watch_cron_logs ==4.2
+    - task_schedule ==4.2
