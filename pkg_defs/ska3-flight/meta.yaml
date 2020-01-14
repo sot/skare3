@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2020.01.13
+  version: 2020.01.14
 
 build:
   noarch: generic
@@ -12,7 +12,7 @@ requirements:
     - ska3-core ==2020.01.10
     - ska3-template ==2019.09.03
     - acdc ==4.4
-    - agasc ==4.8
+    - agasc ==4.8.0
     - acisfp_check ==v2.7.0
     - acis_taco ==4.0.1
     - acis_thermal_check ==v2.9.0
@@ -28,9 +28,9 @@ requirements:
     - find_attitude ==3.3.2
     - hopper ==4.4
     - jplephem ==2.8
-    - kadi ==5.0
+    - kadi ==5.0.0
     - maude ==3.3
-    - mica ==4.20
+    - mica ==4.20.0
     - parse_cm ==3.5
     - proseco ==4.7.1
     - psmc_check ==v1.2.0
@@ -45,14 +45,14 @@ requirements:
     - ska.numpy ==3.8.1
     - ska.matplotlib ==3.11.2
     - ska.parsecm ==3.3.1
-    - ska_helpers ==0.1
+    - ska_helpers ==0.1.0
     - ska_path ==3.1
-    - ska_sync ==4.6
+    - ska_sync ==4.6.0
     - ska.quatutil ==3.3.1
-    - ska.shell ==3.4
+    - ska.shell ==3.4.0
     - ska.sun ==3.5
     - ska.tdb ==3.5.1
-    - sparkles ==4.4
+    - sparkles ==4.4.0
     - starcheck ==13.5
     - tables3_api ==0.1
     - testr ==4.3
