@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2020.01.16
+  version: 2020.01.17
 
 build:
   noarch: generic
@@ -36,21 +36,21 @@ requirements:
     - psmc_check ==v1.2.0
     - pyyaks ==4.4.1
     - quaternion ==3.5.0
-    - ska.arc5gl ==3.1.2
-    - ska.astro ==3.2.2
+    - ska.arc5gl ==3.1.3
+    - ska.astro ==3.2.3
     - ska.dbi ==4.0.1
     - ska.engarchive ==4.47.4
-    - ska.file ==3.4.2
+    - ska.file ==3.4.3
     - ska.ftp ==3.5.2
     - ska.numpy ==3.8.2
     - ska.matplotlib ==3.11.3
-    - ska.parsecm ==3.3.2
+    - ska.parsecm ==3.3.3
     - ska_helpers ==0.1.0
     - ska_path ==3.1.1
     - ska_sync ==4.6.0
     - ska.quatutil ==3.3.2
     - ska.shell ==3.4.0
-    - ska.sun ==3.5.1
+    - ska.sun ==3.5.2
     - ska.tdb ==3.5.2
     - sparkles ==4.4.0
     - starcheck ==13.5.1
