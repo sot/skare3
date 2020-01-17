@@ -5,10 +5,28 @@ import os
 import re
 import json
 import argparse
+import subprocess
+import logging
 
 
 API = None
 
+REPO_PACKAGES = [
+    ('eng_archive', 'ska.engarchive'),
+    ('cmd_states', 'chandra.cmd_states')
+]
+
+def get_conda_pkg_versions(conda_metapackage):
+    out = subprocess.check_output(['conda', 'install', conda_metapackage, '--dry-run']).decode()
+    out = out[out.find('The following NEW packages will be INSTALLED:'):
+              out.find('The following packages will be UPDATED')].split('\n')
+    packages = [p.split() for p in out if p and p[0] == ' ']
+    packages = {p[0][:-1]: p[1] for p in packages}
+    for k, v in packages.items():
+        m = re.match('(?P<version>\S+)(-py[0-9]*_[0-9]+)', v)
+        if m:
+            packages[k] = m.groupdict()['version']
+    return packages
 
 def get_repository_info(owner_repo):
     global API
@@ -59,10 +77,31 @@ def get_repository_info(owner_repo):
 
 
 def get_repositories_info(repositories):
+    try:
+        flight = get_conda_pkg_versions('ska3-flight')
+        for repo, conda_pkg in REPO_PACKAGES:
+            if conda_pkg in flight:
+                flight[repo] = flight[conda_pkg]
+    except:
+        logging.warning('Empty ska3-flight')
+        flight = {}
+    try:
+        matlab = get_conda_pkg_versions('ska3-matlab')
+        for repo, conda_pkg in REPO_PACKAGES:
+            if conda_pkg in matlab:
+                matlab[repo] = matlab[conda_pkg]
+    except:
+        logging.warning('Empty ska3-matlab')
+        matlab = {}
+
     info = []
     for owner_repo in repositories:
         print(owner_repo)
-        info.append(get_repository_info(owner_repo))
+        owner, repo = os.path.split(owner_repo)
+        repo_info = get_repository_info(owner_repo)
+        repo_info['matlab'] = matlab[repo.lower()] if repo.lower() in matlab else ''
+        repo_info['flight'] = flight[repo.lower()] if repo.lower() in flight else ''
+        info.append(repo_info)
     return info
 
 
@@ -118,8 +157,9 @@ def main():
         'sot/testr',
         'sot/xija'
     ])
-    with open(args.o, 'w') as f:
-        json.dump(info, f, indent=2)
+    if info:
+        with open(args.o, 'w') as f:
+            json.dump(info, f, indent=2)
 
 
 if __name__ == '__main__':

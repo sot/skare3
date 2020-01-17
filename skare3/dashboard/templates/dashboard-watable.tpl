@@ -103,13 +103,29 @@
             tag: {
               index: 5,
               type: "string",
-              friendly: "Tag",
+              friendly: "Release",
               placeHolder: "0.0.0",
               filterTooltip: "filter the tags",
               tooltip: "Latest release"
             },
-            date: {
+            flight: {
               index: 6,
+              type: "string",
+              friendly: "Flight",
+              placeHolder: "0.0.0",
+              filterTooltip: "filter the tags",
+              tooltip: "Current version in ska3-flight"
+            },
+            matlab: {
+              index: 7,
+              type: "string",
+              friendly: "Matlab",
+              placeHolder: "0.0.0",
+              filterTooltip: "filter the tags",
+              tooltip: "Current version in ska3-matlab"
+            },
+            date: {
+              index: 8,
               type: "string",
               friendly: "Date",
               filterTooltip: "filter the dates",
@@ -117,13 +133,13 @@
 
             },
             commits: {
-              index: 7,
+              index: 9,
               type: "number",
               friendly: "commits",
               tooltip: "Commits since last release"
             },
             merge_info: {
-              index: 8,
+              index: 10,
               type: "string",
               friendly: "Merges",
               tooltip: "Merges since last release",
@@ -142,6 +158,8 @@
               prFormat: "<a href='https://github.com/{{ pkg.owner }}/{{ pkg.name }}/pulls'> {{ pkg.pull_requests }} </a>",
               tag: "{{ pkg.last_tag }}",
               tagFormat: "<a href='https://github.com/{{ pkg.owner }}/{{ pkg.name }}/releases/tag/{{ pkg.last_tag }}'> {{ pkg.last_tag }} </a>",
+              flight: "{{ pkg.flight }}",
+              matlab: "{{ pkg.matlab }}",
               date: "{{ pkg.last_tag_date }}",
               commits: {{ pkg.commits }},
               merges: {{ pkg.merges }},
