@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2020.01.15
+  version: 2020.01.16
 
 build:
   noarch: generic
@@ -56,4 +56,4 @@ requirements:
     - starcheck ==13.5.1
     - tables3_api ==0.1.1
     - testr ==4.3.1
-    - xija ==4.15
+    - xija ==4.16.0
