@@ -9,9 +9,7 @@ import subprocess
 import logging
 
 
-API = None
-
-REPO_PACKAGES = [
+REPO_PACKAGE_MAP = [
     ('eng_archive', 'ska.engarchive'),
     ('cmd_states', 'chandra.cmd_states')
 ]
@@ -29,26 +27,26 @@ def get_conda_pkg_versions(conda_metapackage):
     return packages
 
 def get_repository_info(owner_repo):
-    global API
+    api = github.GITHUB_API
     owner, repo = owner_repo.split('/')
 
-    last_tag = API.get(f'repos/{owner}/{repo}/releases/latest').json()
-    tag_info = API.get(f'repos/{owner}/{repo}/git/ref/tags/{last_tag["tag_name"]}').json()
+    last_tag = api.get(f'repos/{owner}/{repo}/releases/latest').json()
+    tag_info = api.get(f'repos/{owner}/{repo}/git/ref/tags/{last_tag["tag_name"]}').json()
     tag_sha = tag_info['object']['sha']
-    rel_commit = API.get(f'repos/{owner}/{repo}/commits/{tag_sha}').json()
+    rel_commit = api.get(f'repos/{owner}/{repo}/commits/{tag_sha}').json()
     commit_date = rel_commit['commit']['author']['date']
 
-    commits = API.get(f'repos/{owner}/{repo}/commits',
+    commits = api.get(f'repos/{owner}/{repo}/commits',
                       params={'sha':'master', 'since': commit_date}).json()
     commits = commits[:-1]  # remove the commit associated to the release
 
-    branches = API.get(f'repos/{owner}/{repo}/branches').json()
+    branches = api.get(f'repos/{owner}/{repo}/branches').json()
     n_branches = len(branches)
 
-    issue_page = API.get(f'repos/{owner}/{repo}/issues', params={'per_page':100}).json()
+    issue_page = api.get(f'repos/{owner}/{repo}/issues', params={'per_page':100}).json()
     issues = issue_page
     while len(issue_page) == 100:
-        issue_page = API.get(f'repos/{owner}/{repo}/issues', params={'per_page':100}).json()
+        issue_page = api.get(f'repos/{owner}/{repo}/issues', params={'per_page':100}).json()
         issues += issue_page
     n_pr = len([i for i in issues if 'pull_request' in i])
     n_issues = len(issues) - n_pr
@@ -79,7 +77,7 @@ def get_repository_info(owner_repo):
 def get_repositories_info(repositories):
     try:
         flight = get_conda_pkg_versions('ska3-flight')
-        for repo, conda_pkg in REPO_PACKAGES:
+        for repo, conda_pkg in REPO_PACKAGE_MAP:
             if conda_pkg in flight:
                 flight[repo] = flight[conda_pkg]
     except:
@@ -87,7 +85,7 @@ def get_repositories_info(repositories):
         flight = {}
     try:
         matlab = get_conda_pkg_versions('ska3-matlab')
-        for repo, conda_pkg in REPO_PACKAGES:
+        for repo, conda_pkg in REPO_PACKAGE_MAP:
             if conda_pkg in matlab:
                 matlab[repo] = matlab[conda_pkg]
     except:
@@ -106,17 +104,12 @@ def get_repositories_info(repositories):
 
 
 def main():
-    global API
-
     parser = argparse.ArgumentParser()
     parser.add_argument('-o', default='repository_info.json')
     parser.add_argument('-u')
     args = parser.parse_args()
-    print(f'user is {args.u}')
 
-    if args.u:
-        github.init(user=args.u)
-        API = github.GITHUB_API
+    github.init(user=args.u)
 
     info = get_repositories_info([
         'sot/Chandra.Maneuver',

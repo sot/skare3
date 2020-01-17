@@ -8,6 +8,11 @@ try:
 except:
     keyring = None
 
+
+class AuthException(Exception):
+    pass
+
+
 class RestException(Exception):
     pass
 
@@ -17,7 +22,11 @@ GITHUB_API = None
 def init(user=None, password=None):
     global GITHUB_API
     if GITHUB_API is None:
-        GITHUB_API = GithubAPI(user=user, password=password)
+        api = GithubAPI(user=user, password=password)
+        r = api.get('users/chandra-xray')
+        if r.status_code == 401:
+            raise AuthException(r.json()['message'])
+        GITHUB_API = api
 
 class GithubAPI:
     def __init__(self, user=None, password=None):
