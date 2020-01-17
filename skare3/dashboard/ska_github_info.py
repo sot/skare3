@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
-from skare3.tools.github import GithubAPI
+from skare3.tools import github
+import os
 import re
 import json
 import argparse
 
 
-API = GithubAPI()
+API = None
 
 
 def get_repository_info(owner_repo):
@@ -66,9 +67,17 @@ def get_repositories_info(repositories):
 
 
 def main():
+    global API
+
     parser = argparse.ArgumentParser()
     parser.add_argument('-o', default='repository_info.json')
+    parser.add_argument('-u')
     args = parser.parse_args()
+    print(f'user is {args.u}')
+
+    if args.u:
+        github.init(user=args.u)
+        API = github.GITHUB_API
 
     info = get_repositories_info([
         'sot/Chandra.Maneuver',

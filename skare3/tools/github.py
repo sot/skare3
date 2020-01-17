@@ -2,7 +2,11 @@ import logging
 import requests
 from requests.auth import HTTPBasicAuth
 import getpass
-
+import os
+try:
+    import keyring
+except:
+    keyring = None
 
 class RestException(Exception):
     pass
@@ -10,12 +14,25 @@ class RestException(Exception):
 
 GITHUB_API = None
 
+def init(user=None, password=None):
+    global GITHUB_API
+    if GITHUB_API is None:
+        GITHUB_API = GithubAPI(user=user, password=password)
+
 class GithubAPI:
     def __init__(self, user=None, password=None):
         if user is None:
-            user = input('Username: ')
+            if 'GITHUB_USER' in os.environ:
+                user = os.environ['GITHUB_USER']
+            else:
+                user = input('Username: ')
         if password is None:
-            password = getpass.getpass()
+            if 'GITHUB_PASSWORD' in os.environ:
+                password = os.environ['GITHUB_PASSWORD']
+            elif keyring:
+                password = keyring.get_password("skare3-github", user)
+            if password is None:
+                password = getpass.getpass()
 
         self.user = user
         self.auth = HTTPBasicAuth(self.user, password)
@@ -58,11 +75,8 @@ class GithubAPI:
 class Repository:
     def __init__(self, owner, repo, api=None):
         global GITHUB_API
-        self.api = api
-        if self.api is None:
-            if GITHUB_API is None:
-                GITHUB_API = GithubAPI()
-            self.api = GITHUB_API
+        init()
+        self.api = GITHUB_API if api is None else api
         self.owner = owner
         self.repo = repo
 
