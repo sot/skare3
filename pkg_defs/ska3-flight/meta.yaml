@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2020.01.17
+  version: 2020.01.21
 
 build:
   noarch: generic
@@ -13,18 +13,18 @@ requirements:
     - ska3-template ==2019.09.03
     - acdc ==4.4.1
     - agasc ==4.8.0
-    - acisfp_check ==v2.7.0
+    - acisfp_check ==2.7.1
     - acis_taco ==4.1.0
-    - acis_thermal_check ==v2.9.0
+    - acis_thermal_check ==2.9.1
     - annie ==0.9.1
-    - backstop_history ==v1.1.0
+    - backstop_history ==1.1.1
     - chandra_aca ==4.28.1
     - chandra.cmd_states ==3.15.1
     - chandra.maneuver ==3.7.2
     - chandra.time ==3.20.4
     - cxotime ==3.1.1
-    - dea_check ==v2.3.0
-    - dpa_check ==v2.5.0
+    - dea_check ==2.3.1
+    - dpa_check ==2.5.1
     - find_attitude ==3.3.2
     - hopper ==4.4.1
     - jplephem ==2.8
@@ -33,7 +33,7 @@ requirements:
     - mica ==4.20.0
     - parse_cm ==3.5.1
     - proseco ==4.7.2
-    - psmc_check ==v1.2.0
+    - psmc_check ==1.2.1
     - pyyaks ==4.4.1
     - quaternion ==3.4.1
     - ska.arc5gl ==3.1.3
