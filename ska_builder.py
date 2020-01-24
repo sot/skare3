@@ -57,7 +57,7 @@ def clone_repo(name, tag=None):
     if not os.path.exists(clone_path):
         metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
         meta = open(metayml).read()
-        has_git = re.search("SKA_PKG_VERSION", meta)
+        has_git = re.search("SKA_PKG_VERSION", meta) or re.search("GIT_DESCRIBE_TAG", meta)
         if not has_git:
             return None
         # It isn't clean yaml at this point, so just extract the string we want after "home:"
