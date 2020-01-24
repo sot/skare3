@@ -7,6 +7,7 @@ import json
 import argparse
 import subprocess
 import logging
+import yaml
 
 
 REPO_PACKAGE_MAP = [
@@ -106,10 +107,17 @@ def get_repositories_info(repositories):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-o', default='repository_info.json')
+    parser.add_argument('-c')
     parser.add_argument('-u')
+    parser.add_argument('-p')
     args = parser.parse_args()
 
-    github.init(user=args.u)
+    if args.c:
+        with open(args.c) as f:
+            data = yaml.load(f)
+            github.init(user=data['user'], password=data['password'])
+    else:
+        github.init(user=args.u, password=args.p)
 
     info = get_repositories_info([
         'sot/Chandra.Maneuver',
