@@ -1,6 +1,6 @@
 package:
   name: backstop_history
-  version:  {{ GIT_DESCRIBE_TAG }}
+  version:  {{ SKA_PKG_VERSION }}
 
 build:
   noarch: python
@@ -21,6 +21,7 @@ requirements:
     - six
     - python
     - setuptools
+    - ska_helpers
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:

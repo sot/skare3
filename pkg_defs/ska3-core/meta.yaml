@@ -1,6 +1,6 @@
 package:
   name: ska3-core
-  version: 2019.07.22
+  version: 2020.01.10
 
 requirements:
   # Packages required to run the package. These are the dependencies that
@@ -9,12 +9,13 @@ requirements:
 
   # Note that sherpa is not in the defaults channel and may be missed
   # if trying to automatically update ska3-core
-   - sherpa ==4.9.1 [linux64 and osx]
-
+   - sherpa ==4.9.1 # [linux64]
+   - sherpa ==4.11.1 # [osx]
   # And note that these packages are presently built out of skare3.
   # If the versions we request become available in conda default channels,
   # it will be fine to move to those default packages and deprecate the
   # skare3 builds
+   - asgiref ==3.2.3
    - astropy ==3.0.3
    - astropy-healpix ==0.4
    - ipywidgets ==7.3.0
@@ -49,7 +50,7 @@ requirements:
    - cython ==0.26
    - dbus ==1.10.20 # [linux]
    - decorator ==4.1.2
-   - django ==1.11.3
+   - django ==3.0.1
    - docutils ==0.14
    - entrypoints ==0.2.3
    - expat ==2.1.0
@@ -85,6 +86,7 @@ requirements:
    - jupyter_core ==4.3.0
    - krb5 ==1.13.2
    - lazy-object-proxy ==1.3.1
+   - libcxx ==9.0.1 # [osx]
    - libffi ==3.2.1 # [linux]
    - libgcc ==4.8.5
    - libgfortran ==3.0.0
@@ -166,7 +168,7 @@ requirements:
    - scipy ==0.19.1
    - setuptools ==27.2.0 # [linux32]
    - setuptools ==36.4.0 # [linux64 or osx]
-   - setuptools_scm ==1.15.0
+   - setuptools_scm ==3.3.3
    - simplegeneric ==0.8.1
    - singledispatch ==3.4.0.3
    - sip ==4.18
@@ -176,9 +178,8 @@ requirements:
    - sphinx ==1.6.3
    - sphinxcontrib ==1.0
    - sphinxcontrib-websupport ==1.0.1
-   - spyder ==3.2.2 # [linux32]
-   - spyder ==3.2.3 # [linux64 or osx]
    - sqlite ==3.13.0
+   - sqlparse ==0.3.0
    - terminado ==0.6
    - testpath ==0.3.1
    - tk ==8.5.18

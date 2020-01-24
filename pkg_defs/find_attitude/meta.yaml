@@ -1,5 +1,5 @@
 package:
-  name: acisfp_check
+  name: find_attitude
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -8,7 +8,7 @@ build:
     - SKA_TOP_SRC_DIR
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/acisfp_check
+  path: {{ SKA_TOP_SRC_DIR }}/find_attitude
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -17,46 +17,28 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - pip
     - python
-    - setuptools
-    - six
-    - numpy
-    - matplotlib
-    - astropy
-    - acis_thermal_check
-    - chandra.time
-    - kadi
-    - ska.dbi
-    - ska.engarchive
-    - ska.numpy
-    - ska.matplotlib
-    - ska.sun
-    - xija
-
+    - pip
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - six
-    - numpy
-    - matplotlib
+    - testr
     - astropy
-    - acis_thermal_check
-    - acis_taco
-    - chandra.time
-    - kadi
-    - ska.dbi
-    - ska.engarchive
-    - ska.numpy
-    - ska.matplotlib
-    - ska.sun
-    - xija
+    - numpy
+    - networkx
+    - pytables
+    - pyyaks
+    - quaternion
+    - ska.quatutil
+    - sherpa
+    - ska_helpers
 
 test:
   imports:
-    - acisfp_check
+    - find_attitude
+
 
 about:
-  home: https://github.com/acisops/acisfp_check
+  home: git@github.com:sot/find_attitude
 

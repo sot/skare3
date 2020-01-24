@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2019.12.18
+  version: 2020.01.21
 
 build:
   noarch: generic
@@ -9,49 +9,51 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-    - ska3-core ==2019.07.22
+    - ska3-core ==2020.01.10
     - ska3-template ==2019.09.03
-    - acdc ==4.4
-    - agasc ==4.7
-    - acisfp_check ==v2.7.0
-    - acis_taco ==4.0.1
-    - acis_thermal_check ==v2.9.0
-    - annie ==0.8.2
-    - backstop_history ==v1.1.0
-    - chandra_aca ==4.28
-    - chandra.cmd_states ==3.15
-    - chandra.maneuver ==3.7.1
-    - chandra.time ==3.20.3
-    - cxotime ==3.1
-    - dea_check ==v2.3.0
-    - dpa_check ==v2.5.0
-    - hopper ==4.4
+    - acdc ==4.4.1
+    - agasc ==4.8.0
+    - acisfp_check ==2.7.1
+    - acis_taco ==4.1.0
+    - acis_thermal_check ==2.9.1
+    - annie ==0.9.1
+    - backstop_history ==1.1.1
+    - chandra_aca ==4.28.1
+    - chandra.cmd_states ==3.15.1
+    - chandra.maneuver ==3.7.2
+    - chandra.time ==3.20.4
+    - cxotime ==3.1.1
+    - dea_check ==2.3.1
+    - dpa_check ==2.5.1
+    - find_attitude ==3.3.2
+    - hopper ==4.4.1
     - jplephem ==2.8
-    - kadi ==4.18.1
-    - maude ==3.3
-    - mica ==4.19
-    - parse_cm ==3.5
-    - proseco ==4.7.1
-    - psmc_check ==v1.2.0
-    - pyyaks ==4.4
+    - kadi ==5.0.0
+    - maude ==3.3.1
+    - mica ==4.20.0
+    - parse_cm ==3.5.1
+    - proseco ==4.7.2
+    - psmc_check ==1.2.1
+    - pyyaks ==4.4.1
     - quaternion ==3.4.1
-    - ska.arc5gl ==3.1.1
-    - ska.astro ==3.2.1
-    - ska.dbi ==4.0
-    - ska.engarchive ==4.47.3
-    - ska.file ==3.4.1
-    - ska.ftp ==3.5.1
-    - ska.numpy ==3.8.1
-    - ska.matplotlib ==3.11.2
-    - ska.parsecm ==3.3.1
-    - ska_path ==3.1
-    - ska_sync ==4.5
-    - ska.quatutil ==3.3.1
-    - ska.shell ==3.3.4
-    - ska.sun ==3.5
-    - ska.tdb ==3.5.1
-    - sparkles ==4.3
-    - starcheck ==13.5
-    - tables3_api ==0.1
-    - testr ==4.3
-    - xija ==4.15
+    - ska.arc5gl ==3.1.3
+    - ska.astro ==3.2.3
+    - ska.dbi ==4.0.1
+    - ska.engarchive ==4.47.4
+    - ska.file ==3.4.3
+    - ska.ftp ==3.5.2
+    - ska.numpy ==3.8.2
+    - ska.matplotlib ==3.11.3
+    - ska.parsecm ==3.3.3
+    - ska_helpers ==0.1.0
+    - ska_path ==3.1.1
+    - ska_sync ==4.6.0
+    - ska.quatutil ==3.3.2
+    - ska.shell ==3.4.0
+    - ska.sun ==3.5.2
+    - ska.tdb ==3.5.2
+    - sparkles ==4.4.0
+    - starcheck ==13.5.1
+    - tables3_api ==0.1.1
+    - testr ==4.3.1
+    - xija ==4.16.0
