@@ -40,7 +40,7 @@ BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*#", b)]
 BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*$", b)]
 
 if platform.uname().system == "Darwin":
-    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
+    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
 
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
