@@ -23,10 +23,10 @@ requirements:
     - pip
     - python
     - setuptools
-    - numpy ==1.12.1
+    - numpy
   run:
     - python
-    - numpy ==1.12.1
+    - numpy
 
 test:
   requires:
