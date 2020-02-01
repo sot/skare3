@@ -4,9 +4,8 @@ package:
 
 
 build:
+  script: python setup.py install
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/ska_sync
@@ -15,9 +14,10 @@ source:
 
 requirements:
   build:
-    - pip
     - python
     - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
   run:
     - python
     - yaml

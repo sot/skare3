@@ -4,10 +4,9 @@ package:
 
 
 build:
+  script: python setup.py install
   noarch: python
   preserve_egg_dir: yes
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Ska.Matplotlib
@@ -16,12 +15,10 @@ source:
 
 requirements:
   build:
-    - pip <10.0
     - python
-    - six
-    - matplotlib
-    - chandra.time
-    - numpy
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
 
   run:
     - python

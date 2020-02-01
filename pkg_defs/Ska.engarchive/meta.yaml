@@ -17,8 +17,9 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
-    - six
-    - numpy
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
 
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.

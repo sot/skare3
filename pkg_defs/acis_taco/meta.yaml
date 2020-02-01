@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  script: python setup.py install
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/acis_taco
@@ -15,6 +16,9 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
 
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
