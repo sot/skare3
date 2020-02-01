@@ -31,7 +31,7 @@ parser.add_argument("--force",
 args = parser.parse_args()
 
 PERL = '5.26.2'
-NUMPY = '1.12'
+NUMPY = '1.18'
 raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
