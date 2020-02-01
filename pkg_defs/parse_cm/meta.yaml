@@ -36,5 +36,5 @@ test:
     - parse_cm
 
 about:
-  home: git@github.com:sot/parse_cm
+  home: https://github.com/sot/parse_cm
 
