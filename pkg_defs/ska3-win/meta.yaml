@@ -84,7 +84,7 @@ requirements:
    - pyparsing
    - pyqt
    - pytest
-   - python =3.6.2
+   - python =3.8.1
    - python-dateutil
    - pytz
    - pyyaml
