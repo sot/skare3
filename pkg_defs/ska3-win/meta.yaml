@@ -47,7 +47,6 @@ requirements:
    - ska_path
    - ska_sync
    - pyyaks
-   - tables3_api
    - testr
    - xija
 

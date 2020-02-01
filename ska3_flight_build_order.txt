@@ -12,7 +12,6 @@ Ska.File
 pyyaks
 ska_path
 testr
-tables3_api
 Chandra.Time
 Ska.Matplotlib
 Ska.tdb

@@ -29,7 +29,6 @@ requirements:
     - ipython
     - ipyparallel
     - pytables
-    - tables3_api
     - chandra.time
     - ska.numpy
     - ska.dbi

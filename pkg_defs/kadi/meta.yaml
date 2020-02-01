@@ -27,7 +27,6 @@ requirements:
     - pytables
     - configobj
     - requests
-    - tables3_api
     - django >=3.0.1
     - pyyaks
     - ska.dbi

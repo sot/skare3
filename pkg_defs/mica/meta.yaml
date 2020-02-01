@@ -38,7 +38,6 @@ requirements:
     - agasc
     - ska.dbi
     - pytables
-    - tables3_api
     - quaternion
     - ska.quatutil
     - ska.matplotlib

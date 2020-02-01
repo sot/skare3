@@ -24,7 +24,6 @@ requirements:
   run:
     - python
     - six
-    - tables3_api
     - pytables
     - numpy
     - numexpr
