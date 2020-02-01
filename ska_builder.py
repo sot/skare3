@@ -11,7 +11,7 @@ import platform
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
 parser.add_argument("package", type=str, nargs="?",
-                    help="Package to build.  All updated packages will be built if no package supplied")
+                    help="Package to build (default=build all packages)")
 parser.add_argument("--tag", type=str,
                     help="Optional tag, branch, or commit to build for single package build"
                          " (default is tag with most recent commit)")
@@ -97,9 +97,9 @@ def build_package(name):
 
     try:
         version = subprocess.check_output(['python', 'setup.py', '--version'],
-                                           cwd = os.path.join(SRC_DIR, name))
+                                          cwd=os.path.join(SRC_DIR, name))
         version = version.decode().split()[-1].strip()
-    except:
+    except Exception:
         version = ''
     os.environ['SKA_PKG_VERSION'] = version
     print(f'  - SKA_PKG_VERSION={version}')
@@ -132,7 +132,7 @@ def build_list_packages():
         try:
             build_one_package(pkg_name)
         # If there's a failure, confirm before continuing
-        except:
+        except Exception:
             print(f'{pkg_name} failed, continue anyway (y/n)?')
             if input().lower().strip().startswith('y'):
                 failures.append(pkg_name)
