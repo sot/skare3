@@ -26,12 +26,18 @@ parser.add_argument("--test",
 parser.add_argument("--force",
                     action="store_true",
                     help="Force build of package even if it exists")
-
+parser.add_argument("--python",
+                    default="3.8",
+                    help="Target version of Python (default=3.8)")
+parser.add_argument("--perl",
+                    default="5.26.2",
+                    help="Target version of Perl (default=5.26.2)")
+parser.add_argument("--numpy",
+                    default="1.18",
+                    help="Build version of NumPy")
 
 args = parser.parse_args()
 
-PERL = '5.26.2'
-NUMPY = '1.18'
 raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
@@ -101,8 +107,10 @@ def build_package(name):
                 "--croot", BUILD_DIR,
                 "--old-build-string",
                 "--no-anaconda-upload",
-                "--numpy", NUMPY,
-                "--perl", PERL]
+                "--python", args.python,
+                "--numpy", args.numpy,
+                "--perl", args.perl]
+
     if not args.test:
         cmd_list.append("--no-test")
     if not args.force:
