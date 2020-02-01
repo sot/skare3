@@ -42,13 +42,6 @@ BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*$", b)]
 if platform.uname().system == "Darwin":
     os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
 
-if platform.uname().machine == 'i686':
-    # Skip starcheck and ska3-perl on 32 bit
-    for pkg in ['starcheck', 'ska3-perl']:
-        if pkg in BUILD_LIST:
-            BUILD_LIST.remove(pkg)
-
-
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
 
