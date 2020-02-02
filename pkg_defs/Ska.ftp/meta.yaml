@@ -26,7 +26,6 @@ requirements:
   run:
     - python
     - six
-    - pycrypto
     - paramiko
     - testr
 
