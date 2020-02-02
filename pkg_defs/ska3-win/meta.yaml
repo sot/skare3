@@ -70,7 +70,7 @@ requirements:
    - networkx
    - nose
    - numba
-   - numpy =1.12.1
+   - numpy
    - openssl
    - pandas
    - paramiko

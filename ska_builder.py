@@ -92,6 +92,9 @@ def clone_repo(name, tag=None):
 
 
 def build_package(name):
+    print('*' * 80)
+    print(name)
+    print()
     pkg_path = os.path.join(pkg_defs_path, name)
 
     try:
@@ -117,6 +120,7 @@ def build_package(name):
         cmd_list += ["--skip-existing"]
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
+    print('*' * 80)
     subprocess.run(cmd_list, check=True).check_returncode()
 
 

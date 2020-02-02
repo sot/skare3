@@ -28,10 +28,14 @@ requirements:
     - six
     - paramiko
     - testr
+    - ska_helpers
 
 test:
   imports:
     - Ska.ftp
+
+  requires:
+    - pyyaks
 
 
 about:

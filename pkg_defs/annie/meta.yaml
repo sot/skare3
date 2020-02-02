@@ -37,7 +37,6 @@ requirements:
     - ska.engarchive
     - mica
     - testr
-    - llvmlite ==0.18.0
 
 test:
   imports:

@@ -67,7 +67,6 @@ requirements:
    - jupyter_client
    - jupyter_console
    - line_profiler
-   - llvmlite
    - lxml
    - matplotlib
    - nb_conda
