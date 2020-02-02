@@ -1,5 +1,7 @@
 #!/bin/bash
 
+mkdir ${PREFIX}/bin
+
 for file in flt_envs ska_envs.sh ska_envs.csh ska_version skare
    do
     cp -a ${RECIPE_DIR}/bin/${file} ${PREFIX}/bin
