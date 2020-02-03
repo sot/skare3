@@ -52,5 +52,6 @@ requirements:
     - ska.sun
     - ska.tdb
     - sparkles
+    - starcheck
     - testr
     - xija
