@@ -1,18 +1,9 @@
-pytest-arraydiff
-pytest-doctestplus
-pytest-openfiles
-pytest-remotedata
-pytest-astropy
-astropy
-astropy-healpix
-widgetsnbextension
-ipywidgets
+ska_helpers
+testr
 Ska.Shell
 Ska.File
 pyyaks
 ska_path
-testr
-tables3_api
 Chandra.Time
 Ska.Matplotlib
 Ska.tdb
@@ -56,3 +47,4 @@ ska3-flight
 ska3-matlab
 ska3-dev
 ska3-perl
+ska3-flight-latest

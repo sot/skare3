@@ -3,9 +3,8 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/testr
@@ -18,16 +17,20 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
-    - pip
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - ska.file
-    - ska.shell
-    - pyyaks
-    - astropy
     - pytest
+    # These are dependencies in the run_testr script but do not make these
+    # dependencies for every single package that imports testr in setup.py.
+    # - ska.file
+    # - ska.shell
+    # - pyyaks
+    # - astropy
 
 test:
   imports:

@@ -47,7 +47,6 @@ requirements:
    - ska_path
    - ska_sync
    - pyyaks
-   - tables3_api
    - testr
    - xija
 
@@ -71,7 +70,7 @@ requirements:
    - networkx
    - nose
    - numba
-   - numpy =1.12.1
+   - numpy
    - openssl
    - pandas
    - paramiko
@@ -85,7 +84,7 @@ requirements:
    - pyparsing
    - pyqt
    - pytest
-   - python =3.6.2
+   - python =3.8.1
    - python-dateutil
    - pytz
    - pyyaml

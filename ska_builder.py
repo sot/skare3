@@ -11,7 +11,7 @@ import platform
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
 parser.add_argument("package", type=str, nargs="?",
-                    help="Package to build.  All updated packages will be built if no package supplied")
+                    help="Package to build (default=build all packages)")
 parser.add_argument("--tag", type=str,
                     help="Optional tag, branch, or commit to build for single package build"
                          " (default is tag with most recent commit)")
@@ -26,12 +26,18 @@ parser.add_argument("--test",
 parser.add_argument("--force",
                     action="store_true",
                     help="Force build of package even if it exists")
-
+parser.add_argument("--python",
+                    default="3.8",
+                    help="Target version of Python (default=3.8)")
+parser.add_argument("--perl",
+                    default="5.26.2",
+                    help="Target version of Perl (default=5.26.2)")
+parser.add_argument("--numpy",
+                    default="1.18",
+                    help="Build version of NumPy")
 
 args = parser.parse_args()
 
-PERL = '5.26.2'
-NUMPY = '1.12'
 raw_build_list = open(args.build_list).read()
 BUILD_LIST = raw_build_list.split("\n")
 # Remove any that are commented out for some reason
@@ -40,14 +46,7 @@ BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*#", b)]
 BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*$", b)]
 
 if platform.uname().system == "Darwin":
-    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
-
-if platform.uname().machine == 'i686':
-    # Skip starcheck and ska3-perl on 32 bit
-    for pkg in ['starcheck', 'ska3-perl']:
-        if pkg in BUILD_LIST:
-            BUILD_LIST.remove(pkg)
-
+    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
 
 ska_conda_path = os.path.abspath(os.path.dirname(__file__))
 pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
@@ -93,13 +92,16 @@ def clone_repo(name, tag=None):
 
 
 def build_package(name):
+    print('*' * 80)
+    print(name)
+    print()
     pkg_path = os.path.join(pkg_defs_path, name)
 
     try:
         version = subprocess.check_output(['python', 'setup.py', '--version'],
-                                           cwd = os.path.join(SRC_DIR, name))
+                                          cwd=os.path.join(SRC_DIR, name))
         version = version.decode().split()[-1].strip()
-    except:
+    except Exception:
         version = ''
     os.environ['SKA_PKG_VERSION'] = version
     print(f'  - SKA_PKG_VERSION={version}')
@@ -108,14 +110,17 @@ def build_package(name):
                 "--croot", BUILD_DIR,
                 "--old-build-string",
                 "--no-anaconda-upload",
-                "--numpy", NUMPY,
-                "--perl", PERL]
+                "--python", args.python,
+                "--numpy", args.numpy,
+                "--perl", args.perl]
+
     if not args.test:
         cmd_list.append("--no-test")
     if not args.force:
         cmd_list += ["--skip-existing"]
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
+    print('*' * 80)
     subprocess.run(cmd_list, check=True).check_returncode()
 
 
@@ -132,7 +137,7 @@ def build_list_packages():
         try:
             build_one_package(pkg_name)
         # If there's a failure, confirm before continuing
-        except:
+        except Exception:
             print(f'{pkg_name} failed, continue anyway (y/n)?')
             if input().lower().strip().startswith('y'):
                 failures.append(pkg_name)

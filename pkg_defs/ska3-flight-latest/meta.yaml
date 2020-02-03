@@ -1,0 +1,57 @@
+package:
+  name: ska3-flight-latest
+  version: 2020.1
+
+build:
+  noarch: generic
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+#    - acisfp_check
+#    - acis_thermal_check
+#    - backstop_history
+#    - dea_check
+#    - dpa_check
+#    - jplephem
+#    - psmc_check
+    - ska3-template
+    - acdc
+    - agasc
+    - acis_taco
+    - annie
+    - chandra_aca
+    - chandra.cmd_states
+    - chandra.maneuver
+    - chandra.time
+    - cxotime
+    - find_attitude
+    - hopper
+    - kadi
+    - maude
+    - mica
+    - parse_cm
+    - proseco
+    - pyyaks
+    - quaternion
+    - ska.arc5gl
+    - ska.astro
+    - ska.dbi
+    - ska.engarchive
+    - ska.file
+    - ska.ftp
+    - ska.numpy
+    - ska.matplotlib
+    - ska.parsecm
+    - ska.quatutil
+    - ska.shell
+    - ska_path
+    - ska_helpers
+    - ska_sync
+    - ska.sun
+    - ska.tdb
+    - sparkles
+    - starcheck
+    - testr
+    - xija

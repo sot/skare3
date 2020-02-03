@@ -3,6 +3,7 @@ package:
   version: 2020.01.13
 
 build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   noarch: generic
 
 requirements:
@@ -10,9 +11,9 @@ requirements:
   # will be installed automatically whenever the package is installed.
   build:
     - python
-    - pip
-    - gitpython
-    - git
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
   run:
     - cython
     - python
