@@ -62,6 +62,7 @@ def clone_repo(name, tag=None):
             return None
         # It isn't clean yaml at this point, so just extract the string we want after "home:"
         url = re.search("home:\s*(\S+)", meta).group(1)
+        url = url.replace('git@github.com:', 'https://github.com/')
         repo = git.Repo.clone_from(url, clone_path)
         print("  - Cloned from url {}".format(url))
     else:
