@@ -21,6 +21,8 @@ parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
                     help="List of packages to build (in order)")
 parser.add_argument("--force", action="store_true",
                     help="Ignore already built packages, build them again.")
+parser.add_argument("--github-https", action="store_true", default=False,
+                    help="Authenticate using basic auth and https. Default is ssh.")
 
 args = parser.parse_args()
 
@@ -50,7 +52,6 @@ BUILD_DIR = os.path.abspath(os.path.join(args.build_root, "builds"))
 SRC_DIR = os.path.abspath(os.path.join(args.build_root, "src"))
 os.environ["SKA_TOP_SRC_DIR"] = SRC_DIR
 
-
 def clone_repo(name, tag=None):
     print("  - Cloning or updating source source %s." % name)
     clone_path = os.path.join(SRC_DIR, name)
@@ -62,7 +63,10 @@ def clone_repo(name, tag=None):
             return None
         # It isn't clean yaml at this point, so just extract the string we want after "home:"
         url = re.search("home:\s*(\S+)", meta).group(1)
-        url = url.replace('git@github.com:', 'https://github.com/')
+        if args.github_https:
+            url = url.replace('git@github.com:', 'https://github.com/')
+        else:
+            url = url.replace('https://github.com/', 'git@github.com:')
         repo = git.Repo.clone_from(url, clone_path)
         print("  - Cloned from url {}".format(url))
     else:
