@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   noarch: python
   script_env:
     - SKA_TOP_SRC_DIR
@@ -31,7 +32,6 @@ requirements:
     - pyyaks
     - quaternion
     - ska.quatutil
-    - sherpa
     - ska_helpers
 
 test:
