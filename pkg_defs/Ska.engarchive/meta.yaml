@@ -37,6 +37,7 @@ requirements:
     - testr
     - jinja2
     - pyyaks
+    - pyyaml
 
 test:
   imports:

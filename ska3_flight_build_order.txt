@@ -48,3 +48,4 @@ ska3-matlab
 ska3-dev
 ska3-perl
 ska3-flight-latest
+ska3-core-latest
