@@ -1,6 +1,7 @@
 *.egg-info
 __pycache__
 /builds
+/builds-*
 .vscode
 /src
 /shiny
