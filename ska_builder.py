@@ -121,7 +121,8 @@ def build_package(name):
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
     print('*' * 80)
-    subprocess.run(cmd_list, check=True).check_returncode()
+    is_windows = os.name == 'nt'  # Need shell below for Windows
+    subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
 def build_one_package(name, tag=None):
