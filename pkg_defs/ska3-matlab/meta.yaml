@@ -1,6 +1,6 @@
 package:
   name: ska3-matlab
-  version: 2020.02.19
+  version: 2020.02.27
 
 build:
   noarch: generic
@@ -56,4 +56,4 @@ requirements:
     - starcheck ==13.5.1
     - tables3_api ==0.1.1
     - testr ==4.3.1
-    - xija ==4.17.0
+    - xija ==4.17.1
