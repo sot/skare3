@@ -9,13 +9,12 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-#    - acisfp_check
-#    - acis_thermal_check
-#    - backstop_history
-#    - dea_check
-#    - dpa_check
-#    - jplephem
-#    - psmc_check
+    - acisfp_check
+    - acis_thermal_check
+    - backstop_history
+    - dea_check
+    - dpa_check
+    - psmc_check
     - ska3-template
     - acdc
     - agasc

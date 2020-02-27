@@ -12,16 +12,14 @@ requirements:
    - beautifulsoup4
    - bokeh
    - cython
-   - django >3.0
-   # - git
+   - django >=3.0
    - gitpython
    - h5py
-   # - hdf5
    - ipython
    - jinja2
+   - jplephem
    - jupyter
-   # - jupyter_client
-   # - jupyter_console
+   - jupyterlab
    - line_profiler
    - lxml
    - matplotlib
@@ -33,25 +31,20 @@ requirements:
    - numexpr
    - numpy
    - numpydoc
-   # - openssl
    - pandas
    - autopep8
    - pillow
-   # - pip
+   - pip
    - flake8
    - pylint
    - pyyaml
    - qt
-   # - qtconsole
-   # - readline
    - requests
-   # - runipy
    - scikit-learn
    - scipy
-   # - setuptools
+   - setuptools
    - six
    - sphinx
-   # - sqlite
-   # - tk
+   - sqlite
+   - tk
    - yaml
-   # - zeromq
