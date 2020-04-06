@@ -35,7 +35,7 @@ requirements:
     - proseco ==4.8.0
     - psmc_check ==1.3.1
     - pyyaks ==4.4.1
-    - quaternion ==3.5.1
+    - quaternion ==3.5.2
     - ska.arc5gl ==3.1.3
     - ska.astro ==3.2.3
     - ska.dbi ==4.0.1
