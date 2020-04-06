@@ -29,7 +29,7 @@ requirements:
     - scipy
     - matplotlib
     - ipython
-    - PyQt5
+    - pyqt
     - qtconsole
     - astropy
     - testr
@@ -38,8 +38,8 @@ requirements:
     - mica
     - cxotime
     - kadi
-    - Quaternion
-    - Ska
+    - quaternion
+    - ska.matplotlib
 
 test:
   imports:
