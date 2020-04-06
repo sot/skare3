@@ -11,31 +11,31 @@ requirements:
   run:
     - ska3-core ==2020.01.10
     - ska3-template ==2019.09.03
-    - acdc ==4.4.1
-    - agasc ==4.8.0
-    - acisfp_check ==2.7.2
+    - acdc ==4.5.0
+    - agasc ==4.8.1
+    - acisfp_check ==3.0.0
     - acis_taco ==4.1.0
-    - acis_thermal_check ==2.9.2
-    - annie ==0.9.1
-    - backstop_history ==1.1.2
-    - chandra_aca ==4.28.1
+    - acis_thermal_check ==3.0.0
+    - annie ==0.10.1
+    - backstop_history ==1.1.3
     - chandra.cmd_states ==3.15.1
     - chandra.maneuver ==3.7.2
     - chandra.time ==3.20.4
+    - chandra_aca ==4.29.1
     - cxotime ==3.1.1
-    - dea_check ==2.3.2
-    - dpa_check ==2.5.2
+    - dea_check ==3.0.0
+    - dpa_check ==3.0.0
     - find_attitude ==3.3.2
     - hopper ==4.4.1
     - jplephem ==2.8
     - kadi ==5.0.1
     - maude ==3.3.1
     - mica ==4.20.0
-    - parse_cm ==3.5.1
-    - proseco ==4.7.2
-    - psmc_check ==1.3.1
-    - pyyaks ==4.4.1
-    - quaternion ==3.5.1
+    - parse_cm ==3.5.2
+    - proseco ==4.8.0
+    - psmc_check ==3.0.0
+    - pyyaks ==4.4.2
+    - quaternion ==3.5.2
     - ska.arc5gl ==3.1.3
     - ska.astro ==3.2.3
     - ska.dbi ==4.0.1
@@ -52,8 +52,8 @@ requirements:
     - ska.shell ==3.4.0
     - ska.sun ==3.5.2
     - ska.tdb ==3.5.2
-    - sparkles ==4.4.0
+    - sparkles ==4.6.0
     - starcheck ==13.5.1
     - tables3_api ==0.1.1
     - testr ==4.3.1
-    - xija ==4.16.0
+    - xija ==4.18.2
