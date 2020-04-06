@@ -18,7 +18,7 @@ requirements:
     - acis_thermal_check ==2.9.2
     - annie ==0.9.1
     - backstop_history ==1.1.2
-    - chandra_aca ==4.28.1
+    - chandra_aca ==4.29.0
     - chandra.cmd_states ==3.15.1
     - chandra.maneuver ==3.7.2
     - chandra.time ==3.20.4
