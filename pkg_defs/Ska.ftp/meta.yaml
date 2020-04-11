@@ -21,6 +21,7 @@ requirements:
     - pip <10.0
     - python
     - setuptools
+    - setuptools_scm
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
