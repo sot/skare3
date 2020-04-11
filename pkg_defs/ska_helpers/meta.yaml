@@ -15,13 +15,12 @@ source:
 
 requirements:
   build:
-    - pip
     - python
     - pytest
+    - setuptools
     - setuptools_scm
   run:
     - python
-    - setuptools_scm
 
 
 about:

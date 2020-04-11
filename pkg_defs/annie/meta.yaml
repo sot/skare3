@@ -18,8 +18,8 @@ requirements:
   # listed explicitly if they are required.
   build:
     - python
-    - pip
     - setuptools
+    - setuptools_scm
     - chandra_aca
     - mica
     - testr
