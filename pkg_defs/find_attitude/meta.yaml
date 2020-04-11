@@ -33,7 +33,7 @@ requirements:
     - quaternion
     - ska.quatutil
     - sherpa
-    - ska_helpesr
+    - ska_helpers
 
 test:
   imports:
