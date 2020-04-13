@@ -22,6 +22,7 @@ requirements:
     - matplotlib
     - chandra.time
     - numpy
+    - setuptools_scm
 
   run:
     - python

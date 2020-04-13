@@ -1,1 +1,1 @@
-pip install --no-deps --verbose --no-binary :all: --no-index  .
+python setup.py install --single-version-externally-managed --record=record.txt

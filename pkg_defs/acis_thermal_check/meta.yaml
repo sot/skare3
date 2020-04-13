@@ -17,10 +17,10 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - pip
     - python
     - six
     - setuptools
+    - setuptools_scm
     # Looks like this needs to import acis_thermal_check.main to install
     - numpy
     - matplotlib
