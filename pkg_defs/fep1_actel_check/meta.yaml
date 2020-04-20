@@ -1,0 +1,40 @@
+package:
+  name: fep1_actel_check
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  noarch: python
+  script_env:
+    - SKA_TOP_SRC_DIR
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/fep1_actel_check
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - matplotlib
+    - dpa_check
+    - acis_thermal_check
+    - ska_helpers
+    - testr
+
+test:
+  imports:
+    - fep1_actel_check
+
+about:
+  home: https://github.com/acisops/fep1_actel_check
+
