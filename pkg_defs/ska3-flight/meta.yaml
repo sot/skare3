@@ -11,6 +11,7 @@ requirements:
   run:
     - ska3-core ==2020.01.10
     - ska3-template ==2019.09.03
+    - aca_view ==0.3.0
     - acdc ==4.5.0
     - agasc ==4.8.1
     - acisfp_check ==3.0.0
