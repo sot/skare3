@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2020.04.24
+  version: 2020.4
 
 build:
   noarch: generic
