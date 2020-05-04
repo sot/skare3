@@ -18,15 +18,15 @@ assignees: ''
    - [ ] noarch
    - [ ] linux 64
    - [ ] mac 64
-- [ ] Packages copied to test channel
-- [ ] test status documented
-- [ ] get approval 
-- [ ] Individual packages moved to main conda channel
+- [ ] Copy Packages to test channel
+- [ ] Document test status
+- [ ] Get approval
+- [ ] Move individual packages to main conda channel
 - [ ] Update production systems:
    - [ ] announce to aca@cfa
-   - [ ] ska3-flight package moved to main conda channel
-   - [ ] update aca@HEAD
-   - [ ] run testr@HEAD
-   - [ ] update sot@cheru
-   - [ ] update sot@chimchim
+   - [ ] move ska3-flight package to main conda channel
+   - [ ] update HEAD ska3/flight as aca user
+   - [ ] run ska_testr on HEAD
+   - [ ] update ska3/flight on cheru as sot user
+   - [ ] update ska3/flight on chimchim as SOT user
    - [ ] announce to chandracode and mpweekly
