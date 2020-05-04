@@ -34,9 +34,9 @@ requirements:
     - jplephem ==2.8
     - kadi ==5.0.1
     - maude ==3.3.1
-    - mica ==4.21.0
+    - mica ==4.21.1
     - parse_cm ==3.5.2
-    - proseco ==4.8.0
+    - proseco ==4.8.1
     - psmc_check ==3.0.0
     - pyyaks ==4.4.2
     - quaternion ==3.5.2
