@@ -198,6 +198,6 @@ requirements:
 
   # new additions
    - docxtpl ==0.6.3
-   - jira ==2.0.0
+   - jira ==2.0.0 # [not linux32]
    - mpld3 ==0.3
    - python-docx ==0.8.7
