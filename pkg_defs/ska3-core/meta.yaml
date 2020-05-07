@@ -201,3 +201,11 @@ requirements:
    - jira ==2.0.0 # [not linux32]
    - mpld3 ==0.3
    - python-docx ==0.8.7
+  # jira dependecies
+   - blinker ==1.4
+   - defusedxml ==0.6.0
+   - oauthlib ==3.1.0
+   - pbr ==5.4.4
+   - pyjwt ==1.7.1
+   - requests-oauthlib ==1.3.0
+   - requests-toolbelt ==0.9.1
