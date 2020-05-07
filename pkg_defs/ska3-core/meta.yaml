@@ -2,6 +2,9 @@ package:
   name: ska3-core
   version: 2020.5
 
+build:
+  number: 1
+
 requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
