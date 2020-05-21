@@ -15,7 +15,7 @@ jobs:
       run: docker pull docker.pkg.github.com/sot/skare3/centos5-builder:latest
     - name: Build
       id: build
-      run: >
+      run: |
         docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-template --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
         docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-core --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
         docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-flight --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
