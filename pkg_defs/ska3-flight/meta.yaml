@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2020.4
+  version: 2020.5
 
 build:
   noarch: generic
@@ -9,7 +9,7 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-    - ska3-core ==2020.01.10
+    - ska3-core ==2020.5
     - ska3-template ==2019.09.03
     - aca_view ==0.3.0
     - acdc ==4.5.0
@@ -34,9 +34,9 @@ requirements:
     - jplephem ==2.8
     - kadi ==5.0.1
     - maude ==3.3.1
-    - mica ==4.21.0
+    - mica ==4.21.1
     - parse_cm ==3.5.2
-    - proseco ==4.8.0
+    - proseco ==4.8.1
     - psmc_check ==3.0.0
     - pyyaks ==4.4.2
     - quaternion ==3.5.2

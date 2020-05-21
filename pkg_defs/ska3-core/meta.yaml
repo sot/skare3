@@ -1,6 +1,9 @@
 package:
   name: ska3-core
-  version: 2020.01.10
+  version: 2020.5
+
+build:
+  number: 1
 
 requirements:
   # Packages required to run the package. These are the dependencies that
@@ -195,3 +198,17 @@ requirements:
    - zeromq ==4.1.5 # [linux]
    - zlib ==1.2.8 # [linux32]
    - zlib ==1.2.11 # [linux64 or osx]
+
+  # new additions
+   - docxtpl ==0.6.3
+   - jira ==2.0.0 # [not linux32]
+   - mpld3 ==0.3
+   - python-docx ==0.8.7
+  # jira dependecies
+   - blinker ==1.4 # [not linux32]
+   - defusedxml ==0.6.0 # [not linux32]
+   - oauthlib ==3.1.0 # [not linux32]
+   - pbr ==5.4.4 # [not linux32]
+   - pyjwt ==1.7.1 # [not linux32]
+   - requests-oauthlib ==1.3.0 # [not linux32]
+   - requests-toolbelt ==0.9.1 # [not linux32]
