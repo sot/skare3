@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2020.5
+  version: 2020.6
 
 build:
   noarch: generic
@@ -20,9 +20,9 @@ requirements:
     - annie ==0.10.1
     - backstop_history ==1.1.3
     - bep_pcb_check ==3.0.0
-    - chandra.cmd_states ==3.15.1
-    - chandra.maneuver ==3.7.2
-    - chandra.time ==3.20.4
+    - chandra.cmd_states ==3.15.2
+    - chandra.maneuver ==3.7.3
+    - chandra.time ==3.20.6
     - chandra_aca ==4.29.1
     - cxotime ==3.1.1
     - dea_check ==3.0.0
@@ -32,7 +32,7 @@ requirements:
     - fep1_mong_check ==3.0.0
     - hopper ==4.4.1
     - jplephem ==2.8
-    - kadi ==5.0.1
+    - kadi ==5.1.0
     - maude ==3.3.1
     - mica ==4.21.1
     - parse_cm ==3.5.2
@@ -40,22 +40,22 @@ requirements:
     - psmc_check ==3.0.0
     - pyyaks ==4.4.2
     - quaternion ==3.5.2
-    - ska.arc5gl ==3.1.3
-    - ska.astro ==3.2.3
-    - ska.dbi ==4.0.1
-    - ska.engarchive ==4.47.4
-    - ska.file ==3.4.3
-    - ska.ftp ==3.5.2
-    - ska.numpy ==3.8.2
-    - ska.matplotlib ==3.11.3
-    - ska.parsecm ==3.3.3
-    - ska_helpers ==0.1.0
+    - ska.arc5gl ==3.1.4
+    - ska.astro ==3.2.4
+    - ska.dbi ==4.0.2
+    - ska.engarchive ==4.48.0
+    - ska.file ==3.4.4
+    - ska.ftp ==3.5.3
+    - ska.numpy ==3.8.4
+    - ska.matplotlib ==3.11.4
+    - ska.parsecm ==3.3.4
+    - ska_helpers ==0.1.1
     - ska_path ==3.1.1
     - ska_sync ==4.6.0
-    - ska.quatutil ==3.3.2
-    - ska.shell ==3.4.0
-    - ska.sun ==3.5.2
-    - ska.tdb ==3.5.2
+    - ska.quatutil ==3.3.3
+    - ska.shell ==3.4.1
+    - ska.sun ==3.5.3
+    - ska.tdb ==3.5.3
     - sparkles ==4.6.0
     - starcheck ==13.5.1
     - tables3_api ==0.1.1
