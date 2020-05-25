@@ -16,7 +16,7 @@ requirements:
     - agasc ==4.8.1
     - acisfp_check ==3.0.0
     - acis_taco ==4.1.0
-    - acis_thermal_check ==3.0.0
+    - acis_thermal_check ==3.1.0
     - annie ==0.10.1
     - backstop_history ==1.1.3
     - bep_pcb_check ==3.0.0
@@ -32,7 +32,7 @@ requirements:
     - fep1_mong_check ==3.0.0
     - hopper ==4.4.1
     - jplephem ==2.8
-    - kadi ==5.1.0
+    - kadi ==5.2.0
     - maude ==3.3.1
     - mica ==4.21.1
     - parse_cm ==3.5.2
@@ -57,7 +57,7 @@ requirements:
     - ska.sun ==3.5.3
     - ska.tdb ==3.5.3
     - sparkles ==4.6.0
-    - starcheck ==13.5.1
+    - starcheck ==13.6.0
     - tables3_api ==0.1.1
     - testr ==4.3.1
     - xija ==4.18.2
