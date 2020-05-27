@@ -66,3 +66,11 @@ jobs:
         gdrive --batch upload ./builds/osx-64 /ska3/conda-test-releases --drive cxc_ops
       env:
         GOOGLE_DRIVE_CREDENTIALS: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+
+  update-repo:
+    needs: [build-linux, build-macos]
+    runs-on: head
+    name: Update repo
+    steps:
+    - name: Update repo step
+      run: sync-conda-repository-test.sh
