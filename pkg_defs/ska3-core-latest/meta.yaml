@@ -4,7 +4,6 @@ package:
 
 requirements:
   run:
-   # - sherpa (not yet for Python 3.8)
    - astropy
    - astropy-healpix
    - beautifulsoup4
@@ -49,6 +48,7 @@ requirements:
    - scipy
    - setuptools
    - setuptools_scm
+   - sherpa # [not win]
    - six
    - sphinx
    - sqlalchemy # [win]
