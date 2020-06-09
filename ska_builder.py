@@ -33,7 +33,7 @@ parser.add_argument("--perl",
                     default="5.26.2",
                     help="Target version of Perl (default=5.26.2)")
 parser.add_argument("--numpy",
-                    default="1.12",
+                    default="1.18",
                     help="Build version of NumPy")
 parser.add_argument("--github-https", action="store_true", default=False,
                     help="Authenticate using basic auth and https. Default is ssh.")
