@@ -4,7 +4,7 @@ package:
 
 build:
   preserve_egg_dir: yes # (default no)
-  script: python setup.py install
+  script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Chandra.Time
