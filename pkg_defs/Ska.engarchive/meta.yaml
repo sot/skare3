@@ -4,7 +4,6 @@ package:
 
 build:
   noarch: python
-  preserve_egg_dir: yes # (default no)
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
