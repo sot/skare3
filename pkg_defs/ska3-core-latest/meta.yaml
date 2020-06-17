@@ -5,6 +5,7 @@ package:
 requirements:
   run:
    - astropy
+   - astropy-sphinx-theme
    - astropy-healpix
    - beautifulsoup4
    - bokeh
