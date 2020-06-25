@@ -22,10 +22,12 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
+    - cxotime
     - python
     - six
     - numpy
     - testr
+    - ska_helpers
 
 test:
   imports:
