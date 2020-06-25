@@ -93,7 +93,8 @@ def clone_repo(name, tag=None):
             print("  - Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
     else:
         repo.git.checkout(tag)
-        print("  - Checked out at {}".format(tag))
+        repo.remotes.origin.pull(tag)
+        print(f'  - Checked out at {tag} and pulled')
 
 
 def build_package(name):
