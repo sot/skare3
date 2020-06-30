@@ -93,7 +93,8 @@ def clone_repo(name, tag=None):
             print("  - Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
     else:
         repo.git.checkout(tag)
-        print("  - Checked out at {}".format(tag))
+        repo.remotes.origin.pull(tag)
+        print(f'  - Checked out at {tag} and pulled')
 
 
 def build_package(name):
@@ -137,11 +138,11 @@ def build_one_package(name, tag=None):
     print('')
 
 
-def build_list_packages():
+def build_list_packages(tag=None):
     failures = []
     for pkg_name in BUILD_LIST:
         try:
-            build_one_package(pkg_name)
+            build_one_package(pkg_name, tag)
         # If there's a failure, confirm before continuing
         except Exception:
             print(f'{pkg_name} failed, continue anyway (y/n)?')
@@ -154,13 +155,11 @@ def build_list_packages():
         raise ValueError("Packages {} failed".format(",".join(failures)))
 
 
-def build_all_packages():
-    build_list_packages()
+def build_all_packages(tag=None):
+    build_list_packages(tag)
 
 
 if getattr(args, 'package'):
     build_one_package(args.package, tag=args.tag)
 else:
-    if args.tag is not None:
-        raise ValueError("Cannot supply '--tag' without specific package'")
-    build_all_packages()
+    build_all_packages(args.tag)
