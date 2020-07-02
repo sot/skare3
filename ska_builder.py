@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import sys
 import os
 import subprocess
 import git
@@ -7,6 +8,7 @@ import re
 import argparse
 import platform
 import shutil
+from pathlib import Path
 
 
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
@@ -145,8 +147,26 @@ def build_package(name):
 
     if not args.test:
         cmd_list.append("--no-test")
-    if not args.force:
+
+    if args.force:
+        for path in Path(BUILD_DIR).glob(f'*/.cache/*/{name}-*'):
+            print(f'Removing {path}')
+            path.unlink()
+
+        sys_prefix = Path(sys.prefix)
+        if (sys_prefix.parent).name == 'envs':
+            # Building in a miniconda env, can find packages one dir up in pkgs
+            pkgs_dir = sys_prefix.parent.parent / 'pkgs'
+            for path in pkgs_dir.glob(f'{name}-*'):
+                print(f'Removing {path}')
+                if path.is_dir():
+                    shutil.rmtree(path)
+                else:
+                    path.unlink()
+
+    else:
         cmd_list += ["--skip-existing"]
+
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
     print('*' * 80)
