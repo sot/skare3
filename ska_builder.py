@@ -10,71 +10,57 @@ import platform
 import shutil
 from pathlib import Path
 
-
-parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
-
-parser.add_argument("package", type=str, nargs="?",
-                    help="Package to build (default=build all packages)")
-parser.add_argument("--tag", type=str,
-                    help="Optional tag, branch, or commit to build for single package build"
-                         " (default is tag with most recent commit)")
-parser.add_argument("--build-root", default=".", type=str,
-                    help="Path to root directory for output conda build packages."
-                         "Default: '.'")
-parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
-                    help="List of packages to build (in order)")
-parser.add_argument("--test",
-                    action="store_true",
-                    help="Run test during build process")
-parser.add_argument("--force",
-                    action="store_true",
-                    help="Force build of package even if it exists")
-parser.add_argument("--python",
-                    default="3.6",
-                    help="Target version of Python (default=3.6)")
-parser.add_argument("--perl",
-                    default="5.26.2",
-                    help="Target version of Perl (default=5.26.2)")
-parser.add_argument("--numpy",
-                    default="1.18",
-                    help="Build version of NumPy")
-parser.add_argument("--github-https", action="store_true", default=False,
-                    help="Authenticate using basic auth and https. Default is ssh.")
-parser.add_argument("--github-org",
-                    help="Use this org instead of org in meta (mostly for forked packages)")
+from astropy.table import Table
 
 
-args = parser.parse_args()
+def get_opt():
+    parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
-raw_build_list = open(args.build_list).read()
-BUILD_LIST = raw_build_list.split("\n")
-# Remove any that are commented out for some reason
-BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*#", b)]
-# And any that are just whitespace
-BUILD_LIST = [b for b in BUILD_LIST if not re.match(r"^\s*$", b)]
+    parser.add_argument('packages', metavar='package', type=str, nargs='*',
+                        help="Package to build (default=build all packages)")
+    parser.add_argument("--tag", type=str,
+                        help="Optional tag, branch, or commit to build for single package build"
+                            " (default is tag with most recent commit)")
+    parser.add_argument("--build-root", default=".", type=str,
+                        help="Path to root directory for output conda build packages."
+                            "Default: '.'")
+    parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
+                        help="List of packages to build (in order)")
+    parser.add_argument("--test",
+                        action="store_true",
+                        help="Run test during build process")
+    parser.add_argument("--force",
+                        action="store_true",
+                        help="Force build of package even if it exists")
+    parser.add_argument("--python",
+                        default="3.6",
+                        help="Target version of Python (default=3.6)")
+    parser.add_argument("--perl",
+                        default="5.26.2",
+                        help="Target version of Perl (default=5.26.2)")
+    parser.add_argument("--numpy",
+                        default="1.18",
+                        help="Build version of NumPy")
+    parser.add_argument("--github-https", action="store_true", default=False,
+                        help="Authenticate using basic auth and https. Default is ssh.")
+    parser.add_argument("--github-org",
+                        help="Use this org instead of org in meta (mostly for forked packages)")
 
-if platform.uname().system == "Darwin":
-    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
-
-ska_conda_path = os.path.abspath(os.path.dirname(__file__))
-pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
-
-BUILD_DIR = os.path.abspath(os.path.join(args.build_root, "builds"))
-SRC_DIR = os.path.abspath(os.path.join(args.build_root, "src"))
-os.environ["SKA_TOP_SRC_DIR"] = SRC_DIR
+    args = parser.parse_args()
+    return args
 
 
-def clone_repo(name, tag=None):
+pkg_defs_path = Path(__file__).parent / 'pkg_defs'
+
+
+def clone_repo(name, args):
+    tag = args.tag
     print("  - Cloning or updating source source %s." % name)
     clone_path = os.path.join(SRC_DIR, name)
 
-    if args.github_org and os.path.exists(clone_path):
-        print('Removing git clone because --github-org was supplied')
-        shutil.rmtree(clone_path)
-
     if not os.path.exists(clone_path):
-        metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
-        meta = open(metayml).read()
+        metayml = pkg_defs_path / name / "meta.yaml"
+        meta = metayml.read_text()
         has_git = re.search("SKA_PKG_VERSION", meta) or re.search("GIT_DESCRIBE_TAG", meta)
         if not has_git:
             return None
@@ -122,7 +108,7 @@ def clone_repo(name, tag=None):
         print(f'  - Checked out at {tag} and pulled')
 
 
-def build_package(name):
+def build_package(name, args):
     print('*' * 80)
     print(name)
     print()
@@ -138,7 +124,7 @@ def build_package(name):
     print(f'  - SKA_PKG_VERSION={version}')
 
     cmd_list = ["conda", "build", pkg_path,
-                "--croot", BUILD_DIR,
+                "--croot", str(BUILD_DIR),
                 "--old-build-string",
                 "--no-anaconda-upload",
                 "--python", args.python,
@@ -174,25 +160,16 @@ def build_package(name):
     subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
-def build_one_package(name, tag=None):
-    print("- Building package %s." % name)
-    clone_repo(name, tag)
-    build_package(name)
-    print('')
-
-    if args.github_org:
-        print('Removing git clone because --github-org was supplied')
-        clone_path = os.path.join(SRC_DIR, name)
-        shutil.rmtree(clone_path)
-
-
-def build_list_packages(tag=None):
+def build_list_packages(pkg_names, args):
     failures = []
-    for pkg_name in BUILD_LIST:
+    for pkg_name in pkg_names:
         try:
-            build_one_package(pkg_name, tag)
-        # If there's a failure, confirm before continuing
+            print("- Building package %s." % pkg_name)
+            clone_repo(pkg_name, args)
+            build_package(pkg_name, args)
+            print('')
         except Exception:
+            # If there's a failure, confirm before continuing
             print(f'{pkg_name} failed, continue anyway (y/n)?')
             if input().lower().strip().startswith('y'):
                 failures.append(pkg_name)
@@ -203,11 +180,31 @@ def build_list_packages(tag=None):
         raise ValueError("Packages {} failed".format(",".join(failures)))
 
 
-def build_all_packages(tag=None):
-    build_list_packages(tag)
+def main():
+    global BUILD_DIR
+    global SRC_DIR
+
+    args = get_opt()
+
+    BUILD_DIR = Path(args.build_root) / 'builds'
+    SRC_DIR = Path(args.build_root) / 'src'
+    os.environ["SKA_TOP_SRC_DIR"] = str(SRC_DIR)
+
+    if args.packages:
+        pkg_names = args.packages
+    else:
+        if args.build_list:
+            pkg_names_tbl = Table.read(args.build_list, format='ascii.no_header',
+                                       names=['pkg_name'])
+            pkg_names = sorted(pkg_names_tbl['pkg_name'].tolist())
+        else:
+            pkg_names = [str(pth) for pth in SRC_DIR.glob('*') if pth.is_dir()]
+
+    if platform.uname().system == "Darwin":
+        os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
+
+    build_list_packages(pkg_names, args)
 
 
-if getattr(args, 'package'):
-    build_one_package(args.package, tag=args.tag)
-else:
-    build_all_packages(args.tag)
+if __name__ == '__main__':
+    main()
