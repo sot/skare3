@@ -188,7 +188,7 @@ def main():
 
     BUILD_DIR = Path(args.build_root) / 'builds'
     SRC_DIR = Path(args.build_root) / 'src'
-    os.environ["SKA_TOP_SRC_DIR"] = str(SRC_DIR)
+    os.environ["SKA_TOP_SRC_DIR"] = str(SRC_DIR.absolute())
 
     if args.packages:
         pkg_names = args.packages
