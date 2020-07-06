@@ -191,6 +191,8 @@ def main():
         else:
             pkg_names = [str(pth) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()]
 
+    print(f'Building packages {pkg_names}')
+    
     if platform.uname().system == "Darwin":
         os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
 
