@@ -11,6 +11,8 @@ import shutil
 from pathlib import Path
 
 from astropy.table import Table
+import jinja2
+import yaml
 
 
 def get_opt():
@@ -60,12 +62,17 @@ def clone_repo(name, args):
 
     if not os.path.exists(clone_path):
         metayml = pkg_defs_path / name / "meta.yaml"
-        meta = metayml.read_text()
-        has_git = re.search("SKA_PKG_VERSION", meta) or re.search("GIT_DESCRIBE_TAG", meta)
+        meta_text = metayml.read_text()
+        has_git = re.search(r'SKA_PKG_VERSION|GIT_DESCRIBE_TAG', meta_text)
         if not has_git:
             return None
-        # It isn't clean yaml at this point, so just extract the string we want after "home:"
-        url = re.search(r"home:\s*(\S+)", meta).group(1)
+
+        if not args.repo_url:
+            # Stub out the jinja context variables
+            meta = yaml.safe_load(jinja2.Template(meta_text).render())
+            url = meta['about']['home']
+        else:
+            url = args.repo_url
 
         upstream_url = url
         if args.github_org:
