@@ -8,11 +8,14 @@ import argparse
 import platform
 import shutil
 from pathlib import Path
+import tempfile
 
 import git
 from astropy.table import Table
 import jinja2
 import yaml
+
+PKG_DEFS_PATH = Path(__file__).parent / 'pkg_defs'
 
 
 def get_opt():
@@ -52,51 +55,40 @@ def get_opt():
     return args
 
 
-pkg_defs_path = Path(__file__).parent / 'pkg_defs'
-
-
-def clone_repo(name, args):
+def clone_repo(name, args, src_dir):
     tag = args.tag
     print("  - Cloning or updating source source %s." % name)
-    clone_path = os.path.join(SRC_DIR, name)
+    clone_path = os.path.join(src_dir, name)
 
-    if not os.path.exists(clone_path):
-        metayml = pkg_defs_path / name / "meta.yaml"
-        meta_text = metayml.read_text()
-        has_git = re.search(r'SKA_PKG_VERSION|GIT_DESCRIBE_TAG', meta_text)
-        if not has_git:
-            return None
+    metayml = PKG_DEFS_PATH / name / "meta.yaml"
+    meta_text = metayml.read_text()
+    has_git = re.search(r'SKA_PKG_VERSION|GIT_DESCRIBE_TAG', meta_text)
+    if not has_git:
+        return None
 
-        if not args.repo_url:
-            # Stub out the jinja context variables
-            meta = yaml.safe_load(jinja2.Template(meta_text).render())
-            url = meta['about']['home']
-        else:
-            url = args.repo_url
+    # Stub out the jinja context variables and read meta.yaml
+    meta = yaml.safe_load(jinja2.Template(meta_text).render())
 
-        upstream_url = url
-        if args.github_org:
-            # Change GitHub org from existing to args.github_org for either of the two
-            # supported styles of GitHub repo URL.
-            url = re.sub(r'(https://github.com)/[^/]+/(.+)', fr'\1/{args.github_org}/\2', url)
-            url = re.sub(r'(git@github.com):[^/]+/(.+)', fr'\1:{args.github_org}/\2', url)
+    # Upstream (home) URL is for the tags
+    upstream_url = meta['about']['home']
 
+    # URL for cloning
+    if args.repo_url:
+        url = args.repo_url
+    else:
+        url = upstream_url
+        # Munge URL for different authentication if requested
         if args.github_https:
             url = url.replace('git@github.com:', 'https://github.com/')
         else:
             url = url.replace('https://github.com/', 'git@github.com:')
 
-        repo = git.Repo.clone_from(url, clone_path)
-        print("  - Cloned from url {}".format(url))
+    repo = git.Repo.clone_from(url, clone_path)
+    print("  - Cloned from url {}".format(url))
 
-        repo.create_remote('upstream', upstream_url)
-    else:
-        repo = git.Repo(clone_path)
-        repo.remotes.origin.fetch()
-        repo.remotes.upstream.fetch('--tags')
-        print("  - Updated repo in {}".format(clone_path))
-
-    assert not repo.is_dirty()
+    # Get tags from the upstream URL
+    repo.create_remote('upstream', upstream_url)
+    repo.remotes.upstream.fetch('--tags')
 
     # I think we want the commit/tag with the most recent date, though
     # if we actually want the most recently created tag, that would probably be
@@ -111,19 +103,18 @@ def clone_repo(name, args):
             print("  - Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
     else:
         repo.git.checkout(tag)
-        repo.remotes.origin.pull(tag)
         print(f'  - Checked out at {tag} and pulled')
 
 
-def build_package(name, args):
+def build_package(name, args, src_dir, build_dir):
     print('*' * 80)
     print(name)
     print()
-    pkg_path = os.path.join(pkg_defs_path, name)
+    pkg_path = os.path.join(PKG_DEFS_PATH, name)
 
     try:
         version = subprocess.check_output(['python', 'setup.py', '--version'],
-                                          cwd=os.path.join(SRC_DIR, name))
+                                          cwd=os.path.join(src_dir, name))
         version = version.decode().split()[-1].strip()
     except Exception:
         version = ''
@@ -131,7 +122,7 @@ def build_package(name, args):
     print(f'  - SKA_PKG_VERSION={version}')
 
     cmd_list = ["conda", "build", pkg_path,
-                "--croot", str(BUILD_DIR),
+                "--croot", str(build_dir),
                 "--old-build-string",
                 "--no-anaconda-upload",
                 "--python", args.python,
@@ -142,7 +133,7 @@ def build_package(name, args):
         cmd_list.append("--no-test")
 
     if args.force:
-        for path in Path(BUILD_DIR).glob(f'*/.cache/*/{name}-*'):
+        for path in Path(build_dir).glob(f'*/.cache/*/{name}-*'):
             print(f'Removing {path}')
             path.unlink()
 
@@ -167,13 +158,13 @@ def build_package(name, args):
     subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
-def build_list_packages(pkg_names, args):
+def build_list_packages(pkg_names, args, src_dir, build_dir):
     failures = []
     for pkg_name in pkg_names:
         try:
             print("- Building package %s." % pkg_name)
-            clone_repo(pkg_name, args)
-            build_package(pkg_name, args)
+            clone_repo(pkg_name, args, src_dir)
+            build_package(pkg_name, args, src_dir, build_dir)
             print('')
         except Exception:
             # If there's a failure, confirm before continuing
@@ -188,14 +179,7 @@ def build_list_packages(pkg_names, args):
 
 
 def main():
-    global BUILD_DIR
-    global SRC_DIR
-
     args = get_opt()
-
-    BUILD_DIR = Path(args.build_root) / 'builds'
-    SRC_DIR = Path(args.build_root) / 'src'
-    os.environ["SKA_TOP_SRC_DIR"] = str(SRC_DIR.absolute())
 
     if args.packages:
         pkg_names = args.packages
@@ -205,12 +189,16 @@ def main():
                                        names=['pkg_name'])
             pkg_names = sorted(pkg_names_tbl['pkg_name'].tolist())
         else:
-            pkg_names = [str(pth) for pth in SRC_DIR.glob('*') if pth.is_dir()]
+            pkg_names = [str(pth) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()]
 
     if platform.uname().system == "Darwin":
         os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
 
-    build_list_packages(pkg_names, args)
+    build_dir = Path(args.build_root) / 'builds'
+    with tempfile.TemporaryDirectory() as src_dir:
+        print(f'Using temporary directory {src_dir} for cloning')
+        os.environ["SKA_TOP_SRC_DIR"] = src_dir
+        build_list_packages(pkg_names, args, src_dir, build_dir)
 
 
 if __name__ == '__main__':
