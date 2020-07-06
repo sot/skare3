@@ -3,13 +3,13 @@
 import sys
 import os
 import subprocess
-import git
 import re
 import argparse
 import platform
 import shutil
 from pathlib import Path
 
+import git
 from astropy.table import Table
 import jinja2
 import yaml
@@ -45,8 +45,8 @@ def get_opt():
                         help="Build version of NumPy")
     parser.add_argument("--github-https", action="store_true", default=False,
                         help="Authenticate using basic auth and https. Default is ssh.")
-    parser.add_argument("--github-org",
-                        help="Use this org instead of org in meta (mostly for forked packages)")
+    parser.add_argument("--repo-url",
+                        help="Use this URL instead of meta['about']['home']")
 
     args = parser.parse_args()
     return args
