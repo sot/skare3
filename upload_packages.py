@@ -5,7 +5,7 @@ import getpass
 import os
 import subprocess
 import json
-from pathlib import Path, PosixPath
+from pathlib import Path, PurePosixPath
 
 import paramiko
 
@@ -67,7 +67,7 @@ def process_package(args, sftp, pkgs_dir, pkg):
     print(f'  is_ska: {is_ska}')
 
     lstat = pkg_file.stat()
-    remote_pkg = PosixPath(args.repo_dir, platform, filename)
+    remote_pkg = PurePosixPath(args.repo_dir, platform, filename)
     try:
         print(f'Checking for {remote_pkg} on remote server')
         rstat = sftp.stat(str(remote_pkg))
