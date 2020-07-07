@@ -61,15 +61,11 @@ def process_package(args, sftp, pkgs_dir, pkg):
         raise FileNotFoundError(f'file {pkg_file} not found')
 
     is_ska = (pkg_defs_dir / name).exists()
-    print(f'{name}')
-    print(f'  {version}')
-    print(f'  {platform}')
-    print(f'  is_ska: {is_ska}')
 
     lstat = pkg_file.stat()
     remote_pkg = PurePosixPath(args.repo_dir, platform, filename)
     try:
-        print(f'Checking for {remote_pkg} on remote server')
+        print(f'Checking for {remote_pkg} on remote server ...', end='')
         rstat = sftp.stat(str(remote_pkg))
     except Exception:
         exists = False
@@ -77,11 +73,12 @@ def process_package(args, sftp, pkgs_dir, pkg):
         exists = rstat.st_size == lstat.st_size
 
     if not exists or args.force:
-        print(f'Uploading {filename}')
+        print()
+        print(f'  Uploading {filename}')
         if not args.dry_run:
             sftp.put(str(pkg_file), str(remote_pkg))
     else:
-        print(f'Skipping {filename}, already exists')
+        print('already exists')
 
 
 def main():
