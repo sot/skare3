@@ -86,9 +86,12 @@ def clone_repo(name, args, src_dir):
     repo = git.Repo.clone_from(url, clone_path)
     print("  - Cloned from url {}".format(url))
 
-    # Get tags from the upstream URL
-    repo.create_remote('upstream', upstream_url)
-    repo.remotes.upstream.fetch('--tags')
+    if args.repo_url:
+        # Get tags from the upstream URL
+        repo.create_remote('upstream', upstream_url)
+        repo.remotes.upstream.fetch('--tags')
+    else:
+        repo.remotes.origin.fetch('--tags')
 
     # I think we want the commit/tag with the most recent date, though
     # if we actually want the most recently created tag, that would probably be
@@ -192,7 +195,7 @@ def main():
             pkg_names = [str(pth) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()]
 
     print(f'Building packages {pkg_names}')
-    
+
     if platform.uname().system == "Darwin":
         os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
 
