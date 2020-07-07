@@ -1,11 +1,14 @@
 #!/usr/bin/env python
 
+import sys
 import os
 import subprocess
 import git
 import re
 import argparse
 import platform
+import shutil
+from pathlib import Path
 
 
 parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
@@ -37,6 +40,9 @@ parser.add_argument("--numpy",
                     help="Build version of NumPy")
 parser.add_argument("--github-https", action="store_true", default=False,
                     help="Authenticate using basic auth and https. Default is ssh.")
+parser.add_argument("--github-org",
+                    help="Use this org instead of org in meta (mostly for forked packages)")
+
 
 args = parser.parse_args()
 
@@ -57,9 +63,15 @@ BUILD_DIR = os.path.abspath(os.path.join(args.build_root, "builds"))
 SRC_DIR = os.path.abspath(os.path.join(args.build_root, "src"))
 os.environ["SKA_TOP_SRC_DIR"] = SRC_DIR
 
+
 def clone_repo(name, tag=None):
     print("  - Cloning or updating source source %s." % name)
     clone_path = os.path.join(SRC_DIR, name)
+
+    if args.github_org and os.path.exists(clone_path):
+        print('Removing git clone because --github-org was supplied')
+        shutil.rmtree(clone_path)
+
     if not os.path.exists(clone_path):
         metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
         meta = open(metayml).read()
@@ -68,18 +80,31 @@ def clone_repo(name, tag=None):
             return None
         # It isn't clean yaml at this point, so just extract the string we want after "home:"
         url = re.search(r"home:\s*(\S+)", meta).group(1)
+
+        upstream_url = url
+        if args.github_org:
+            # Change GitHub org from existing to args.github_org for either of the two
+            # supported styles of GitHub repo URL.
+            url = re.sub(r'(https://github.com)/[^/]+/(.+)', fr'\1/{args.github_org}/\2', url)
+            url = re.sub(r'(git@github.com):[^/]+/(.+)', fr'\1:{args.github_org}/\2', url)
+
         if args.github_https:
             url = url.replace('git@github.com:', 'https://github.com/')
         else:
             url = url.replace('https://github.com/', 'git@github.com:')
+
         repo = git.Repo.clone_from(url, clone_path)
         print("  - Cloned from url {}".format(url))
+
+        repo.create_remote('upstream', upstream_url)
     else:
         repo = git.Repo(clone_path)
         repo.remotes.origin.fetch()
-        repo.remotes.origin.fetch("--tags")
+        repo.remotes.upstream.fetch('--tags')
         print("  - Updated repo in {}".format(clone_path))
+
     assert not repo.is_dirty()
+
     # I think we want the commit/tag with the most recent date, though
     # if we actually want the most recently created tag, that would probably be
     # tags = sorted(repo.tags, key=lambda t: t.tag.tagged_date)
@@ -122,8 +147,26 @@ def build_package(name):
 
     if not args.test:
         cmd_list.append("--no-test")
-    if not args.force:
+
+    if args.force:
+        for path in Path(BUILD_DIR).glob(f'*/.cache/*/{name}-*'):
+            print(f'Removing {path}')
+            path.unlink()
+
+        sys_prefix = Path(sys.prefix)
+        if (sys_prefix.parent).name == 'envs':
+            # Building in a miniconda env, can find packages one dir up in pkgs
+            pkgs_dir = sys_prefix.parent.parent / 'pkgs'
+            for path in pkgs_dir.glob(f'{name}-*'):
+                print(f'Removing {path}')
+                if path.is_dir():
+                    shutil.rmtree(path)
+                else:
+                    path.unlink()
+
+    else:
         cmd_list += ["--skip-existing"]
+
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
     print('*' * 80)
@@ -136,6 +179,11 @@ def build_one_package(name, tag=None):
     clone_repo(name, tag)
     build_package(name)
     print('')
+
+    if args.github_org:
+        print('Removing git clone because --github-org was supplied')
+        clone_path = os.path.join(SRC_DIR, name)
+        shutil.rmtree(clone_path)
 
 
 def build_list_packages(tag=None):
