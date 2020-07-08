@@ -11,7 +11,6 @@ from pathlib import Path
 import tempfile
 
 import git
-from astropy.table import Table
 import jinja2
 import yaml
 
@@ -188,11 +187,12 @@ def main():
         pkg_names = args.packages
     else:
         if args.build_list:
-            pkg_names_tbl = Table.read(args.build_list, format='ascii.no_header',
-                                       names=['pkg_name'])
-            pkg_names = sorted(pkg_names_tbl['pkg_name'].tolist())
+            with open(args.build_list) as fh:
+                pkg_names = [line.strip() for line in fh
+                             if not re.match(r'\s*#', line) and line.strip()]
         else:
             pkg_names = [str(pth) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()]
+        pkg_names = sorted(pkg_names)
 
     print(f'Building packages {pkg_names}')
 
