@@ -14,6 +14,7 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
+    - clangxx_osx-64 # [osx]
     - python
     - setuptools
     - setuptools_scm
