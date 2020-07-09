@@ -3,9 +3,8 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/skare3_tools
@@ -30,6 +29,8 @@ requirements:
     - google-auth-oauthlib
     - google-api-python-client
     - sphinx-argparse
+    - keyring
+    - jinja2
 
 about:
   home: https://github.com/sot/skare3_tools
