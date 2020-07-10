@@ -29,13 +29,13 @@ jobs:
         GIT_ASKPASS: /home/aca/git_pass.py
     - name: Save packages
       uses: actions/upload-artifact@v2
-        with:
-          name: packages
-          path: |
-            builds/linux-64/
-            builds/noarch/
-            !builds/*/*repodata*
-            !builds/*/index.html
+      with:
+        name: packages
+        path: |
+          builds/linux-64/
+          builds/noarch/
+          !builds/*/*repodata*
+          !builds/*/index.html
 
 
   build-macos:
@@ -60,12 +60,12 @@ jobs:
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
     - name: Save packages
       uses: actions/upload-artifact@v2
-        with:
-          name: packages-osx-64
-          path: |
-            builds/osx-64/
-            !builds/*/*repodata*
-            !builds/*/index.html
+      with:
+        name: packages-osx-64
+        path: |
+          builds/osx-64/
+          !builds/*/*repodata*
+          !builds/*/index.html
 
 
   update-channel:
