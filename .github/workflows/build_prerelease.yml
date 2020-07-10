@@ -126,8 +126,8 @@ jobs:
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda \
                 ska3-flight
           source activate ska3-flight-${RELEASE_TAG} skare3-tools
-          run_testr --root /export/jgonzale/ska_testr \
-                    --test-spec test_spec_SKA3_HEAD \
+          cd /export/jgonzale/ska_testr
+          run_testr --test-spec test_spec_SKA3_HEAD \
                     --outputs-dir /export/jgonzale/ska_testr/release_tests
           # skare3-test-results /export/jgonzale/ska_testr/release_tests/last/logs
           # add test result report to PR description
