@@ -1,6 +1,6 @@
 package:
   name: ska3-flight
-  version: 2020.6
+  version: 2020.7
 
 build:
   noarch: generic
@@ -25,7 +25,7 @@ requirements:
     - chandra.time ==3.20.6
     - chandra_aca ==4.29.1
     - cxotime ==3.1.1
-    - dea_check ==3.0.0
+    - dea_check ==3.1.0
     - dpa_check ==3.0.0
     - find_attitude ==3.3.2
     - fep1_actel_check ==3.0.0
