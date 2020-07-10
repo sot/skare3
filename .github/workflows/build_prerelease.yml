@@ -115,6 +115,7 @@ jobs:
   regression-test:
     runs-on: head
     name: Regression Tests
+    needs: [update-channel]
     steps:
       - name: Regression Tests
         run: |
