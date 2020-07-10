@@ -123,7 +123,7 @@ jobs:
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/core-pkg-repo \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda \
                 ska3-flight
-          source activate ska3-flight-${RELEASE_TAG} skare3-tools
+          source activate ska3-flight-${RELEASE_TAG}
           cd /export/jgonzale/ska_testr
           run_testr --test-spec test_spec_SKA3_HEAD \
                     --outputs-dir /export/jgonzale/ska_testr/release_tests
