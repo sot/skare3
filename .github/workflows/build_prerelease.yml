@@ -16,12 +16,30 @@ jobs:
     - name: Build
       id: build
       run: |
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-template --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-core --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-flight --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-matlab --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-pinned --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-perl --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
+        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
+               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
+               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-template \
+               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
+        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
+               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
+               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-core \
+               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
+        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
+               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
+               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-flight \
+               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
+        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
+               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
+               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-matlab \
+               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
+        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
+               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
+               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-pinned \
+               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
+        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
+               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
+               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-perl \
+               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
@@ -51,8 +69,12 @@ jobs:
     - name: Build
       run: |
         source ./skare3_tools/actions/build/files/setup_conda.sh
-        ./skare3_tools/actions/build/files/build.py ska3-core --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
-        ./skare3_tools/actions/build/files/build.py ska3-perl --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} --skare3-overwrite-version ${GITHUB_REF}
+        ./skare3_tools/actions/build/files/build.py ska3-core --tag ${GITHUB_SHA} \
+                                                              --skare3-branch ${GITHUB_SHA} \
+                                                              --skare3-overwrite-version ${GITHUB_REF}
+        ./skare3_tools/actions/build/files/build.py ska3-perl --tag ${GITHUB_SHA} \
+                                                              --skare3-branch ${GITHUB_SHA} \
+                                                              --skare3-overwrite-version ${GITHUB_REF}
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USER: chandra-xray
@@ -89,3 +111,26 @@ jobs:
           for d in ${CONDA_CHANNEL_DIR}/*; do conda index $d; done;
         env:
           CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/test
+
+  regression-test:
+    runs-on: head
+    name: Regression Tests
+    steps:
+      - name: Regression Tests
+        run: |
+          RELEASE_TAG=`basename "$GITHUB_REF"`
+          conda create -y -n ska3-flight-${RELEASE_TAG} \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/core-pkg-repo \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda \
+                ska3-flight
+          source activate ska3-flight-${RELEASE_TAG} skare3-tools
+          run_testr --root /export/jgonzale/ska_testr \
+                    --test-spec test_spec_SKA3_HEAD \
+                    --outputs-dir /export/jgonzale/ska_testr/release_tests
+          # skare3-test-results /export/jgonzale/ska_testr/release_tests/last/logs
+          # add test result report to PR description
+        env:
+          CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
+          SKA: /proj/sot/ska
