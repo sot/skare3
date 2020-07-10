@@ -27,16 +27,15 @@ jobs:
         GIT_USERNAME: chandra-xray
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
         GIT_ASKPASS: /home/aca/git_pass.py
-    - uses: sot/skare3_tools/actions/gdrive_upload@master
-      name: Upload to Google Drive
-      with:
-        files: |
-          builds/linux-64
-          builds/noarch
-        directory: /ska3/conda-test-releases
-        options: --drive=cxc_ops
-      env:
-        GOOGLE_DRIVE_CREDENTIALS: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+    - name: Save packages
+      uses: actions/upload-artifact@v2
+        with:
+          name: packages
+          path: |
+            builds/linux-64/
+            builds/noarch/
+            !builds/*/*repodata*
+            !builds/*/index.html
 
 
   build-macos:
@@ -59,10 +58,34 @@ jobs:
         GIT_USER: chandra-xray
         GIT_ASKPASS: skare3_tools/actions/build/files/git_pass.py
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
-    - name: Upload to Google Drive
-      run: |
-        sudo pip3 install -r ./skare3_tools/requirements.txt
-        sudo pip3 install ./skare3_tools
-        gdrive --batch upload ./builds/osx-64 /ska3/conda-test-releases --drive cxc_ops
-      env:
-        GOOGLE_DRIVE_CREDENTIALS: ${{ secrets.GOOGLE_DRIVE_CREDENTIALS }}
+    - name: Save packages
+      uses: actions/upload-artifact@v2
+        with:
+          name: packages-osx-64
+          path: |
+            builds/osx-64/
+            !builds/*/*repodata*
+            !builds/*/index.html
+
+
+  update-channel:
+    runs-on: head
+    name: Update Conda Channel
+    needs: [build-macos, build-linux]
+    steps:
+      - name: Get linux and noarch packages
+        uses: actions/download-artifact@v2
+        with:
+          name: packages
+          path: packages
+      - name: Get osx packages
+        uses: actions/download-artifact@v2
+        with:
+          name: packages-osx-64
+          path: packages/osx-64
+      - name: Update channel
+        run: |
+          rsync -a packages/ ${CONDA_CHANNEL_DIR}
+          for d in ${CONDA_CHANNEL_DIR}/*; do conda index $d; done;
+        env:
+          CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/test
