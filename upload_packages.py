@@ -56,11 +56,13 @@ def process_packages(args, sftp):
     platform_map = {'Windows': 'win-64', 'Darwin': 'osx-64', 'Linux': 'linux-64'}
     arch = platform_map[platform.system()]
     remote_repodata = PurePosixPath(args.repo_dir, f'repodata_{arch}.json')
-    with tempfile.NamedTemporaryFile('wt') as local_repodata:
-        json.dump(repodata, local_repodata, sort_keys=True, indent=4)
-        local_repodata.flush()
-        print(f'Putting {remote_repodata}')
-        sftp.put(local_repodata.name, str(remote_repodata))
+
+    with tempfile.TemporaryDirectory() as tmpdir:
+        local_repodata = Path(tmpdir, 'repodata.json')
+        with open(local_repodata, 'w') as fh:
+            json.dump(repodata, fh, sort_keys=True, indent=4)
+        print(f'Putting {local_repodata} to {remote_repodata}')
+        sftp.put(str(local_repodata), str(remote_repodata))
 
 
 def process_package(args, sftp, pkgs_dir, pkg):
