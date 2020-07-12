@@ -46,7 +46,8 @@ def get_opt():
                         default="1.18",
                         help="Build version of NumPy")
     parser.add_argument("--github-https", action="store_true", default=False,
-                        help="Authenticate using basic auth and https. Default is ssh.")
+                        help="Authenticate using basic auth and https. Default is ssh "
+                        "except on Windows")
     parser.add_argument("--repo-url",
                         help="Use this URL instead of meta['about']['home']")
 
@@ -196,8 +197,12 @@ def main():
 
     print(f'Building packages {pkg_names}')
 
-    if platform.uname().system == "Darwin":
+    system_name = platform.uname().system
+    if system_name == 'Darwin':
         os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
+    elif system_name == 'Windows':
+        # Always use https on Windows since it just works
+        args.github_https = True
 
     build_dir = Path(args.build_root) / 'builds'
     with tempfile.TemporaryDirectory() as src_dir:
