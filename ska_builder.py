@@ -37,7 +37,7 @@ def get_opt():
                         action="store_true",
                         help="Force build of package even if it exists")
     parser.add_argument("--python",
-                        default="3.6",
+                        default="3.7",
                         help="Target version of Python (default=3.6)")
     parser.add_argument("--perl",
                         default="5.26.2",
