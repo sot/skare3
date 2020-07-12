@@ -58,6 +58,7 @@ def process_packages(args, sftp):
     remote_repodata = PurePosixPath(args.repo_dir, f'repodata_{arch}.json')
     with tempfile.NamedTemporaryFile('wt') as local_repodata:
         json.dump(repodata, local_repodata, sort_keys=True, indent=4)
+        local_repodata.flush()
         print(f'Putting {remote_repodata}')
         sftp.put(local_repodata.name, remote_repodata)
 
