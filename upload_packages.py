@@ -60,7 +60,7 @@ def process_packages(args, sftp):
         json.dump(repodata, local_repodata, sort_keys=True, indent=4)
         local_repodata.flush()
         print(f'Putting {remote_repodata}')
-        sftp.put(local_repodata.name, remote_repodata)
+        sftp.put(local_repodata.name, str(remote_repodata))
 
 
 def process_package(args, sftp, pkgs_dir, pkg):
