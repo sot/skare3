@@ -62,8 +62,6 @@ def process_packages(args, sftp):
         print(f'Putting {remote_repodata}')
         sftp.put(local_repodata.name, remote_repodata)
 
-    return repodata
-
 
 def process_package(args, sftp, pkgs_dir, pkg):
     pkg_defs_dir = Path.cwd() / 'pkg_defs'
@@ -123,12 +121,12 @@ def main():
             ssh_client.connect(hostname=args.host, username=args.user, password=password)
 
             with ssh_client.open_sftp() as sftp:
-                repodata = process_packages(args, sftp)
+                process_packages(args, sftp)
     else:
         local_sftp = LocalSFTP()
         for subdir in ('noarch', 'win-64', 'linux-64', 'osx-64'):
             Path(args.repo_dir, subdir).mkdir(parents=True, exist_ok=True)
-        repodata = process_packages(args, local_sftp)
+        process_packages(args, local_sftp)
 
 
 if __name__ == '__main__':
