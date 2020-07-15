@@ -7,6 +7,9 @@ source:
  patches:
   - multiprocess_patch.txt # [osx-64]
 
+build:
+  skip: True  # [win]
+
 requirements:
  build:
   - {{ compiler('cxx') }}
