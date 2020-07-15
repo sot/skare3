@@ -67,7 +67,8 @@ def clone_repo(name, args, src_dir):
         return None
 
     # Stub out the jinja context variables and read meta.yaml
-    meta = yaml.safe_load(jinja2.Template(meta_text).render())
+    macro = '{% macro compiler(arg) %}{% endmacro %}\n'
+    meta = yaml.safe_load(jinja2.Template(macro + meta_text).render())
 
     # Upstream (home) URL is for the tags
     upstream_url = meta['about']['home']
