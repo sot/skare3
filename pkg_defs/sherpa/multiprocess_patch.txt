@@ -1,0 +1,24 @@
+diff --git a/sherpa/estmethods/__init__.py b/sherpa/estmethods/__init__.py
+index a4878971..0d276b82 100644
+--- a/sherpa/estmethods/__init__.py
++++ b/sherpa/estmethods/__init__.py
+@@ -28,6 +28,7 @@ import sherpa.estmethods._est_funcs
+
+ try:
+     import multiprocessing
++    multiprocessing.set_start_method('fork', force=True)
+ except:
+     pass
+
+diff --git a/sherpa/optmethods/opt.py b/sherpa/optmethods/opt.py
+index ae06c706..1176cfb0 100755
+--- a/sherpa/optmethods/opt.py
++++ b/sherpa/optmethods/opt.py
+@@ -21,6 +21,8 @@
+
+ import numpy as np
+ import multiprocessing
++multiprocessing.set_start_method('fork', force=True)
++
+ import random
+ from sherpa.utils import Knuth_close, _multi, _ncpus, run_tasks, func_counter
