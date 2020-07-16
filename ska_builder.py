@@ -9,6 +9,8 @@ import platform
 import shutil
 from pathlib import Path
 import tempfile
+from fnmatch import fnmatch
+import time
 
 import git
 import jinja2
@@ -24,18 +26,26 @@ def get_opt():
                         help="Package to build (default=build all packages)")
     parser.add_argument("--tag", type=str,
                         help="Optional tag, branch, or commit to build for single package build"
-                            " (default is tag with most recent commit)")
+                        " (default is tag with most recent commit)")
     parser.add_argument("--build-root", default=".", type=str,
                         help="Path to root directory for output conda build packages."
-                            "Default: '.'")
-    parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
+                        "Default: '.'")
+    parser.add_argument("--build-list",
                         help="List of packages to build (in order)")
+    parser.add_argument('--exclude',
+                        action='append',
+                        default=[],
+                        dest='excludes',
+                        help="Exclude packages that match glob pattern"),
     parser.add_argument("--test",
                         action="store_true",
                         help="Run test during build process")
     parser.add_argument("--force",
                         action="store_true",
                         help="Force build of package even if it exists")
+    parser.add_argument("--arch-specific",
+                        action="store_true",
+                        help="Build only architecture-specific packages")
     parser.add_argument("--python",
                         default="3.8",
                         help="Target version of Python (default=3.8)")
@@ -55,20 +65,10 @@ def get_opt():
     return args
 
 
-def clone_repo(name, args, src_dir):
+def clone_repo(name, args, src_dir, meta):
     tag = args.tag
     print("  - Cloning or updating source source %s." % name)
     clone_path = os.path.join(src_dir, name)
-
-    metayml = PKG_DEFS_PATH / name / "meta.yaml"
-    meta_text = metayml.read_text()
-    has_git = re.search(r'SKA_PKG_VERSION|GIT_DESCRIBE_TAG', meta_text)
-    if not has_git:
-        return None
-
-    # Stub out the jinja context variables and read meta.yaml
-    macro = '{% macro compiler(arg) %}{% endmacro %}\n'
-    meta = yaml.safe_load(jinja2.Template(macro + meta_text).render())
 
     # Upstream (home) URL is for the tags
     upstream_url = meta['about']['home']
@@ -111,9 +111,6 @@ def clone_repo(name, args, src_dir):
 
 
 def build_package(name, args, src_dir, build_dir):
-    print('*' * 80)
-    print(name)
-    print()
     pkg_path = os.path.join(PKG_DEFS_PATH, name)
 
     try:
@@ -157,17 +154,41 @@ def build_package(name, args, src_dir, build_dir):
 
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
-    print('*' * 80)
+    print('-' * 80)
     is_windows = os.name == 'nt'  # Need shell below for Windows
     subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
 def build_list_packages(pkg_names, args, src_dir, build_dir):
     failures = []
+    tstart = time.time()
+
     for pkg_name in pkg_names:
+        print()
+        print('*' * 80)
+        print(f'*** {pkg_name} (build start: {time.time() - tstart:.1f} secs)')
+        print('*' * 80)
+        # Read package meta.yaml text
+        meta_file = PKG_DEFS_PATH / pkg_name / "meta.yaml"
+        meta_text = meta_file.read_text()
+        has_git = re.search(r'SKA_PKG_VERSION|GIT_DESCRIBE_TAG', meta_text)
+
+        # Stub out the jinja context variables and parse meta.yaml
+        macro = '{% macro compiler(arg) %}{% endmacro %}\n'
+        meta = yaml.safe_load(jinja2.Template(macro + meta_text).render())
+
+        if args.arch_specific and 'noarch' in meta.get('build', {}):
+            print(f'Skipping noarch package {pkg_name}')
+            continue
+
+        if any(fnmatch(pkg_name, exclude) for exclude in args.excludes):
+            print(f'Skipping excluded package {pkg_name}')
+            continue
+
+        print("- Building package %s." % pkg_name)
         try:
-            print("- Building package %s." % pkg_name)
-            clone_repo(pkg_name, args, src_dir)
+            if has_git:
+                clone_repo(pkg_name, args, src_dir, meta)
             build_package(pkg_name, args, src_dir, build_dir)
             print('')
         except Exception:
