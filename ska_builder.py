@@ -214,7 +214,7 @@ def main():
                 pkg_names = [line.strip() for line in fh
                              if not re.match(r'\s*#', line) and line.strip()]
         else:
-            pkg_names = [str(pth) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()]
+            pkg_names = [str(pth.name) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()]
         pkg_names = sorted(pkg_names)
 
     print(f'Building packages {pkg_names}')
