@@ -28,7 +28,7 @@ def get_opt():
     parser.add_argument("--build-root", default=".", type=str,
                         help="Path to root directory for output conda build packages."
                         "Default: '.'")
-    parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
+    parser.add_argument("--build-list",
                         help="List of packages to build (in order)")
     parser.add_argument("--test",
                         action="store_true",
