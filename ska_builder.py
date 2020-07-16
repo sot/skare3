@@ -9,6 +9,8 @@ import platform
 import shutil
 from pathlib import Path
 import tempfile
+from fnmatch import fnmatch
+import time
 
 import git
 import jinja2
@@ -30,6 +32,11 @@ def get_opt():
                         "Default: '.'")
     parser.add_argument("--build-list",
                         help="List of packages to build (in order)")
+    parser.add_argument('--exclude',
+                        action='append',
+                        default=[],
+                        dest='excludes',
+                        help="Exclude packages that match glob pattern"),
     parser.add_argument("--test",
                         action="store_true",
                         help="Run test during build process")
@@ -104,9 +111,6 @@ def clone_repo(name, args, src_dir, meta):
 
 
 def build_package(name, args, src_dir, build_dir):
-    print('*' * 80)
-    print(name)
-    print()
     pkg_path = os.path.join(PKG_DEFS_PATH, name)
 
     try:
@@ -150,14 +154,20 @@ def build_package(name, args, src_dir, build_dir):
 
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
-    print('*' * 80)
+    print('-' * 80)
     is_windows = os.name == 'nt'  # Need shell below for Windows
     subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
 def build_list_packages(pkg_names, args, src_dir, build_dir):
     failures = []
+    tstart = time.time()
+
     for pkg_name in pkg_names:
+        print()
+        print('*' * 80)
+        print(f'*** {pkg_name} (build start: {time.time() - tstart:.1f} secs)')
+        print('*' * 80)
         # Read package meta.yaml text
         meta_file = PKG_DEFS_PATH / pkg_name / "meta.yaml"
         meta_text = meta_file.read_text()
@@ -169,6 +179,10 @@ def build_list_packages(pkg_names, args, src_dir, build_dir):
 
         if args.arch_specific and 'noarch' in meta.get('build', {}):
             print(f'Skipping noarch package {pkg_name}')
+            continue
+
+        if any(fnmatch(pkg_name, exclude) for exclude in args.excludes):
+            print(f'Skipping excluded package {pkg_name}')
             continue
 
         print("- Building package %s." % pkg_name)
