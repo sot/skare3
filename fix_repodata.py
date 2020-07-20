@@ -77,6 +77,9 @@ def main():
         for pkg_key in ('packages', 'packages.conda'):
             packages = repodata[pkg_key]
             for name, package in packages.items():
+                if name not in pkgs_fix:
+                    print(f'SKIP: {subdir} {name} (no fix info available)')
+                    continue
                 if package['depends'] != pkgs_fix[name]['depends']:
                     print(f'Fixing: {subdir} {name}')
                     package['depends'] = pkgs_fix[name]['depends']
