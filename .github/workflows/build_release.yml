@@ -3,11 +3,30 @@ on:
   release:
     types:
     - released
+    - prereleased
 
 jobs:
+  sanity_check:
+    runs-on: ubuntu-latest
+    outputs:
+      packages: ${{ steps.sanity_check.outputs.packages }}
+      prerelease: ${{ steps.sanity_check.outputs.prerelease }}
+    steps:
+    - name: Fetch Skare3 Tools
+      uses: actions/checkout@v2
+      with:
+        repository: sot/skare3_tools
+        ref: master
+        path: skare3_tools
+    - id: sanity_check
+      run: |
+        pip install ./skare3_tools
+        skare3-release-check --version $GITHUB_REF
+
   build-linux:
     runs-on: ubuntu-latest
     name: Build on Linux
+    needs: [sanity_check]
     steps:
     - name: Login to GitHub Package Registry
       run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }}
@@ -16,30 +35,13 @@ jobs:
     - name: Build
       id: build
       run: |
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
-               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
-               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-template \
-               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
-               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
-               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-core \
-               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
-               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
-               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-flight \
-               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
-               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
-               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-matlab \
-               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
-               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
-               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-pinned \
-               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
-               -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
-               docker.pkg.github.com/sot/skare3/centos5-builder:latest ska3-perl \
-               --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
+        [ "${{needs.sanity_check.outputs.prerelease}}" = "True" ] && OVERRIDE="--skare3-overwrite-version" || OVERRIDE=""
+        for package in ${{needs.sanity_check.outputs.packages}}; do
+          docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
+                 -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
+                 docker.pkg.github.com/sot/skare3/centos5-builder:latest ${package} \
+                 --tag ${GITHUB_SHA} --skare3-branch %{OVERRIDE} ${GITHUB_SHA};
+        done;
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
@@ -59,6 +61,7 @@ jobs:
   build-macos:
     runs-on: macos-latest
     name: Build on Mac OS
+      needs: [sanity_check]
     steps:
     - name: Fetch Skare3 Tools
       uses: actions/checkout@v2
@@ -69,8 +72,11 @@ jobs:
     - name: Build
       run: |
         source ./skare3_tools/actions/build/files/setup_conda.sh
-        ./skare3_tools/actions/build/files/build.py ska3-core --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
-        ./skare3_tools/actions/build/files/build.py ska3-perl --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA}
+        [ "${{needs.sanity_check.outputs.prerelease}}" = "True" ] && OVERRIDE="--skare3-overwrite-version" || OVERRIDE=""
+        for package in ${{needs.sanity_check.outputs.packages}}; do
+          ./skare3_tools/actions/build/files/build.py ${package} \
+          --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${OVERRIDE};
+        done;
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USER: chandra-xray
@@ -112,18 +118,22 @@ jobs:
   regression-test:
     runs-on: head
     name: Regression Tests
-    needs: [update-channel]
+    needs: [sanity_check, update-channel]
+    strategy:
+      matrix:
+        package: [ska3-flight, ska3-matlab]
     steps:
       - name: Regression Tests
+        if: contains(${{needs.sanity_check.outputs.packages}}, matrix.package)
         run: |
           RELEASE_TAG=`basename "$GITHUB_REF"`
-          conda create -y -n ska3-flight-${RELEASE_TAG} \
+          conda create -y -n ${{ matrix.package }}-${RELEASE_TAG} \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/core-pkg-repo \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda \
-                ska3-flight
-          source activate ska3-flight-${RELEASE_TAG}
+                ${{ matrix.package }}
+          source activate ${{ matrix.package }}-${RELEASE_TAG}
           cd /export/jgonzale/ska_testr
           run_testr --test-spec test_spec_SKA3_HEAD \
                     --outputs-dir /export/jgonzale/ska_testr/release_tests
