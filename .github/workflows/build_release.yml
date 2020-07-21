@@ -41,7 +41,7 @@ jobs:
     - name: Build
       id: build
       run: |
-        [ "${{needs.sanity_check.outputs.prerelease}}" = "True" ] && OVERRIDE="--skare3-overwrite-version" || OVERRIDE=""
+        [ "${{needs.sanity_check.outputs.prerelease}}" = "True" ] && OVERRIDE="--skare3-overwrite-version ${GITHUB_REF}" || OVERRIDE=""
         for package in ${{needs.sanity_check.outputs.packages}}; do
           docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
                  -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
@@ -78,7 +78,7 @@ jobs:
     - name: Build
       run: |
         source ./skare3_tools/actions/build/files/setup_conda.sh
-        [ "${{needs.sanity_check.outputs.prerelease}}" = "True" ] && OVERRIDE="--skare3-overwrite-version" || OVERRIDE=""
+        [ "${{needs.sanity_check.outputs.prerelease}}" = "True" ] && OVERRIDE="--skare3-overwrite-version ${GITHUB_REF}" || OVERRIDE=""
         for package in ${{needs.sanity_check.outputs.packages}}; do
           ./skare3_tools/actions/build/files/build.py ${package} \
           --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${OVERRIDE};
