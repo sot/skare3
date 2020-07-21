@@ -135,7 +135,7 @@ jobs:
         package: [ska3-flight, ska3-matlab]
     steps:
       - name: Regression Tests
-        if: contains(${{needs.sanity_check.outputs.packages}}, matrix.package)
+        if: contains(needs.sanity_check.outputs.packages, matrix.package)
         run: |
           RELEASE_TAG=`basename "$GITHUB_REF"`
           conda create -y -n ${{ matrix.package }}-${RELEASE_TAG} \
