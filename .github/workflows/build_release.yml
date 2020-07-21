@@ -63,7 +63,7 @@ jobs:
   build-macos:
     runs-on: macos-latest
     name: Build on Mac OS
-      needs: [sanity_check]
+    needs: [sanity_check]
     steps:
     - name: Fetch Skare3 Tools
       uses: actions/checkout@v2
