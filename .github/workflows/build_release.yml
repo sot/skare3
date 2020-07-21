@@ -48,8 +48,8 @@ jobs:
                  docker.pkg.github.com/sot/skare3/centos5-builder:latest ${package} \
                  --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${OVERRIDE};
         done;
-        touch ./skare3_tools/actions/build/linux-64/.empty
-        touch ./skare3_tools/actions/build/noarch/.empty
+        touch builds/linux-64/.empty
+        touch builds/noarch/.empty
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
@@ -85,7 +85,7 @@ jobs:
           ./skare3_tools/actions/build/files/build.py ${package} \
           --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${OVERRIDE};
         done;
-        touch ./skare3_tools/actions/build/osx-64/.empty
+        touch builds/osx-64/.empty
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USER: chandra-xray
