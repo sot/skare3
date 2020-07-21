@@ -12,6 +12,10 @@ jobs:
       packages: ${{ steps.sanity_check.outputs.packages }}
       prerelease: ${{ steps.sanity_check.outputs.prerelease }}
     steps:
+    - name: Checkout skare3
+      uses: actions/checkout@v2
+      with:
+          path: skare3
     - name: Fetch Skare3 Tools
       uses: actions/checkout@v2
       with:
@@ -21,7 +25,7 @@ jobs:
     - id: sanity_check
       run: |
         pip install ./skare3_tools
-        skare3-release-check --version $GITHUB_REF
+        skare3-release-check --skare3-path ./skare3 --version $GITHUB_REF
 
   build-linux:
     runs-on: ubuntu-latest
