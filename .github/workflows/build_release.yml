@@ -1,9 +1,7 @@
 name: Conda build release
 on:
   release:
-    types:
-    - released
-    - prereleased
+    types: [released, prereleased]
 
 jobs:
   sanity_check:
