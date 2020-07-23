@@ -1,4 +1,7 @@
-"""Fix dependencies in repodata.json in a conda repository ``name``.
+"""DEPRECATED: Fix dependencies in repodata.json in a conda repository ``name``.
+
+This script is deprecated since `upload_packages.py` was improved to fix
+the actual conda packages. It can be removed at some point.
 
 For driver see https://github.com/ContinuumIO/anaconda-issues/issues/11920
 
