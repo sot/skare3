@@ -104,7 +104,7 @@ def process_package(args, sftp, pkgs_dir, pkg, tmpdir):
 
     if not exists or args.force:
         print()
-        print(f'  Uploading {filename}')
+        print(f'  Uploading {filename} from {pkg_file}')
         if not args.dry_run:
             sftp.put(str(pkg_file), str(remote_pkg))
     else:
@@ -196,8 +196,15 @@ def fix_package_deps(pkgs_dir: Path, filename: str, channel: str, tmpdir: str) -
 
     with chdir(pkg_dir):
         with libarchive.file_writer(info_tar.name, 'ustar', 'zstd') as archive:
-            archive.add_files('info/')
-    shutil.rmtree(pkg_dir / 'info')
+            archive.add_files('info')
+    try:
+        shutil.rmtree(pkg_dir / 'info')
+    except OSError as exc:
+        # Happened on Windows, just wait a bit and try again
+        print(f'Failed, trying again: {exc}')
+        import time
+        time.sleep(1)
+        shutil.rmtree(pkg_dir / 'info')
 
     print(f'Making new zip file {pkg_file}')
     pkg_file = tmp_pkgs_dir / filename
