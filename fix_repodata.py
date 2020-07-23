@@ -1,4 +1,7 @@
-"""Fix dependencies in repodata.json in a conda repository ``name``.
+"""DEPRECATED: Fix dependencies in repodata.json in a conda repository ``name``.
+
+This script is deprecated since `upload_packages.py` was improved to fix
+the actual conda packages. It can be removed at some point.
 
 For driver see https://github.com/ContinuumIO/anaconda-issues/issues/11920
 
@@ -61,7 +64,7 @@ def main():
     for subdir, pkgs_fix in pkgs_by_subdir.items():
         # subdir is one of {linux,osx,win}-64 or noarch, pkgs_fix is a dict
         # of packages keyed by package file name
-        repo_file = Path(args.repo_dir, subdir, f'repodata.json')
+        repo_file = Path(args.repo_dir, subdir, 'repodata.json')
         if not repo_file.exists():
             print(f'WARNING: skipping {repo_file}, does not exist')
             continue

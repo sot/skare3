@@ -1,16 +1,24 @@
 """Upload packages in current environment to upstream repo provider"""
 
 import argparse
+import bz2
+import contextlib
+import functools
 import getpass
 import os
+import re
 import shutil
 import subprocess
 import json
 from pathlib import Path, PurePosixPath
 import platform
 import tempfile
+import zipfile
+import difflib
 
+from astropy.utils.data import download_file
 import paramiko
+import libarchive
 
 
 def get_opt():
@@ -43,11 +51,12 @@ def process_packages(args, sftp):
     pkgs_json = result.stdout
     pkgs = json.loads(pkgs_json)
 
-    repodata = {}
-    for pkg in pkgs:
-        if not args.packages or pkg['name'] in args.packages:
-            pkgdata = process_package(args, sftp, pkgs_dir, pkg)
-            repodata[pkgdata['fn']] = pkgdata
+    with tempfile.TemporaryDirectory() as tmpdir:
+        repodata = {}
+        for pkg in pkgs:
+            if not args.packages or pkg['name'] in args.packages:
+                pkgdata = process_package(args, sftp, pkgs_dir, pkg, tmpdir)
+                repodata[pkgdata['fn']] = pkgdata
 
     # Put the dict of repo data o the remote location. This allows building
     # ska3-flight / ska3-core meta package lists and fixing repodata.json that
@@ -65,18 +74,24 @@ def process_packages(args, sftp):
         sftp.put(str(local_repodata), str(remote_repodata))
 
 
-def process_package(args, sftp, pkgs_dir, pkg):
+def process_package(args, sftp, pkgs_dir, pkg, tmpdir):
+    """Process a single package
+
+    :param args: program arguments
+    :param sftp: SFTP class object or LocalSFTP stub for file transfers
+    """
     pkg_defs_dir = Path.cwd() / 'pkg_defs'
     pkg_dir = pkgs_dir / pkg['dist_name']
     pkgdata = json.load(open(pkg_dir / 'info' / 'repodata_record.json'))
     platform = pkg['platform']  # noarch, win-64 etc
     name = pkg['name']
     filename = pkgdata['fn']
-    pkg_file = pkgs_dir / filename
+    channel = pkgdata['channel']
 
-    if not pkg_file.exists():
-        raise FileNotFoundError(f'file {pkg_file} not found')
+    # Get package file and possibly fix dependencies
+    pkg_file = fix_package_deps(pkgs_dir, filename, channel, tmpdir)
 
+    # Check if we need to bother putting up new file
     lstat = pkg_file.stat()
     remote_pkg = PurePosixPath(args.repo_dir, platform, filename)
     try:
@@ -89,7 +104,7 @@ def process_package(args, sftp, pkgs_dir, pkg):
 
     if not exists or args.force:
         print()
-        print(f'  Uploading {filename}')
+        print(f'  Uploading {filename} from {pkg_file}')
         if not args.dry_run:
             sftp.put(str(pkg_file), str(remote_pkg))
     else:
@@ -100,6 +115,103 @@ def process_package(args, sftp, pkgs_dir, pkg):
     pkgdata['is_ska'] = (pkg_defs_dir / name).exists()
 
     return pkgdata
+
+
+@contextlib.contextmanager
+def chdir(path: Path):
+    cwd = Path.cwd()
+    os.chdir(path)
+    yield
+    os.chdir(cwd)
+
+
+@functools.lru_cache
+def get_upstream_repodata(upstream_repodata_url):
+    """Get repodata.json.bz2 from upstream package repository
+
+    :param upstream_repodata_url: the URL of file to download
+    :returns: dict, repo data structure
+    """
+    print(f'Getting {upstream_repodata_url=}')
+    upstream_repodata_file = download_file(upstream_repodata_url, cache=True)
+    with bz2.open(upstream_repodata_file) as fh:
+        upstream_repodata = json.load(fh)
+    return upstream_repodata
+
+
+def fix_package_deps(pkgs_dir: Path, filename: str, channel: str, tmpdir: str) -> Path:
+    """Possibly fix package dependencies in pkgs/main .conda file.
+
+    For driver see:
+    https://github.com/ContinuumIO/anaconda-issues/issues/11920
+
+    :param pkgs_dir: directory with downloaded conda packages (e.g. ~/miniconda3/pkgs)
+    :param filename: filename of package (e.g. 'numpy-1.18.5-py37h1da2735_0.conda')
+    :param tmpdir: temporary directory for doing conda package munging
+    :returns pkg_file: path to existing or fixed conda package
+    """
+    # Check if package file (*.tar.bz2 or *.conda) is a conda zip archive
+    # and that is comes from pkgs/main.  Only those might need fixing.
+    pkg_file = pkgs_dir / filename
+    if (pkg_file.suffix != '.conda'
+            or not channel.startswith('https://repo.anaconda.com/pkgs/main')):
+        return pkg_file
+
+    # Unzip pkg_file in a temp dir
+    tmp_pkgs_dir = Path(tmpdir)
+    pkg_dir = tmp_pkgs_dir / pkg_file.with_suffix('').name
+    if pkg_dir.exists():
+        shutil.rmtree(pkg_dir)
+    pkg_dir.mkdir()
+
+    with zipfile.ZipFile(pkg_file, 'r') as pkg_zip:
+        pkg_zip.extractall(pkg_dir)
+
+    info_tar = pkg_dir / f'info-{pkg_dir.name}.tar.zst'
+    with chdir(pkg_dir):
+        libarchive.extract_file(info_tar.name)
+
+    pkg_info_file = pkg_dir / 'info' / 'index.json'
+    with open(pkg_info_file) as fh:
+        pkg_info = json.load(fh)
+    pkg_depends = pkg_info['depends']
+
+    # If the package dependencies are the same as upstream then no change req'd
+    upstream_repodata_url = f'{channel}/repodata.json.bz2'
+    upstream_repodata = get_upstream_repodata(upstream_repodata_url)
+    upstream_depends = upstream_repodata['packages.conda'][filename]['depends']
+
+    if pkg_depends == upstream_depends:
+        return pkg_file
+
+    print('Fixing depends for the following diffs')
+    print('\n'.join(line.strip() for line in difflib.ndiff(pkg_depends, upstream_depends)
+                    if re.match(r'\S', line)))
+    pkg_info['depends'] = upstream_depends
+    with open(pkg_info_file, 'w') as fh:
+        json.dump(pkg_info, fh, indent=4)
+
+    print(f'Unlinking {info_tar} and making new version')
+    info_tar.unlink()
+
+    with chdir(pkg_dir):
+        with libarchive.file_writer(info_tar.name, 'ustar', 'zstd') as archive:
+            archive.add_files('info')
+    try:
+        shutil.rmtree(pkg_dir / 'info')
+    except OSError as exc:
+        # Happened on Windows, just wait a bit and try again
+        print(f'Failed, trying again: {exc}')
+        import time
+        time.sleep(1)
+        shutil.rmtree(pkg_dir / 'info')
+
+    print(f'Making new zip file {pkg_file}')
+    pkg_file = tmp_pkgs_dir / filename
+    shutil.make_archive(str(pkg_file), format='zip', root_dir=pkg_dir, base_dir='.')
+    pkg_file.with_suffix('.conda.zip').rename(pkg_file)
+
+    return pkg_file
 
 
 class LocalSFTP:
