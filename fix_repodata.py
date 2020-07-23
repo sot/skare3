@@ -61,7 +61,7 @@ def main():
     for subdir, pkgs_fix in pkgs_by_subdir.items():
         # subdir is one of {linux,osx,win}-64 or noarch, pkgs_fix is a dict
         # of packages keyed by package file name
-        repo_file = Path(args.repo_dir, subdir, f'repodata.json')
+        repo_file = Path(args.repo_dir, subdir, 'repodata.json')
         if not repo_file.exists():
             print(f'WARNING: skipping {repo_file}, does not exist')
             continue
