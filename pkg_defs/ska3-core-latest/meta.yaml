@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2020.2.1
+  version: 2020.2.2
 
 requirements:
   run:
@@ -42,6 +42,7 @@ requirements:
    - pip
    - flake8
    - pycrypto
+   - prompt-toolkit<3.0.0a0 # [win]
    - pylint
    - python-docx
    - pyyaml
