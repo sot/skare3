@@ -28,6 +28,7 @@ jobs:
         skare3-release-check --skare3-path ./skare3 --version $GITHUB_REF
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_API_TOKEN: ${{ secrets.CHANDRA_XRAY_TOKEN }}
 
   build-linux:
     runs-on: ubuntu-latest
