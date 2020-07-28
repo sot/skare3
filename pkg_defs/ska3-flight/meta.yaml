@@ -49,7 +49,7 @@ requirements:
     - ska.numpy ==3.8.4
     - ska.matplotlib ==3.11.4
     - ska.parsecm ==3.3.4
-    - ska_helpers ==0.1.1
+    - ska_helpers ==0.1.2
     - ska_path ==3.1.1
     - ska_sync ==4.6.0
     - ska.quatutil ==3.3.3
@@ -60,4 +60,4 @@ requirements:
     - starcheck ==13.6.0
     - tables3_api ==0.1.1
     - testr ==4.3.1
-    - xija ==4.18.2
+    - xija ==4.19.0
