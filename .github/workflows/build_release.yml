@@ -111,13 +111,11 @@ jobs:
         with:
           name: packages
           path: packages
-          required: false
       - name: Get osx packages
         uses: actions/download-artifact@v2
         with:
           name: packages-osx-64
           path: packages/osx-64
-          required: false
       - name: Update channel
         run: |
           rsync -a packages/ ${CONDA_CHANNEL_DIR}
