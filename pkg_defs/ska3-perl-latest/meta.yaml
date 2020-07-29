@@ -1,0 +1,25 @@
+package:
+  name: ska3-perl-latest
+  version: 2020.2
+
+build:
+  skip: True  # [win]
+
+requirements:
+  run:
+    - perl
+    - perl-app-cpanminus
+    - perl-core-deps
+    - perl-ska-classic
+    - xtime # [linux]
+    - perl-extended-deps # [linux]
+    - perl-chandra-time # [linux]
+    - perl-cxc-sysarch # [linux]
+    - perl-ska-convert # [linux]
+    - perl-ska-web # [linux]
+    - perl-ska-agasc # [linux]
+    - perl-app-env-ascds # [linux]
+    - perl-dbd-sybase # [linux]
+    - perl-tk # [linux]
+    - watch_cron_logs
+    - task_schedule
