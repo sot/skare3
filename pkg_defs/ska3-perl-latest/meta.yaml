@@ -1,6 +1,6 @@
 package:
   name: ska3-perl-latest
-  version: 2020.2
+  version: 2020.2.1
 
 build:
   skip: True  # [win]
@@ -27,4 +27,4 @@ requirements:
     # Prevent getting a later version of this library from conda-forge, instead
     # maintain 1.x from defaults as non-perl requirements. This is a bit of a
     # dependency hack and might be handled better in the future.
-    - libuuid<2.0.0a0 # [linux]
+    - libuuid <2.0.0a0 # [linux]
