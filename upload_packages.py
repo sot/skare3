@@ -187,7 +187,12 @@ def fix_package_deps(pkgs_dir: Path, filename: str, channel: str, tmpdir: str) -
     # If the package dependencies are the same as upstream then no change req'd
     upstream_repodata_url = f'{channel}/repodata.json.bz2'
     upstream_repodata = get_upstream_repodata(upstream_repodata_url)
-    upstream_depends = upstream_repodata['packages.conda'][filename]['depends']
+    try:
+        upstream_depends = upstream_repodata['packages.conda'][filename]['depends']
+    except KeyError:
+        print(f' WARNING: package {filename} apparently came from defaults but '
+              f'no entry in upstream_repodata was found => assuming dependencies OK')
+        upstream_depends = pkg_depends
 
     if pkg_depends == upstream_depends:
         return pkg_file
