@@ -45,7 +45,14 @@ def get_opt():
 
 
 def process_packages(args, sftp):
-    pkgs_dir = Path(os.environ['CONDA_PREFIX_1']) / 'pkgs'
+    parts = []
+    for part in Path(os.environ['CONDA_PREFIX']).parts:
+        if part == 'envs':
+            parts.append('pkgs')
+            break
+        else:
+            parts.append(part)
+    pkgs_dir = Path(*parts)
 
     result = subprocess.run(['conda', 'list', '--no-pip', '--json'], stdout=subprocess.PIPE)
     pkgs_json = result.stdout
