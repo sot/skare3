@@ -45,6 +45,7 @@ def get_opt():
 
 
 def process_packages(args, sftp):
+    # Get the location of downloaded packages as the same directory containing `envs`.
     parts = []
     for part in Path(os.environ['CONDA_PREFIX']).parts:
         if part == 'envs':
