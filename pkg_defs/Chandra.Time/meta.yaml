@@ -3,13 +3,10 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  script_env:
-    - SKA_TOP_SRC_DIR
-  preserve_egg_dir: yes # (default no)
+  script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/Chandra.Time
-
 
 # the build and runtime requirements. Dependencies of these requirements
 # are included automatically.
@@ -17,19 +14,22 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
+    - gxx_linux-64 # [linux]
+    - clangxx_osx-64 # [osx]
     - python
-    - pip <10.0
-    - cython >=0.20.1
-    - six
-    - numpy
+    - setuptools
     - setuptools_scm
+    - setuptools_scm_git_archive
+    - cython
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
+    - cxotime
     - python
     - six
     - numpy
     - testr
+    - ska_helpers
 
 test:
   imports:

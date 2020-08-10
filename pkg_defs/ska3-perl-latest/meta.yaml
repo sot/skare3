@@ -1,0 +1,30 @@
+package:
+  name: ska3-perl-latest
+  version: 2020.2.1
+
+build:
+  skip: True  # [win]
+
+requirements:
+  run:
+    - perl
+    - perl-app-cpanminus
+    - perl-core-deps
+    - perl-ska-classic
+    - xtime # [linux]
+    - perl-extended-deps # [linux]
+    - perl-chandra-time # [linux]
+    - perl-cxc-sysarch # [linux]
+    - perl-ska-convert # [linux]
+    - perl-ska-web # [linux]
+    - perl-ska-agasc # [linux]
+    - perl-app-env-ascds # [linux]
+    - perl-dbd-sybase # [linux]
+    - perl-tk # [linux]
+    - watch_cron_logs
+    - task_schedule
+
+    # Prevent getting a later version of this library from conda-forge, instead
+    # maintain 1.x from defaults as non-perl requirements. This is a bit of a
+    # dependency hack and might be handled better in the future.
+    - libuuid <2.0.0a0 # [linux]

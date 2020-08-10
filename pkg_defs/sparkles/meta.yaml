@@ -3,9 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
+  script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/sparkles
@@ -20,11 +18,12 @@ requirements:
     - python
     - setuptools
     - setuptools_scm
+    - setuptools_scm_git_archive
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - numpy >=1.12.1
+    - numpy
     - matplotlib
     - astropy
     - pytest
@@ -40,5 +39,5 @@ test:
 
 
 about:
-  home: git@github.com:sot/sparkles
+  home: https://github.com/sot/sparkles
 

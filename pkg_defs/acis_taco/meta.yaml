@@ -3,8 +3,8 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  script_env:
-    - SKA_TOP_SRC_DIR
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: python
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/acis_taco
@@ -19,16 +19,7 @@ requirements:
     - python
     - setuptools
     - setuptools_scm
-    - six
-    - numpy
-    - matplotlib
-    - ska.quatutil
-    - chandra.time
-    - ska.matplotlib
-    - ska.sun
-    - quaternion
-    - ska.engarchive
-    - testr
+    - setuptools_scm_git_archive
 
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.

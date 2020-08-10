@@ -1,0 +1,63 @@
+package:
+  name: ska3-core-latest
+  version: 2020.2.2
+
+requirements:
+  run:
+   - astropy
+   - astropy-sphinx-theme
+   - astropy-healpix
+   - beautifulsoup4
+   - bokeh
+   - cloudpickle # [win]
+   - conda
+   - conda-build
+   - cython
+   - docxtpl
+   - django
+   - git # [win]
+   - gitpython
+   - h5py
+   - ipython
+   - jinja2
+   - jira
+   - jplephem
+   - jupyter
+   - jupyterlab
+   - line_profiler
+   - lxml
+   - matplotlib
+   - mpld3
+   - nb_conda
+   - nbconvert
+   - networkx
+   - notebook
+   - numba
+   - numexpr
+   - numpy
+   - numpydoc
+   - pandas
+   - autopep8
+   - pillow
+   - pip
+   - flake8
+   - pycrypto
+   - prompt-toolkit<3.0.0a0 # [win]
+   - pylint
+   - python-docx
+   - pyyaml
+   - qt
+   - requests
+   - rope
+   - runipy # [win]
+   - scikit-learn
+   - scipy
+   - setuptools
+   - setuptools_scm
+   - sherpa # [not win]
+   - six
+   - sphinx
+   - sqlalchemy # [win]
+   - sqlite
+   - tk
+   - yaml

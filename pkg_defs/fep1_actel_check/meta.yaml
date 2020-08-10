@@ -3,7 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  noarch: python
+  script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/fep1_actel_check

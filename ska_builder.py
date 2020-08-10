@@ -1,80 +1,99 @@
 #!/usr/bin/env python
 
+import sys
 import os
 import subprocess
-import git
 import re
 import argparse
+import platform
+import shutil
+from pathlib import Path
+import tempfile
+from fnmatch import fnmatch
+import time
+
+import git
+import jinja2
+import yaml
+
+PKG_DEFS_PATH = Path(__file__).parent / 'pkg_defs'
 
 
-parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
+def get_opt():
+    parser = argparse.ArgumentParser(description="Build Ska Conda packages.")
 
-parser.add_argument("package", type=str, nargs="?",
-                    help="Package to build.  All updated packages will be built if no package supplied")
-parser.add_argument("--tag", type=str,
-                    help="Optional tag, branch, or commit to build for single package build"
-                         " (default is tag with most recent commit)")
-parser.add_argument("--build-root", default=".", type=str,
-                    help="Path to root directory for output conda build packages."
-                         "Default: '.'")
-parser.add_argument("--build-list", default="./ska3_flight_build_order.txt",
-                    help="List of packages to build (in order)")
-parser.add_argument("--force", action="store_true",
-                    help="Ignore already built packages, build them again.")
-parser.add_argument("--github-https", action="store_true", default=False,
-                    help="Authenticate using basic auth and https. Default is ssh.")
+    parser.add_argument('packages', metavar='package', type=str, nargs='*',
+                        help="Package to build (default=build all packages)")
+    parser.add_argument("--tag", type=str,
+                        help="Optional tag, branch, or commit to build for single package build"
+                        " (default is tag with most recent commit)")
+    parser.add_argument("--build-root", default=".", type=str,
+                        help="Path to root directory for output conda build packages."
+                        "Default: '.'")
+    parser.add_argument("--build-list",
+                        help="List of packages to build (in order)")
+    parser.add_argument('--exclude',
+                        action='append',
+                        default=[],
+                        dest='excludes',
+                        help="Exclude packages that match glob pattern"),
+    parser.add_argument("--test",
+                        action="store_true",
+                        help="Run test during build process")
+    parser.add_argument("--force",
+                        action="store_true",
+                        help="Force build of package even if it exists")
+    parser.add_argument("--arch-specific",
+                        action="store_true",
+                        help="Build only architecture-specific packages")
+    parser.add_argument("--python",
+                        default="3.8",
+                        help="Target version of Python (default=3.8)")
+    parser.add_argument("--perl",
+                        default="5.26.2",
+                        help="Target version of Perl (default=5.26.2)")
+    parser.add_argument("--numpy",
+                        default="1.18",
+                        help="Build version of NumPy")
+    parser.add_argument("--github-https", action="store_true", default=False,
+                        help="Authenticate using basic auth and https. Default is ssh "
+                        "except on Windows")
+    parser.add_argument("--repo-url",
+                        help="Use this URL instead of meta['about']['home']")
 
-args = parser.parse_args()
-
-PERL = '5.26.2'
-NUMPY = '1.12'
-raw_build_list = open(args.build_list).read()
-BUILD_LIST = raw_build_list.split("\n")
-# Remove any that are commented out for some reason
-BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*#", b)]
-# And any that are just whitespace
-BUILD_LIST = [b for b in BUILD_LIST if not re.match("^\s*$", b)]
-
-if os.uname().sysname == "Darwin":
-    os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.9"
-
-if os.uname().machine == 'i686':
-    # Skip starcheck and ska3-perl on 32 bit
-    for pkg in ['starcheck', 'ska3-perl']:
-        if pkg in BUILD_LIST:
-            BUILD_LIST.remove(pkg)
+    args = parser.parse_args()
+    return args
 
 
-ska_conda_path = os.path.abspath(os.path.dirname(__file__))
-pkg_defs_path = os.path.join(ska_conda_path, "pkg_defs")
-
-BUILD_DIR = os.path.abspath(os.path.join(args.build_root, "builds"))
-SRC_DIR = os.path.abspath(os.path.join(args.build_root, "src"))
-os.environ["SKA_TOP_SRC_DIR"] = SRC_DIR
-
-def clone_repo(name, tag=None):
+def clone_repo(name, args, src_dir, meta):
+    tag = args.tag
     print("  - Cloning or updating source source %s." % name)
-    clone_path = os.path.join(SRC_DIR, name)
-    if not os.path.exists(clone_path):
-        metayml = os.path.join(pkg_defs_path, name, "meta.yaml")
-        meta = open(metayml).read()
-        has_git = re.search("SKA_PKG_VERSION", meta) or re.search("GIT_DESCRIBE_TAG", meta)
-        if not has_git:
-            return None
-        # It isn't clean yaml at this point, so just extract the string we want after "home:"
-        url = re.search("home:\s*(\S+)", meta).group(1)
+    clone_path = os.path.join(src_dir, name)
+
+    # Upstream (home) URL is for the tags
+    upstream_url = meta['about']['home']
+
+    # URL for cloning
+    if args.repo_url:
+        url = args.repo_url
+    else:
+        url = upstream_url
+        # Munge URL for different authentication if requested
         if args.github_https:
             url = url.replace('git@github.com:', 'https://github.com/')
         else:
             url = url.replace('https://github.com/', 'git@github.com:')
-        repo = git.Repo.clone_from(url, clone_path)
-        print("  - Cloned from url {}".format(url))
+
+    repo = git.Repo.clone_from(url, clone_path)
+    print("  - Cloned from url {}".format(url))
+
+    if args.repo_url:
+        # Get tags from the upstream URL
+        repo.create_remote('upstream', upstream_url)
+        repo.remotes.upstream.fetch('--tags')
     else:
-        repo = git.Repo(clone_path)
-        repo.remotes.origin.fetch()
-        repo.remotes.origin.fetch("--tags")
-        print("  - Updated repo in {}".format(clone_path))
-    assert not repo.is_dirty()
+        repo.remotes.origin.fetch('--tags')
+
     # I think we want the commit/tag with the most recent date, though
     # if we actually want the most recently created tag, that would probably be
     # tags = sorted(repo.tags, key=lambda t: t.tag.tagged_date)
@@ -88,47 +107,92 @@ def clone_repo(name, tag=None):
             print("  - Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
     else:
         repo.git.checkout(tag)
-        print("  - Checked out at {}".format(tag))
+        print(f'  - Checked out at {tag} and pulled')
 
 
-def build_package(name):
-    pkg_path = os.path.join(pkg_defs_path, name)
+def build_package(name, args, src_dir, build_dir):
+    pkg_path = os.path.join(PKG_DEFS_PATH, name)
 
     try:
         version = subprocess.check_output(['python', 'setup.py', '--version'],
-                                           cwd = os.path.join(SRC_DIR, name))
+                                          cwd=os.path.join(src_dir, name))
         version = version.decode().split()[-1].strip()
-    except:
+    except Exception:
         version = ''
     os.environ['SKA_PKG_VERSION'] = version
     print(f'  - SKA_PKG_VERSION={version}')
 
-    cmd_list = ["conda", "build", pkg_path, "--croot",
-                BUILD_DIR, "--no-test", "--old-build-string",
+    cmd_list = ["conda", "build", pkg_path,
+                "--croot", str(build_dir),
+                "--old-build-string",
                 "--no-anaconda-upload",
-                "--numpy", NUMPY,
-                "--perl", PERL]
-    if not args.force:
+                "--python", args.python,
+                "--numpy", args.numpy,
+                "--perl", args.perl]
+
+    if not args.test:
+        cmd_list.append("--no-test")
+
+    if args.force:
+        for path in Path(build_dir).glob(f'*/.cache/*/{name}-*'):
+            print(f'Removing {path}')
+            path.unlink()
+
+        sys_prefix = Path(sys.prefix)
+        if (sys_prefix.parent).name == 'envs':
+            # Building in a miniconda env, can find packages one dir up in pkgs
+            pkgs_dir = sys_prefix.parent.parent / 'pkgs'
+            for path in pkgs_dir.glob(f'{name}-*'):
+                print(f'Removing {path}')
+                if path.is_dir():
+                    shutil.rmtree(path)
+                else:
+                    path.unlink()
+
+    else:
         cmd_list += ["--skip-existing"]
+
     cmd = ' '.join(cmd_list)
     print(f'  - {cmd}')
-    subprocess.run(cmd_list, check=True).check_returncode()
+    print('-' * 80)
+    is_windows = os.name == 'nt'  # Need shell below for Windows
+    subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
-def build_one_package(name, tag=None):
-    print("- Building package %s." % name)
-    clone_repo(name, tag)
-    build_package(name)
-    print('')
-
-
-def build_list_packages():
+def build_list_packages(pkg_names, args, src_dir, build_dir):
     failures = []
-    for pkg_name in BUILD_LIST:
+    tstart = time.time()
+
+    for pkg_name in pkg_names:
+        print()
+        print('*' * 80)
+        print(f'*** {pkg_name} (build start: {time.time() - tstart:.1f} secs)')
+        print('*' * 80)
+        # Read package meta.yaml text
+        meta_file = PKG_DEFS_PATH / pkg_name / "meta.yaml"
+        meta_text = meta_file.read_text()
+        has_git = re.search(r'SKA_PKG_VERSION|GIT_DESCRIBE_TAG', meta_text)
+
+        # Stub out the jinja context variables and parse meta.yaml
+        macro = '{% macro compiler(arg) %}{% endmacro %}\n'
+        meta = yaml.safe_load(jinja2.Template(macro + meta_text).render())
+
+        if args.arch_specific and 'noarch' in meta.get('build', {}):
+            print(f'Skipping noarch package {pkg_name}')
+            continue
+
+        if any(fnmatch(pkg_name, exclude) for exclude in args.excludes):
+            print(f'Skipping excluded package {pkg_name}')
+            continue
+
+        print("- Building package %s." % pkg_name)
         try:
-            build_one_package(pkg_name)
-        # If there's a failure, confirm before continuing
-        except:
+            if has_git:
+                clone_repo(pkg_name, args, src_dir, meta)
+            build_package(pkg_name, args, src_dir, build_dir)
+            print('')
+        except Exception:
+            # If there's a failure, confirm before continuing
             print(f'{pkg_name} failed, continue anyway (y/n)?')
             if input().lower().strip().startswith('y'):
                 failures.append(pkg_name)
@@ -139,13 +203,35 @@ def build_list_packages():
         raise ValueError("Packages {} failed".format(",".join(failures)))
 
 
-def build_all_packages():
-    build_list_packages()
+def main():
+    args = get_opt()
+
+    if args.packages:
+        pkg_names = args.packages
+    else:
+        if args.build_list:
+            with open(args.build_list) as fh:
+                pkg_names = [line.strip() for line in fh
+                             if not re.match(r'\s*#', line) and line.strip()]
+        else:
+            pkg_names = [str(pth.name) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()]
+        pkg_names = sorted(pkg_names)
+
+    print(f'Building packages {pkg_names}')
+
+    system_name = platform.uname().system
+    if system_name == 'Darwin':
+        os.environ["MACOSX_DEPLOYMENT_TARGET"] = "10.14"  # Mojave
+    elif system_name == 'Windows':
+        # Always use https on Windows since it just works
+        args.github_https = True
+
+    build_dir = Path(args.build_root) / 'builds'
+    with tempfile.TemporaryDirectory() as src_dir:
+        print(f'Using temporary directory {src_dir} for cloning')
+        os.environ["SKA_TOP_SRC_DIR"] = src_dir
+        build_list_packages(pkg_names, args, src_dir, build_dir)
 
 
-if getattr(args, 'package'):
-    build_one_package(args.package, tag=args.tag)
-else:
-    if args.tag is not None:
-        raise ValueError("Cannot supply '--tag' without specific package'")
-    build_all_packages()
+if __name__ == '__main__':
+    main()

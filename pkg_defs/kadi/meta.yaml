@@ -3,9 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  noarch: generic
-  script_env:
-    - SKA_TOP_SRC_DIR
+  script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/kadi
@@ -20,6 +18,7 @@ requirements:
     - python
     - setuptools
     - setuptools_scm
+    - setuptools_scm_git_archive
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -28,8 +27,7 @@ requirements:
     - pytables
     - configobj
     - requests
-    - tables3_api
-    - django >=3.0.1
+    - django >=3.0
     - pyyaks
     - ska.dbi
     - ska.file

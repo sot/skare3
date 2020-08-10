@@ -3,10 +3,9 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
   number: 0
   noarch: python
-  script_env:
-    - SKA_TOP_SRC_DIR
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/starcheck
@@ -21,7 +20,7 @@ requirements:
     - python
     - setuptools
     - setuptools_scm
-    - testr
+    - setuptools_scm_git_archive
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
@@ -39,5 +38,5 @@ test:
 
 
 about:
-  home: git@github.com:sot/starcheck
+  home: https://github.com/sot/starcheck
 

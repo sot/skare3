@@ -1,0 +1,26 @@
+package:
+  name: ska3_builder
+  version: 2020.01.13
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: generic
+
+requirements:
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+  run:
+    - cython
+    - python
+    - ipython
+    - gitpython
+    - git
+    - conda ==4.3.21
+    - conda-build ==3.0.19
+    - conda-verify ==2.0.0
+    - ska3-pinned ==2018.07.24
