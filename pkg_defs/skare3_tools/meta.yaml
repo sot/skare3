@@ -32,6 +32,6 @@ requirements:
 
 about:
   home: https://github.com/sot/skare3_tools
-  summary: Tools for Ska3 run environment package managements
+  summary: Tools for Ska3 run environment package management
   dev_url: https://github.com/sot/skare3_tools
   doc_url: https://sot.github.io/skare3_tools/index.html
