@@ -22,15 +22,16 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-    - python
-    - setuptools_scm
-    - pyyaml
+    - gitpython
     - jinja2
-    - google-auth-oauthlib
-    - google-api-python-client
-    - sphinx-argparse
     - keyring
-    - jinja2
+    - python
+    - pyyaml
+    - setuptools_scm
+    - sphinx-argparse
 
 about:
   home: https://github.com/sot/skare3_tools
+  summary: Tools for Ska3 run environment package management
+  dev_url: https://github.com/sot/skare3_tools
+  doc_url: https://sot.github.io/skare3_tools/index.html
