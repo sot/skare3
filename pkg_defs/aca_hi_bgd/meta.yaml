@@ -1,0 +1,45 @@
+package:
+  name: aca_hi_bgd
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/aca_hi_bgd
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - numpy
+    - astropy
+    - jinja2
+    - chandra.time
+    - pyyaks
+    - ska.engarchive
+    - kadi
+    - ska.matplotlib
+    - ska.numpy
+    - acdc
+    - testr
+
+test:
+  imports:
+    - aca_hi_bgd
+
+
+about:
+  home: git@github.com:sot/aca_hi_bgd
+
