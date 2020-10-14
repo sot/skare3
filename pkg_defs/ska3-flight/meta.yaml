@@ -57,6 +57,6 @@ requirements:
     - ska.sun ==3.5.3
     - ska.tdb ==3.5.3
     - sparkles ==4.6.0
-    - starcheck ==13.5.1
+    - starcheck ==13.7.0
     - testr ==4.3.1
     - xija ==4.19.0
