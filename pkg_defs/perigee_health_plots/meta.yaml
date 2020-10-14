@@ -1,0 +1,46 @@
+package:
+  name: perigee_health_plots
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/perigee_health_plots
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - numpy
+    - astropy
+    - jinja2
+    - chandra.time
+    - kadi
+    - pyyaks
+    - ska.engarchive
+    - ska.shell
+    - ska.report_ranges
+    - ska.matplotlib
+    - xija
+    - testr
+
+test:
+  imports:
+    - perigee_health_plots
+
+
+about:
+  home: https://github.com/sot/perigee_health_plots
+
