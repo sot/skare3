@@ -49,6 +49,7 @@ requirements:
     - ska.matplotlib
     - ska.parsecm
     - ska.quatutil
+    - ska.report_ranges
     - ska.shell
     - ska_path
     - ska_helpers
