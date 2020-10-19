@@ -1,6 +1,0 @@
-Chandra.Time
-Ska.Numpy
-ska3-core
-ska3-core-latest
-ska3-perl
-xija
