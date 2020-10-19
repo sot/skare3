@@ -1,0 +1,35 @@
+package:
+  name: ska.report_ranges
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/Ska.report_ranges
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - chandra.time
+    - testr
+
+test:
+  imports:
+    - Ska.report_ranges
+
+
+about:
+  home: https://github.com/sot/Ska.report_ranges

@@ -42,6 +42,8 @@ annie
 acdc
 find_attitude
 ska_sync
+ska.report_ranges
+perigee_health_plots
 ska3-template
 ska3-pinned
 ska3-core
