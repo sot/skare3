@@ -44,6 +44,7 @@ find_attitude
 ska_sync
 ska.report_ranges
 perigee_health_plots
+aca_hi_bgd
 ska3-template
 ska3-pinned
 ska3-core
