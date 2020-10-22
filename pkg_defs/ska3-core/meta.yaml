@@ -68,7 +68,7 @@ package:
       - imagesize ==1.2.0
       - importlib-metadata ==1.7.0
       - importlib_metadata ==1.7.0
-      - intel-openmp ==2020.1  # [linux or win]
+      - intel-openmp ==2019.4  # [osx]
       - intel-openmp ==2020.1  # [linux or win]
       - ipykernel ==5.3.3
       - ipyparallel ==6.3.0
@@ -102,7 +102,7 @@ package:
       - libgfortran ==3.0.1  # [osx]
       - libgfortran-ng ==7.3.0  # [linux]
       - libiconv ==1.16  # [osx]
-      - libiconv ==1.16  # [osx]
+      - libiconv ==1.15  # [win]
       - liblief ==0.10.1
       - libllvm9 ==9.0.1
       - libpng ==1.6.37
@@ -130,7 +130,7 @@ package:
       - mccabe ==0.6.1
       - menuinst ==1.4.16  # [win]
       - mistune ==0.8.4
-      - mkl ==2020.1  # [linux or win]
+      - mkl ==2019.4  # [osx]
       - mkl ==2020.1  # [linux or win]
       - mkl-service ==2.3.0
       - mkl_fft ==1.1.0
@@ -171,7 +171,7 @@ package:
       - pkginfo ==1.5.0.1
       - pluggy ==0.13.1
       - prometheus_client ==0.8.0
-      - prompt_toolkit ==3.0.5  # [linux or osx]
+      - prompt_toolkit ==2.0.10  # [win]
       - prompt_toolkit ==3.0.5  # [linux or osx]
       - psutil ==5.7.0
       - ptyprocess ==0.6.0  # [linux or osx]
@@ -221,7 +221,7 @@ package:
       - setuptools-scm ==4.1.2
       - setuptools_scm ==4.1.2
       - sherpa ==4.12.1  # [linux or osx]
-      - sip ==4.19.8  # [osx]
+      - sip ==4.19.13  # [linux or win]
       - sip ==4.19.8  # [osx]
       - six ==1.15.0
       - smmap ==3.0.2
