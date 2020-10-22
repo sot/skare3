@@ -1,62 +1,61 @@
+---
 package:
   name: ska3-flight
-  version: 2020.10
+  version: 2020.13+shiny
 
 build:
   noarch: generic
 
 requirements:
-  # Packages required to run the package. These are the dependencies that
-  # will be installed automatically whenever the package is installed.
   run:
-    - ska3-core ==2020.5
-    - ska3-template ==2019.09.03
-    - aca_view ==0.3.0
-    - acdc ==4.5.0
-    - agasc ==4.8.1
-    - acisfp_check ==3.1.0
-    - acis_taco ==4.1.0
-    - acis_thermal_check ==3.2.0
-    - annie ==0.10.1
-    - backstop_history ==1.1.3
+    - ska3-core ==2020.13+shiny
+    - aca_view ==0.4.0
+    - acdc ==4.6.0
+    - acis_taco ==4.2.0
+    - acis_thermal_check ==3.2.1
+    - acisfp_check ==3.2.0
+    - acispy ==2.0.1.dev12+gc5410da
+    - agasc ==4.9.0
+    - annie ==0.11.0
+    - backstop_history ==1.2.0
     - bep_pcb_check ==3.0.0
-    - chandra.cmd_states ==3.15.2
-    - chandra.maneuver ==3.7.3
-    - chandra.time ==3.20.6
-    - chandra_aca ==4.29.1
-    - cxotime ==3.1.1
+    - chandra.cmd_states ==3.16.0
+    - chandra.maneuver ==3.8.0
+    - chandra.time ==4.0.0
+    - chandra_aca ==4.30.0
+    - cxotime ==3.2.0
     - dea_check ==3.1.0
     - dpa_check ==3.0.0
-    - find_attitude ==3.3.2
     - fep1_actel_check ==3.0.0
     - fep1_mong_check ==3.0.0
-    - hopper ==4.4.1
-    - jplephem ==2.8
-    - kadi ==5.2.0
-    - maude ==3.3.2
-    - mica ==4.21.2
+    - find_attitude ==3.4.0
+    - hopper ==4.5.0
+    - kadi ==5.3.0
+    - maude ==3.4.0
+    - mica ==4.22.0
     - parse_cm ==3.5.2
-    - proseco ==4.8.1
+    - proseco ==4.9.0
     - psmc_check ==3.0.0
-    - pyyaks ==4.4.2
-    - quaternion ==3.5.2
-    - ska.arc5gl ==3.1.4
-    - ska.astro ==3.2.4
-    - ska.dbi ==4.0.2
-    - ska.engarchive ==4.48.0
-    - ska.file ==3.4.4
-    - ska.ftp ==3.5.3
-    - ska.numpy ==3.8.4
-    - ska.matplotlib ==3.11.4
-    - ska.parsecm ==3.3.4
-    - ska_helpers ==0.1.2
+    - pyyaks ==4.5.0
+    - quaternion ==3.6.0
+    - ska.arc5gl ==3.1.5
+    - ska.astro ==3.3.0
+    - ska.dbi ==4.1.0
+    - ska.engarchive ==4.49.0
+    - ska.file ==3.4.5
+    - ska.ftp ==3.6.0
+    - ska.matplotlib ==3.12.0
+    - ska.numpy ==3.9.0
+    - ska.parsecm ==3.4.0
+    - ska.quatutil ==3.4.0
+    - ska.shell ==3.5.0
+    - ska.sun ==3.6.0
+    - ska.tdb ==3.6.0
+    - ska3-template ==2019.09.03
+    - ska_helpers ==0.2.0
     - ska_path ==3.1.1
-    - ska_sync ==4.6.0
-    - ska.quatutil ==3.3.3
-    - ska.shell ==3.4.1
-    - ska.sun ==3.5.3
-    - ska.tdb ==3.5.3
-    - sparkles ==4.6.0
-    - starcheck ==13.7.0
-    - testr ==4.3.1
-    - xija ==4.19.0
+    - ska_sync ==4.7.0
+    - sparkles ==4.7.0
+    - starcheck ==13.7.1
+    - testr ==4.4.0
+    - xija ==4.20.0
