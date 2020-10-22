@@ -31,8 +31,6 @@ package:
       - maude ==3.4.0
       - mica ==4.22.0
       - parse_cm ==3.5.2
-      - prompt-toolkit ==2.0.10  # [win]
-      - prompt-toolkit ==3.0.5  # [linux or osx]
       - proseco ==4.9.0
       - psmc_check ==3.0.0
       - pyyaks ==4.5.0

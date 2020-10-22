@@ -101,8 +101,8 @@ package:
       - libgcc-ng ==9.1.0  # [linux]
       - libgfortran ==3.0.1  # [osx]
       - libgfortran-ng ==7.3.0  # [linux]
-      - libiconv ==1.16  # [osx]
       - libiconv ==1.15  # [win]
+      - libiconv ==1.16  # [osx]
       - liblief ==0.10.1
       - libllvm9 ==9.0.1
       - libpng ==1.6.37
@@ -171,6 +171,8 @@ package:
       - pkginfo ==1.5.0.1
       - pluggy ==0.13.1
       - prometheus_client ==0.8.0
+      - prompt-toolkit ==2.0.10  # [win]
+      - prompt-toolkit ==3.0.5  # [linux or osx]
       - prompt_toolkit ==2.0.10  # [win]
       - prompt_toolkit ==3.0.5  # [linux or osx]
       - psutil ==5.7.0
