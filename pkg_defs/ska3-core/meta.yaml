@@ -13,6 +13,7 @@ package:
       - astropy ==4.0.1.post1
       - astropy-healpix ==0.5
       - astropy-sphinx-theme ==1.1
+      - atomicwrites ==1.4.0  # [win]
       - attrs ==19.3.0
       - autopep8 ==1.5.3
       - babel ==2.8.0
@@ -30,6 +31,8 @@ package:
       - certifi ==2020.6.20
       - cffi ==1.14.0
       - chardet ==3.0.4
+      - cloudpickle ==1.5.0  # [win]
+      - colorama ==0.4.3  # [win]
       - conda ==4.8.3
       - conda-build ==3.18.11
       - conda-package-handling ==1.6.1
@@ -37,34 +40,36 @@ package:
       - cryptography ==2.9.2
       - cycler ==0.10.0
       - cython ==0.29.21
-      - dbus ==1.13.16
+      - dbus ==1.13.16  # [linux or osx]
       - decorator ==4.4.2
       - defusedxml ==0.6.0
       - django ==3.0.3
       - docutils ==0.16
       - docxtpl ==0.10.0
       - entrypoints ==0.3
-      - expat ==2.2.9
+      - expat ==2.2.9  # [linux or osx]
       - filelock ==3.0.12
       - flake8 ==3.8.3
       - fontconfig ==2.13.0  # [linux]
       - freetype ==2.10.2
       - gettext ==0.19.8.1  # [osx]
+      - git ==2.23.0  # [win]
       - gitdb ==4.0.5
       - gitpython ==3.1.3
-      - glib ==2.65.0
+      - glib ==2.65.0  # [linux or osx]
       - glob2 ==0.7
       - gst-plugins-base ==1.14.0  # [linux]
       - gstreamer ==1.14.0  # [linux]
       - h5py ==2.10.0
       - hdf5 ==1.10.4
+      - icc_rt ==2019.0.0  # [win]
       - icu ==58.2
       - idna ==2.10
       - imagesize ==1.2.0
       - importlib-metadata ==1.7.0
       - importlib_metadata ==1.7.0
-      - intel-openmp ==2020.1  # [linux]
-      - intel-openmp ==2020.1  # [linux]
+      - intel-openmp ==2020.1  # [linux or win]
+      - intel-openmp ==2020.1  # [linux or win]
       - ipykernel ==5.3.3
       - ipyparallel ==6.3.0
       - ipython ==7.16.1
@@ -87,15 +92,16 @@ package:
       - jupyterlab_server ==1.2.0
       - kiwisolver ==1.2.0
       - lazy-object-proxy ==1.4.3
-      - lcms2 ==2.11
+      - lcms2 ==2.11  # [linux or osx]
       - ld_impl_linux-64 ==2.33.1  # [linux]
       - libarchive ==3.4.2
       - libcxx ==10.0.0  # [osx]
-      - libedit ==3.1.20191231
-      - libffi ==3.3
+      - libedit ==3.1.20191231  # [linux or osx]
+      - libffi ==3.3  # [linux or osx]
       - libgcc-ng ==9.1.0  # [linux]
       - libgfortran ==3.0.1  # [osx]
       - libgfortran-ng ==7.3.0  # [linux]
+      - libiconv ==1.16  # [osx]
       - libiconv ==1.16  # [osx]
       - liblief ==0.10.1
       - libllvm9 ==9.0.1
@@ -113,24 +119,31 @@ package:
       - lxml ==4.5.2
       - lz4-c ==1.9.2
       - lzo ==2.10
+      - m2w64-gcc-libgfortran ==5.3.0  # [win]
+      - m2w64-gcc-libs ==5.3.0  # [win]
+      - m2w64-gcc-libs-core ==5.3.0  # [win]
+      - m2w64-gmp ==6.1.0  # [win]
+      - m2w64-libwinpthread-git ==5.0.0.4634.697f757  # [win]
       - markupsafe ==1.1.1
       - matplotlib ==3.2.2
       - matplotlib-base ==3.2.2
       - mccabe ==0.6.1
+      - menuinst ==1.4.16  # [win]
       - mistune ==0.8.4
-      - mkl ==2020.1  # [linux]
-      - mkl ==2020.1  # [linux]
+      - mkl ==2020.1  # [linux or win]
+      - mkl ==2020.1  # [linux or win]
       - mkl-service ==2.3.0
       - mkl_fft ==1.1.0
       - mkl_random ==1.1.1
       - mock ==4.0.2
       - more-itertools ==8.4.0
       - mpld3 ==0.3
+      - msys2-conda-epoch ==20160418  # [win]
       - nb_conda ==2.2.1
       - nb_conda_kernels ==2.2.3
       - nbconvert ==5.6.1
       - nbformat ==5.0.7
-      - ncurses ==6.2
+      - ncurses ==6.2  # [linux or osx]
       - networkx ==2.4
       - nose ==1.3.7
       - notebook ==6.0.3
@@ -150,7 +163,7 @@ package:
       - parso ==0.7.0
       - patchelf ==0.11  # [linux]
       - pbr ==5.4.5
-      - pcre ==8.44
+      - pcre ==8.44  # [linux or osx]
       - pexpect ==4.8.0
       - pickleshare ==0.7.5
       - pillow ==7.2.0
@@ -158,9 +171,10 @@ package:
       - pkginfo ==1.5.0.1
       - pluggy ==0.13.1
       - prometheus_client ==0.8.0
-      - prompt_toolkit ==3.0.5
+      - prompt_toolkit ==3.0.5  # [linux or osx]
+      - prompt_toolkit ==3.0.5  # [linux or osx]
       - psutil ==5.7.0
-      - ptyprocess ==0.6.0
+      - ptyprocess ==0.6.0  # [linux or osx]
       - py ==1.9.0
       - py-lief ==0.10.1
       - pycodestyle ==2.6.0
@@ -175,6 +189,7 @@ package:
       - pyopenssl ==19.1.0
       - pyparsing ==2.4.7
       - pyqt ==5.9.2
+      - pyreadline ==2.1  # [win]
       - pyrsistent ==0.16.0
       - pysocks ==1.7.1
       - pytables ==3.6.1
@@ -184,25 +199,28 @@ package:
       - python-docx ==0.8.10
       - python-libarchive-c ==2.9
       - pytz ==2020.1
+      - pywin32 ==227  # [win]
+      - pywinpty ==0.5.7  # [win]
       - pyyaml ==5.3.1
       - pyzmq ==19.0.1
       - qt ==5.9.7
       - qtconsole ==4.7.5
       - qtpy ==1.9.0
-      - readline ==8.0
+      - readline ==8.0  # [linux or osx]
       - requests ==2.24.0
       - requests-oauthlib ==1.3.0
       - requests-toolbelt ==0.9.1
-      - ripgrep ==11.0.2
+      - ripgrep ==11.0.2  # [linux or osx]
       - rope ==0.17.0
       - ruamel_yaml ==0.15.87
+      - runipy ==0.1.5  # [win]
       - scikit-learn ==0.23.1
       - scipy ==1.5.0
       - send2trash ==1.5.0
       - setuptools ==49.2.0
       - setuptools-scm ==4.1.2
       - setuptools_scm ==4.1.2
-      - sherpa ==4.12.1
+      - sherpa ==4.12.1  # [linux or osx]
       - sip ==4.19.8  # [osx]
       - sip ==4.19.8  # [osx]
       - six ==1.15.0
@@ -217,6 +235,7 @@ package:
       - sphinxcontrib-jsmath ==1.0.1
       - sphinxcontrib-qthelp ==1.0.3
       - sphinxcontrib-serializinghtml ==1.1.4
+      - sqlalchemy ==1.3.18  # [win]
       - sqlite ==3.32.3
       - sqlparse ==0.3.1
       - tbb ==2020.0
@@ -230,10 +249,15 @@ package:
       - traitlets ==4.3.3
       - typing_extensions ==3.7.4.2
       - urllib3 ==1.25.9
+      - vc ==14.1  # [win]
+      - vs2015_runtime ==14.16.27012  # [win]
       - wcwidth ==0.2.5
       - webencodings ==0.5.1
       - wheel ==0.34.2
       - widgetsnbextension ==3.5.1
+      - win_inet_pton ==1.1.0  # [win]
+      - wincertstore ==0.2  # [win]
+      - winpty ==0.4.3  # [win]
       - wrapt ==1.11.2
       - xz ==5.2.5
       - yaml ==0.2.5
