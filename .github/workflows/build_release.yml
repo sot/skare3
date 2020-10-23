@@ -142,7 +142,7 @@ jobs:
         if: contains(needs.sanity_check.outputs.packages, matrix.package)
         run: |
           RELEASE_TAG=`basename "$GITHUB_REF"`
-          conda create -y -n ${{ matrix.package }}-${RELEASE_TAG} \
+          conda create -y -n ${{ matrix.package }}-${RELEASE_TAG} --override-channels \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny
