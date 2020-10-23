@@ -1,43 +1,87 @@
+#!/usr/bin/env python
+"""
+Make a combined arch-specific core package list from a set of json files with lists of
+packages in conda environments.
+"""
+from skare3_tools import packages
 import json
+import jinja2
 import argparse
-import numpy as np
-from distutils.version import LooseVersion
-
-parser = argparse.ArgumentParser(description="Make a combined arch-specific core package list")
-parser.add_argument("--linux",
-                    help="conda list json file with list of linux packages")
-parser.add_argument("--osx",
-                    help="conda list json file with list of osx packages")
-parser.add_argument("--out",
-                    help="filename for output file with combined list of files"
-                    " for use in metapackage ")
-args = parser.parse_args()
 
 
-def core_pkgs(pkgs):
-    # This defines the "core" packages as everything that came from defaults
-    # channel except the conda (conda, conda-build, conda-env, etc) packages
-    core = {p['name']:p['version'] for p in pkgs if ((p['channel'] == 'defaults')
-                                                     & (not p['name'].startswith('conda')))}
-    return core
+def parser():
+    parser_ = argparse.ArgumentParser(description=__doc__)
+    parser_.add_argument("--name", help="name of the package", default="ska3-core")
+    parser_.add_argument("--version", help="new package version", default="")
+    parser_.add_argument("--env", action="append", help="environment file", default=[])
+    parser_.add_argument("--out",
+                         help="filename for output file with combined list of files"
+                              " for use in metapackage ")
+    return parser_
 
-pkgs = {'linux': core_pkgs(json.load(open(args.linux))),
-        'osx': core_pkgs(json.load(open(args.osx)))}
 
-full = np.unique(list(pkgs['linux']) + list(pkgs['osx']))
+def main():
+    args = parser().parse_args()
 
-pkglist = []
-for p in full:
-    # For packages that are automatically installed (by dependency request) on both
-    # OSes, here we've just selected the minimum version to require.  The actual set of 
-    # packages still needs to be tested after creation.
-    if p in pkgs['linux'] and p in pkgs['osx']:
-        versions = [pkgs['linux'][p], pkgs['osx'][p]]
-        versions.sort(key=LooseVersion)
-        pkglist.append("   - {} =={}".format(p, versions[0]))
-    if p in pkgs['linux'] and p not in pkgs['osx']:
-        pkglist.append("   - {} =={} [linux]".format(p, pkgs['linux'][p]))
-    if p in pkgs['osx'] and p not in pkgs['linux']:
-        pkglist.append("   - {} =={} [osx]".format(p, pkgs['osx'][p]))
+    # This defines the "core" packages as everything that is not a ska package
+    # with some exceptions
+    exceptions = ['sherpa', 'prompt-toolkit']
+    ska_packages = [p['package'] for p in packages.get_package_list()
+                    if p['package'] and p['package'] not in exceptions]
 
-open(args.out, 'w').write("\n".join(pkglist))
+    environments = {}
+    print(f'Reading environments:')
+    for env in args.env:
+        try:
+            platform, filename = env.split('=')
+        except ValueError:
+            print(f' - skipped {env}')
+            continue
+        print(f' + {platform}: {filename}')
+        with open(filename) as fh:
+            environments[platform] = {p['name']: p for p in json.load(fh)}
+
+    package_names = sorted(set(sum([list(e.keys()) for e in environments.values()], [])))
+    all_packages = []
+    for p in package_names:
+        versions = sorted(set(
+            [environments[e][p]['version'].strip() for e in environments if p in environments[e]]
+        ))
+        for v in versions:
+            platforms = sorted([e for e in environments
+                                if p in environments[e] and environments[e][p]['version'] == v])
+            platforms = [] if len(platforms) == len(environments) else platforms
+            all_packages.append({
+                'name': p,
+                'platforms': ' or '.join(platforms),
+                'version': v
+            })
+
+    tpl = jinja2.Template(YAML_TPL)
+    meta = tpl.render(
+        package=args.name,
+        version=args.version,
+        requirements=[p for p in all_packages if p['name'] not in ska_packages]
+    )
+    if args.out:
+        with open(args.out, 'w') as fh:
+            fh.write(meta)
+    else:
+        print(meta)
+
+YAML_TPL = """---
+package:
+  name: {{ package }}
+  version: {{ version }}
+
+requirements:
+  run:
+  {%- for p in requirements %}
+    - {{ p.name }} =={{ p.version }}{%if p.platforms %}  # [{{ p.platforms }}]{% endif %}
+  {%- endfor %}
+
+"""
+
+
+if __name__ == "__main__":
+    main()
