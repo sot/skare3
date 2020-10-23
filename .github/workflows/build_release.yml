@@ -145,8 +145,7 @@ jobs:
           conda create -y -n ${{ matrix.package }}-${RELEASE_TAG} \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/core-pkg-repo \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny
                 ${{ matrix.package }}==${RELEASE_TAG}
           source activate ${{ matrix.package }}-${RELEASE_TAG}
           cd /export/jgonzale/ska_testr
