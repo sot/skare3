@@ -42,12 +42,12 @@ jobs:
     - name: Build
       id: build
       run: |
-        [ "${{needs.sanity_check.outputs.prerelease}}" = "True" ] && OVERRIDE="--skare3-overwrite-version ${GITHUB_REF}" || OVERRIDE=""
+        echo ${{needs.sanity_check.outputs.override}}
         for package in ${{needs.sanity_check.outputs.packages}}; do
           docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
                  -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
                  docker.pkg.github.com/sot/skare3/centos5-builder:latest ${package} \
-                 --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${OVERRIDE} ${{needs.sanity_check.outputs.override}};
+                 --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.override}};
         done;
         touch builds/linux-64/.empty
         touch builds/noarch/.empty
@@ -92,6 +92,7 @@ jobs:
     - name: Build Package
       shell: bash -l {0}
       run: |
+        echo ${{needs.sanity_check.outputs.override}}
         for package in ${{needs.sanity_check.outputs.packages}}; do
           python skare3_tools/actions/build/files/build.py ${package} \
           --arch-specific --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.override}};
