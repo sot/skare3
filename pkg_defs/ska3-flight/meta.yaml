@@ -1,11 +1,11 @@
 ---
 package:
   name: ska3-flight
-  version: shiny-2020.12
+  version: shiny_2020.12
 
   requirements:
     run:
-      - ska3-core-latest ==shiny-2020.12
+      - ska3-core-latest ==shiny_2020.12
       - aca_view ==0.4.0
       - acdc ==4.6.0
       - acis_taco ==4.2.0
