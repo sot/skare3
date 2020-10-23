@@ -69,6 +69,7 @@ jobs:
   build-other:
     runs-on: ${{ matrix.os }}-latest
     name: Build on ${{ matrix.os }}
+    needs: [sanity_check]
     strategy:
       fail-fast: false
       matrix:
