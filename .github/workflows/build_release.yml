@@ -115,25 +115,19 @@ jobs:
   update-channel:
     runs-on: head
     name: Update Conda Channel
-    needs: [build-macos, build-linux]
+    needs: [build-linux, build-other]
     steps:
-      - name: Get linux and noarch packages
+      - name: Get packages
         uses: actions/download-artifact@v2
         with:
-          name: packages
-          path: packages
-      - name: Get osx packages
-        uses: actions/download-artifact@v2
-        with:
-          name: packages-osx-64
-          path: packages/osx-64
+          name: conda-package
+          path: package
       - name: Update channel
         run: |
-          rsync -a packages/ ${CONDA_CHANNEL_DIR}
-          for d in ${CONDA_CHANNEL_DIR}/*; do conda index $d; done;
+          rsync -a package/ ${CONDA_CHANNEL_DIR}
+          conda index ${CONDA_CHANNEL_DIR}
         env:
           CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/test
-
 
   regression-test:
     runs-on: head
