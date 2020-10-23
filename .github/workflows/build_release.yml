@@ -43,12 +43,12 @@ jobs:
       id: build
       run: |
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
-        echo "Override flag: ${{needs.sanity_check.outputs.override}}"
+        echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
         for package in ${{needs.sanity_check.outputs.packages}}; do
           docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
                  -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
                  docker.pkg.github.com/sot/skare3/centos5-builder:latest ${package} \
-                 --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.override}};
+                 --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
         done;
         touch builds/linux-64/.empty
         touch builds/noarch/.empty
@@ -94,10 +94,10 @@ jobs:
       shell: bash -l {0}
       run: |
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
-        echo "Override flag: ${{needs.sanity_check.outputs.override}}"
+        echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
         for package in ${{needs.sanity_check.outputs.packages}}; do
           python skare3_tools/actions/build/files/build.py ${package} \
-          --arch-specific --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.override}};
+          --arch-specific --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
         done;
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
