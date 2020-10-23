@@ -9,6 +9,7 @@ jobs:
     outputs:
       packages: ${{ steps.sanity_check.outputs.packages }}
       prerelease: ${{ steps.sanity_check.outputs.prerelease }}
+      overwrite_flag: ${{ steps.sanity_check.outputs.overwrite_flag }}
     steps:
     - name: Checkout skare3
       uses: actions/checkout@v2
