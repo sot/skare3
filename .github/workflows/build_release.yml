@@ -59,7 +59,7 @@ jobs:
     - name: Save packages
       uses: actions/upload-artifact@v2
       with:
-        name: packages
+        name: conda-package
         path: |
           builds/linux-64/
           builds/noarch/
