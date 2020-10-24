@@ -97,7 +97,7 @@ jobs:
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
         echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
         for package in ${{needs.sanity_check.outputs.packages}}; do
-          python skare3_tools/scripts/build.py ${package} \
+          python skare3_tools/skare3_tools/scripts/build.py ${package} \
           --arch-specific --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
         done;
       env:
