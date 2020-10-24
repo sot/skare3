@@ -39,7 +39,7 @@ jobs:
     - name: Login to GitHub Package Registry
       run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }}
     - name: Pull Docker image
-      run: docker pull docker.pkg.github.com/sot/skare3/centos5-builder:v3
+      run: docker pull docker.pkg.github.com/sot/skare3/centos7-builder:latest
     - name: Build
       id: build
       run: |
@@ -48,7 +48,7 @@ jobs:
         for package in ${{needs.sanity_check.outputs.packages}}; do
           docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
                  -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
-                 docker.pkg.github.com/sot/skare3/centos5-builder:v3 ${package} \
+                 docker.pkg.github.com/sot/skare3/centos7-builder:latest ${package} \
                  --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
         done;
         touch builds/linux-64/.empty
