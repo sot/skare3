@@ -39,11 +39,11 @@ package:
   name: {{ package }}
   version: {{ version }}
 
-  requirements:
-    run:
-    {%- for p in requirements %}
-      - {{ p.name }} =={{ p.version }}{%if p.platforms %}  # [{{ p.platforms }}]{% endif %}
-    {%- endfor %}
+requirements:
+  run:
+  {%- for p in requirements %}
+    - {{ p.name }} =={{ p.version }}{%if p.platforms %}  # [{{ p.platforms }}]{% endif %}
+  {%- endfor %}
 
 """
 
