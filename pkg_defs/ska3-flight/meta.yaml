@@ -8,7 +8,7 @@ build:
 
 requirements:
   run:
-    - ska3-core-latest ==2020.13+shiny
+    - ska3-core ==2020.13+shiny
     - aca_view ==0.4.0
     - acdc ==4.6.0
     - acis_taco ==4.2.0
