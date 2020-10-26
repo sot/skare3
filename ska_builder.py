@@ -11,6 +11,8 @@ from pathlib import Path
 import tempfile
 from fnmatch import fnmatch
 import time
+from packaging import version
+import string
 
 import git
 import jinja2
@@ -60,6 +62,8 @@ def get_opt():
                         "except on Windows")
     parser.add_argument("--repo-url",
                         help="Use this URL instead of meta['about']['home']")
+    parser.add_argument('--skare3-overwrite-version',
+                        help="The version of the ska3 conda meta-package to build (used by CI).")
 
     args = parser.parse_args()
     return args
@@ -111,7 +115,13 @@ def clone_repo(name, args, src_dir, meta):
 
 
 def build_package(name, args, src_dir, build_dir):
-    pkg_path = os.path.join(PKG_DEFS_PATH, name)
+    pkg_path = Path(src_dir) / 'pkg_defs' / name
+    shutil.copytree(PKG_DEFS_PATH / name, pkg_path)
+
+    if args.skare3_overwrite_version and re.match('ska3-\S+$', name):
+        skare3_old_version, skare3_new_version = args.skare3_overwrite_version.split(':')
+        print(f'  - overwriting skare3 meta-package version {skare3_old_version} -> {skare3_new_version}')
+        overwrite_skare3_version(skare3_old_version, skare3_new_version, pkg_path)
 
     try:
         version = subprocess.check_output(['python', 'setup.py', '--version'],
@@ -122,7 +132,7 @@ def build_package(name, args, src_dir, build_dir):
     os.environ['SKA_PKG_VERSION'] = version
     print(f'  - SKA_PKG_VERSION={version}')
 
-    cmd_list = ["conda", "build", pkg_path,
+    cmd_list = ["conda", "build", str(pkg_path),
                 "--croot", str(build_dir),
                 "--old-build-string",
                 "--no-anaconda-upload",
@@ -203,8 +213,48 @@ def build_list_packages(pkg_names, args, src_dir, build_dir):
         raise ValueError("Packages {} failed".format(",".join(failures)))
 
 
+def overwrite_skare3_version(current_version, new_version, pkg_path):
+    meta_file = pkg_path / 'meta.yaml'
+    with open(meta_file) as fh:
+        t = jinja2.Template(fh.read())
+    text = (t.render(SKA_PKG_VERSION='$SKA_PKG_VERSION',
+                     SKA_TOP_SRC_DIR='$SKA_TOP_SRC_DIR'))
+    if version.parse(yaml.__version__) < version.parse("5.1"):
+        data = yaml.load(text)
+    else:
+        data = yaml.load(text, Loader=yaml.BaseLoader)
+    if str(data['package']['version']) == str(current_version):
+        data['package']['version'] = new_version
+        for i in range(len(data['requirements'])):
+            if re.search('==', data['requirements']['run'][i]):
+                name, pkg_version = data['requirements']['run'][i].split('==')
+                name = name.strip()
+                if re.match('ska3-\S+$', name) and pkg_version == current_version:
+                    data['requirements']['run'][i] = f'{name} =={new_version}'
+        t = string.Template(yaml.dump(data, indent=4)).substitute(
+            SKA_PKG_VERSION='{{ SKA_PKG_VERSION }}',
+            SKA_TOP_SRC_DIR='{{ SKA_TOP_SRC_DIR }}'
+        )
+        with open(meta_file, 'w') as f:
+            f.write(t)
+    else:
+        print(f'  - NOT changing version on {pkg_path}')
+
+
 def main():
     args = get_opt()
+
+    if args.skare3_overwrite_version:
+        if ':' not in args.skare3_overwrite_version:
+            rc = re.match('(?P<version>(?P<release>\S+)(a|b|rc)[0-9]+(\+(?P<label>\S+))?)$',
+                          args.skare3_overwrite_version)
+            if not rc:
+                raise Exception(f'wrong format for skare3_overwrite_version: '
+                                f'{args.skare3_overwrite_version}')
+            version_info = rc.groupdict()
+            version_info["label"] = f'+{version_info["label"]}' if version_info["label"] else ''
+            args.skare3_overwrite_version = \
+                f'{version_info["release"]}{version_info["label"]}:{version_info["version"]}'
 
     if args.packages:
         pkg_names = args.packages
