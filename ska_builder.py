@@ -222,17 +222,18 @@ def overwrite_skare3_version(current_version, new_version, pkg_path):
             data = yaml.load(fh, Loader=yaml.BaseLoader)
     if str(data['package']['version']) == str(current_version):
         data['package']['version'] = new_version
-        for i in range(len(data['requirements'])):
-            if re.search('==', data['requirements']['run'][i]):
-                name, pkg_version = data['requirements']['run'][i].split('==')
-                name = name.strip()
-                if re.match('ska3-\S+$', name) and pkg_version == current_version:
-                    data['requirements']['run'][i] = f'{name} =={new_version}'
-        t = yaml.dump(data, indent=4)
-        with open(meta_file, 'w') as f:
-            f.write(t)
     else:
         print(f'  - NOT changing version on {pkg_path}')
+    for section in data['requirements']:
+        for i, requirement in enumerate(data['requirements'][section]):
+            if '==' in requirement:
+                name, pkg_version = requirement.split('==')
+                name = name.strip()
+                if re.match('ska3-\S+$', name) and pkg_version == current_version:
+                    data['requirements'][section][i] = f'{name} =={new_version}'
+    t = yaml.dump(data, indent=4)
+    with open(meta_file, 'w') as f:
+        f.write(t)
 
 
 def main():
