@@ -228,8 +228,6 @@ def overwrite_skare3_version(current_version, new_version, pkg_path):
             data = yaml.load(fh, Loader=yaml.BaseLoader)
     if str(data['package']['version']) == str(current_version):
         data['package']['version'] = new_version
-    else:
-        print(f'  - NOT changing version on {pkg_path}')
         # the intention of this function is for pre-releases.
         # in this case, if a meta-package version is not `new_version`,
         # it better not have any dependency with version `new_version`.
@@ -241,6 +239,8 @@ def overwrite_skare3_version(current_version, new_version, pkg_path):
                     name = name.strip()
                     if re.match(r'ska3-\S+$', name) and pkg_version == current_version:
                         data['requirements'][section][i] = f'{name} =={new_version}'
+    else:
+        print(f'  - NOT changing version on {pkg_path}')
     t = yaml.dump(data, indent=4)
     with open(meta_file, 'w') as f:
         f.write(t)
