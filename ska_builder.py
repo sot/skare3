@@ -243,11 +243,13 @@ def overwrite_skare3_version(current_version, new_version, pkg_path):
         if m:
             version = m.groupdict()['version']
             if version == str(current_version):
+                print(f'    - version: {current_version} -> {new_version}')
                 lines[i] = line.replace(current_version, new_version)
         m = re.search(r'(\s+)?(?P<name>\S+)(\s+)?==(\s+)?(?P<version>(\S+)+)', line)
         if m:
             info = m.groupdict()
             if re.match(r'ska3-\S+$', info['name']) and info['version'] == current_version:
+                print(f'    - {info["name"]} dependency: {current_version} -> {new_version}')
                 lines[i] = line.replace(current_version, new_version)
 
     with open(meta_file, 'w') as f:
