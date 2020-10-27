@@ -67,8 +67,7 @@ def get_opt():
                         help="This option is intended to overwrite ska3-* meta-package versions "
                              "when building/testing pre-releases. If the initial version is not "
                              "given, it is assumed to be the same as the final version with the "
-                             "pre-release portion of the version string removed. "
-                             "Versions are expected in PEP-0440 format.")
+                             "pre-release portion of the version string removed.")
 
     args = parser.parse_args()
     return args
@@ -260,8 +259,15 @@ def main():
         (i.e.: something that looks like "rcN" or "aN" or "bN").
         """
         if ':' not in args.ska3_overwrite_version:
-            rc = re.match(r'(?P<version>(?P<release>\S+)(a|b|rc)[0-9]+(\+(?P<label>\S+))?)$',
-                          args.ska3_overwrite_version)
+            rc = re.match(
+                r"""(?P<version>
+                    (?P<release>\S+)     # release segment (usually N!N.N.N but not enforced here)
+                    (a|b|rc)[0-9]+       # pre-release segment (rcN, aN or bN, required)
+                    (\+(?P<label>\S+))?  # label fragment (an optional string)
+                )$""",
+                args.ska3_overwrite_version,
+                re.VERBOSE
+            )
             if not rc:
                 raise Exception(f'wrong format for ska3_overwrite_version: '
                                 f'{args.ska3_overwrite_version}')
