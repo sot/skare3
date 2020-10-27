@@ -133,10 +133,10 @@ def build_package(name, args, src_dir, build_dir):
         version = subprocess.check_output(['python', 'setup.py', '--version'],
                                           cwd=os.path.join(src_dir, name))
         version = version.decode().split()[-1].strip()
+        print(f'  - SKA_PKG_VERSION={version}')
     except Exception:
         version = ''
     os.environ['SKA_PKG_VERSION'] = version
-    print(f'  - SKA_PKG_VERSION={version}')
 
     cmd_list = ["conda", "build", str(pkg_path),
                 "--croot", str(build_dir),
