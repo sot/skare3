@@ -221,10 +221,7 @@ def build_list_packages(pkg_names, args, src_dir, build_dir):
 def overwrite_skare3_version(current_version, new_version, pkg_path):
     meta_file = pkg_path / 'meta.yaml'
     with open(meta_file) as fh:
-        if version.parse(yaml.__version__) < version.parse("5.1"):
-            data = yaml.load(fh)
-        else:
-            data = yaml.load(fh, Loader=yaml.BaseLoader)
+        data = yaml.load(fh, Loader=yaml.SafeLoader)
     if str(data['package']['version']) == str(current_version):
         data['package']['version'] = new_version
         # the intention of this function is for pre-releases.
