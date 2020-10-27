@@ -217,27 +217,42 @@ def build_list_packages(pkg_names, args, src_dir, build_dir):
 
 
 def overwrite_skare3_version(current_version, new_version, pkg_path):
+    """
+    Replaces `current_version` by `new_version` in the meta.yaml file located at `pkg_path`.
+
+    This is not a general replacement. The version is replaced if:
+
+      - the line matches the pattern "  version: <current_version>"
+      - the line matches the pattern "  <pkg_name> ==<current_version>"
+
+    with possible whitespace before/after, or whitespace around the colon or equality operator.
+
+    Note that this function would not replace the version string if the "version" tag and the value
+    are not in the same line, even though this is correct yaml syntax.
+
+    :param current_version: str
+    :param new_version: str
+    :param pkg_path: pathlib.Path
+    :return:
+    """
     meta_file = pkg_path / 'meta.yaml'
     with open(meta_file) as fh:
-        data = yaml.load(fh, Loader=yaml.SafeLoader)
-    if str(data['package']['version']) == str(current_version):
-        data['package']['version'] = new_version
-        # the intention of this function is for pre-releases.
-        # in this case, if a meta-package version is not `new_version`,
-        # it better not have any dependency with version `new_version`.
-        # Not modifying requirements will then cause tests to fail (as they should).
-        for section in data['requirements']:
-            for i, requirement in enumerate(data['requirements'][section]):
-                if '==' in requirement:
-                    name, pkg_version = requirement.split('==')
-                    name = name.strip()
-                    if re.match(r'ska3-\S+$', name) and pkg_version == current_version:
-                        data['requirements'][section][i] = f'{name} =={new_version}'
-    else:
-        print(f'  - NOT changing version on {pkg_path}')
-    t = yaml.dump(data, indent=4)
+        lines = fh.readlines()
+    for i, line in enumerate(lines):
+        m = re.search(r'(\s+)?version(\s+)?:(\s+)?(?P<version>(\S+)+)', line)
+        if m:
+            version = m.groupdict()['version']
+            if version == str(current_version):
+                lines[i] = line.replace(current_version, new_version)
+        m = re.search(r'(\s+)?(?P<name>\S+)(\s+)?==(\s+)?(?P<version>(\S+)+)', line)
+        if m:
+            info = m.groupdict()
+            if re.match(r'ska3-\S+$', info['name']) and info['version'] == current_version:
+                lines[i] = line.replace(current_version, new_version)
+
     with open(meta_file, 'w') as f:
-        f.write(t)
+        for line in lines:
+            f.write(line)
 
 
 def main():
