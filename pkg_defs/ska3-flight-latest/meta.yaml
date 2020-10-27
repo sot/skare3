@@ -36,6 +36,7 @@ requirements:
     - maude
     - mica
     - parse_cm
+    - perigee_health_plots
     - proseco
     - pyyaks
     - quaternion
