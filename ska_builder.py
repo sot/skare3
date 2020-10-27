@@ -118,9 +118,10 @@ def build_package(name, args, src_dir, build_dir):
     pkg_path = Path(src_dir) / 'pkg_defs' / name
     shutil.copytree(PKG_DEFS_PATH / name, pkg_path)
 
-    if args.ska3_overwrite_version and re.match('ska3-\S+$', name):
+    if args.ska3_overwrite_version and re.match(r'ska3-\S+$', name):
         skare3_old_version, skare3_new_version = args.ska3_overwrite_version.split(':')
-        print(f'  - overwriting skare3 meta-package version {skare3_old_version} -> {skare3_new_version}')
+        print(f'  - overwriting skare3 meta-package version '
+              f'{skare3_old_version} -> {skare3_new_version}')
         overwrite_skare3_version(skare3_old_version, skare3_new_version, pkg_path)
 
     try:
@@ -229,7 +230,7 @@ def overwrite_skare3_version(current_version, new_version, pkg_path):
             if '==' in requirement:
                 name, pkg_version = requirement.split('==')
                 name = name.strip()
-                if re.match('ska3-\S+$', name) and pkg_version == current_version:
+                if re.match(r'ska3-\S+$', name) and pkg_version == current_version:
                     data['requirements'][section][i] = f'{name} =={new_version}'
     t = yaml.dump(data, indent=4)
     with open(meta_file, 'w') as f:
@@ -241,7 +242,7 @@ def main():
 
     if args.ska3_overwrite_version:
         if ':' not in args.ska3_overwrite_version:
-            rc = re.match('(?P<version>(?P<release>\S+)(a|b|rc)[0-9]+(\+(?P<label>\S+))?)$',
+            rc = re.match(r'(?P<version>(?P<release>\S+)(a|b|rc)[0-9]+(\+(?P<label>\S+))?)$',
                           args.ska3_overwrite_version)
             if not rc:
                 raise Exception(f'wrong format for ska3_overwrite_version: '
