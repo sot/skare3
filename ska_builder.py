@@ -63,7 +63,12 @@ def get_opt():
     parser.add_argument("--repo-url",
                         help="Use this URL instead of meta['about']['home']")
     parser.add_argument('--ska3-overwrite-version',
-                        help="The version of the ska3 conda meta-package to build (used by CI).")
+                        metavar='[<initial-version>:]<final-version>',
+                        help="This option is intended to overwrite ska3-* meta-package versions "
+                             "when building/testing pre-releases. If the initial version is not "
+                             "given, it is assumed to be the same as the final version with the "
+                             "pre-release portion of the version string removed. "
+                             "Versions are expected in PEP-0440 format.")
 
     args = parser.parse_args()
     return args
@@ -241,6 +246,15 @@ def main():
     args = get_opt()
 
     if args.ska3_overwrite_version:
+        """
+        the value of  args.ska3_overwrite_version can be of the forms:
+        - `<initial-version>:<final-version>`.
+        - `<final-version>`.
+        
+        In the first case, there is nothing to do. In the second case, we assume that the final
+        version is the same as the final version but removing the release candidate part
+        (i.e.: something that looks like "rcN" or "aN" or "bN").
+        """
         if ':' not in args.ska3_overwrite_version:
             rc = re.match(r'(?P<version>(?P<release>\S+)(a|b|rc)[0-9]+(\+(?P<label>\S+))?)$',
                           args.ska3_overwrite_version)
