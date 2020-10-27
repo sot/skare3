@@ -53,7 +53,7 @@ requirements:
     - ska.tdb ==3.6.0
     - ska3-template ==2019.09.03
     - ska_helpers ==0.2.0
-    - ska_path ==3.1.1
+    - ska_path ==3.1.2
     - ska_sync ==4.7.0
     - sparkles ==4.7.0
     - starcheck ==13.7.1
