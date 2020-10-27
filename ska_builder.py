@@ -11,8 +11,6 @@ from pathlib import Path
 import tempfile
 from fnmatch import fnmatch
 import time
-from packaging import version
-import string
 
 import git
 import jinja2
