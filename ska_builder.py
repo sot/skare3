@@ -216,13 +216,10 @@ def build_list_packages(pkg_names, args, src_dir, build_dir):
 def overwrite_skare3_version(current_version, new_version, pkg_path):
     meta_file = pkg_path / 'meta.yaml'
     with open(meta_file) as fh:
-        t = jinja2.Template(fh.read())
-    text = (t.render(SKA_PKG_VERSION='$SKA_PKG_VERSION',
-                     SKA_TOP_SRC_DIR='$SKA_TOP_SRC_DIR'))
-    if version.parse(yaml.__version__) < version.parse("5.1"):
-        data = yaml.load(text)
-    else:
-        data = yaml.load(text, Loader=yaml.BaseLoader)
+        if version.parse(yaml.__version__) < version.parse("5.1"):
+            data = yaml.load(fh)
+        else:
+            data = yaml.load(fh, Loader=yaml.BaseLoader)
     if str(data['package']['version']) == str(current_version):
         data['package']['version'] = new_version
         for i in range(len(data['requirements'])):
@@ -231,10 +228,7 @@ def overwrite_skare3_version(current_version, new_version, pkg_path):
                 name = name.strip()
                 if re.match('ska3-\S+$', name) and pkg_version == current_version:
                     data['requirements']['run'][i] = f'{name} =={new_version}'
-        t = string.Template(yaml.dump(data, indent=4)).substitute(
-            SKA_PKG_VERSION='{{ SKA_PKG_VERSION }}',
-            SKA_TOP_SRC_DIR='{{ SKA_TOP_SRC_DIR }}'
-        )
+        t = yaml.dump(data, indent=4)
         with open(meta_file, 'w') as f:
             f.write(t)
     else:
