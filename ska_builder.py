@@ -230,13 +230,17 @@ def overwrite_skare3_version(current_version, new_version, pkg_path):
         data['package']['version'] = new_version
     else:
         print(f'  - NOT changing version on {pkg_path}')
-    for section in data['requirements']:
-        for i, requirement in enumerate(data['requirements'][section]):
-            if '==' in requirement:
-                name, pkg_version = requirement.split('==')
-                name = name.strip()
-                if re.match(r'ska3-\S+$', name) and pkg_version == current_version:
-                    data['requirements'][section][i] = f'{name} =={new_version}'
+        # the intention of this function is for pre-releases.
+        # in this case, if a meta-package version is not `new_version`,
+        # it better not have any dependency with version `new_version`.
+        # Not modifying requirements will then cause tests to fail (as they should).
+        for section in data['requirements']:
+            for i, requirement in enumerate(data['requirements'][section]):
+                if '==' in requirement:
+                    name, pkg_version = requirement.split('==')
+                    name = name.strip()
+                    if re.match(r'ska3-\S+$', name) and pkg_version == current_version:
+                        data['requirements'][section][i] = f'{name} =={new_version}'
     t = yaml.dump(data, indent=4)
     with open(meta_file, 'w') as f:
         f.write(t)
