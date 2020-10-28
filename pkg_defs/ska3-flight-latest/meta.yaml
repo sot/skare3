@@ -9,6 +9,7 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
+    - aca_hi_bgd
     - aca_view
     - aca_weekly_report
     - acispy
