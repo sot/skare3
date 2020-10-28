@@ -10,6 +10,7 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - aca_view
+    - aca_weekly_report
     - acispy
     - acisfp_check
     - acis_thermal_check
