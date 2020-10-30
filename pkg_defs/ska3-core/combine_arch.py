@@ -14,6 +14,7 @@ def parser():
     parser_.add_argument("--name", help="name of the package", default="ska3-core")
     parser_.add_argument("--version", help="new package version", default="")
     parser_.add_argument("--env", action="append", help="environment file", default=[])
+    parser_.add_argument("--subtract-env", action="append")
     parser_.add_argument("--out",
                          help="filename for output file with combined list of files"
                               " for use in metapackage ")
@@ -40,6 +41,29 @@ def main():
         print(f' + {platform}: {filename}')
         with open(filename) as fh:
             environments[platform] = {p['name']: p for p in json.load(fh)}
+
+    subtract_environments = {}
+    print(f'Reading environments to subtract:')
+    for env in args.subtract_env:
+        try:
+            platform, filename = env.split('=')
+        except ValueError:
+            print(f' - skipped {env}')
+            continue
+        print(f' + {platform}: {filename}')
+        with open(filename) as fh:
+            subtract_environments[platform] = {p['name']: p for p in json.load(fh)}
+
+    for platform in environments:
+        remove_keys = []
+        for package in environments[platform]:
+            if (platform in subtract_environments
+                    and package in subtract_environments[platform]
+                    and subtract_environments[platform][package]['version']
+                    == environments[platform][package]['version']):
+                remove_keys.append(package)
+        for package in remove_keys:
+            del environments[platform][package]
 
     package_names = sorted(set(sum([list(e.keys()) for e in environments.values()], [])))
     all_packages = []
