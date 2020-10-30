@@ -1,24 +1,42 @@
 package:
   name: ska3-perl
-  version: 2020.01.24
+  version: 2020.13+shiny
+
+build:
+  skip: True  # [win]
 
 requirements:
   run:
-    - cfitsio ==3.450
-    - xtime ==1.2.2
-    - pgplot ==5.2.2 1 # [linux]
+    - _sysroot_linux-64_curr_repodata_hack ==3  # [linux]
+    - cfitsio ==3.470  # [linux]
+    - gsl ==2.4  # [linux]
+    - kernel-headers_linux-64 ==3.10.0  # [linux]
+    - krb5 ==1.18.2  # [linux]
+    - libcurl ==7.71.1  # [linux]
+    - libssh2 ==1.9.0  # [linux]
+    - libx11-common-cos7-x86_64 ==1.6.7  # [linux]
+    - libx11-cos7-x86_64 ==1.6.7  # [linux]
+    - libx11-devel-cos7-x86_64 ==1.6.7  # [linux]
     - perl ==5.26.2
-    - perl-extutils-f77 ==1.20
     - perl-app-cpanminus ==1.7044
-    - perl-core-deps ==0.1
-    - perl-pgplot ==2.19 # [linux]
-    - perl-dbd-sybase ==1.15 pl526_1 # [linux]
-    - perl-chandra-time ==0.9.2
-    - perl-app-env-ascds ==0.4
-    - perl-cxc-sysarch ==1.0
-    - perl-ska-agasc ==3.5.0
+    - perl-app-env-ascds ==0.04  # [linux]
+    - perl-chandra-time ==0.9.2  # [linux]
+    - perl-core-deps ==0.3
+    - perl-cxc-sysarch ==1.00  # [linux]
+    - perl-dbd-sybase ==1.15  # [linux]
+    - perl-extended-deps ==0.1  # [linux]
+    - perl-ska-agasc ==3.5.0  # [linux]
     - perl-ska-classic ==0.6
-    - perl-ska-convert ==4.3
-    - perl-ska-web ==4.0
-    - watch_cron_logs ==4.2
-    - task_schedule ==4.2.1
+    - perl-ska-convert ==4.3  # [linux]
+    - perl-ska-web ==4.0  # [linux]
+    - perl-tk ==804.035  # [linux]
+    - pkg-config ==0.29.2
+    - sysroot_linux-64 ==2.17  # [linux]
+    - xorg-kbproto ==1.0.7  # [linux]
+    - xorg-libx11 ==1.6.9  # [linux]
+    - xorg-libxft ==2.3.2  # [linux]
+    - xorg-libxrender ==0.9.10  # [linux]
+    - xorg-renderproto ==0.11.1  # [linux]
+    - xorg-xproto ==7.0.31  # [linux]
+    - xtime ==1.2.2  # [linux]
+    - zip ==3.0
