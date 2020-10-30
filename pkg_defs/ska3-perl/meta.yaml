@@ -7,6 +7,7 @@ build:
 
 requirements:
   run:
+    - ska3-core ==2020.13+shiny
     - _sysroot_linux-64_curr_repodata_hack ==3  # [linux]
     - cfitsio ==3.470  # [linux]
     - gsl ==2.4  # [linux]
