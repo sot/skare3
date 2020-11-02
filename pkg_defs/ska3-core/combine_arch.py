@@ -21,6 +21,21 @@ def parser():
     return parser_
 
 
+def get_environments(envs):
+    environments = {}
+    print(f'Reading environments for {envs}:')
+    for env in envs:
+        try:
+            platform, filename = env.split('=')
+        except ValueError:
+            print(f' - skipped {env}')
+            continue
+        print(f' + {platform}: {filename}')
+        with open(filename) as fh:
+            environments[platform] = {p['name']: p for p in json.load(fh)}
+    return environments
+
+
 def main():
     args = parser().parse_args()
 
@@ -30,29 +45,8 @@ def main():
     ska_packages = [p['package'] for p in packages.get_package_list()
                     if p['package'] and p['package'] not in exceptions]
 
-    environments = {}
-    print(f'Reading environments:')
-    for env in args.env:
-        try:
-            platform, filename = env.split('=')
-        except ValueError:
-            print(f' - skipped {env}')
-            continue
-        print(f' + {platform}: {filename}')
-        with open(filename) as fh:
-            environments[platform] = {p['name']: p for p in json.load(fh)}
-
-    subtract_environments = {}
-    print(f'Reading environments to subtract:')
-    for env in args.subtract_env:
-        try:
-            platform, filename = env.split('=')
-        except ValueError:
-            print(f' - skipped {env}')
-            continue
-        print(f' + {platform}: {filename}')
-        with open(filename) as fh:
-            subtract_environments[platform] = {p['name']: p for p in json.load(fh)}
+    environments = get_environments(args.env)
+    subtract_environments = get_environments(args.subtract_env)
 
     for platform in environments:
         remove_keys = []
@@ -92,6 +86,7 @@ def main():
             fh.write(meta)
     else:
         print(meta)
+
 
 YAML_TPL = """---
 package:
