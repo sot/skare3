@@ -30,9 +30,10 @@ def get_environments(envs):
         except ValueError:
             print(f' - skipped {env}')
             continue
-        print(f' + {platform}: {filename}')
-        with open(filename) as fh:
-            environments[platform] = {p['name']: p for p in json.load(fh)}
+        else:
+            print(f' + {platform}: {filename}')
+            with open(filename) as fh:
+                environments[platform] = {p['name']: p for p in json.load(fh)}
     return environments
 
 
