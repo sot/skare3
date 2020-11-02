@@ -64,19 +64,20 @@ jobs:
         path: json
     - name: ska3-core
       run: |
-        ./skare3/combine_arch.py --name ska3-core --version ${SKA3_VERSION} --out pkg_defs/ska3-core/meta.yaml \
+        ./skare3/combine_arch_meta.py --name ska3-core --version ${SKA3_VERSION} --out pkg_defs/ska3-core/meta.yaml \
           --env linux=json/ska3-core-ubuntu.json \
           --env osx=json/ska3-core-osx.json \
           --env win=json/ska3-core-win.json
     - name: ska3-flight
       run: |
-        ./skare3/combine_arch.py --name ska3-flight --version ${SKA3_VERSION} --out pkg_defs/ska3-flight/meta.yaml \
+        ./skare3/combine_arch_meta.py \
+          --name ska3-flight --version ${SKA3_VERSION} --out pkg_defs/ska3-flight/meta.yaml \
           --env linux=json/ska3-flight-ubuntu.json --subtract-env linux=json/ska3-core-ubuntu.json \
           --env osx=json/ska3-flight-osx.json --subtract-env osx=json/ska3-core-osx.json \
           --env win=json/ska3-flight-win.json --subtract-env win=json/ska3-core-win.json
     - name: ska3-perl
       run: |
-        ./skare3/combine_arch.py --name ska3-perl --version ${SKA3_VERSION} --out pkg_defs/ska3-perl/meta.yaml \
+        ./skare3/combine_arch_meta.py --name ska3-perl --version ${SKA3_VERSION} --out pkg_defs/ska3-perl/meta.yaml \
           --env linux=json/ska3-perl-ubuntu.json --subtract-env linux=json/ska3-flight-ubuntu.json \
           --env osx=json/ska3-perl-osx.json --subtract-env osx=json/ska3-flight-osx.json
     - name: Save package
