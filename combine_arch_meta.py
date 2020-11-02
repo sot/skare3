@@ -11,8 +11,8 @@ import re
 
 def parser():
     parser_ = argparse.ArgumentParser(description=__doc__)
-    parser_.add_argument("--name", help="name of the package", default="ska3-core")
-    parser_.add_argument("--version", help="new package version", default="")
+    parser_.add_argument("--name", help="name of the package", required=True, default="ska3-core")
+    parser_.add_argument("--version", help="new package version", required=True, default="")
     parser_.add_argument("--env", action="append", help="environment file", default=[])
     parser_.add_argument("--subtract-env", action="append", default=[])
     parser_.add_argument("--out",
