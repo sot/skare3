@@ -7,6 +7,7 @@ from skare3_tools import packages
 import json
 import jinja2
 import argparse
+import re
 
 
 def parser():
@@ -14,26 +15,39 @@ def parser():
     parser_.add_argument("--name", help="name of the package", default="ska3-core")
     parser_.add_argument("--version", help="new package version", default="")
     parser_.add_argument("--env", action="append", help="environment file", default=[])
-    parser_.add_argument("--subtract-env", action="append")
+    parser_.add_argument("--subtract-env", action="append", default=[])
     parser_.add_argument("--out",
                          help="filename for output file with combined list of files"
                               " for use in metapackage ")
     return parser_
 
 
-def get_environments(envs):
+def get_environments(envs, name, version):
     environments = {}
     print(f'Reading environments for {envs}:')
     for env in envs:
         try:
             platform, filename = env.split('=')
-        except ValueError:
-            print(f' - skipped {env}')
-            continue
+        except ValueError as e:
+            print(f' - skipped {env}: ', e)
+            raise
         else:
             print(f' + {platform}: {filename}')
             with open(filename) as fh:
-                environments[platform] = {p['name']: p for p in json.load(fh)}
+                # all packages in env, except the one package we are generating meta.yaml for
+                environments[platform] = {p['name']: p for p in json.load(fh) if p['name'] != name}
+
+            ska3_latest = {}
+            for key in environments[platform]:
+                # replace occurrences of ska3-*-latest packages by the current version of ska3-*
+                if match := re.match('(ska3-\S+)-latest', key):
+                    package = match.group(1)
+                    ska3_latest[package] = {
+                        package: {'name': package, 'version': version}
+                    }
+            for key in ska3_latest:
+                del environments[platform][f'{key}-latest']
+
     return environments
 
 
@@ -46,8 +60,8 @@ def main():
     ska_packages = [p['package'] for p in packages.get_package_list()
                     if p['package'] and p['package'] not in exceptions]
 
-    environments = get_environments(args.env)
-    subtract_environments = get_environments(args.subtract_env)
+    environments = get_environments(args.env, args.name, args.version)
+    subtract_environments = get_environments(args.subtract_env, args.name, args.version)
 
     for platform in environments:
         remove_keys = []
