@@ -3,7 +3,6 @@
 Make a combined arch-specific core package list from a set of json files with lists of
 packages in conda environments.
 """
-from skare3_tools import packages
 import json
 import jinja2
 import argparse
@@ -54,12 +53,6 @@ def get_environments(envs, name, version):
 def main():
     args = parser().parse_args()
 
-    # This defines the "core" packages as everything that is not a ska package
-    # with some exceptions
-    exceptions = ['sherpa', 'prompt-toolkit']
-    ska_packages = [p['package'] for p in packages.get_package_list()
-                    if p['package'] and p['package'] not in exceptions]
-
     environments = get_environments(args.env, args.name, args.version)
     subtract_environments = get_environments(args.subtract_env, args.name, args.version)
 
@@ -94,7 +87,7 @@ def main():
     meta = tpl.render(
         package=args.name,
         version=args.version,
-        requirements=[p for p in all_packages if p['name'] not in ska_packages]
+        requirements=all_packages
     )
     if args.out:
         with open(args.out, 'w') as fh:
