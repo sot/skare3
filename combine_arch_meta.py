@@ -7,6 +7,7 @@ import json
 import jinja2
 import argparse
 import re
+import pathlib
 
 
 def parser():
@@ -90,7 +91,10 @@ def main():
         requirements=all_packages
     )
     if args.out:
-        with open(args.out, 'w') as fh:
+        out = pathlib.Path(args.out)
+        if not out.parent.exists():
+            out.parent.mkdir(parents=True)
+        with open(out, 'w') as fh:
             fh.write(meta)
     else:
         print(meta)
