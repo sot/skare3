@@ -8,10 +8,7 @@ jobs:
   generate-json:
     runs-on: ${{ matrix.os }}-latest
     name: Generate ${{ matrix.os }} json files
-    if: ${{
-      github.event.client_payload.version &&
-      github.event.client_payload.skare3_branch
-    }}
+    if: ${{ github.event.client_payload.version && github.event.client_payload.skare3_branch }}
     strategy:
       fail-fast: false
       matrix:
