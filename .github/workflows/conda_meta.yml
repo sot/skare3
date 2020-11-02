@@ -30,6 +30,7 @@ jobs:
           conda install ska3-flight-latest
           conda list --json > ska3-flight-${ARCH}.json
       - name: ska3-perl
+        if: ${{ matrix.os != "win" }}
         shell: bash -l {0}
         run: |
           conda install ska3-perl-latest
