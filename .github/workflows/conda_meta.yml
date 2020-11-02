@@ -63,6 +63,8 @@ jobs:
         with:
           name: json-files
           path: json
+      - name: pip
+        run: python -m pip install jinja2
       - name: ska3-core
         run: |
           ./skare3/combine_arch_meta.py --name ska3-core \
