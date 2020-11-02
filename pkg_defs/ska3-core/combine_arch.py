@@ -30,29 +30,29 @@ def main():
     ska_packages = [p['package'] for p in packages.get_package_list()
                     if p['package'] and p['package'] not in exceptions]
 
+    def get_env_packages(env_string):
+        """
+        Get platform label and dict of packages from json of supplied file.
+        """
+        try:
+            platform, filename = env_string.split('=')
+        except ValueError:
+            print(f' - skipped {env}')
+        print(f' + {platform}: {filename}')
+        with open(filename) as fh:
+            return platform, {p['name']: p for p in json.load(fh)}
+
     environments = {}
     print(f'Reading environments:')
     for env in args.env:
-        try:
-            platform, filename = env.split('=')
-        except ValueError:
-            print(f' - skipped {env}')
-            continue
-        print(f' + {platform}: {filename}')
-        with open(filename) as fh:
-            environments[platform] = {p['name']: p for p in json.load(fh)}
+        platform, env_packages = get_env_packages(env)
+        environments[platform] = env_packages
 
     subtract_environments = {}
     print(f'Reading environments to subtract:')
     for env in args.subtract_env:
-        try:
-            platform, filename = env.split('=')
-        except ValueError:
-            print(f' - skipped {env}')
-            continue
-        print(f' + {platform}: {filename}')
-        with open(filename) as fh:
-            subtract_environments[platform] = {p['name']: p for p in json.load(fh)}
+        platform, env_packages = get_env_packages(env)
+        subtract_environments[platform] = env_packages
 
     for platform in environments:
         remove_keys = []
