@@ -24,7 +24,6 @@ requirements:
   run:
     - gitpython
     - jinja2
-    - keyring
     - python
     - pyyaml
     - setuptools_scm
