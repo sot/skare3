@@ -57,6 +57,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           ref: ${{ github.event.client_payload.skare3_branch }}
+          path: skare3
       - name: Get json files
         uses: actions/download-artifact@v2
         with:
@@ -66,26 +67,26 @@ jobs:
         run: python -m pip install jinja2 PyYAML
       - name: ska3-core
         run: |
-          ./combine_arch_meta.py --name ska3-core --version ${SKA3_VERSION} \
+          ./skare3/combine_arch_meta.py --name ska3-core --version ${SKA3_VERSION} \
             --out pkg_defs/ska3-core/meta.yaml \
             --env linux=json/ska3-flight-ubuntu.json \
             --env osx=json/ska3-flight-macos.json \
             --env win=json/ska3-flight-windows.json \
-            --not-in pkg_defs/ska3-flight-latest/meta.yaml \
+            --not-in skare3/pkg_defs/ska3-flight-latest/meta.yaml \
             --exclude ska3-flight
       - name: ska3-flight
         run: |
-          ./combine_arch_meta.py --name ska3-flight --version ${SKA3_VERSION} \
+          ./skare3/combine_arch_meta.py --name ska3-flight --version ${SKA3_VERSION} \
             --out pkg_defs/ska3-flight/meta.yaml \
             --env linux=json/ska3-flight-ubuntu.json \
             --env osx=json/ska3-flight-macos.json \
             --env win=json/ska3-flight-windows.json \
-            --in pkg_defs/ska3-flight-latest/meta.yaml \
+            --in skare3/pkg_defs/ska3-flight-latest/meta.yaml \
             --include ska3-core \
             --build "noarch: generic"
       - name: ska3-perl
         run: |
-          ./combine_arch_meta.py --name ska3-perl --version ${SKA3_VERSION} \
+          ./skare3/combine_arch_meta.py --name ska3-perl --version ${SKA3_VERSION} \
             --out pkg_defs/ska3-perl/meta.yaml \
             --env linux=json/ska3-perl-ubuntu.json \
             --env osx=json/ska3-perl-macos.json \
