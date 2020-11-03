@@ -64,32 +64,35 @@ jobs:
           name: json-files
           path: json
       - name: pip
-        run: python -m pip install jinja2
+        run: python -m pip install jinja2 PyYAML
       - name: ska3-core
         run: |
-          ./skare3/combine_arch_meta.py --name ska3-core \
-            --version ${SKA3_VERSION} --out pkg_defs/ska3-core/meta.yaml \
-            --env linux=json/ska3-core-ubuntu.json \
-            --env osx=json/ska3-core-macos.json \
-            --env win=json/ska3-core-windows.json
+          ./skare3/combine_arch_meta.py --name ska3-core --version ${SKA3_VERSION} \
+            --out pkg_defs/ska3-core/meta.yaml \
+            --env linux=json/ska3-flight-ubuntu.json \
+            --env osx=json/ska3-flight-macos.json \
+            --env win=json/ska3-flight-windows.json \
+            --not-in pkg_defs/ska3-flight-latest/meta.yaml \
+            --exclude ska3-flight
       - name: ska3-flight
         run: |
-          ./skare3/combine_arch_meta.py --name ska3-flight \
-            --version ${SKA3_VERSION} --out pkg_defs/ska3-flight/meta.yaml \
+          ./skare3/combine_arch_meta.py --name ska3-flight --version ${SKA3_VERSION} \
+            --out pkg_defs/ska3-flight/meta.yaml \
             --env linux=json/ska3-flight-ubuntu.json \
-            --subtract-env linux=json/ska3-core-ubuntu.json \
             --env osx=json/ska3-flight-macos.json \
-            --subtract-env osx=json/ska3-core-macos.json \
             --env win=json/ska3-flight-windows.json \
-            --subtract-env win=json/ska3-core-windows.json
+            --in pkg_defs/ska3-flight-latest/meta.yaml \
+            --include ska3-core \
+            --build "noarch: generic"
       - name: ska3-perl
         run: |
-          ./skare3/combine_arch_meta.py --name ska3-perl \
-            --version ${SKA3_VERSION} --out pkg_defs/ska3-perl/meta.yaml \
+          ./skare3/combine_arch_meta.py --name ska3-perl --version ${SKA3_VERSION} \
+            --out pkg_defs/ska3-perl/meta.yaml \
             --env linux=json/ska3-perl-ubuntu.json \
-            --subtract-env linux=json/ska3-flight-ubuntu.json \
             --env osx=json/ska3-perl-macos.json \
-            --subtract-env osx=json/ska3-flight-macos.json
+            --subtract-env linux=json/ska3-flight-ubuntu.json \
+            --subtract-env osx=json/ska3-flight-macos.json \
+            --build "skip: True  # [win]"
       - name: Save package
         uses: actions/upload-artifact@v2
         with:
