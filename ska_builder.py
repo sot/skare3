@@ -60,6 +60,12 @@ def get_opt():
                         "except on Windows")
     parser.add_argument("--repo-url",
                         help="Use this URL instead of meta['about']['home']")
+    parser.add_argument('--ska3-overwrite-version',
+                        metavar='[<initial-version>:]<final-version>',
+                        help="This option is intended to overwrite ska3-* meta-package versions "
+                             "when building/testing pre-releases. If the initial version is not "
+                             "given, it is assumed to be the same as the final version with the "
+                             "pre-release portion of the version string removed.")
 
     args = parser.parse_args()
     return args
@@ -111,18 +117,25 @@ def clone_repo(name, args, src_dir, meta):
 
 
 def build_package(name, args, src_dir, build_dir):
-    pkg_path = os.path.join(PKG_DEFS_PATH, name)
+    pkg_path = Path(src_dir) / 'pkg_defs' / name
+    shutil.copytree(PKG_DEFS_PATH / name, pkg_path)
+
+    if args.ska3_overwrite_version and re.match(r'ska3-\S+$', name):
+        skare3_old_version, skare3_new_version = args.ska3_overwrite_version.split(':')
+        print(f'  - overwriting skare3 meta-package version '
+              f'{skare3_old_version} -> {skare3_new_version}')
+        overwrite_skare3_version(skare3_old_version, skare3_new_version, pkg_path)
 
     try:
         version = subprocess.check_output(['python', 'setup.py', '--version'],
                                           cwd=os.path.join(src_dir, name))
         version = version.decode().split()[-1].strip()
+        print(f'  - SKA_PKG_VERSION={version}')
     except Exception:
         version = ''
     os.environ['SKA_PKG_VERSION'] = version
-    print(f'  - SKA_PKG_VERSION={version}')
 
-    cmd_list = ["conda", "build", pkg_path,
+    cmd_list = ["conda", "build", str(pkg_path),
                 "--croot", str(build_dir),
                 "--old-build-string",
                 "--no-anaconda-upload",
@@ -203,8 +216,77 @@ def build_list_packages(pkg_names, args, src_dir, build_dir):
         raise ValueError("Packages {} failed".format(",".join(failures)))
 
 
+def overwrite_skare3_version(current_version, new_version, pkg_path):
+    """
+    Replaces `current_version` by `new_version` in the meta.yaml file located at `pkg_path`.
+
+    This is not a general replacement. The version is replaced if:
+
+      - the line matches the pattern "  version: <current_version>"
+      - the line matches the pattern "  <pkg_name> ==<current_version>"
+
+    with possible whitespace before/after, or whitespace around the colon or equality operator.
+
+    Note that this function would not replace the version string if the "version" tag and the value
+    are not in the same line, even though this is correct yaml syntax.
+
+    :param current_version: str
+    :param new_version: str
+    :param pkg_path: pathlib.Path
+    :return:
+    """
+    meta_file = pkg_path / 'meta.yaml'
+    with open(meta_file) as fh:
+        lines = fh.readlines()
+    for i, line in enumerate(lines):
+        m = re.search(r'(\s+)?version(\s+)?:(\s+)?(?P<version>(\S+)+)', line)
+        if m:
+            version = m.groupdict()['version']
+            if version == str(current_version):
+                print(f'    - version: {current_version} -> {new_version}')
+                lines[i] = line.replace(current_version, new_version)
+        m = re.search(r'(\s+)?(?P<name>\S+)(\s+)?==(\s+)?(?P<version>(\S+)+)', line)
+        if m:
+            info = m.groupdict()
+            if re.match(r'ska3-\S+$', info['name']) and info['version'] == current_version:
+                print(f'    - {info["name"]} dependency: {current_version} -> {new_version}')
+                lines[i] = line.replace(current_version, new_version)
+
+    with open(meta_file, 'w') as f:
+        for line in lines:
+            f.write(line)
+
+
 def main():
     args = get_opt()
+
+    if args.ska3_overwrite_version:
+        """
+        the value of  args.ska3_overwrite_version can be of the forms:
+        - `<initial-version>:<final-version>`.
+        - `<final-version>`.
+        
+        In the first case, there is nothing to do. In the second case, we assume that the final
+        version is the same as the final version but removing the release candidate part
+        (i.e.: something that looks like "rcN" or "aN" or "bN").
+        """
+        if ':' not in args.ska3_overwrite_version:
+            rc = re.match(
+                r"""(?P<version>
+                    (?P<release>\S+)     # release segment (usually N!N.N.N but not enforced here)
+                    (a|b|rc)[0-9]+       # pre-release segment (rcN, aN or bN, required)
+                    (\+(?P<label>\S+))?  # label fragment (an optional string)
+                )$""",
+                args.ska3_overwrite_version,
+                re.VERBOSE
+            )
+            if not rc:
+                raise Exception(f'wrong format for ska3_overwrite_version: '
+                                f'{args.ska3_overwrite_version}')
+            version_info = rc.groupdict()
+            version_info["label"] = f'+{version_info["label"]}' if version_info["label"] else ''
+            args.ska3_overwrite_version = \
+                f'{version_info["release"]}{version_info["label"]}:{version_info["version"]}'
 
     if args.packages:
         pkg_names = args.packages
