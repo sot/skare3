@@ -22,7 +22,7 @@ requirements:
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
     - chandra_aca ==4.30.0
-    - cxotime ==3.2.2
+    - cxotime ==3.2.3
     - dea_check ==3.1.0
     - dpa_check ==3.0.0
     - fep1_actel_check ==3.0.0
@@ -31,7 +31,7 @@ requirements:
     - hopper ==4.5.0
     - kadi ==5.3.0
     - maude ==3.4.0
-    - mica ==4.22.0
+    - mica ==4.23.0
     - parse_cm ==3.5.2
     - proseco ==4.9.0
     - psmc_check ==3.0.0
@@ -57,5 +57,5 @@ requirements:
     - ska_sync ==4.7.0
     - sparkles ==4.7.0
     - starcheck ==13.7.1
-    - testr ==4.4.0
+    - testr ==4.5.0
     - xija ==4.20.1
