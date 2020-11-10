@@ -54,6 +54,7 @@ requirements:
     - ska.quatutil
     - ska.report_ranges
     - ska.shell
+    - ska-sphinx-theme
     - ska_path
     - ska_helpers
     - ska_sync
