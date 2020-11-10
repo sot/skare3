@@ -9,7 +9,7 @@ build:
 requirements:
   run:
     - aca_view ==0.4.0
-    - acdc ==4.6.0
+    - acdc ==4.7.0
     - acis_taco ==4.2.0
     - acis_thermal_check ==3.2.1
     - acisfp_check ==3.2.0
@@ -40,7 +40,7 @@ requirements:
     - ska.arc5gl ==3.1.5
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.49.0
+    - ska.engarchive ==4.50.0
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
     - ska.matplotlib ==3.12.0
@@ -58,4 +58,4 @@ requirements:
     - sparkles ==4.7.0
     - starcheck ==13.7.1
     - testr ==4.5.0
-    - xija ==4.20.1
+    - xija ==4.21.0
