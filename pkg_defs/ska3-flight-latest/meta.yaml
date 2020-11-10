@@ -58,6 +58,7 @@ requirements:
     - ska_path
     - ska_helpers
     - ska_sync
+    - skare3_tools
     - ska.sun
     - ska.tdb
     - sparkles
