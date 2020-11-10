@@ -52,7 +52,7 @@ jobs:
       matrix:
         os: ["macos", "windows"]
         pkg: ["perl", "core"]
-    if: (${{ matrix.os }} != "windows") | (${{ matrix.pkg }} != "perl")
+    if: ((${{ matrix.os }} != "windows") || (${{ matrix.pkg }} != "perl"))
     steps:
     - name: Fetch Skare3-tools
       uses: actions/checkout@v2
