@@ -54,6 +54,7 @@ jobs:
         pkg: ["perl", "core"]
     steps:
     - name: Fetch Skare3-tools
+      if: (matrix.os == "macos")
       uses: actions/checkout@v2
       with:
         repository: sot/skare3_tools
@@ -68,7 +69,7 @@ jobs:
       shell: bash -l {0}
       run: conda install setuptools_scm gitpython conda-build jinja2 pyyaml python=3.8 numpy packaging
     - name: Build Package
-      if: ((${{ matrix.os }} != "windows") || (${{ matrix.pkg }} != "perl"))
+      if: ((matrix.os != "windows") || (matrix.pkg != "perl"))
       shell: bash -l {0}
       run: |
         python skare3_tools/actions/build/files/build.py --arch-specific ${PKG} --tag ${GITHUB_SHA}
