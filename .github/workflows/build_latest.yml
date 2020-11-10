@@ -54,18 +54,20 @@ jobs:
         pkg: ["perl", "core"]
     steps:
     - name: Fetch Skare3-tools
-      if: (matrix.os == 'macos')
+      if: ((matrix.os != 'windows') || (matrix.pkg != 'perl'))
       uses: actions/checkout@v2
       with:
         repository: sot/skare3_tools
         ref: master
         path: skare3_tools
     - uses: sot/setup-miniconda@v1
+      if: ((matrix.os != 'windows') || (matrix.pkg != 'perl'))
       with:
         miniconda-version: "py38_4.8.3"
         python-version: "3.8"
         channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny
     - name: Build Dependencies
+      if: ((matrix.os != 'windows') || (matrix.pkg != 'perl'))
       shell: bash -l {0}
       run: conda install setuptools_scm gitpython conda-build jinja2 pyyaml python=3.8 numpy packaging
     - name: Build Package
@@ -80,6 +82,7 @@ jobs:
         GIT_ASKPASS: ${{ github.workspace }}/skare3_tools/actions/build/files/git_pass.py
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
     - name: Save package
+      if: ((matrix.os != 'windows') || (matrix.pkg != 'perl'))
       uses: actions/upload-artifact@v2
       with:
         name: conda-package
