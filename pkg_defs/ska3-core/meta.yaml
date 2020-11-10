@@ -222,7 +222,7 @@ requirements:
     - setuptools ==49.2.0
     - setuptools-scm ==4.1.2
     - setuptools_scm ==4.1.2
-    - sherpa ==4.12.1  # [linux or osx]
+    - sherpa ==4.12.2  # [linux or osx]
     - sip ==4.19.13  # [linux or win]
     - sip ==4.19.8  # [osx]
     - six ==1.15.0
