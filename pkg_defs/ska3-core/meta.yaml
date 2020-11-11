@@ -33,6 +33,7 @@ requirements:
     - chardet ==3.0.4
     - cloudpickle ==1.5.0  # [win]
     - colorama ==0.4.3  # [win]
+    - commonmark ==0.9.1
     - conda ==4.8.3
     - conda-build ==3.18.11
     - conda-package-handling ==1.6.1
@@ -52,6 +53,7 @@ requirements:
     - flake8 ==3.8.3
     - fontconfig ==2.13.0  # [linux]
     - freetype ==2.10.2
+    - future ==0.18.2
     - gettext ==0.19.8.1  # [osx]
     - git ==2.23.0  # [win]
     - gitdb ==4.0.5
@@ -231,6 +233,7 @@ requirements:
     - snowballstemmer ==2.0.0
     - soupsieve ==2.0.1
     - sphinx ==3.1.2
+    - sphinx-argparse ==0.2.5
     - sphinxcontrib-applehelp ==1.0.2
     - sphinxcontrib-devhelp ==1.0.2
     - sphinxcontrib-htmlhelp ==1.0.3
