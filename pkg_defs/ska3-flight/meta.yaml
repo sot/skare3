@@ -16,7 +16,7 @@ requirements:
     - acis_thermal_check ==3.2.1
     - acisfp_check ==3.2.0
     - acispy ==2.0.1.dev12+gc5410da
-    - agasc ==4.9.0
+    - agasc ==4.10.0
     - annie ==0.11.0
     - backstop_history ==1.2.0
     - bep_pcb_check ==3.0.0
