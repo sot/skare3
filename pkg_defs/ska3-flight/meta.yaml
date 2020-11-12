@@ -23,7 +23,7 @@ requirements:
     - chandra.cmd_states ==3.16.0
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
-    - chandra_aca ==4.30.0
+    - chandra_aca ==4.31.0
     - cxotime ==3.2.3
     - dea_check ==3.1.0
     - dpa_check ==3.0.0
@@ -57,7 +57,7 @@ requirements:
     - ska.tdb ==3.6.0
     - ska3-core ==2020.13+shiny
     - ska3-template ==2019.09.03
-    - ska_helpers ==0.2.0
+    - ska_helpers ==0.3.0
     - ska_path ==3.1.2
     - ska_sync ==4.7.0
     - skare3_tools ==1.0.1
