@@ -20,7 +20,6 @@ requirements:
     - setuptools
     - setuptools_scm
     - setuptools_scm_git_archive
-    - astropy
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
