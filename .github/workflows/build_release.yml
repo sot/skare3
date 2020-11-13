@@ -142,7 +142,7 @@ jobs:
         package: [ska3-flight, ska3-matlab]
     steps:
       - name: Regression Tests
-        if: contains(needs.sanity_check.outputs.packages, matrix.package)
+        if: contains(needs.sanity_check.outputs.packages, matrix.package) && (matrix.package == 'ska3-flight' || !contains(needs.sanity_check.outputs.packages, 'ska3-flight'))
         run: |
           RELEASE_TAG=`basename "$GITHUB_REF"`
           conda create -y -n ${{ matrix.package }}-${RELEASE_TAG} --override-channels \
@@ -150,14 +150,12 @@ jobs:
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny \
                 ${{ matrix.package }}==${RELEASE_TAG}
-          source activate ${{ matrix.package }}-${RELEASE_TAG}
-          cd /export/jgonzale/ska_testr
-          run_testr --test-spec test_spec_SKA3_HEAD \
+          conda activate ${{ matrix.package }}-${RELEASE_TAG}
+          source `which ska_envs.sh`
+          run_testr --root /export/jgonzale/ska_testr \
+                    --test-spec test_spec_regress \
                     --outputs-dir /export/jgonzale/ska_testr/release_tests
           # skare3-test-results /export/jgonzale/ska_testr/release_tests/last/logs
           # add test result report to PR description
         env:
           CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
-          SKA: /proj/sot/ska
-          SYBASE_OCS: OCS-16_0
-          SYBASE: /soft/SYBASE16.0
