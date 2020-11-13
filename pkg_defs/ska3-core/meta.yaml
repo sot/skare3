@@ -1,214 +1,272 @@
+---
 package:
   name: ska3-core
-  version: 2020.5
-
-build:
-  number: 1
+  version: 2020.13+shiny
 
 requirements:
-  # Packages required to run the package. These are the dependencies that
-  # will be installed automatically whenever the package is installed.
   run:
-
-  # Note that sherpa is not in the defaults channel and may be missed
-  # if trying to automatically update ska3-core
-   - sherpa ==4.9.1 # [linux64]
-   - sherpa ==4.11.1 # [osx]
-  # And note that these packages are presently built out of skare3.
-  # If the versions we request become available in conda default channels,
-  # it will be fine to move to those default packages and deprecate the
-  # skare3 builds
-   - asgiref ==3.2.3
-   - astropy ==3.0.3
-   - astropy-healpix ==0.4
-   - ipywidgets ==7.3.0
-   - widgetsnbextension ==3.3.0
-   - pytest-arraydiff ==0.2
-   - pytest-astropy ==0.4.0
-   - pytest-doctestplus ==0.1.3
-   - pytest-openfiles ==0.3.0
-   - pytest-remotedata ==0.3.0
-
-  # Packages from conda defaults channels, limited to older channels for CentOS5
-   - _nb_ext_conf ==0.4.0
-   - alabaster ==0.7.10
-   - anaconda-client ==1.6.3
-   - appnope ==0.1.0 # [osx]
-   - asn1crypto ==0.22.0
-   - astroid ==1.5.3
-   - babel ==2.5.0
-   - beautifulsoup4 ==4.6.0
-   - bkcharts ==0.2
-   - blas ==1.0
-   - bleach ==1.5.0
-   - bokeh ==0.12.7
-   - certifi ==2016.2.28 # [not linux32]
-   - cffi ==1.10.0
-   - chardet ==3.0.4
-   - clyent ==1.2.2
-   - configobj ==5.0.6
-   - cryptography ==1.8.1
-   - curl ==7.54.1
-   - cycler ==0.10.0
-   - cython ==0.26
-   - dbus ==1.10.20 # [linux]
-   - decorator ==4.1.2
-   - django ==3.0.1
-   - docutils ==0.14
-   - entrypoints ==0.2.3
-   - expat ==2.1.0
-   - fontconfig ==2.12.1 # [linux64]
-   - freetype ==2.5.5
-   - git ==2.9.3 # [linux32]
-   - git ==2.11.1 # [linux64 or osx]
-   - gitdb2 ==2.0.0
-   - gitpython ==2.1.3
-   - glib ==2.50.2 # [linux]
-   - gst-plugins-base ==1.8.0 # [linux]
-   - gstreamer ==1.8.0 # [linux]
-   - h5py ==2.7.0
-   - hdf5 ==1.8.17
-   - html5lib ==0.999
-   - icu ==54.1
-   - idna ==2.5 # [linux32]
-   - idna ==2.6 # [linux64 or osx]
-   - imagesize ==0.7.1
-   - ipykernel ==4.6.1
-   - ipyparallel ==6.0.2
-   - ipython ==6.1.0
-   - ipython_genutils ==0.2.0
-   - isort ==4.2.15
-   - jbig ==2.1
-   - jedi ==0.10.2
-   - jinja2 ==2.9.6
-   - jpeg ==9b
-   - jsonschema ==2.6.0
-   - jupyter ==1.0.0
-   - jupyter_client ==5.1.0
-   - jupyter_console ==5.2.0
-   - jupyter_core ==4.3.0
-   - krb5 ==1.13.2
-   - lazy-object-proxy ==1.3.1
-   - libcxx ==9.0.1 # [osx]
-   - libffi ==3.2.1 # [linux]
-   - libgcc ==4.8.5
-   - libgfortran ==3.0.0
-   - libiconv ==1.14 # [linux]
-   - libpng ==1.6.30
-   - libsodium ==1.0.10 # [linux]
-   - libssh2 ==1.8.0
-   - libtiff ==4.0.6
-   - libxcb ==1.12 # [linux]
-   - libxml2 ==2.9.4 # [linux]
-   - libxslt ==1.1.29
-   - line_profiler ==2.0
-   - llvmlite ==0.18.0
-   - lxml ==3.8.0
-   - markupsafe ==1.0
-   - matplotlib ==2.0.2
-   - mistune ==0.7.4
-   - mkl ==2017.0.3
-   - nb_anacondacloud ==1.4.0
-   - nb_conda ==2.2.0
-   - nb_conda_kernels ==2.1.0
-   - nbconvert ==5.2.1
-   - nbformat ==4.4.0
-   - nbpresent ==3.0.2
-   - networkx ==1.11
-   - nose ==1.3.7
-   - notebook ==5.0.0
-   - numba ==0.33.0
-   - numexpr ==2.6.2
-   - numpy ==1.12.1
-   - numpydoc ==0.7.0
-   - olefile ==0.44
-   - openssl ==1.0.2l
-   - packaging ==16.8
-   - pandas ==0.20.3
-   - pandocfilters ==1.4.2
-   - paramiko ==2.1.2
-   - path.py ==10.3.1
-   - pcre ==8.39 # [linux]
-   - pep8 ==1.7.0
-   - pexpect ==4.2.1
-   - pickleshare ==0.7.4
-   - pillow ==4.2.1
-   - pip ==9.0.1
-   - pkginfo ==1.4.1 # [linux32]
-   - prompt_toolkit ==1.0.15
-   - psutil ==5.2.2
-   - ptyprocess ==0.5.2
-   - py ==1.4.34
-   - pyasn1 ==0.2.3
-   - pycodestyle ==2.3.1
-   - pycosat ==0.6.2 # [linux32]
-   - pycparser ==2.17 # [linux32]
-   - pycparser ==2.18 # [linux64 or osx]
-   - pycrypto ==2.6.1
-   - pyflakes ==1.6.0
-   - pygments ==2.2.0
-   - pylint ==1.7.2
-   - pyopenssl ==17.0.0 # [linux32]
-   - pyparsing ==2.2.0
-   - pyqt ==5.6.0
-   - pytables ==3.4.2
-   - pytest ==3.2.1
-   - python ==3.8.1
-   - python-dateutil ==2.6.1
-   - python.app ==1.2 # [osx]
-   - pytz ==2017.2
-   - pyyaml ==3.12
-   - pyzmq ==16.0.2
-   - qt ==5.6.2
-   - qtawesome ==0.4.4
-   - qtconsole ==4.3.1
-   - qtpy ==1.3.1
-   - readline ==6.2
-   - requests ==2.14.2
-   - rope ==0.9.4
-   - runipy ==0.1.5
-   - scikit-learn ==0.19.0
-   - scipy ==0.19.1
-   - setuptools ==27.2.0 # [linux32]
-   - setuptools ==36.4.0 # [linux64 or osx]
-   - setuptools_scm ==3.3.3
-   - simplegeneric ==0.8.1
-   - singledispatch ==3.4.0.3
-   - sip ==4.18
-   - six ==1.10.0
-   - smmap2 ==2.0.1
-   - snowballstemmer ==1.2.1
-   - sphinx ==1.6.3
-   - sphinxcontrib ==1.0
-   - sphinxcontrib-websupport ==1.0.1
-   - sqlite ==3.13.0
-   - sqlparse ==0.3.0
-   - terminado ==0.6
-   - testpath ==0.3.1
-   - tk ==8.5.18
-   - tornado ==4.5.2
-   - traitlets ==4.3.2
-   - wcwidth ==0.1.7
-   - wheel ==0.29.0
-   - wrapt ==1.10.11
-   - xz ==5.2.2 # [linux32]
-   - xz ==5.2.3 # [linux64 or osx]
-   - yaml ==0.1.6
-   - zeromq ==4.1.3 # [osx]
-   - zeromq ==4.1.5 # [linux]
-   - zlib ==1.2.8 # [linux32]
-   - zlib ==1.2.11 # [linux64 or osx]
-
-  # new additions
-   - docxtpl ==0.6.3
-   - jira ==2.0.0 # [not linux32]
-   - mpld3 ==0.3
-   - python-docx ==0.8.7
-  # jira dependecies
-   - blinker ==1.4 # [not linux32]
-   - defusedxml ==0.6.0 # [not linux32]
-   - oauthlib ==3.1.0 # [not linux32]
-   - pbr ==5.4.4 # [not linux32]
-   - pyjwt ==1.7.1 # [not linux32]
-   - requests-oauthlib ==1.3.0 # [not linux32]
-   - requests-toolbelt ==0.9.1 # [not linux32]
+    - _libgcc_mutex ==0.1  # [linux]
+    - alabaster ==0.7.12
+    - appnope ==0.1.0  # [osx]
+    - asgiref ==3.2.10
+    - astroid ==2.4.2
+    - astropy ==4.0.1.post1
+    - astropy-healpix ==0.5
+    - astropy-sphinx-theme ==1.1
+    - atomicwrites ==1.4.0  # [win]
+    - attrs ==19.3.0
+    - autopep8 ==1.5.3
+    - babel ==2.8.0
+    - backcall ==0.2.0
+    - bcrypt ==3.1.7
+    - beautifulsoup4 ==4.9.1
+    - blas ==1.0
+    - bleach ==3.1.5
+    - blinker ==1.4
+    - blosc ==1.19.0
+    - bokeh ==2.1.1
+    - brotlipy ==0.7.0
+    - bzip2 ==1.0.8
+    - ca-certificates ==2020.6.24
+    - certifi ==2020.6.20
+    - cffi ==1.14.0
+    - chardet ==3.0.4
+    - cloudpickle ==1.5.0  # [win]
+    - colorama ==0.4.3  # [win]
+    - commonmark ==0.9.1
+    - conda ==4.8.3
+    - conda-build ==3.18.11
+    - conda-package-handling ==1.6.1
+    - configobj ==5.0.6
+    - cryptography ==2.9.2
+    - cycler ==0.10.0
+    - cython ==0.29.21
+    - dbus ==1.13.16  # [linux or osx]
+    - decorator ==4.4.2
+    - defusedxml ==0.6.0
+    - django ==3.0.3
+    - docutils ==0.16
+    - docxtpl ==0.10.0
+    - entrypoints ==0.3
+    - expat ==2.2.9  # [linux or osx]
+    - filelock ==3.0.12
+    - flake8 ==3.8.3
+    - fontconfig ==2.13.0  # [linux]
+    - freetype ==2.10.2
+    - future ==0.18.2
+    - gettext ==0.19.8.1  # [osx]
+    - git ==2.23.0  # [win]
+    - gitdb ==4.0.5
+    - gitpython ==3.1.3
+    - glib ==2.65.0  # [linux or osx]
+    - glob2 ==0.7
+    - gst-plugins-base ==1.14.0  # [linux]
+    - gstreamer ==1.14.0  # [linux]
+    - h5py ==2.10.0
+    - hdf5 ==1.10.4
+    - icc_rt ==2019.0.0  # [win]
+    - icu ==58.2
+    - idna ==2.10
+    - imagesize ==1.2.0
+    - importlib-metadata ==1.7.0
+    - importlib_metadata ==1.7.0
+    - intel-openmp ==2019.4  # [osx]
+    - intel-openmp ==2020.1  # [linux or win]
+    - ipykernel ==5.3.3
+    - ipyparallel ==6.3.0
+    - ipython ==7.16.1
+    - ipython_genutils ==0.2.0
+    - ipywidgets ==7.5.1
+    - isort ==4.3.21
+    - jedi ==0.17.1
+    - jinja2 ==2.11.2
+    - jira ==2.0.0
+    - joblib ==0.16.0
+    - jpeg ==9b
+    - jplephem ==2.14
+    - json5 ==0.9.5
+    - jsonschema ==3.2.0
+    - jupyter ==1.0.0
+    - jupyter_client ==6.1.6
+    - jupyter_console ==6.1.0
+    - jupyter_core ==4.6.3
+    - jupyterlab ==2.1.5
+    - jupyterlab_server ==1.2.0
+    - kiwisolver ==1.2.0
+    - lazy-object-proxy ==1.4.3
+    - lcms2 ==2.11  # [linux or osx]
+    - ld_impl_linux-64 ==2.33.1  # [linux]
+    - libarchive ==3.4.2
+    - libcxx ==10.0.0  # [osx]
+    - libedit ==3.1.20191231  # [linux or osx]
+    - libffi ==3.3  # [linux or osx]
+    - libgcc-ng ==9.1.0  # [linux]
+    - libgfortran ==3.0.1  # [osx]
+    - libgfortran-ng ==7.3.0  # [linux]
+    - libiconv ==1.15  # [win]
+    - libiconv ==1.16  # [osx]
+    - liblief ==0.10.1
+    - libllvm9 ==9.0.1
+    - libpng ==1.6.37
+    - libsodium ==1.0.18
+    - libstdcxx-ng ==9.1.0  # [linux]
+    - libtiff ==4.1.0
+    - libuuid ==1.0.3  # [linux]
+    - libxcb ==1.14  # [linux]
+    - libxml2 ==2.9.10
+    - libxslt ==1.1.34
+    - line_profiler ==2.1.2
+    - llvm-openmp ==10.0.0  # [osx]
+    - llvmlite ==0.33.0
+    - lxml ==4.5.2
+    - lz4-c ==1.9.2
+    - lzo ==2.10
+    - m2w64-gcc-libgfortran ==5.3.0  # [win]
+    - m2w64-gcc-libs ==5.3.0  # [win]
+    - m2w64-gcc-libs-core ==5.3.0  # [win]
+    - m2w64-gmp ==6.1.0  # [win]
+    - m2w64-libwinpthread-git ==5.0.0.4634.697f757  # [win]
+    - markupsafe ==1.1.1
+    - matplotlib ==3.2.2
+    - matplotlib-base ==3.2.2
+    - mccabe ==0.6.1
+    - menuinst ==1.4.16  # [win]
+    - mistune ==0.8.4
+    - mkl ==2019.4  # [osx]
+    - mkl ==2020.1  # [linux or win]
+    - mkl-service ==2.3.0
+    - mkl_fft ==1.1.0
+    - mkl_random ==1.1.1
+    - mock ==4.0.2
+    - more-itertools ==8.4.0
+    - mpld3 ==0.3
+    - msys2-conda-epoch ==20160418  # [win]
+    - nb_conda ==2.2.1
+    - nb_conda_kernels ==2.2.3
+    - nbconvert ==5.6.1
+    - nbformat ==5.0.7
+    - ncurses ==6.2  # [linux or osx]
+    - networkx ==2.4
+    - nose ==1.3.7
+    - notebook ==6.0.3
+    - numba ==0.50.1
+    - numexpr ==2.7.1
+    - numpy ==1.18.5
+    - numpy-base ==1.18.5
+    - numpydoc ==1.1.0
+    - oauthlib ==3.1.0
+    - olefile ==0.46
+    - openssl ==1.1.1g
+    - packaging ==20.4
+    - pandas ==1.0.5
+    - pandoc ==2.10
+    - pandocfilters ==1.4.2
+    - paramiko ==2.7.1
+    - parso ==0.7.0
+    - patchelf ==0.11  # [linux]
+    - pbr ==5.4.5
+    - pcre ==8.44  # [linux or osx]
+    - pexpect ==4.8.0
+    - pickleshare ==0.7.5
+    - pillow ==7.2.0
+    - pip ==20.1.1
+    - pkginfo ==1.5.0.1
+    - pluggy ==0.13.1
+    - prometheus_client ==0.8.0
+    - prompt-toolkit ==2.0.10  # [win]
+    - prompt-toolkit ==3.0.5  # [linux or osx]
+    - prompt_toolkit ==2.0.10  # [win]
+    - prompt_toolkit ==3.0.5  # [linux or osx]
+    - psutil ==5.7.0
+    - ptyprocess ==0.6.0  # [linux or osx]
+    - py ==1.9.0
+    - py-lief ==0.10.1
+    - pycodestyle ==2.6.0
+    - pycosat ==0.6.3
+    - pycparser ==2.20
+    - pycrypto ==2.6.1
+    - pyflakes ==2.2.0
+    - pygments ==2.6.1
+    - pyjwt ==1.7.1
+    - pylint ==2.5.3
+    - pynacl ==1.4.0
+    - pyopenssl ==19.1.0
+    - pyparsing ==2.4.7
+    - pyqt ==5.9.2
+    - pyreadline ==2.1  # [win]
+    - pyrsistent ==0.16.0
+    - pysocks ==1.7.1
+    - pytables ==3.6.1
+    - pytest ==5.4.3
+    - python ==3.8.3
+    - python-dateutil ==2.8.1
+    - python-docx ==0.8.10
+    - python-libarchive-c ==2.9
+    - pytz ==2020.1
+    - pywin32 ==227  # [win]
+    - pywinpty ==0.5.7  # [win]
+    - pyyaml ==5.3.1
+    - pyzmq ==19.0.1
+    - qt ==5.9.7
+    - qtconsole ==4.7.5
+    - qtpy ==1.9.0
+    - readline ==8.0  # [linux or osx]
+    - requests ==2.24.0
+    - requests-oauthlib ==1.3.0
+    - requests-toolbelt ==0.9.1
+    - ripgrep ==11.0.2  # [linux or osx]
+    - rope ==0.17.0
+    - ruamel_yaml ==0.15.87
+    - runipy ==0.1.5  # [win]
+    - scikit-learn ==0.23.1
+    - scipy ==1.5.0
+    - send2trash ==1.5.0
+    - setuptools ==49.2.0
+    - setuptools-scm ==4.1.2
+    - setuptools_scm ==4.1.2
+    - sherpa ==4.12.2  # [linux or osx]
+    - sip ==4.19.13  # [linux or win]
+    - sip ==4.19.8  # [osx]
+    - six ==1.15.0
+    - smmap ==3.0.2
+    - snappy ==1.1.8
+    - snowballstemmer ==2.0.0
+    - soupsieve ==2.0.1
+    - sphinx ==3.1.2
+    - sphinx-argparse ==0.2.5
+    - sphinxcontrib-applehelp ==1.0.2
+    - sphinxcontrib-devhelp ==1.0.2
+    - sphinxcontrib-htmlhelp ==1.0.3
+    - sphinxcontrib-jsmath ==1.0.1
+    - sphinxcontrib-qthelp ==1.0.3
+    - sphinxcontrib-serializinghtml ==1.1.4
+    - sqlalchemy ==1.3.18  # [win]
+    - sqlite ==3.32.3
+    - sqlparse ==0.3.1
+    - tbb ==2020.0
+    - terminado ==0.8.3
+    - testpath ==0.4.4
+    - threadpoolctl ==2.1.0
+    - tk ==8.6.10
+    - toml ==0.10.1
+    - tornado ==6.0.4
+    - tqdm ==4.47.0
+    - traitlets ==4.3.3
+    - typing_extensions ==3.7.4.2
+    - urllib3 ==1.25.9
+    - vc ==14.1  # [win]
+    - vs2015_runtime ==14.16.27012  # [win]
+    - wcwidth ==0.2.5
+    - webencodings ==0.5.1
+    - wheel ==0.34.2
+    - widgetsnbextension ==3.5.1
+    - win_inet_pton ==1.1.0  # [win]
+    - wincertstore ==0.2  # [win]
+    - winpty ==0.4.3  # [win]
+    - wrapt ==1.11.2
+    - xz ==5.2.5
+    - yaml ==0.2.5
+    - zeromq ==4.3.2
+    - zipp ==3.1.0
+    - zlib ==1.2.11
+    - zstd ==1.4.5
