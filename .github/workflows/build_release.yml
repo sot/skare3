@@ -150,7 +150,7 @@ jobs:
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny \
                 ${{ matrix.package }}==${RELEASE_TAG}
-          conda activate ${{ matrix.package }}-${RELEASE_TAG}
+          source activate ${{ matrix.package }}-${RELEASE_TAG}
           source `which ska_envs.sh`
           run_testr --root /export/jgonzale/ska_testr \
                     --test-spec test_spec_regress \
