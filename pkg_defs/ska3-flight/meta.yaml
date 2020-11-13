@@ -44,7 +44,7 @@ requirements:
     - ska.arc5gl ==3.1.5
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.50.0
+    - ska.engarchive ==4.50.1
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
     - ska.matplotlib ==3.12.0
