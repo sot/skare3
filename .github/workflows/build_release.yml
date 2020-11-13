@@ -152,7 +152,6 @@ jobs:
                 ${{ matrix.package }}==${RELEASE_TAG}
           source activate ${{ matrix.package }}-${RELEASE_TAG}
           run_testr --root /export/jgonzale/ska_testr \
-                    --test-spec test_spec_regress \
                     --outputs-dir /export/jgonzale/ska_testr/release_tests
           # skare3-test-results /export/jgonzale/ska_testr/release_tests/last/logs
           # add test result report to PR description
