@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2020.2.1
+  version: 2020.13+shiny
 
 build:
   noarch: generic
@@ -54,9 +54,11 @@ requirements:
     - ska.quatutil
     - ska.report_ranges
     - ska.shell
+    - ska-sphinx-theme
     - ska_path
     - ska_helpers
     - ska_sync
+    - skare3_tools
     - ska.sun
     - ska.tdb
     - sparkles
