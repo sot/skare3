@@ -141,6 +141,12 @@ jobs:
       matrix:
         package: [ska3-flight, ska3-matlab]
     steps:
+      - name: Fetch ska_testr
+        uses: actions/checkout@v2
+        with:
+          repository: sot/ska_testr
+          ref: master
+          path: ska_testr
       - name: Regression Tests
         if: contains(needs.sanity_check.outputs.packages, matrix.package) && (matrix.package == 'ska3-flight' || !contains(needs.sanity_check.outputs.packages, 'ska3-flight'))
         run: |
@@ -151,8 +157,7 @@ jobs:
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny \
                 ${{ matrix.package }}==${RELEASE_TAG}
           source activate ${{ matrix.package }}-${RELEASE_TAG}
-          run_testr --root /export/jgonzale/ska_testr \
-                    --outputs-dir /export/jgonzale/ska_testr/release_tests
+          run_testr --root ./ska_testr --outputs-dir /export/jgonzale/ska_testr/release_tests
           # skare3-test-results /export/jgonzale/ska_testr/release_tests/last/logs
           # add test result report to PR description
         env:
