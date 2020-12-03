@@ -157,8 +157,8 @@ jobs:
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny \
                 ${{ matrix.package }}==${RELEASE_TAG}
           source activate ${{ matrix.package }}-${RELEASE_TAG}
-          run_testr --root ./ska_testr --outputs-dir /export/jgonzale/ska_testr/release_tests
-          # skare3-test-results /export/jgonzale/ska_testr/release_tests/last/logs
+          run_testr --root ./ska_testr --outputs-dir /export/jgonzale/ska_testr/release_tests --exclude Ska.engarchive*long*
+          skare3-test-results --stream releases --tag head /export/jgonzale/ska_testr/release_tests/logs/last
           # add test result report to PR description
         env:
           CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
