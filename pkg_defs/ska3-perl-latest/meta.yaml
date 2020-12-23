@@ -1,6 +1,6 @@
 package:
   name: ska3-perl-latest
-  version: 2020.2.1
+  version: 2020.13+shiny
 
 build:
   skip: True  # [win]
