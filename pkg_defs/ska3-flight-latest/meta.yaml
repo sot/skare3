@@ -34,6 +34,7 @@ requirements:
     - cxotime
     - find_attitude
     - hopper
+    - jobwatch
     - kadi
     - maude
     - mica
