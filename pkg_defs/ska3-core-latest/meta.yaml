@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2020.13+shiny
+  version: 2021.2
 
 requirements:
   run:
