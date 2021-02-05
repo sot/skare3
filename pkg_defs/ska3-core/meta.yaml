@@ -94,22 +94,28 @@ requirements:
     - jupyterlab ==2.1.5
     - jupyterlab_server ==1.2.0
     - kiwisolver ==1.2.0
+    - krb5 ==1.18.2
     - lazy-object-proxy ==1.4.3
     - lcms2 ==2.11  # [linux or osx]
     - ld_impl_linux-64 ==2.33.1  # [linux]
     - libarchive ==3.4.2
+    - libcurl ==7.71.1
     - libcxx ==10.0.0  # [osx]
     - libedit ==3.1.20191231  # [linux or osx]
     - libffi ==3.3  # [linux or osx]
     - libgcc-ng ==9.1.0  # [linux]
     - libgfortran ==3.0.1  # [osx]
     - libgfortran-ng ==7.3.0  # [linux]
-    - libiconv ==1.15  # [win]
+    - libiconv ==1.15  # [linux or win]
     - libiconv ==1.16  # [osx]
     - liblief ==0.10.1
     - libllvm9 ==9.0.1
     - libpng ==1.6.37
     - libsodium ==1.0.18
+    - libsolv ==0.7.14  # [osx]
+    - libsolv ==0.7.16  # [linux]
+    - libsolv ==0.7.17  # [win]
+    - libssh2 ==1.9.0
     - libstdcxx-ng ==9.1.0  # [linux]
     - libtiff ==4.1.0
     - libuuid ==1.0.3  # [linux]
@@ -127,6 +133,8 @@ requirements:
     - m2w64-gcc-libs-core ==5.3.0  # [win]
     - m2w64-gmp ==6.1.0  # [win]
     - m2w64-libwinpthread-git ==5.0.0.4634.697f757  # [win]
+    - mamba ==0.4.2  # [osx]
+    - mamba ==0.5.1  # [linux or win]
     - markupsafe ==1.1.1
     - matplotlib ==3.2.2
     - matplotlib-base ==3.2.2
@@ -205,6 +213,7 @@ requirements:
     - python-dateutil ==2.8.1
     - python-docx ==0.8.10
     - python-libarchive-c ==2.9
+    - python_abi ==3.8
     - pytz ==2020.1
     - pywin32 ==227  # [win]
     - pywinpty ==0.5.7  # [win]

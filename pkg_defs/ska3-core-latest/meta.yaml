@@ -26,6 +26,7 @@ requirements:
    - jupyterlab
    - line_profiler
    - lxml
+   - mamba
    - matplotlib
    - mpld3
    - nb_conda
