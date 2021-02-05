@@ -212,6 +212,7 @@ requirements:
     - python ==3.8.3
     - python-dateutil ==2.8.1
     - python-docx ==0.8.10
+    - python-kaleido ==0.0.3
     - python-libarchive-c ==2.9
     - python_abi ==3.8
     - pytz ==2020.1
