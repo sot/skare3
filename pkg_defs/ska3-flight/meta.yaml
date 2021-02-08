@@ -24,7 +24,7 @@ requirements:
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
     - chandra_aca ==4.32.0
-    - cxotime ==3.2.3
+    - cxotime ==3.2.4
     - dea_check ==3.4.0
     - dpa_check ==3.3.0
     - fep1_actel_check ==3.3.0
@@ -37,7 +37,7 @@ requirements:
     - mica ==4.25.0
     - parse_cm ==3.6.0
     - perigee_health_plots ==0.1.3
-    - proseco ==4.11.0
+    - proseco ==4.11.1
     - psmc_check ==3.3.0
     - pyyaks ==4.5.0
     - quaternion ==3.6.0
