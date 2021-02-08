@@ -158,7 +158,7 @@ jobs:
                 ${{ matrix.package }}==${RELEASE_TAG}
           source activate ${{ matrix.package }}-${RELEASE_TAG}
           conda install ska3-perl
-          run_testr --root ./ska_testr --outputs-dir /export/jgonzale/ska_testr/release_tests --exclude Ska.engarchive*long* --exclude mica*test_write_report*
+          run_testr --root ./ska_testr --outputs-dir /export/jgonzale/ska_testr/release_tests
           skare3-test-results --stream releases --tag head /export/jgonzale/ska_testr/release_tests/logs/last
           # add test result report to PR description
         env:
