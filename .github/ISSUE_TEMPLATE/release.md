@@ -13,20 +13,16 @@ assignees: ''
 
 # Checklist
 
-- [ ] Document all changes
-- [ ] Build all packages
-   - [ ] noarch
-   - [ ] linux 64
-   - [ ] mac 64
-- [ ] Copy Packages to test channel
-- [ ] Document test status
+- [ ] Check packages are built and copied to test channel
+- [ ] Document all changes (`skare3-changes-summary ...`)
+- [ ] Document test status (`skare3-test-dashboard ...`)
+- [ ] Add related issues to PR (`python -m skare3_tools.github.scripts.milestone_issues ...` for now)
+- [ ] Write summary + highlight relevant changes
 - [ ] Get approval
-- [ ] Move individual packages to main conda channel
+- [ ] Promote packages to main conda channel
 - [ ] Update production systems:
    - [ ] announce to aca@cfa
-   - [ ] move ska3-flight package to main conda channel
    - [ ] update HEAD ska3/flight as aca user
    - [ ] run ska_testr on HEAD
-   - [ ] update ska3/flight on cheru as sot user
    - [ ] update ska3/flight on chimchim as SOT user
    - [ ] announce to chandracode and mpweekly
