@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-core
-  version: 2021.1  # in a typical release, change the ska3-core version in sk3-flight requirements.
+  version: 2021.2  # in a typical release, change the ska3-core version in ska3-flight requirements.
 
 requirements:
   run:
@@ -10,7 +10,7 @@ requirements:
     - appnope ==0.1.0  # [osx]
     - asgiref ==3.2.10
     - astroid ==2.4.2
-    - astropy ==4.0.1.post1
+    - astropy ==4.2
     - astropy-healpix ==0.5
     - astropy-sphinx-theme ==1.1
     - atomicwrites ==1.4.0  # [win]
@@ -21,14 +21,14 @@ requirements:
     - bcrypt ==3.1.7
     - beautifulsoup4 ==4.9.1
     - blas ==1.0
-    - bleach ==3.1.5
+    - bleach ==3.3.0
     - blinker ==1.4
     - blosc ==1.19.0
     - bokeh ==2.1.1
     - brotlipy ==0.7.0
     - bzip2 ==1.0.8
-    - ca-certificates ==2020.6.24
-    - certifi ==2020.6.20
+    - ca-certificates ==2021.1.19
+    - certifi ==2020.12.5
     - cffi ==1.14.0
     - chardet ==3.0.4
     - cloudpickle ==1.5.0  # [win]
@@ -70,6 +70,7 @@ requirements:
     - imagesize ==1.2.0
     - importlib-metadata ==1.7.0
     - importlib_metadata ==1.7.0
+    - iniconfig ==1.1.1
     - intel-openmp ==2019.4  # [osx]
     - intel-openmp ==2020.1  # [linux or win]
     - ipykernel ==5.3.3
@@ -93,22 +94,28 @@ requirements:
     - jupyterlab ==2.1.5
     - jupyterlab_server ==1.2.0
     - kiwisolver ==1.2.0
+    - krb5 ==1.18.2
     - lazy-object-proxy ==1.4.3
     - lcms2 ==2.11  # [linux or osx]
     - ld_impl_linux-64 ==2.33.1  # [linux]
     - libarchive ==3.4.2
+    - libcurl ==7.71.1
     - libcxx ==10.0.0  # [osx]
     - libedit ==3.1.20191231  # [linux or osx]
     - libffi ==3.3  # [linux or osx]
     - libgcc-ng ==9.1.0  # [linux]
     - libgfortran ==3.0.1  # [osx]
     - libgfortran-ng ==7.3.0  # [linux]
-    - libiconv ==1.15  # [win]
+    - libiconv ==1.15  # [linux or win]
     - libiconv ==1.16  # [osx]
     - liblief ==0.10.1
     - libllvm9 ==9.0.1
     - libpng ==1.6.37
     - libsodium ==1.0.18
+    - libsolv ==0.7.14  # [osx]
+    - libsolv ==0.7.16  # [linux]
+    - libsolv ==0.7.17  # [win]
+    - libssh2 ==1.9.0
     - libstdcxx-ng ==9.1.0  # [linux]
     - libtiff ==4.1.0
     - libuuid ==1.0.3  # [linux]
@@ -126,6 +133,8 @@ requirements:
     - m2w64-gcc-libs-core ==5.3.0  # [win]
     - m2w64-gmp ==6.1.0  # [win]
     - m2w64-libwinpthread-git ==5.0.0.4634.697f757  # [win]
+    - mamba ==0.4.2  # [osx]
+    - mamba ==0.5.1  # [linux or win]
     - markupsafe ==1.1.1
     - matplotlib ==3.2.2
     - matplotlib-base ==3.2.2
@@ -156,7 +165,7 @@ requirements:
     - numpydoc ==1.1.0
     - oauthlib ==3.1.0
     - olefile ==0.46
-    - openssl ==1.1.1g
+    - openssl ==1.1.1i
     - packaging ==20.4
     - pandas ==1.0.5
     - pandoc ==2.10
@@ -171,6 +180,7 @@ requirements:
     - pillow ==7.2.0
     - pip ==20.1.1
     - pkginfo ==1.5.0.1
+    - plotly ==4.14.3
     - pluggy ==0.13.1
     - prometheus_client ==0.8.0
     - prompt-toolkit ==2.0.10  # [win]
@@ -185,6 +195,7 @@ requirements:
     - pycosat ==0.6.3
     - pycparser ==2.20
     - pycrypto ==2.6.1
+    - pyerfa ==1.7.1.1
     - pyflakes ==2.2.0
     - pygments ==2.6.1
     - pyjwt ==1.7.1
@@ -197,11 +208,13 @@ requirements:
     - pyrsistent ==0.16.0
     - pysocks ==1.7.1
     - pytables ==3.6.1
-    - pytest ==6.2
+    - pytest ==6.2.0
     - python ==3.8.3
     - python-dateutil ==2.8.1
     - python-docx ==0.8.10
+    - python-kaleido ==0.0.3
     - python-libarchive-c ==2.9
+    - python_abi ==3.8
     - pytz ==2020.1
     - pywin32 ==227  # [win]
     - pywinpty ==0.5.7  # [win]
@@ -214,6 +227,7 @@ requirements:
     - requests ==2.24.0
     - requests-oauthlib ==1.3.0
     - requests-toolbelt ==0.9.1
+    - retrying ==1.3.3
     - ripgrep ==11.0.2  # [linux or osx]
     - rope ==0.17.0
     - ruamel_yaml ==0.15.87
