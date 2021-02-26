@@ -60,7 +60,7 @@ jobs:
         repository: sot/skare3_tools
         ref: master
         path: skare3_tools
-    - uses: sot/setup-miniconda@v1
+    - uses: sot/setup-miniconda@v2
       if: ((matrix.os != 'windows') || (matrix.pkg != 'perl'))
       with:
         miniconda-version: "py38_4.8.3"
