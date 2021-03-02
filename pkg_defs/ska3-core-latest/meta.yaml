@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2021.2
+  version: 2021.4
 
 requirements:
   run:
@@ -48,6 +48,7 @@ requirements:
    - plotly
    - python-kaleido
    - python-docx
+   - pyqtgraph
    - pyyaml
    - qt
    - requests
