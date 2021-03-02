@@ -37,7 +37,7 @@ requirements:
     - mica ==4.25.0
     - parse_cm ==3.6.0
     - perigee_health_plots ==0.1.3
-    - proseco ==4.12.0
+    - proseco ==4.12.1
     - psmc_check ==3.3.0
     - pyyaks ==4.5.0
     - quaternion ==3.6.0
