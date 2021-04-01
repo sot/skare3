@@ -1,0 +1,43 @@
+package:
+  name: fot_matlab
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/fot-matlab
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - numpy
+    - matplotlib
+    - agasc
+    - cxotime
+    - proseco
+    - quaternion
+    - ska_helpers
+    - xija
+    - testr
+
+test:
+  imports:
+    - fot_matlab
+
+
+about:
+  home: https://github.com/sot/fot-matlab
+
