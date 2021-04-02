@@ -6,7 +6,7 @@ build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/fot-matlab
+  path: {{ SKA_TOP_SRC_DIR }}/fot_matlab
 
 # the build and runtime requirements. Dependencies of these requirements
 # are included automatically.
