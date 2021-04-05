@@ -18,6 +18,7 @@ requirements:
    - git # [win]
    - gitpython
    - h5py
+   - ipympl
    - ipython
    - jinja2
    - jira
@@ -32,6 +33,7 @@ requirements:
    - nb_conda
    - nbconvert
    - networkx
+   - nodejs
    - notebook
    - numba
    - numexpr
