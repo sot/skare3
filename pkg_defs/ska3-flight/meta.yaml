@@ -9,14 +9,14 @@ build:
 requirements:
   run:
     - aca_hi_bgd ==0.1.5
-    - aca_view ==0.7.1
+    - aca_view ==0.7.2
     - aca_weekly_report ==0.1.5
     - acdc ==4.7.3
     - acis_taco ==4.2.0
     - acis_thermal_check ==3.5.0
     - acisfp_check ==3.5.1
     - acispy ==2.1.0
-    - agasc ==4.11.0
+    - agasc ==4.11.1
     - annie ==0.11.0
     - backstop_history ==1.4.0
     - bep_pcb_check ==3.3.1
