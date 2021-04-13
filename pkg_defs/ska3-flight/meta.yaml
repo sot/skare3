@@ -23,7 +23,7 @@ requirements:
     - chandra.cmd_states ==3.16.0
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
-    - chandra_aca ==4.32.0
+    - chandra_aca ==4.32.1
     - cxotime ==3.2.5
     - dea_check ==3.4.1
     - dpa_check ==3.3.1
