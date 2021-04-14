@@ -1,12 +1,12 @@
 package:
-  name: fot_matlab
+  name: fot-matlab
   version:  {{ SKA_PKG_VERSION }}
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/fot_matlab
+  path: {{ SKA_TOP_SRC_DIR }}/fot-matlab
 
 # the build and runtime requirements. Dependencies of these requirements
 # are included automatically.
