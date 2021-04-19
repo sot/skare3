@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2021.2
+  version: 2021.4
 
 requirements:
   run:
@@ -18,6 +18,7 @@ requirements:
    - git # [win]
    - gitpython
    - h5py
+   - ipympl
    - ipython
    - jinja2
    - jira
@@ -32,6 +33,7 @@ requirements:
    - nb_conda
    - nbconvert
    - networkx
+   - nodejs
    - notebook
    - numba
    - numexpr
@@ -48,6 +50,7 @@ requirements:
    - plotly
    - python-kaleido
    - python-docx
+   - pyqtgraph
    - pyyaml
    - qt
    - requests
