@@ -1,50 +1,51 @@
 ---
 package:
   name: ska3-matlab
-  version: 2020.13+shiny
+  version: 2021.3
 
 build:
   noarch: generic
 
 requirements:
   run:
-    - aca_hi_bgd ==0.1.4
-    - aca_view ==0.4.1
-    - aca_weekly_report ==0.1.3
-    - acdc ==4.7.0
+    - aca_hi_bgd ==0.1.5
+    - aca_view ==0.6.0
+    - aca_weekly_report ==0.1.5
+    - acdc ==4.7.3
     - acis_taco ==4.2.0
-    - acis_thermal_check ==3.4.0
-    - acisfp_check ==3.2.0
+    - acis_thermal_check ==3.5.0
+    - acisfp_check ==3.5.0
     - acispy ==2.1.0
-    - agasc ==4.10.2
+    - agasc ==4.11.0
     - annie ==0.11.0
-    - backstop_history ==1.3.0
-    - bep_pcb_check ==3.0.0
+    - backstop_history ==1.4.0
+    - bep_pcb_check ==3.3.0
     - chandra.cmd_states ==3.16.0
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
-    - chandra_aca ==4.31.1
-    - cxotime ==3.2.3
-    - dea_check ==3.1.0
-    - dpa_check ==3.0.0
-    - fep1_actel_check ==3.0.0
-    - fep1_mong_check ==3.0.0
+    - chandra_aca ==4.32.0
+    - cxotime ==3.2.5
+    - dea_check ==3.4.0
+    - dpa_check ==3.3.0
+    - fep1_actel_check ==3.3.0
+    - fep1_mong_check ==3.3.0
     - find_attitude ==3.4.0
-    - hopper ==4.5.0
-    - kadi ==5.4.0
-    - maude ==3.4.0
-    - mica ==4.23.0
-    - parse_cm ==3.5.2
-    - perigee_health_plots ==0.1.2
-    - proseco ==4.10.0
-    - psmc_check ==3.0.0
+    - hopper ==4.5.1
+    - jobwatch ==0.2.0
+    - kadi ==5.5.1
+    - maude ==3.6.0
+    - mica ==4.25.0
+    - parse_cm ==3.6.0
+    - perigee_health_plots ==0.1.3
+    - proseco ==4.12.1
+    - psmc_check ==3.3.0
     - pyyaks ==4.5.0
     - quaternion ==3.6.0
     - ska-sphinx-theme ==1.3.0
     - ska.arc5gl ==3.1.5
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.50.1
+    - ska.engarchive ==4.52.0
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
     - ska.matplotlib ==3.12.0
@@ -55,13 +56,13 @@ requirements:
     - ska.shell ==3.5.0
     - ska.sun ==3.6.0
     - ska.tdb ==3.6.0
-    - ska3-core ==2020.14
+    - ska3-core ==2021.2
     - ska3-template ==2019.09.03
-    - ska_helpers ==0.3.0
+    - ska_helpers ==0.5.0
     - ska_path ==3.1.2
     - ska_sync ==4.7.0
-    - skare3_tools ==1.0.1
-    - sparkles ==4.7.0
+    - skare3_tools ==1.0.3
+    - sparkles ==4.8.0
     - starcheck ==13.8.0
-    - testr ==4.5.0
+    - testr ==4.6.0
     - xija ==4.21.1
