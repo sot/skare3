@@ -4,10 +4,10 @@ package:
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
+  number: 1
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/xija
-  build: 2
 
 
 # the build and runtime requirements. Dependencies of these requirements
