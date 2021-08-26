@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-core
-  version: 2021.7  # in a typical release, change the ska3-core version in ska3-flight requirements.
+  version: 2021.8  # in a typical release, change the ska3-core version in ska3-flight requirements.
 
 requirements:
   run:
