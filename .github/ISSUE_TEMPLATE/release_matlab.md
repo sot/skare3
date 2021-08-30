@@ -13,20 +13,19 @@ assignees: ''
 
 # Checklist
 
-- [ ] Check packages are built and copied to test channel
-- [ ] Document all changes (`skare3-changes-summary ...`)
-- [ ] Document test status (`skare3-test-dashboard ...`)
-- [ ] promote packages from `masters` to `test` channel (`skare3-promote ...`)
-- [ ] Add related issues to PR (`python -m skare3_tools.github.scripts.milestone_issues ...` for now)
-- [ ] Write summary + highlight relevant changes
-- [ ] Notify FOT team of candidate release
-- [ ] Install on GRETA test as SOT user (`ska3/matlab/test`)
-- [ ] FOT tests and approves
-- [ ] Promote packages to main conda channel (`skare3-promote ...`)
+- [ ] Check packages are built and copied to test channel.
+- [ ] Document all changes (`skare3-changes-summary ...`).
+- [ ] Document test status (`skare3-test-dashboard ...`).
+- [ ] Promote packages from `masters` to `test` channel (`skare3-promote ...`).
+- [ ] Add related issues to PR (`python -m skare3_tools.github.scripts.milestone_issues ...` for now).
+- [ ] Write summary + highlight relevant changes.
+- [ ] Notify FOT team of candidate release.
+- [ ] Install on GRETA test as SOT user (`ska3/matlab/test`).
+- [ ] FOT tests and approves.
+- [ ] Promote packages to main conda channel (`skare3-promote ...`).
 - [ ] Update production systems:
-   - [ ] announce to aca@cfa/slack
-   - [ ] update ska3/flight on chimchim as SOT user
-   - [ ] update ska3/matlab on chimchim as SOT user
-   - [ ] run ska_testr on chimchim
-   - [ ] announce to FOT team
-   - [ ] announce to aca@cfa/slack
+   - [ ] Announce to aca@cfa/slack.
+   - [ ] Update ska3/matlab on chimchim as SOT user.
+   - [ ] Run ska_testr on chimchim.
+   - [ ] Notify FOT team.
+   - [ ] Announce to aca@cfa/slack.
