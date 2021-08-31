@@ -32,7 +32,7 @@ requirements:
     - find_attitude ==3.4.0
     - hopper ==4.5.2
     - jobwatch ==0.2.0
-    - kadi ==5.6.1
+    - kadi ==5.6.0
     - maude ==3.7.0
     - mica ==4.27.0
     - parse_cm ==3.7.1
