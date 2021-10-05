@@ -14,7 +14,7 @@ requirements:
     - acdc ==4.8.0
     - acis_taco ==4.2.0
     - acis_thermal_check ==3.6.0
-    - acisfp_check ==3.8.0
+    - acisfp_check ==3.8.1
     - acispy ==2.2.0
     - agasc ==4.11.4
     - annie ==0.11.0
@@ -34,7 +34,7 @@ requirements:
     - jobwatch ==0.2.0
     - kadi ==5.7.1
     - maude ==3.7.0
-    - mica ==4.27.0
+    - mica ==4.27.2
     - parse_cm ==3.7.1
     - perigee_health_plots ==0.2.1
     - proseco ==5.3.0
