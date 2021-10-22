@@ -13,12 +13,12 @@ requirements:
     - aca_weekly_report ==0.1.5
     - acdc ==4.8.0
     - acis_taco ==4.2.0
-    - acis_thermal_check ==3.7.0
+    - acis_thermal_check ==3.7.1
     - acisfp_check ==3.8.1
     - acispy ==2.2.0
     - agasc ==4.11.4
     - annie ==0.11.0
-    - backstop_history ==1.5.0
+    - backstop_history ==1.5.1
     - bep_pcb_check ==3.3.1
     - chandra.cmd_states ==3.16.0
     - chandra.maneuver ==3.8.0
@@ -31,7 +31,7 @@ requirements:
     - fep1_mong_check ==3.3.1
     - find_attitude ==3.4.0
     - hopper ==4.5.2
-    - jobwatch ==0.2.0
+    - jobwatch ==0.4.0
     - kadi ==5.7.1
     - maude ==3.7.0
     - mica ==4.27.2
