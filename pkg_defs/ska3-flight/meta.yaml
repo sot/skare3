@@ -9,7 +9,7 @@ build:
 requirements:
   run:
     - aca_hi_bgd ==0.1.5
-    - aca_view ==0.7.2
+    - aca_view ==0.8.0
     - aca_weekly_report ==0.1.5
     - acdc ==4.8.0
     - acis_taco ==4.2.0
@@ -45,7 +45,7 @@ requirements:
     - ska.arc5gl ==3.1.5
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.53.1
+    - ska.engarchive ==4.54.0
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
     - ska.matplotlib ==3.13.0
@@ -61,8 +61,8 @@ requirements:
     - ska_helpers ==0.5.0
     - ska_path ==3.1.2
     - ska_sync ==4.9.1
-    - skare3_tools ==1.0.4
-    - sparkles ==4.12.2
+    - skare3_tools ==1.0.5
+    - sparkles ==4.13.0
     - starcheck ==13.12.0
     - testr ==4.6.0
     - xija ==4.24.0
