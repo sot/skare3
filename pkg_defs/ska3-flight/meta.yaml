@@ -19,13 +19,13 @@ requirements:
     - agasc ==4.11.4
     - annie ==0.11.0
     - backstop_history ==1.5.1
-    - bep_pcb_check ==3.3.1
+    - bep_pcb_check ==3.3.2
     - chandra.cmd_states ==3.16.0
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
     - chandra_aca ==4.34.0
     - cxotime ==3.2.5
-    - dea_check ==3.4.1
+    - dea_check ==3.4.2
     - dpa_check ==3.4.0
     - fep1_actel_check ==3.3.1
     - fep1_mong_check ==3.3.1
