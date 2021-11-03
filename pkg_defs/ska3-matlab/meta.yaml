@@ -30,6 +30,7 @@ requirements:
     - fep1_actel_check ==3.3.1
     - fep1_mong_check ==3.3.1
     - find_attitude ==3.4.0
+    - fot-matlab ==1.0.0
     - hopper ==4.5.2
     - jobwatch ==0.2.0
     - kadi ==5.6.0
