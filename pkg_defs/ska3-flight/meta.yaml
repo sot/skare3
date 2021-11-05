@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-flight
-  version: 2021.13
+  version: 2021.14
 
 build:
   noarch: generic
@@ -9,46 +9,46 @@ build:
 requirements:
   run:
     - aca_hi_bgd ==0.1.5
-    - aca_view ==0.7.2
+    - aca_view ==0.8.0
     - aca_weekly_report ==0.1.5
     - acdc ==4.8.0
     - acis_taco ==4.2.0
-    - acis_thermal_check ==3.6.0
+    - acis_thermal_check ==3.7.2
     - acisfp_check ==3.8.1
     - acispy ==2.2.0
     - agasc ==4.11.4
     - annie ==0.11.0
-    - backstop_history ==1.4.1
-    - bep_pcb_check ==3.3.1
+    - backstop_history ==1.5.1
+    - bep_pcb_check ==3.3.2
     - chandra.cmd_states ==3.16.0
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
-    - chandra_aca ==4.33.0
+    - chandra_aca ==4.34.0
     - cxotime ==3.2.5
-    - dea_check ==3.4.1
+    - dea_check ==3.4.2
     - dpa_check ==3.4.0
     - fep1_actel_check ==3.3.1
     - fep1_mong_check ==3.3.1
     - find_attitude ==3.4.0
     - hopper ==4.5.2
-    - jobwatch ==0.2.0
-    - kadi ==5.7.1
+    - jobwatch ==0.5.0
+    - kadi ==5.8.0
     - maude ==3.7.0
     - mica ==4.27.2
     - parse_cm ==3.7.1
     - perigee_health_plots ==0.2.1
-    - proseco ==5.3.0
+    - proseco ==5.4.0
     - psmc_check ==3.3.1
     - pyyaks ==4.5.0
-    - quaternion ==4.0.1
+    - quaternion ==4.1.0
     - ska-sphinx-theme ==1.3.0
     - ska.arc5gl ==3.1.5
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.53.1
+    - ska.engarchive ==4.54.0
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
-    - ska.matplotlib ==3.12.0
+    - ska.matplotlib ==3.13.0
     - ska.numpy ==3.9.0
     - ska.parsecm ==3.4.0
     - ska.quatutil ==3.4.0
@@ -61,8 +61,8 @@ requirements:
     - ska_helpers ==0.5.0
     - ska_path ==3.1.2
     - ska_sync ==4.9.1
-    - skare3_tools ==1.0.4
-    - sparkles ==4.12.2
-    - starcheck ==13.12.0
+    - skare3_tools ==1.0.5
+    - sparkles ==4.13.1
+    - starcheck ==13.13.0
     - testr ==4.6.0
     - xija ==4.24.0
