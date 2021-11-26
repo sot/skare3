@@ -25,7 +25,7 @@ requirements:
     - cxotime ==3.2.5
     - find_attitude ==3.4.0
     - hopper ==4.5.2
-    - jobwatch ==0.5.0
+    - jobwatch ==0.6.0
     - kadi ==5.8.0
     - maude ==3.7.0
     - mica ==4.27.2
