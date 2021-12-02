@@ -35,7 +35,7 @@ requirements:
     - pyyaks ==4.5.0
     - quaternion ==4.1.0
     - ska-sphinx-theme ==1.3.0
-    - ska.arc5gl ==3.1.5
+    - ska.arc5gl ==3.2.0
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
     - ska.engarchive ==4.54.0
