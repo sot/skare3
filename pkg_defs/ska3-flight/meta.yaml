@@ -28,7 +28,7 @@ requirements:
     - jobwatch ==0.6.0
     - kadi ==5.8.0
     - maude ==3.7.0
-    - mica ==4.27.2
+    - mica ==4.28.0
     - parse_cm ==3.7.1
     - perigee_health_plots ==0.2.1
     - proseco ==5.4.0
