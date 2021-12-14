@@ -5,7 +5,7 @@ on:
       noarch:
         description: Does not build arch-specific packages
         required: false
-        type: bool
+        type: boolean
         default: false
     secrets:
       CONDA_PASSWORD:
