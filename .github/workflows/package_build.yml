@@ -2,6 +2,16 @@ name: Build Ska Package
 on:
   workflow_call:
     inputs:
+      repository:
+        description: Repository to build from
+        required: false
+        type: string
+        default: ${GITHUB_REPOSITORY}
+      tag:
+        description: tag/ref/commit-sha
+        required: false
+        type: string
+        default: ${GITHUB_SHA}
       noarch:
         description: Does not build arch-specific packages
         required: false
