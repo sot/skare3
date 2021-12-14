@@ -48,7 +48,7 @@ jobs:
 
 
   build-other:
-    if: !inputs.noarch
+    if: ${{ !inputs.noarch }}
     runs-on: ${{ matrix.os }}-latest
     name: Build on ${{ matrix.os }}
     strategy:
