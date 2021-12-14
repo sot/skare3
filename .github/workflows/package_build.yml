@@ -40,7 +40,7 @@ jobs:
         docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace
         -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD
         docker.pkg.github.com/sot/skare3/centos7-builder:latest
-        ${GITHUB_REPOSITORY} --tag ${GITHUB_SHA}
+        ${{ inputs.repository }} --tag ${{ inputs.tag }}
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
@@ -86,7 +86,7 @@ jobs:
     - name: Build Package
       shell: bash -l {0}
       run: |
-        python skare3_tools/actions/build/files/build.py --arch-specific ${GITHUB_REPOSITORY} --tag ${GITHUB_SHA}
+        python skare3_tools/actions/build/files/build.py --arch-specific ${{ inputs.repository }} --tag ${{ inputs.tag }}
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
