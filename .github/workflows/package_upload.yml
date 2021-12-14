@@ -6,7 +6,6 @@ jobs:
   update-channel:
     runs-on: head
     name: Update Conda Channel
-    needs: [build-linux, build-other]
     steps:
       - name: Get linux package
         uses: actions/download-artifact@v2
