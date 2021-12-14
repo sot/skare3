@@ -67,7 +67,11 @@ def include_list(env, args):
 
     # add explicit includes
     # (otherwise ska3-flight-latest env minus ska3-flight-latest meta does not include ska3-core)
-    include = sorted(include + args.include)
+    for pkg in args.include:
+        if pkg in env:
+            include.append(pkg)
+
+    include = sorted(include)
 
     return include
 
