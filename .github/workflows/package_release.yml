@@ -1,6 +1,17 @@
 name: Release Ska Package
 on:
   workflow_call:
+    inputs:
+      repository:
+        description: Repository being released
+        required: false
+        type: string
+        default: ${GITHUB_REPOSITORY}
+      sha:
+        description: sha of the release
+        required: false
+        type: string
+        default: ${GITHUB_SHA}
     secrets:
       SKARE3_CI_API_TOKEN:
         required: true
@@ -21,7 +32,7 @@ jobs:
         sudo -H pip3 install setuptools wheel
         sudo -H pip3 install -r ./skare3_tools/requirements.txt
         sudo -H pip3 install ./skare3_tools
-        skare3-release-merge-info --repository $GITHUB_REPOSITORY --sha $GITHUB_SHA
-        skare3-create-issue --repository sot/skare3 --latest-release $GITHUB_REPOSITORY --label 'Package update'
+        skare3-release-merge-info --repository ${{ inputs.repository }} --sha ${{ inputs.sha }}
+        skare3-create-issue --repository sot/skare3 --latest-release ${{ inputs.repository }} --label 'Package update'
       env:
         GITHUB_API_TOKEN: ${{ secrets.SKARE3_CI_API_TOKEN }}

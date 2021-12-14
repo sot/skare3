@@ -1,6 +1,12 @@
 name: Deploy Ska Package Docs
 on:
   workflow_call:
+    inputs:
+      repository:
+        description: Repository to deploy docs from
+        required: false
+        type: string
+        default: ${GITHUB_REPOSITORY}
     secrets:
       CHANDRA_XRAY_TOKEN:
         required: true
@@ -13,11 +19,13 @@ jobs:
       - name: Fetch gh-pages
         uses: actions/checkout@v2
         with:
+          repository: ${{ inputs.repository }}
           path: gh-pages
           ref: gh-pages
       - name: Fetch source
         uses: actions/checkout@v2
         with:
+          repository: ${{ inputs.repository }}
           path: source
       - name: clear
         run: rm -fr gh-pages/docs/*
