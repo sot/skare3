@@ -7,6 +7,8 @@ requirements:
    - astropy
    - astropy-sphinx-theme
    - astropy-healpix
+   - backports
+   - backports.zoneinfo
    - beautifulsoup4
    - bokeh
    - cloudpickle # [win]
