@@ -21,7 +21,7 @@ PACKAGES = [
             f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu'
             '/mta/ASPECT/ska3-conda/flight'],
         'options': [],
-        'packages': ['numpy', 'matplotlib', 'scipy', 'pandas', 'astropy', 'pyyaml', 'conda-build']
+        'packages': ['quaternion']
     },
 ]
 

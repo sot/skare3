@@ -26,6 +26,11 @@ PACKAGES = [
         'options': ['--no-channel-priority'],
         'packages': ['qt', 'pyqt']
     },
+    {  # this version is set so it is not the latest
+        'channels': CHANNELS,
+        'options': [],
+        'packages': ['django==3.1.7']
+    },
 ]
 
 
