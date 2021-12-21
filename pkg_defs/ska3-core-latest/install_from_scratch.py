@@ -53,11 +53,13 @@ def install_pkgs(pkgs):
 def install_yaml_requirements(meta_yaml):
     # imported here because they might not be present by default
     import yaml
-    import conda_build.metadata
+    from conda_build.config import Config
+    from conda_build.metadata import select_lines
     with open(meta_yaml) as fh:
         meta = fh.read()
 
-    data = conda_build.metadata.select_lines(meta, PLATFORM_OPTIONS['osx-64'], {})
+    config = Config()
+    data = select_lines(meta, PLATFORM_OPTIONS[config.target_subdir], {})
     data = yaml.load(data, Loader=yaml.BaseLoader)
 
     dependencies = sum(
