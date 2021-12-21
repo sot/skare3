@@ -8,333 +8,390 @@ requirements:
     - _libgcc_mutex ==0.1  # [linux]
     - _openmp_mutex ==4.5  # [linux]
     - alabaster ==0.7.12
-    - anyio ==3.4.0  # [linux or osx]
+    - anyio ==2.2.0  # [osx or win]
+    - anyio ==3.4.0  # [linux]
     - appnope ==0.1.2  # [osx]
-    - argon2-cffi ==21.1.0  # [linux or osx]
+    - argon2-cffi ==20.1.0  # [osx or win]
+    - argon2-cffi ==21.1.0  # [linux]
     - asgiref ==3.4.1
-    - astroid ==2.9.0  # [linux or osx]
+    - astroid ==2.9.0
     - astropy ==5.0
-    - astropy-healpix ==0.6  # [linux or osx]
-    - astropy-sphinx-theme ==1.1  # [linux or osx]
-    - async_generator ==1.10  # [linux or osx]
+    - astropy-healpix ==0.6
+    - astropy-sphinx-theme ==1.1
+    - async_generator ==1.10
     - atomicwrites ==1.4.0  # [win]
     - attrs ==21.2.0
-    - autopep8 ==1.6.0  # [linux or osx]
+    - autopep8 ==1.6.0
     - babel ==2.9.1
     - backcall ==0.2.0
-    - backports ==1.0  # [linux or osx]
-    - backports.zoneinfo ==0.2.1  # [linux or osx]
+    - backports ==1.0
+    - backports.zoneinfo ==0.2.1
     - bcrypt ==3.2.0
     - beautifulsoup4 ==4.10.0
     - blas ==1.0  # [osx or win]
     - blas ==1.1  # [linux]
-    - bleach ==4.1.0  # [linux or osx]
-    - blinker ==1.4  # [linux or osx]
+    - bleach ==4.0.0  # [osx or win]
+    - bleach ==4.1.0  # [linux]
+    - blinker ==1.4
     - blosc ==1.21.0
-    - bokeh ==2.4.2  # [linux or osx]
+    - bokeh ==2.4.2
+    - bottleneck ==1.3.2  # [osx or win]
     - brotli ==1.0.9
     - brotlipy ==0.7.0
     - bzip2 ==1.0.8
-    - c-ares ==1.18.1  # [linux or osx]
+    - c-ares ==1.17.1  # [linux or osx]
     - ca-certificates ==2021.10.26
     - certifi ==2021.10.8
-    - cffi ==1.14.0
-    - chardet ==3.0.4
+    - cffi ==1.14.6  # [linux or osx]
+    - cffi ==1.15.0  # [win]
+    - chardet ==4.0.0
+    - charset-normalizer ==2.0.4
+    - cloudpickle ==2.0.0  # [win]
     - colorama ==0.4.4
     - commonmark ==0.9.1
-    - conda ==4.8.3
+    - conda ==4.11.0
     - conda-build ==3.21.7
-    - conda-package-handling ==1.6.1
+    - conda-package-handling ==1.7.3
     - configobj ==5.0.6
-    - cryptography ==2.9.2
+    - cryptography ==36.0.0
     - cycler ==0.11.0
-    - cython ==0.29.25  # [linux or osx]
+    - cython ==0.29.25  # [osx or win]
+    - cython ==0.29.26  # [linux]
     - dbus ==1.13.18  # [linux or osx]
     - debugpy ==1.5.1
     - decorator ==5.1.0
-    - defusedxml ==0.7.1  # [linux or osx]
+    - defusedxml ==0.7.1
     - django ==3.1.7
     - docutils ==0.17.1
-    - docxtpl ==0.11.5  # [linux or osx]
+    - docxtpl ==0.11.5
     - entrypoints ==0.3
-    - expat ==2.4.1  # [linux or osx]
+    - expat ==2.4.2  # [linux or osx]
     - filelock ==3.4.0
-    - flake8 ==4.0.1  # [linux or osx]
+    - flake8 ==3.9.2  # [osx or win]
+    - flake8 ==4.0.1  # [linux]
     - font-ttf-dejavu-sans-mono ==2.37  # [linux]
     - font-ttf-inconsolata ==3.000  # [linux]
     - font-ttf-source-code-pro ==2.038  # [linux]
     - font-ttf-ubuntu ==0.83  # [linux]
     - fontconfig ==2.13.1  # [linux]
     - fonts-conda-forge ==1  # [linux]
-    - fonttools ==4.28.4
+    - fonttools ==4.25.0  # [osx or win]
+    - fonttools ==4.28.5  # [linux]
     - freetype ==2.10.4  # [win]
     - freetype ==2.11.0  # [linux or osx]
     - future ==0.18.2
     - gettext ==0.21.0  # [osx]
     - giflib ==5.2.1  # [linux or osx]
-    - gitdb ==4.0.9
-    - gitpython ==3.1.24
+    - git ==2.32.0  # [win]
+    - gitdb ==4.0.7  # [osx or win]
+    - gitdb ==4.0.9  # [linux]
+    - gitpython ==3.1.18  # [osx or win]
+    - gitpython ==3.1.24  # [linux]
     - glib ==2.69.1  # [linux or osx]
     - glob2 ==0.7
+    - greenlet ==1.1.1  # [win]
     - gst-plugins-base ==1.14.0  # [linux]
     - gstreamer ==1.14.0  # [linux]
-    - h5py ==2.10.0  # [win]
-    - h5py ==3.6.0  # [linux or osx]
-    - hdf5 ==1.10.4  # [win]
-    - hdf5 ==1.10.6  # [linux or osx]
+    - h5py ==3.6.0
+    - hdf5 ==1.10.6
     - icc_rt ==2019.0.0  # [win]
-    - icu ==58.2  # [linux]
-    - icu ==64.2  # [win]
+    - icu ==58.2  # [linux or win]
     - icu ==68.2  # [osx]
-    - idna ==2.10
+    - idna ==3.3
     - imagesize ==1.3.0
-    - importlib-metadata ==4.2.0  # [linux or osx]
-    - importlib-metadata ==4.8.2  # [win]
-    - importlib_metadata ==4.2.0  # [linux or osx]
-    - importlib_resources ==5.4.0  # [linux or osx]
+    - importlib-metadata ==4.2.0  # [linux]
+    - importlib-metadata ==4.8.2  # [osx or win]
+    - importlib_metadata ==4.2.0  # [linux]
+    - importlib_metadata ==4.8.2  # [osx or win]
+    - importlib_resources ==5.4.0  # [linux]
     - iniconfig ==1.1.1
-    - intel-openmp ==2021.4.0  # [osx or win]
-    - ipykernel ==6.5.1  # [win]
-    - ipykernel ==6.6.0  # [linux or osx]
-    - ipympl ==0.8.4  # [linux or osx]
-    - ipyparallel ==8.0.0
-    - ipython ==7.30.1
+    - intel-openmp ==2021.4.0  # [win]
+    - ipykernel ==6.4.1  # [osx or win]
+    - ipykernel ==6.6.0  # [linux]
+    - ipympl ==0.7.0  # [osx or win]
+    - ipympl ==0.8.4  # [linux]
+    - ipyparallel ==6.3.0  # [osx or win]
+    - ipyparallel ==8.0.0  # [linux]
+    - ipython ==7.29.0  # [osx or win]
+    - ipython ==7.30.1  # [linux]
     - ipython_genutils ==0.2.0
-    - ipywidgets ==7.6.5  # [linux or osx]
-    - isort ==5.10.1  # [linux or osx]
-    - jbig ==2.1  # [osx]
-    - jedi ==0.18.1
+    - ipywidgets ==7.6.5
+    - isort ==5.10.1  # [linux]
+    - isort ==5.9.3  # [osx or win]
+    - jbig ==2.1  # [osx or win]
+    - jedi ==0.18.0  # [osx or win]
+    - jedi ==0.18.1  # [linux]
     - jeepney ==0.7.1  # [linux]
     - jinja2 ==2.11.3
-    - jira ==3.1.1  # [linux or osx]
-    - joblib ==1.1.0  # [linux or osx]
+    - jira ==3.0.1  # [osx or win]
+    - jira ==3.1.1  # [linux]
+    - joblib ==1.1.0
     - jpeg ==9d
-    - jplephem ==2.16  # [linux or osx]
-    - json5 ==0.9.6  # [linux or osx]
-    - jsonschema ==4.3.0  # [linux or osx]
-    - jupyter ==1.0.0  # [linux or osx]
-    - jupyter_client ==7.1.0
-    - jupyter_console ==6.4.0  # [linux or osx]
+    - jplephem ==2.16
+    - json5 ==0.9.6
+    - jsonschema ==3.2.0  # [osx or win]
+    - jsonschema ==4.3.2  # [linux]
+    - jupyter ==1.0.0
+    - jupyter_client ==7.0.6  # [osx or win]
+    - jupyter_client ==7.1.0  # [linux]
+    - jupyter_console ==6.4.0
     - jupyter_core ==4.9.1
-    - jupyter_server ==1.13.1  # [linux or osx]
-    - jupyterlab ==3.2.5  # [linux or osx]
-    - jupyterlab_pygments ==0.1.2  # [linux or osx]
-    - jupyterlab_server ==2.9.0  # [linux or osx]
-    - jupyterlab_widgets ==1.0.2  # [linux or osx]
-    - kaleido-core ==0.2.1  # [linux or osx]
-    - keyring ==23.4.0  # [linux or osx]
-    - kiwisolver ==1.3.2
-    - krb5 ==1.18.2  # [win]
-    - krb5 ==1.19.2  # [linux or osx]
-    - lazy-object-proxy ==1.7.1  # [linux or osx]
+    - jupyter_server ==1.13.1  # [linux]
+    - jupyter_server ==1.4.1  # [osx or win]
+    - jupyterlab ==3.2.1  # [osx or win]
+    - jupyterlab ==3.2.5  # [linux]
+    - jupyterlab_pygments ==0.1.2
+    - jupyterlab_server ==2.8.2  # [osx or win]
+    - jupyterlab_server ==2.9.0  # [linux]
+    - jupyterlab_widgets ==1.0.0  # [osx or win]
+    - jupyterlab_widgets ==1.0.2  # [linux]
+    - kaleido-core ==0.2.1
+    - keyring ==23.4.0
+    - kiwisolver ==1.3.1  # [osx or win]
+    - kiwisolver ==1.3.2  # [linux]
+    - krb5 ==1.19.2
+    - lazy-object-proxy ==1.6.0  # [osx or win]
+    - lazy-object-proxy ==1.7.1  # [linux]
     - lcms2 ==2.12  # [linux or osx]
-    - ld_impl_linux-64 ==2.33.1  # [linux]
-    - lerc ==2.2.1  # [osx]
-    - libarchive ==3.4.2  # [linux or win]
-    - libarchive ==3.5.2  # [osx]
-    - libblas ==3.9.0
-    - libcblas ==3.9.0
+    - ld_impl_linux-64 ==2.35.1  # [linux]
+    - lerc ==2.2.1  # [osx or win]
+    - libarchive ==3.4.2  # [linux]
+    - libarchive ==3.5.2  # [osx or win]
+    - libblas ==3.9.0  # [linux]
+    - libcblas ==3.9.0  # [linux]
     - libclang ==11.1.0  # [osx]
-    - libclang ==9.0.1  # [win]
-    - libcurl ==7.71.1  # [win]
-    - libcurl ==7.80.0  # [linux or osx]
-    - libcxx ==12.0.1  # [osx]
-    - libdeflate ==1.7  # [osx]
-    - libedit ==3.1.20210714  # [linux]
-    - libedit ==3.1.20210910  # [osx]
+    - libcurl ==7.80.0
+    - libcxx ==12.0.0  # [osx]
+    - libdeflate ==1.7  # [osx or win]
+    - libedit ==3.1.20210910  # [linux or osx]
     - libev ==4.33  # [linux or osx]
     - libffi ==3.3  # [linux or osx]
     - libgcc-ng ==11.2.0  # [linux]
-    - libgfortran ==5.0.0  # [osx]
+    - libgfortran ==3.0.1  # [osx]
     - libgfortran-ng ==11.2.0  # [linux]
     - libgfortran5 ==11.2.0  # [linux]
-    - libgfortran5 ==9.3.0  # [osx]
     - libgomp ==11.2.0  # [linux]
     - libiconv ==1.15  # [linux or win]
     - libiconv ==1.16  # [osx]
-    - liblapack ==3.9.0
-    - liblief ==0.11.5
+    - liblapack ==3.9.0  # [linux]
+    - liblief ==0.10.1  # [osx or win]
+    - liblief ==0.11.5  # [linux]
     - libllvm11 ==11.1.0  # [linux or osx]
+    - libmamba ==0.19.1  # [osx or win]
+    - libmambapy ==0.19.1  # [osx or win]
     - libnghttp2 ==1.46.0  # [linux or osx]
-    - libopenblas ==0.3.18  # [linux or osx]
+    - libopenblas ==0.3.13  # [osx]
+    - libopenblas ==0.3.18  # [linux]
     - libpng ==1.6.37
-    - libpq ==12.2  # [win]
-    - libpq ==12.9  # [linux]
-    - libpq ==13.3  # [osx]
+    - libpq ==12.9  # [win]
+    - libpq ==13.3  # [linux or osx]
     - libsodium ==1.0.18  # [linux or osx]
-    - libsolv ==0.7.14  # [osx]
-    - libsolv ==0.7.16  # [linux]
-    - libsolv ==0.7.17  # [win]
+    - libsolv ==0.7.19
     - libssh2 ==1.9.0
     - libstdcxx-ng ==11.2.0  # [linux]
-    - libtiff ==4.2.0  # [linux or win]
-    - libtiff ==4.3.0  # [osx]
+    - libtiff ==4.2.0  # [linux]
+    - libtiff ==4.3.0  # [osx or win]
     - libuuid ==1.0.3  # [linux]
     - libuv ==1.40.0  # [osx]
-    - libwebp ==1.2.0  # [linux or osx]
-    - libwebp ==1.2.1  # [win]
+    - libwebp ==1.2.0
     - libwebp-base ==1.2.0  # [linux or osx]
-    - libwebp-base ==1.2.1  # [win]
     - libxcb ==1.14  # [linux]
-    - libxml2 ==2.9.10  # [win]
-    - libxml2 ==2.9.12  # [linux or osx]
+    - libxml2 ==2.9.12
     - libxslt ==1.1.33  # [osx]
-    - libxslt ==1.1.34  # [linux]
-    - libzlib ==1.2.11  # [linux]
-    - line_profiler ==3.3.1  # [linux or osx]
+    - libxslt ==1.1.34  # [linux or win]
+    - line_profiler ==2.1.2  # [osx or win]
+    - line_profiler ==3.3.1  # [linux]
     - llvm-openmp ==12.0.1  # [osx]
-    - llvmlite ==0.36.0  # [win]
-    - llvmlite ==0.37.0  # [linux or osx]
-    - lxml ==4.7.1  # [linux or osx]
-    - lz4-c ==1.9.2  # [linux or win]
-    - lz4-c ==1.9.3  # [osx]
+    - llvmlite ==0.37.0
+    - lxml ==4.5.1  # [osx]
+    - lxml ==4.6.3  # [win]
+    - lxml ==4.7.1  # [linux]
+    - lz4-c ==1.9.3
     - lzo ==2.10
     - m2w64-gcc-libgfortran ==5.3.0  # [win]
     - m2w64-gcc-libs ==5.3.0  # [win]
     - m2w64-gcc-libs-core ==5.3.0  # [win]
     - m2w64-gmp ==6.1.0  # [win]
     - m2w64-libwinpthread-git ==5.0.0.4634.697f757  # [win]
-    - mamba ==0.4.2  # [osx]
-    - mamba ==0.5.1  # [linux or win]
+    - mamba ==0.19.1  # [osx or win]
+    - mamba ==0.5.1  # [linux]
     - markupsafe ==2.0.1
-    - mathjax ==2.7.7  # [linux or osx]
-    - matplotlib ==3.5.1
-    - matplotlib-base ==3.5.1
-    - matplotlib-inline ==0.1.3
-    - mccabe ==0.6.1  # [linux or osx]
-    - menuinst ==1.4.16  # [win]
-    - mistune ==0.8.4  # [linux or osx]
-    - mkl ==2021.4.0  # [osx or win]
-    - mkl-service ==2.4.0  # [osx or win]
-    - mkl_fft ==1.3.1  # [osx]
-    - mkl_random ==1.2.2  # [osx]
+    - mathjax ==2.7.7
+    - matplotlib ==3.5.0  # [osx or win]
+    - matplotlib ==3.5.1  # [linux]
+    - matplotlib-base ==3.5.0  # [osx or win]
+    - matplotlib-base ==3.5.1  # [linux]
+    - matplotlib-inline ==0.1.2  # [osx or win]
+    - matplotlib-inline ==0.1.3  # [linux]
+    - mccabe ==0.6.1
+    - menuinst ==1.4.18  # [win]
+    - mistune ==0.8.4
+    - mkl ==2021.4.0  # [win]
+    - mkl-service ==2.4.0  # [win]
+    - mkl_fft ==1.3.1  # [win]
+    - mkl_random ==1.2.2  # [win]
     - mock ==4.0.3
-    - more-itertools ==8.12.0  # [win]
-    - mpld3 ==0.5.7  # [linux or osx]
+    - more-itertools ==8.4.0  # [win]
+    - mpld3 ==0.5.7
     - msys2-conda-epoch ==20160418  # [win]
     - munkres ==1.1.4
     - mysql-common ==8.0.25  # [osx]
     - mysql-libs ==8.0.25  # [osx]
-    - nb_conda ==2.2.1  # [linux or osx]
-    - nb_conda_kernels ==2.3.1  # [linux or osx]
-    - nbclassic ==0.3.4  # [linux or osx]
-    - nbclient ==0.5.9  # [linux or osx]
-    - nbconvert ==6.3.0  # [linux or osx]
-    - nbformat ==5.1.3  # [linux or osx]
-    - ncurses ==6.2  # [linux]
-    - ncurses ==6.3  # [osx]
-    - nest-asyncio ==1.5.4
+    - nb_conda ==2.2.1
+    - nb_conda_kernels ==2.3.1
+    - nbclassic ==0.2.6  # [osx or win]
+    - nbclassic ==0.3.4  # [linux]
+    - nbclient ==0.5.3  # [osx or win]
+    - nbclient ==0.5.9  # [linux]
+    - nbconvert ==6.1.0  # [osx or win]
+    - nbconvert ==6.3.0  # [linux]
+    - nbformat ==5.1.3
+    - ncurses ==6.3  # [linux or osx]
+    - nest-asyncio ==1.5.1  # [osx or win]
+    - nest-asyncio ==1.5.4  # [linux]
     - networkx ==2.6.3
     - nodejs ==12.4.0  # [linux]
-    - nodejs ==16.13.1  # [osx]
+    - nodejs ==16.13.1  # [osx or win]
     - nomkl ==3.0  # [linux]
     - nose ==1.3.7
-    - notebook ==6.4.6  # [linux or osx]
+    - notebook ==6.4.6
     - nspr ==4.32  # [linux or osx]
-    - nss ==3.69  # [osx]
-    - nss ==3.73  # [linux]
-    - numba ==0.53.0  # [win]
-    - numba ==0.54.1  # [linux or osx]
-    - numexpr ==2.7.3  # [win]
-    - numexpr ==2.8.0  # [linux or osx]
-    - numpy ==1.20.3  # [linux or osx]
-    - numpy ==1.21.4  # [win]
-    - numpy-base ==1.20.3  # [linux or osx]
-    - numpydoc ==1.1.0  # [linux or osx]
-    - oauthlib ==3.1.1  # [linux or osx]
+    - nss ==3.69  # [linux or osx]
+    - numba ==0.54.1
+    - numexpr ==2.7.3  # [osx or win]
+    - numexpr ==2.8.0  # [linux]
+    - numpy ==1.20.3  # [osx or win]
+    - numpy ==1.21.2  # [linux]
+    - numpy-base ==1.20.3  # [osx or win]
+    - numpy-base ==1.21.2  # [linux]
+    - numpydoc ==1.1.0
+    - oauthlib ==3.1.0  # [osx or win]
+    - oauthlib ==3.1.1  # [linux]
     - olefile ==0.46
     - openblas ==0.3.18  # [linux]
     - openssl ==1.1.1l
     - packaging ==21.3
-    - pandas ==1.3.5
-    - pandoc ==2.16.2  # [linux or osx]
-    - pandocfilters ==1.5.0  # [linux or osx]
-    - paramiko ==2.8.1
-    - parso ==0.8.3
+    - pandas ==1.3.4  # [osx or win]
+    - pandas ==1.3.5  # [linux]
+    - pandoc ==2.16.2  # [linux]
+    - pandocfilters ==1.4.3  # [osx or win]
+    - pandocfilters ==1.5.0  # [linux]
+    - paramiko ==2.7.2  # [osx or win]
+    - paramiko ==2.8.1  # [linux]
+    - parso ==0.8.2  # [osx or win]
+    - parso ==0.8.3  # [linux]
     - patchelf ==0.14.3  # [linux]
     - pcre ==8.45  # [linux or osx]
     - pexpect ==4.8.0
     - pickleshare ==0.7.5
     - pillow ==8.4.0
-    - pip ==20.1.1
-    - pkginfo ==1.8.2
-    - platformdirs ==2.4.0  # [linux or osx]
-    - plotly ==5.4.0  # [linux or osx]
+    - pip ==21.2.2  # [win]
+    - pip ==21.2.4  # [linux or osx]
+    - pkginfo ==1.7.1  # [osx or win]
+    - pkginfo ==1.8.2  # [linux]
+    - platformdirs ==2.4.0
+    - plotly ==5.1.0  # [osx or win]
+    - plotly ==5.5.0  # [linux]
     - pluggy ==0.13.1  # [win]
     - pluggy ==1.0.0  # [linux or osx]
-    - prometheus_client ==0.12.0  # [linux or osx]
-    - prompt-toolkit ==3.0.24
-    - prompt_toolkit ==3.0.24  # [linux or osx]
+    - prometheus_client ==0.12.0
+    - prompt-toolkit ==2.0.10  # [win]
+    - prompt-toolkit ==3.0.20  # [osx]
+    - prompt-toolkit ==3.0.24  # [linux]
+    - prompt_toolkit ==3.0.20  # [osx]
+    - prompt_toolkit ==3.0.24  # [linux]
+    - prompt_toolkit ==3.0.3  # [win]
     - psutil ==5.8.0
-    - psycopg2 ==2.8.6  # [linux or win]
-    - psycopg2 ==2.9.2  # [osx]
-    - ptyprocess ==0.7.0  # [linux or osx]
-    - py ==1.10.0  # [win]
-    - py ==1.11.0  # [linux or osx]
-    - py-lief ==0.11.5
-    - pycodestyle ==2.8.0  # [linux or osx]
+    - psycopg2 ==2.8.6  # [win]
+    - psycopg2 ==2.9.2  # [linux or osx]
+    - ptyprocess ==0.7.0
+    - py ==1.10.0  # [osx]
+    - py ==1.11.0  # [linux]
+    - py ==1.9.0  # [win]
+    - py-lief ==0.10.1  # [osx or win]
+    - py-lief ==0.11.5  # [linux]
+    - pybind11-abi ==4  # [osx or win]
+    - pycodestyle ==2.7.0  # [osx or win]
+    - pycodestyle ==2.8.0  # [linux]
     - pycosat ==0.6.3
-    - pycparser ==2.20
-    - pycrypto ==2.6.1  # [linux or osx]
-    - pyerfa ==2.0.0.1
-    - pyflakes ==2.4.0  # [linux or osx]
+    - pycparser ==2.21
+    - pycrypto ==2.6.1
+    - pyerfa ==2.0.0  # [osx or win]
+    - pyerfa ==2.0.0.1  # [linux]
+    - pyflakes ==2.3.1  # [osx or win]
+    - pyflakes ==2.4.0  # [linux]
     - pygments ==2.10.0
-    - pyjwt ==2.0.1  # [linux or osx]
-    - pylint ==2.12.2  # [linux or osx]
+    - pyjwt ==1.7.1  # [osx or win]
+    - pyjwt ==2.3.0  # [linux]
+    - pylint ==2.12.2
     - pynacl ==1.4.0
-    - pyopenssl ==19.1.0
-    - pyparsing ==3.0.6
-    - pyqt ==5.12.3  # [osx or win]
-    - pyqt ==5.9.2  # [linux]
+    - pyopenssl ==21.0.0
+    - pyparsing ==3.0.4  # [osx or win]
+    - pyparsing ==3.0.6  # [linux]
+    - pyqt ==5.12.3  # [osx]
+    - pyqt ==5.9.2  # [linux or win]
     - pyqt-impl ==5.12.3  # [osx]
-    - pyqt5-sip ==4.19.18  # [osx or win]
+    - pyqt5-sip ==4.19.18  # [osx]
     - pyqtchart ==5.12  # [osx]
+    - pyqtgraph ==0.11.0  # [osx or win]
     - pyqtgraph ==0.11.1  # [linux]
-    - pyqtgraph ==0.12.3  # [osx]
-    - pyqtwebengine ==5.12.1  # [osx or win]
+    - pyqtwebengine ==5.12.1  # [osx]
     - pyreadline ==2.1  # [win]
-    - pyrsistent ==0.18.0  # [linux or osx]
+    - pyrsistent ==0.18.0
     - pysocks ==1.7.1
     - pytables ==3.6.1
-    - pytest ==6.2.4  # [win]
+    - pytest ==6.2.0  # [win]
     - pytest ==6.2.5  # [linux or osx]
-    - python ==3.8.3
+    - python ==3.8.12
     - python-dateutil ==2.8.2
-    - python-docx ==0.8.11  # [linux or osx]
-    - python-kaleido ==0.2.1  # [linux or osx]
-    - python-libarchive-c ==3.2
+    - python-docx ==0.8.11
+    - python-kaleido ==0.2.1
+    - python-libarchive-c ==2.9  # [osx or win]
+    - python-libarchive-c ==3.2  # [linux]
     - python_abi ==3.8
     - pytz ==2021.3
-    - pywin32 ==227  # [win]
+    - pywin32 ==302  # [win]
+    - pywin32-ctypes ==0.2.0  # [win]
+    - pywinpty ==0.5.7  # [win]
     - pyyaml ==6.0
     - pyzmq ==22.3.0
-    - qt ==5.12.5  # [win]
     - qt ==5.12.9  # [osx]
-    - qt ==5.9.7  # [linux]
-    - qtconsole ==5.2.2
-    - qtpy ==1.11.3
+    - qt ==5.9.7  # [linux or win]
+    - qtconsole ==5.1.1  # [osx or win]
+    - qtconsole ==5.2.2  # [linux]
+    - qtpy ==1.10.0  # [osx or win]
+    - qtpy ==1.11.3  # [linux]
     - readline ==8.1  # [linux or osx]
-    - requests ==2.24.0
-    - requests-oauthlib ==1.3.0  # [linux or osx]
-    - requests-toolbelt ==0.9.1  # [linux or osx]
-    - ripgrep ==13.0.0  # [linux or osx]
-    - rope ==0.22.0  # [linux or osx]
-    - ruamel_yaml ==0.15.87
-    - scikit-learn ==1.0.1  # [linux or osx]
-    - scipy ==1.7.3
+    - reproc ==14.2.3  # [osx or win]
+    - reproc-cpp ==14.2.3  # [osx or win]
+    - requests ==2.26.0
+    - requests-oauthlib ==1.3.0
+    - requests-toolbelt ==0.9.1
+    - ripgrep ==12.1.1  # [osx]
+    - ripgrep ==13.0.0  # [linux]
+    - rope ==0.21.1  # [osx or win]
+    - rope ==0.22.0  # [linux]
+    - ruamel_yaml ==0.15.100
+    - runipy ==0.1.5  # [win]
+    - scikit-learn ==1.0.1
+    - scipy ==1.7.1  # [osx or win]
+    - scipy ==1.7.3  # [linux]
     - secretstorage ==3.3.1  # [linux]
-    - send2trash ==1.8.0  # [linux or osx]
-    - setuptools ==49.2.0
+    - send2trash ==1.8.0
+    - setuptools ==58.0.4
     - setuptools-scm ==6.3.2
     - setuptools_scm ==6.3.2
     - sherpa ==4.12.2  # [linux or osx]
-    - sip ==4.19.13  # [linux]
-    - six ==1.15.0
-    - smmap ==3.0.5
-    - sniffio ==1.2.0  # [linux or osx]
+    - sip ==4.19.13  # [linux or win]
+    - six ==1.15.0  # [osx or win]
+    - six ==1.16.0  # [linux]
+    - smmap ==3.0.5  # [linux]
+    - smmap ==4.0.0  # [osx or win]
+    - sniffio ==1.2.0
     - snowballstemmer ==2.2.0
     - soupsieve ==2.3.1
-    - sphinx ==4.3.1
+    - sphinx ==4.2.0  # [osx or win]
+    - sphinx ==4.3.2  # [linux]
     - sphinx-argparse ==0.3.1
     - sphinxcontrib-applehelp ==1.0.2
     - sphinxcontrib-devhelp ==1.0.2
@@ -342,41 +399,48 @@ requirements:
     - sphinxcontrib-jsmath ==1.0.1
     - sphinxcontrib-qthelp ==1.0.3
     - sphinxcontrib-serializinghtml ==1.1.5
-    - sqlite ==3.32.3  # [win]
-    - sqlite ==3.36.0  # [osx]
-    - sqlite ==3.37.0  # [linux]
-    - sqlparse ==0.4.2
+    - sqlalchemy ==1.4.27  # [win]
+    - sqlite ==3.36.0
+    - sqlparse ==0.4.1  # [osx or win]
+    - sqlparse ==0.4.2  # [linux]
     - tbb ==2021.4.0
-    - tenacity ==8.0.1  # [linux or osx]
-    - terminado ==0.12.1  # [linux or osx]
-    - testpath ==0.5.0  # [linux or osx]
-    - threadpoolctl ==3.0.0  # [linux or osx]
-    - tk ==8.6.10  # [osx]
-    - tk ==8.6.11  # [linux or win]
+    - tenacity ==8.0.1
+    - terminado ==0.12.1  # [linux]
+    - terminado ==0.9.4  # [osx or win]
+    - testpath ==0.5.0
+    - threadpoolctl ==2.2.0  # [osx or win]
+    - threadpoolctl ==3.0.0  # [linux]
+    - tk ==8.6.11
     - toml ==0.10.2
-    - tomli ==2.0.0
+    - tomli ==1.2.2  # [osx or win]
+    - tomli ==2.0.0  # [linux]
     - tornado ==6.1
-    - tqdm ==4.47.0
+    - tqdm ==4.62.3
     - traitlets ==5.1.1
-    - typing-extensions ==4.0.1  # [linux or osx]
-    - typing_extensions ==4.0.1
-    - tzdata ==2021e  # [linux or osx]
-    - unicodedata2 ==13.0.0.post2
-    - urllib3 ==1.25.9
-    - vc ==14.1  # [win]
-    - vs2015_runtime ==14.16.27012  # [win]
+    - typing-extensions ==3.10.0.2  # [osx or win]
+    - typing-extensions ==4.0.1  # [linux]
+    - typing_extensions ==3.10.0.2  # [osx or win]
+    - typing_extensions ==4.0.1  # [linux]
+    - tzdata ==2021e
+    - unicodedata2 ==14.0.0  # [linux]
+    - urllib3 ==1.26.7
+    - vc ==14.2  # [win]
+    - vs2015_runtime ==14.27.29016  # [win]
     - wcwidth ==0.2.5
-    - webencodings ==0.5.1  # [linux or osx]
-    - websocket-client ==1.2.3  # [linux or osx]
-    - wheel ==0.34.2
-    - widgetsnbextension ==3.5.2  # [linux or osx]
+    - webencodings ==0.5.1
+    - websocket-client ==1.2.3  # [linux]
+    - wheel ==0.37.0
+    - widgetsnbextension ==3.5.1  # [osx or win]
+    - widgetsnbextension ==3.5.2  # [linux]
     - win_inet_pton ==1.1.0  # [win]
     - wincertstore ==0.2  # [win]
-    - wrapt ==1.13.3  # [linux or osx]
+    - winpty ==0.4.3  # [win]
+    - wrapt ==1.13.3
     - xz ==5.2.5
     - yaml ==0.2.5
+    - yaml-cpp ==0.6.3  # [osx or win]
     - zeromq ==4.3.4  # [linux or osx]
     - zipp ==3.6.0
     - zlib ==1.2.11
-    - zstd ==1.4.5  # [linux or win]
-    - zstd ==1.5.0  # [osx]
+    - zstd ==1.4.9  # [linux]
+    - zstd ==1.5.0  # [osx or win]
