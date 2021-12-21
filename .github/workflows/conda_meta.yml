@@ -26,19 +26,19 @@ jobs:
           ref: ${{ github.event.client_payload.skare3_branch }}
           path: skare3
       - name: ska3-core
-        shell: bash -l {0}
+        shell: bash -l -e {0}
         run: |
           conda install mamba
           python ./skare3/pkg_defs/ska3-core-latest/install_from_scratch.py
           conda list --json > ska3-core-${ARCH}.json
       - name: ska3-flight
-        shell: bash -l {0}
+        shell: bash -l -e {0}
         run: |
           python ./skare3/pkg_defs/ska3-flight-latest/install_from_scratch.py
           conda list --json > ska3-flight-${ARCH}.json
       - name: ska3-perl
         if: ${{ matrix.os != 'windows' }}
-        shell: bash -l {0}
+        shell: bash -l -e {0}
         run: |
           mamba install -c defaults -c conda-forge -c https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight ska3-perl-latest
           conda list --json > ska3-perl-${ARCH}.json
@@ -129,7 +129,7 @@ jobs:
           miniconda-version: "py38_4.8.3"
           python-version: "3.8"
       - name: Setup build environment
-        shell: bash -l {0}
+        shell: bash -l -e {0}
         run: |
           conda install conda-build gitpython
       - name: Checkout Skare3
@@ -139,24 +139,24 @@ jobs:
           ref: ${{ github.event.client_payload.skare3_branch }}
           path: skare3
       - name: Copy yaml files
-        shell: bash -l {0}
+        shell: bash -l -e {0}
         run: |
           cp ./pkg_defs/ska3-core/meta.yaml ./skare3/pkg_defs/ska3-core/meta.yaml
           cp ./pkg_defs/ska3-flight/meta.yaml ./skare3/pkg_defs/ska3-flight/meta.yaml
           cp ./pkg_defs/ska3-perl/meta.yaml ./skare3/pkg_defs/ska3-perl/meta.yaml
       - name: Build ska3-flight
-        shell: bash -l {0}
+        shell: bash -l -e {0}
         working-directory: ./skare3
         run: >
           python ./ska_builder.py ska3-flight
       - name: Build ska3-core and ska3-perl
-        shell: bash -l {0}
+        shell: bash -l -e {0}
         working-directory: ./skare3
         run: |
           python ./ska_builder.py ska3-core
           python ./ska_builder.py ska3-perl
       - name: Gather packages
-        shell: bash -l {0}
+        shell: bash -l -e {0}
         working-directory: ./skare3
         run: |
           rm -f builds/*/*json builds/*/*repodata* builds/*/index*

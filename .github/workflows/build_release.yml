@@ -89,10 +89,10 @@ jobs:
         python-version: "3.8"
         channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny
     - name: Build Dependencies
-      shell: bash -l {0}
+      shell: bash -l -e {0}
       run: conda install setuptools_scm gitpython conda-build jinja2 pyyaml python=3.8 numpy packaging
     - name: Build Package
-      shell: bash -l {0}
+      shell: bash -l -e {0}
       run: |
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
         echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
