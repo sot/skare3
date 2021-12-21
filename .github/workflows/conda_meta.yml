@@ -18,7 +18,7 @@ jobs:
         with:
           miniconda-version: "py38_4.8.3"
           python-version: "3.8"
-          channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
+          channels: defaults,conda-forge,https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
       - name: Checkout Skare3
         uses: actions/checkout@v2
         with:
