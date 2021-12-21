@@ -18,13 +18,9 @@ CHANNELS = [
 PACKAGES = [
     {
         'channels': CHANNELS,
-        'options': [],
-        'packages': ['numpy', 'matplotlib', 'scipy', 'pandas', 'astropy', 'pyyaml', 'conda-build']
-    },
-    {  # these come from conda-forge
-        'channels': CHANNELS,
         'options': ['--no-channel-priority'],
-        'packages': ['qt', 'pyqt']
+        'packages': ['numpy', 'matplotlib', 'scipy', 'pandas', 'astropy', 'pyyaml', 'conda-build',
+                     'pyqt']
     },
     {  # this version is set so it is not the latest
         'channels': CHANNELS,
