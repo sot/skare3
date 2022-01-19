@@ -114,6 +114,7 @@ jobs:
         shell: bash -l -e {0}
         run: |
           ls -R json
+          pip install requests urllib3
           ./skare3/patch_instructions.py merge json/patch_instructions-*/noarch/*json \
             -o patch_instructions/noarch
           cp -fr json/patch_instructions-*/linux-64 patch_instructions/
