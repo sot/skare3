@@ -54,7 +54,7 @@ jobs:
         with:
           name: json-files
           path: |
-            patch_instructions-${ARCH}/**/*json
+            patch_instructions-${{ matrix.os }}/**/*json
             ska3-*.json
     env:
       ARCH: ${{ matrix.os }}
