@@ -42,11 +42,15 @@ jobs:
         run: |
           mamba install -c defaults -c conda-forge -c https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight ska3-perl-latest
           conda list --json > ska3-perl-${ARCH}.json
+      - name: patches
+        run: ./skare3/patch_instructions.py
       - name: Save
         uses: actions/upload-artifact@v2.2.4
         with:
           name: json-files
-          path: ska3-*.json
+          path: |
+            patch_instructions/**/*json
+            ska3-*.json
     env:
       ARCH: ${{ matrix.os }}
       CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
