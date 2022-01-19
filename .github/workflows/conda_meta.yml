@@ -28,21 +28,26 @@ jobs:
       - name: ska3-core
         shell: bash -l -e {0}
         run: |
-          conda install mamba
+          conda info
+          conda install -y --override-channels -c defaults -c conda-forge mamba
           python ./skare3/pkg_defs/ska3-core-latest/install_from_scratch.py
           conda list --json > ska3-core-${ARCH}.json
       - name: ska3-flight
         shell: bash -l -e {0}
         run: |
+          conda info
           python ./skare3/pkg_defs/ska3-flight-latest/install_from_scratch.py
           conda list --json > ska3-flight-${ARCH}.json
       - name: ska3-perl
         if: ${{ matrix.os != 'windows' }}
         shell: bash -l -e {0}
         run: |
-          mamba install -c defaults -c conda-forge -c https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight ska3-perl-latest
+          conda list
+          conda info
+          mamba install -y ska3-perl-latest
           conda list --json > ska3-perl-${ARCH}.json
       - name: patches
+        shell: bash -l -e {0}
         run: ./skare3/patch_instructions.py
       - name: Save
         uses: actions/upload-artifact@v2.2.4
