@@ -27,6 +27,11 @@ PACKAGES = [
         'options': [],
         'packages': ['django==3.1.7']
     },
+    {  # this is not in defaults or conda-forge (for now?)
+        'channels': ['astropy'],
+        'options': [],
+        'packages': ['regions']
+    },
 ]
 
 
