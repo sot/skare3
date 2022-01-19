@@ -48,13 +48,13 @@ jobs:
           conda list --json > ska3-perl-${ARCH}.json
       - name: patches
         shell: bash -l -e {0}
-        run: ./skare3/patch_instructions.py
+        run: ./skare3/patch_instructions.py -o patch_instructions-${ARCH}
       - name: Save
         uses: actions/upload-artifact@v2.2.4
         with:
           name: json-files
           path: |
-            patch_instructions/**/*json
+            patch_instructions-${ARCH}/**/*json
             ska3-*.json
     env:
       ARCH: ${{ matrix.os }}
