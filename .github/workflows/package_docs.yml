@@ -6,7 +6,7 @@ on:
         description: Repository to deploy docs from
         required: false
         type: string
-        default: ${{ env.GITHUB_REPOSITORY }}
+        default: ${{ github.action_repository }}
     secrets:
       CHANDRA_XRAY_TOKEN:
         required: true
