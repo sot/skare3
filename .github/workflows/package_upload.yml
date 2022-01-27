@@ -1,7 +1,12 @@
 name: Upload Ska Package
 on:
   workflow_call:
-
+    inputs:
+      channel:
+        description: name of conda channel to upload to
+        required: false
+        type: string
+        default: test
 jobs:
   update-channel:
     runs-on: head
@@ -23,4 +28,4 @@ jobs:
             fi
           done;
         env:
-          CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/masters
+          CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/${{ inputs.channel }}
