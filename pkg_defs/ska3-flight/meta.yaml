@@ -14,7 +14,7 @@ requirements:
     - acdc ==4.8.0
     - acis_taco ==4.2.1
     - acis_thermal_check ==4.1.0
-    - acispy ==2.3.0
+    - acispy ==2.4.0
     - agasc ==4.11.4
     - annie ==0.11.1
     - backstop_history ==1.5.1
