@@ -13,7 +13,7 @@ requirements:
     - aca_weekly_report ==0.1.5
     - acdc ==4.8.0
     - acis_taco ==4.2.0
-    - acis_thermal_check ==4.0.0
+    - acis_thermal_check ==4.1.0
     - acispy ==2.3.0
     - agasc ==4.11.4
     - annie ==0.11.0
