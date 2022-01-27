@@ -1,0 +1,60 @@
+---
+name: Ska3 conda meta.yaml
+on:
+  repository_dispatch:
+    types: [incremental-conda-meta]
+
+jobs:
+  generate-json:
+    runs-on: ${{ matrix.os }}-latest
+    name: Generate ${{ matrix.os }} json files
+    if: ${{ github.event.client_payload.ska3_core_version }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu", "macos", "windows"]
+    steps:
+      - name: Checkout skare3_tools
+        uses: actions/checkout@v2
+        with:
+          repository: sot/skare3_tools
+          ref: improvements
+          path: skare3_tools
+      - uses: sot/setup-miniconda@v2
+        with:
+          miniconda-version: "py38_4.8.3"
+          python-version: "3.8"
+          channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
+      - name: install ska3-core
+        shell: bash -l -e {0}
+        run: |
+          conda install -y mamba
+          mamba install -y ska3-core==${{ github.event.client_payload.ska3_core_version }}
+          mamba uninstall -y ska3-core
+      - name: update packages
+        if: ${{ github.event.client_payload.update }}
+        shell: bash -l -e {0}
+        run: mamba update -y -c defaults ${{ github.event.client_payload.update }}
+      - name: install new packages
+        if: ${{ github.event.client_payload.install }}
+        shell: bash -l -e {0}
+        run: mamba install -y -c defaults ${{ github.event.client_payload.install }}
+      - name: save conda packages
+        shell: bash -l -e {0}
+        run: |
+          echo creating ska3-core-${{ matrix.os }}.json
+          conda list --json > ska3-core-${{ matrix.os }}.json
+          python ./skare3_tools/skare3_tools/conda.py --directory packages --exclude-channel mta/ASPECT/ska3-conda/flight
+      - name: Save packages
+        uses: actions/upload-artifact@v2
+        with:
+          name: conda-pkgs
+          path: packages
+      - name: Save
+        uses: actions/upload-artifact@v2
+        with:
+          name: json-files
+          path: ska3-*.json
+    env:
+      ARCH: ${{ matrix.os }}
+      CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
