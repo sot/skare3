@@ -154,10 +154,14 @@ jobs:
           conda create -y -n ${{ matrix.package }}-${RELEASE_TAG} --override-channels \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight \
                 ${{ matrix.package }}==${RELEASE_TAG}
           source activate ${{ matrix.package }}-${RELEASE_TAG}
-          conda install ska3-perl
+          conda install -y -n --override-channels \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
+                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight \
+                ska3-perl
           run_testr --root ./ska_testr --outputs-dir /export/jgonzale/ska_testr/release_tests
           skare3-test-results --stream releases --tag head /export/jgonzale/ska_testr/release_tests/logs/last
           # add test result report to PR description
