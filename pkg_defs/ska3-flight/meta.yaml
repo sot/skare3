@@ -17,7 +17,7 @@ requirements:
     - acispy ==2.4.0
     - agasc ==4.11.4
     - annie ==0.11.0
-    - backstop_history ==1.5.1
+    - backstop_history ==1.5.2
     - chandra.cmd_states ==3.17.0
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
