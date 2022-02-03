@@ -44,6 +44,7 @@ requirements:
    - numpydoc
    - pandas
    - autopep8
+   - openpyxl
    - pillow
    - pip
    - flake8
