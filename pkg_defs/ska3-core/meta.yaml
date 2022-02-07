@@ -266,6 +266,7 @@ requirements:
     - plotly ==5.5.0
     - pluggy ==0.13.1  # [win]
     - pluggy ==1.0.0  # [linux or osx]
+    - ply ==3.11
     - prometheus_client ==0.12.0
     - prompt-toolkit ==2.0.10  # [win]
     - prompt-toolkit ==3.0.20  # [linux or osx]
