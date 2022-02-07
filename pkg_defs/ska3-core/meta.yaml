@@ -263,7 +263,7 @@ requirements:
     - pip ==21.2.4  # [linux or osx]
     - pkginfo ==1.8.2
     - platformdirs ==2.4.0
-    - plotly ==5.1.0
+    - plotly ==5.5.0
     - pluggy ==0.13.1  # [win]
     - pluggy ==1.0.0  # [linux or osx]
     - prometheus_client ==0.12.0
