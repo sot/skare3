@@ -52,6 +52,7 @@ requirements:
    - prompt-toolkit<3.0.0a0 # [win]
    - pylint
    - plotly
+   - ply
    - python-kaleido
    - python-docx
    - pyqtgraph
