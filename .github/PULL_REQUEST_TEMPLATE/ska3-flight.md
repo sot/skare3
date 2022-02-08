@@ -23,7 +23,7 @@ All operations critical or impacting PR's are independently and carefully review
 
 ## Deployment
 
-ska3-flight {version} will be promoted to flight conda channel and installed on HEAD and GRETA Linux after this week's loads are approved.
+ska3-flight {version} will be promoted to flight conda channel and installed on HEAD and GRETA Linux upon approval of FSDS Jira ticket.
 
 # Code changes
 

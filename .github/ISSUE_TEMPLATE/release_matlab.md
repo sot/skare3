@@ -11,7 +11,7 @@ assignees: ''
 
 - List package name+version or github issue number
 
-# Checklist
+### Package and Test
 
 - [ ] Check packages are built and copied to test channel.
 - [ ] Document all changes (`skare3-changes-summary ...`).
@@ -23,9 +23,10 @@ assignees: ''
 - [ ] Install on GRETA test as SOT user (`ska3/matlab/test`).
 - [ ] FOT tests and approves.
 - [ ] Promote packages to main conda channel (`skare3-promote ...`).
-- [ ] Update production systems:
-   - [ ] Announce to aca@cfa/slack.
-   - [ ] Update ska3/matlab on chimchim as SOT user.
-   - [ ] Run ska_testr on chimchim.
-   - [ ] Notify FOT team.
-   - [ ] Announce to aca@cfa/slack.
+### Promote:
+
+- [ ] Announce to aca@cfa/slack.
+- [ ] Update ska3/matlab on chimchim as SOT user.
+- [ ] Run ska_testr on chimchim.
+- [ ] Announce to aca@cfa/slack.
+- [ ] Notify FOT team.
