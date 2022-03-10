@@ -1,0 +1,92 @@
+{
+  "packages": {
+    "blosc-1.21.0-he49afe7_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "conda-build-3.21.7-py38hecd8cb5_0.tar.bz2": {
+      "depends": [
+        "beautifulsoup4",
+        "chardet",
+        "conda >=4.5",
+        "conda-package-handling >=1.3",
+        "filelock",
+        "glob2 >=0.6",
+        "jinja2 <3.0.0a0",
+        "pkginfo",
+        "psutil",
+        "py-lief",
+        "python >=3.8,<3.9.0a0",
+        "python-libarchive-c",
+        "pytz",
+        "pyyaml",
+        "requests",
+        "ripgrep",
+        "setuptools",
+        "six",
+        "tqdm"
+      ]
+    },
+    "icu-68.2-he49afe7_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "libblas-3.8.0-17_openblas.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "libcblas-3.8.0-17_openblas.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "liblapack-3.8.0-17_openblas.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "libwebp-1.2.1-h28dabe5_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "libwebp-base-1.2.1-h0d85af4_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "libxslt-1.1.33-h5739fc3_2.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "nspr-4.32-hcd9eead_1.tar.bz2": {
+      "license_family": "MOZILLA"
+    },
+    "nss-3.69-h31e2bf1_1.tar.bz2": {
+      "license_family": "MOZILLA"
+    },
+    "numpy-base-1.20.3-py38hbbe2e76_0.tar.bz2": {
+      "constrains": [
+        "numpy 1.20.3 py38h0fa1045_0"
+      ]
+    },
+    "openblas-0.3.4-hdc02c5d_1000.tar.bz2": {
+      "depends": [
+        "libgfortran >=3.0.1,<4.0.0.a0"
+      ]
+    },
+    "qt-5.12.9-h126340a_4.tar.bz2": {
+      "depends": [
+        "icu >=68.1,<69.0a0",
+        "jpeg >=9d,<10a",
+        "libclang >=11.0.1,<12.0a0",
+        "libcxx >=11.0.1",
+        "libpng >=1.6.37,<1.7.0a0",
+        "libpq >=13.1,<14.0a0",
+        "mysql-libs >=8.0.23,<8.1.0.0a0",
+        "nspr >=4.29,<5.0a0",
+        "nss >=3.47,<4.0a0",
+        "sqlite >=3.34.0,<4.0a0",
+        "zlib >=1.2.11,<1.3.0a0"
+      ],
+      "license_family": "LGPL"
+    },
+    "reproc-14.2.3-h0d85af4_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "reproc-cpp-14.2.3-he49afe7_0.tar.bz2": {
+      "license_family": "MIT"
+    }
+  },
+  "patch_instructions_version": 1,
+  "remove": [],
+  "revoke": []
+}
