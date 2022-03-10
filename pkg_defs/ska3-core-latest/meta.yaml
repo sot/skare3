@@ -1,12 +1,15 @@
 package:
   name: ska3-core-latest
-  version: 2021.4
+  version: 2022.2
 
 requirements:
   run:
    - astropy
    - astropy-sphinx-theme
    - astropy-healpix
+   - astroquery
+   - backports
+   - backports.zoneinfo
    - beautifulsoup4
    - bokeh
    - cloudpickle # [win]
@@ -41,6 +44,7 @@ requirements:
    - numpydoc
    - pandas
    - autopep8
+   - openpyxl
    - pillow
    - pip
    - flake8
@@ -48,11 +52,13 @@ requirements:
    - prompt-toolkit<3.0.0a0 # [win]
    - pylint
    - plotly
+   - ply
    - python-kaleido
    - python-docx
    - pyqtgraph
    - pyyaml
    - qt
+   - regions
    - requests
    - rope
    - runipy # [win]

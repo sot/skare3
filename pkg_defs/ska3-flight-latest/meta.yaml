@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2021.2
+  version: 2022.2
 
 build:
   noarch: generic
@@ -15,21 +15,15 @@ requirements:
     - acdc
     - acis_taco
     - acis_thermal_check
-    - acisfp_check
     - acispy
     - agasc
     - annie
     - backstop_history
-    - bep_pcb_check
     - chandra_aca
     - chandra.cmd_states
     - chandra.maneuver
     - chandra.time
     - cxotime
-    - dea_check
-    - dpa_check
-    - fep1_mong_check
-    - fep1_actel_check
     - find_attitude
     - hopper
     - jobwatch
@@ -39,7 +33,6 @@ requirements:
     - parse_cm
     - perigee_health_plots
     - proseco
-    - psmc_check
     - pyyaks
     - quaternion
     - ska-sphinx-theme
