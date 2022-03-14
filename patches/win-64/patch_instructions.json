@@ -1,0 +1,81 @@
+{
+  "packages": {
+    "blosc-1.21.0-h0e60522_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "conda-build-3.21.7-py38haa95532_1.tar.bz2": {
+      "depends": [
+        "beautifulsoup4",
+        "chardet",
+        "conda >=4.5",
+        "conda-package-handling >=1.3",
+        "filelock",
+        "glob2 >=0.6",
+        "jinja2 <3.0.0a0",
+        "pkginfo",
+        "psutil",
+        "py-lief",
+        "python >=3.8,<3.9.0a0",
+        "python-libarchive-c",
+        "pytz",
+        "pyyaml",
+        "requests",
+        "setuptools",
+        "six",
+        "tqdm"
+      ]
+    },
+    "git-2.34.1-haa95532_0.tar.bz2": {
+      "namespace": "global"
+    },
+    "icu-68.2-h0e60522_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "libblas-3.9.0-12_win64_mkl.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "libcblas-3.9.0-12_win64_mkl.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "liblapack-3.9.0-12_win64_mkl.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "libwebp-1.2.1-h57928b3_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "libwebp-base-1.2.1-h8ffe710_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "mkl_random-1.2.2-py38hf11a4ad_0.tar.bz2": {
+      "depends": [
+        "mkl >=2021.2.0,<2022.0a0",
+        "mkl-service >=2.3.0,<3.0a0",
+        "numpy >=1.16,<2.0a0",
+        "python >=3.8,<3.9.0a0",
+        "vc >=14.1,<15.0a0",
+        "vs2015_runtime >=14.16.27012,<15.0a0",
+        "blas * mkl"
+      ]
+    },
+    "numpy-base-1.20.3-py38hc2deb75_0.tar.bz2": {
+      "constrains": [
+        "numpy 1.20.3 py38ha4e8547_0"
+      ]
+    },
+    "qt-5.12.9-h5909a2a_4.tar.bz2": {
+      "license_family": "LGPL"
+    },
+    "reproc-14.2.3-h8ffe710_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "reproc-cpp-14.2.3-h0e60522_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "tbb-2021.5.0-h2d74725_0.tar.bz2": {
+      "license_family": "APACHE"
+    }
+  },
+  "patch_instructions_version": 1,
+  "remove": [],
+  "revoke": []
+}

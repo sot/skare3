@@ -1,0 +1,34 @@
+{
+  "packages": {
+    "astroquery-0.4.5-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "jplephem-2.17-pyhf3f802f_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "pyparsing-3.0.6-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "python-dateutil-2.8.2-pyhd3eb1b0_0.tar.bz2": {
+      "namespace_in_name": true
+    },
+    "python-docx-0.8.11-pyhd8ed1ab_0.tar.bz2": {
+      "depends": [
+        "lxml >=2.3.2",
+        "python ==2.7.*|>=3.4"
+      ],
+      "license_family": "MIT"
+    },
+    "sphinx-argparse-0.3.1-pyhd8ed1ab_0.tar.bz2": {
+      "depends": [
+        "commonmark >=0.5.6",
+        "python ==2.7.*|>=3.6",
+        "sphinx"
+      ],
+      "license_family": "MIT"
+    }
+  },
+  "patch_instructions_version": 1,
+  "remove": [],
+  "revoke": []
+}
