@@ -27,13 +27,13 @@ requirements:
     - numpy
     - scipy
     - matplotlib
-    - sqlite3
+    - sqlite
     - jinja2
     - astropy
     - filelock
     - pytables
     - beautifulsoup4
-    - json
+    - json5
     - regions
     - astroquery
     - kadi
