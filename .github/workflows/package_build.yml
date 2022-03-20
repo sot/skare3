@@ -64,7 +64,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["macos", "windows"]
+        os: ["macos", "windows-2019"]
     steps:
     - name: Fetch Skare3-tools
       uses: actions/checkout@v2
