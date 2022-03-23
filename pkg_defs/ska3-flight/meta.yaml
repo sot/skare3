@@ -27,7 +27,7 @@ requirements:
     - hopper ==4.5.2
     - jobwatch ==0.7.0
     - kadi ==5.8.1
-    - maude ==3.9.0
+    - maude ==3.8.0
     - mica ==4.28.0
     - parse_cm ==3.7.1
     - perigee_health_plots ==0.2.1
@@ -38,7 +38,7 @@ requirements:
     - ska.arc5gl ==3.2.0
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.55.0
+    - ska.engarchive ==4.54.1
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
     - ska.matplotlib ==3.14.1
