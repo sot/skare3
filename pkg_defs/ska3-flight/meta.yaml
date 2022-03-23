@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-flight
-  version: 2022.2
+  version: 2022.3
 
 build:
   noarch: generic
@@ -13,21 +13,21 @@ requirements:
     - aca_weekly_report ==0.1.5
     - acdc ==4.8.0
     - acis_taco ==4.2.1
-    - acis_thermal_check ==4.1.0
+    - acis_thermal_check ==4.2.0
     - acispy ==2.4.0
-    - agasc ==4.11.4
+    - agasc ==4.11.5
     - annie ==0.11.1
-    - backstop_history ==1.5.2
+    - backstop_history ==1.5.3
     - chandra.cmd_states ==3.17.0
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
-    - chandra_aca ==4.34.1
-    - cxotime ==3.2.5
-    - find_attitude ==3.4.0
+    - chandra_aca ==4.34.2
+    - cxotime ==3.2.6
+    - find_attitude ==3.4.2
     - hopper ==4.5.2
-    - jobwatch ==0.6.0
+    - jobwatch ==0.7.0
     - kadi ==5.8.1
-    - maude ==3.7.0
+    - maude ==3.9.0
     - mica ==4.28.0
     - parse_cm ==3.7.1
     - perigee_health_plots ==0.2.1
@@ -38,7 +38,7 @@ requirements:
     - ska.arc5gl ==3.2.0
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.54.1
+    - ska.engarchive ==4.55.0
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
     - ska.matplotlib ==3.14.1
@@ -47,15 +47,15 @@ requirements:
     - ska.quatutil ==3.4.0
     - ska.report_ranges ==0.4.0
     - ska.shell ==3.5.0
-    - ska.sun ==3.7.0
+    - ska.sun ==3.8.0
     - ska.tdb ==3.6.0
     - ska3-core ==2022.2
     - ska3-template ==2019.09.03
     - ska_helpers ==0.5.0
     - ska_path ==3.1.2
-    - ska_sync ==4.9.1
+    - ska_sync ==4.10.0
     - skare3_tools ==1.0.5
-    - sparkles ==4.14.0
+    - sparkles ==4.15.0
     - starcheck ==13.15.1
-    - testr ==4.7.0
-    - xija ==4.24.1
+    - testr ==4.8.0
+    - xija ==4.25.0
