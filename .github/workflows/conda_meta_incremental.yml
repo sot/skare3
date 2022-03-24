@@ -30,7 +30,7 @@ jobs:
         run: |
           conda install -y mamba
           mamba install -y ska3-core==${{ github.event.client_payload.ska3_core_version }}
-          mamba uninstall -y ska3-core
+          conda uninstall --force -y ska3-core
       - name: update packages
         if: ${{ github.event.client_payload.update }}
         shell: bash -l -e {0}
