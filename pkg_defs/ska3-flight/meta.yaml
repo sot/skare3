@@ -20,16 +20,16 @@ requirements:
     - backstop_history ==1.5.3
     - chandra.cmd_states ==3.17.0
     - chandra.maneuver ==3.8.0
-    - chandra.time ==4.0.0
+    - chandra.time ==4.0.1
     - chandra_aca ==4.34.2
-    - cxotime ==3.2.6
+    - cxotime ==3.3.0
     - find_attitude ==3.4.2
     - hopper ==4.5.2
     - jobwatch ==0.7.0
-    - kadi ==5.8.1
+    - kadi ==5.9.1
     - maude ==3.8.0
     - mica ==4.28.0
-    - parse_cm ==3.7.1
+    - parse_cm ==3.8.0
     - perigee_health_plots ==0.2.1
     - proseco ==5.5.0
     - pyyaks ==4.5.0
@@ -38,7 +38,7 @@ requirements:
     - ska.arc5gl ==3.2.0
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.54.1
+    - ska.engarchive ==4.55.1
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
     - ska.matplotlib ==3.14.1
@@ -55,7 +55,7 @@ requirements:
     - ska_path ==3.1.2
     - ska_sync ==4.10.0
     - skare3_tools ==1.0.5
-    - sparkles ==4.15.0
+    - sparkles ==4.16.0
     - starcheck ==13.15.1
     - testr ==4.8.0
     - xija ==4.25.0
