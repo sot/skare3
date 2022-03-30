@@ -27,7 +27,7 @@ requirements:
     - hopper ==4.5.2
     - jobwatch ==0.7.0
     - kadi ==5.9.1
-    - maude ==3.8.0
+    - maude ==3.9.0
     - mica ==4.28.0
     - parse_cm ==3.8.0
     - perigee_health_plots ==0.2.1
