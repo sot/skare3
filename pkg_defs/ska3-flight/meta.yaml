@@ -21,7 +21,7 @@ requirements:
     - chandra.cmd_states ==3.17.0
     - chandra.maneuver ==3.8.0
     - chandra.time ==4.0.0
-    - chandra_aca ==4.34.2
+    - chandra_aca ==4.34.3
     - cxotime ==3.3.0
     - find_attitude ==3.4.2
     - hopper ==4.5.2
