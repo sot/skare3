@@ -9,6 +9,8 @@ This PR includes:
 
 - [Automated tests](https://icxc.cfa.harvard.edu/aspect/skare3/testr/releases/{version}/).
 
+skare3 dashboard and test result password at https://icxc.cfa.harvard.edu/aspect/skare3_dash_cred.txt
+
 The latest release candidates will be installed in `/proj/sot/ska3/test` on HEAD, and all release candidates will be available for testing from the usual channels:
 ```
 conda create -n ska3-flight-{version}rc# --override-channels \
