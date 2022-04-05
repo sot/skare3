@@ -27,6 +27,8 @@ jobs:
         with:
           repository: ${{ inputs.repository }}
           path: source
+          # this is so git fetches all metadata required by setuptools_scm to get the version
+          fetch-depth: 0
       - name: clear
         run: rm -fr gh-pages/docs/*
       - name: build
