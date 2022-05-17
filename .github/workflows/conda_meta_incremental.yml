@@ -6,13 +6,13 @@ on:
 
 jobs:
   generate-json:
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
     name: Generate ${{ matrix.os }} json files
     if: ${{ github.event.client_payload.ska3_core_version }}
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu", "macos", "windows"]
+        os: ["ubuntu-latest", "macos-latest", "windows-2019"]
     steps:
       - name: Checkout skare3_tools
         uses: actions/checkout@v2
