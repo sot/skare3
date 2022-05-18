@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2022.2
+  version: 2022.5
 
 build:
   noarch: generic
@@ -25,6 +25,7 @@ requirements:
     - chandra.time
     - cxotime
     - find_attitude
+    - fot-matlab
     - hopper
     - jobwatch
     - kadi
