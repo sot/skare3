@@ -1,0 +1,7 @@
+#!/bin/sh
+
+SKA_bin=`dirname $0`
+eval `${SKA_bin}/flt_envs -shell sh`
+exec ${SKA}/bin/perl "$@"
+
+exit 1

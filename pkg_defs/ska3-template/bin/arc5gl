@@ -1,0 +1,1199 @@
+#!/usr/bin/env %{PREFIX}%/bin/perlwrap
+
+# --8<--8<--8<--8<--
+#
+# Copyright (C) 2006 Smithsonian Astrophysical Observatory
+#
+# This file is part of src
+#
+# src is free software; you can redistribute it and/or
+# modify it under the terms of the GNU General Public License
+# as published by the Free Software Foundation; either version 2
+# of the License, or (at your option) any later version.
+#
+# src is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the 
+#       Free Software Foundation, Inc. 
+#       51 Franklin Street, Fifth Floor
+#       Boston, MA  02110-1301, USA
+#
+# -->8-->8-->8-->8--
+
+
+use strict;
+use warnings;
+use Term::ReadLine;
+use Getopt::Long;
+use English;
+
+use CXC::Archive;
+use Chandra::Time;
+
+our $VERSION = '1.1.2_ska';
+
+############################################################################
+# This is a fake package to deal with test mode
+package FakeArchive;
+
+sub new {
+  my $proto = shift;
+  my $class = ref($proto) || $proto;
+  return bless ( {}, $class );
+}
+
+sub _fakeit
+{
+  my ( $arc, $attr, $operation ) = @_;
+
+  print "arc4gl> operation = $operation\n";
+  print "arc4gl> $_ = $attr->{$_}\n" foreach sort keys %$attr;
+
+  [];
+}
+
+sub browse
+{
+  _fakeit( @_, 'browse' );
+}
+
+sub retrieve
+{
+  _fakeit( @_, 'retrieve' );
+}
+
+sub verbosity
+{
+  0;
+}
+
+
+############################################################################
+
+package main;
+
+# arc4gl parameters
+our %param;
+
+# command line history
+our @history;
+
+# user and home directory
+our ( $User, $HomeDir ) = (getpwuid($>))[0,7];
+
+# program options
+our %opt = parse_opts();
+
+# the list of files last browsed.  This is in the CXC::Archive output format
+our @Files;
+
+do { print "arc5gl $VERSION\n"; exit(0) }
+    if $opt{version};
+
+
+help( 2 )
+    if $opt{help};
+
+# Change to dir specified on cmd line (mostly useful when arc5gl is started via rsh)
+chdir $opt{dir} if $opt{dir};
+
+# handle to arc4gl process
+our $arc4gl = arc4gl_connect($opt{test});
+
+# process input
+if ($opt{script}) {
+  source( $opt{script} )
+} else {
+    while (defined ($_ = read_string ('ARC5GL> '))
+	   and parse_cmd($_)) { }
+}
+
+# DONE!
+
+#########################################################################
+sub source
+#########################################################################
+{
+  my $script = shift;
+
+  if ( open (SCRIPT, $script) )
+  {
+    while (<SCRIPT>) {
+      chomp;
+      last unless (parse_cmd($_));
+    }
+  }
+
+  else
+  {
+    warn "Couldn't open $opt{script}\n";
+  }
+}
+
+#########################################################################
+sub parse_opts
+#########################################################################
+{
+  my %opt = (
+             define     => {},
+	     guestuser  => 0,
+	     timeout	=> 10000,
+	     test	=> 0,
+	     version	=> 0,
+	     );
+
+  $Getopt::Long::order = $REQUIRE_ORDER;
+  &Getopt::Long::Configure( 'permute' );
+
+  GetOptions( \%opt,
+	      qw (
+		  help
+		  test
+                  define|D=s%
+		  dir=s
+		  script=s
+		  guestuser
+		  user=s
+		  stdin!
+		  timeout=i
+		  rhost=s
+		  version
+		 ))
+    || exit( 1 );
+
+  %opt;
+}
+
+#########################################################################
+sub parse_cmd {
+#########################################################################
+    $_ = shift;
+    return 1 unless (/\S/);
+
+    # First check for !<blah>
+
+    if (/^\!/) {
+      my $pattern;
+      ($pattern = $_) =~ s/^\!\s*//;
+      my ($match) = grep /^$pattern/, @history;
+      unless ($_ = $match) {
+	print "No history match for '$pattern'\n";
+	return 1;
+      }
+      print "ARC5GL> $_\n";
+    }
+
+    unshift @history, $_;
+    chomp;
+    s/#.+//;
+
+    if (/(tstart|tstop)\s*=\s*(\S.*)/) {
+	; # convert time in several formats to the strange format req'd by arc4gl
+	my $time = arc4time($2);
+	$param{$1} = $time if defined $time;
+    }
+
+    elsif (/(\S+)\s*=\s*(\S.*)/) { # keyword = value pair
+	$param{$1} = $2;
+    } 
+
+    elsif (/(\S+)\s*=/) {	# keyword =   ; to undefine keyword
+	delete $param{$1};
+    }
+
+    # clear out all of the parameters
+    elsif( /^(clear|reset)/ ) {
+        %param = ();
+    }
+
+    # set up keywords for a product
+    elsif( /^set\s+/ ) {
+      my $product = $POSTMATCH;
+      $product =~ s/\s+$//;
+      warn( "unknown product ($product)\n" )
+	unless get_product_keys( $product );
+    }
+
+    # list last files retrieved or browsed with optional patterns
+    elsif ( /^files/ ) {
+
+      my @files = @Files;
+
+      my $filespec = $POSTMATCH;
+      $filespec =~ s/^\s+//;
+      $filespec =~ s/\s+$//;
+
+      if ( $filespec ne '' )
+      {
+	@files = match_files(\@Files, $filespec );
+      }
+
+      dumpfiles( @files );
+    }
+
+    elsif (/^history/) {
+	print "$_\n" foreach reverse @history;
+    }
+
+    elsif (/^show/) {		# Show keywords and values
+	foreach (sort keys %param) {
+	    print "$_ = $param{$_}\n";
+	}
+    }
+
+    elsif( /^source\s+(\w+)/ )
+    {
+      source( $1 );
+    }
+
+
+    elsif (/^get\s+files\s+/) {
+	delete $param{obsid};
+	my @files = split(' ', $POSTMATCH);
+	$param{filename} = join(',', @files);
+	$param{operation} = 'retrieve';
+	arc4gl_go();
+    }
+
+    elsif (/^go$/) {
+	arc4gl_go();
+    }
+
+    elsif (/^(get|browse|retrieve)/) {
+	get_browse_products($MATCH, $POSTMATCH);
+    }
+
+    elsif (/^cd(?:\s+(\S+))?/) {
+        my $dir = defined $1 ? $1 : $HomeDir;
+	$dir =~ s/~/$HomeDir/;
+	print "$dir: No such file or directory\n"
+	    unless chdir $dir;
+    }
+
+    elsif (/^pwd$/ || /^mkdir\s/ || /^rm\s/ || /^\$/) {
+	s/^\$//;
+	system("$_");
+    }
+
+    elsif (/^ls\b.*/) {
+	s/^ls/ls -F/;
+	s/~/$HomeDir/;
+	system("$_");
+    }
+
+    elsif (/^loud$/) {
+      $arc4gl->verbosity(5);
+    }
+
+    elsif (/^logstdout$/) {
+      $arc4gl->{conn}->log_stdout(1);
+    }
+
+    elsif (/^quiet$/) {
+      $arc4gl->verbosity(0);
+    }
+
+    elsif (/^help$/) {
+	help(-1);
+    }
+
+    elsif (/^(exit|quit)$/) {
+	return 0;
+    }
+
+    else {
+	my ($cmd) = split;
+	if (`which $cmd` =~ /^no/) {
+	    print "'$cmd' is not an arc5gl or Unix command\n";
+	} else {
+	    system("$_");
+	}
+    }
+
+    return 1;
+}
+
+BEGIN {
+  my %prod_keys = 
+    (
+     ccdm0 => {
+	       detector => 'ccdm',
+	       subdetector => 'eng',
+	       level => '0',
+	      },
+     pcad0 => {
+	       detector => 'pcad',
+	       subdetector => 'eng',
+	       level => '0',
+	      },
+     asp05 => {
+	       detector => 'pcad',
+	       subdetector => 'aca',
+	       level => '0.5',
+	      },
+     asp1 => {
+	      detector => 'pcad',
+	      subdetector => 'aca',
+	      level => '1',
+	     },
+     aspsol => {
+		detector => 'pcad',
+		subdetector => 'aca',
+		level => '1',
+		filetype => 'aspsol',
+	       },
+     sim05 => {
+	       detector => 'sim',
+	       level => '0.5',
+	      },
+     acis0 => {
+	       detector => 'acis',
+	       level => '0',
+	      },
+     bias0 => {
+	       detector => 'acis',
+	       level => '0',
+	       filetype => 'bias0',
+	      },
+     acis05 => {
+		detector => 'acis',
+		level => '0.5',
+	       },
+     acis1 => {
+	       detector => 'acis',
+	       level => '1',
+	      },
+     acis15 => {
+		detector => 'acis',
+		level => '1.5',
+	       },
+     acis2 => {
+	       detector => 'acis',
+	       level => '2',
+	      },
+     hrc0 => {
+	      detector => 'hrc',
+	      level => '0',
+	     },
+     hrc05 => {
+	       detector => 'hrc',
+	       level => '0.5',
+	      },
+     hrc1 => {
+	      detector => 'hrc',
+	      level => '1',
+	     },
+     hrc15 => {
+	       detector => 'hrc',
+	       level => '1.5',
+	      },
+     hrc2 => {
+	      detector => 'hrc',
+	      level => '2',
+	     },
+     pcad0 => {
+	       detector => 'pcad',
+	       subdetector => 'eng',
+	       level => '0',
+	       caltype => 'cal',
+	      },
+     ephin0 => {
+	       detector => 'ephin',
+	       level => '0',
+	       caltype => 'cal',
+	      },
+     ephin_eng => {
+	       detector => 'ephin',
+	       subdetector => 'eng',
+	       level => '0',
+	      },
+     thm0     => {
+	       detector => 'thm',
+	       subdetector => 'eng',
+	       level => '0',
+	      },
+     aca0 => {
+	      detector => 'pcad',
+	      subdetector => 'aca',
+	      level => '0',
+	      caltype => 'cal',
+	     },
+     obspar => {
+		detector => 'obi',
+		subdetector => 'obspar',
+		level => '0.5',
+		filetype => 'actual',
+	       },
+     telem => {
+	       detector => 'telem',
+	       level => 'raw',
+	      },
+     '' => {
+	   },
+    );
+
+  # Make a generic product for every possible combination in arc4gl with the
+  # name "${detector}_${subdetector}_${level}" or "${detector}_${level}" if
+  # there is no sub-detector.
+
+  my @generic_keys = split "\n", <<'END_KEYS'
+acis |  | raw
+acis |  | 0
+acis |  | 0.5
+acis |  | 1
+acis |  | 1.5
+acis |  | 2
+hrc |  | raw
+hrc |  | 0
+hrc |  | 0
+hrc |  | 0.5
+hrc |  | 1
+hrc |  | 1.5
+hrc |  | 2
+ephem | lunar | 0
+ephem | orbit | 0
+ephem | solar | 0
+ephem | angles | 1
+ephem | lunar | 1
+ephem | orbit | 1
+ephem | solar | 1
+telem |  | raw
+telem | gaps | 0
+telem | obs | 0
+ephin |  | raw
+ephin |  | 0
+ephin |  | 1
+sim |  | raw
+sim |  | 0
+sim |  | 0.5
+pcad | aca | raw
+pcad | aca | 0
+pcad | aca | 0
+pcad | aca | 0.5
+pcad | aca | 1
+tel | eng | 1
+ccdm | eng | 0.5
+eng |  | raw
+acis | eng | 0
+ccdm | eng | 0
+hrc | eng | 0
+ephin | eng | 0
+sim | eng | 0
+sms | eng | 0
+pcad | eng | 0
+prop | eng | 0
+misc | eng | 0
+obc | eng | 0
+eps | eng | 0
+cpe | eng | 0
+thm | eng | 0
+tel | eng | 0
+END_KEYS
+  ;
+  foreach (@generic_keys) {
+      my ($det, $subdet, $level) = split /\s* \| \s*/x;
+      if ($subdet) {
+	  $prod_keys{"${det}_${subdet}_${level}"} = { detector => $det,
+						      subdetector => $subdet,
+						      level => $level
+						    };
+      } else {
+	  $prod_keys{"${det}_${level}"} = { detector => $det,
+					    level => $level
+					  };
+      }
+  }
+
+  ##***************************************************************************
+  sub get_product_keys
+  ##***************************************************************************
+  {
+    my $product = shift;
+
+    return 0 
+      unless exists $prod_keys{$product};
+
+    delete $param{detector};
+    delete $param{subdetector};
+    delete $param{level};
+    delete $param{filetype};
+    delete $param{filename};
+    delete $param{caltype};
+
+    %param = ( %param, %{$prod_keys{$product}} );
+
+    1;
+  }
+}				# End BEGIN block
+
+##***************************************************************************
+sub get_browse_products
+##***************************************************************************
+{
+    my ( $operation, $products ) = @_;
+
+    $products =~ s/\[\s*(\S*)\s*\]/[$1]/g;
+    my @products = split(' ', $products);
+    $operation =~ s/get/retrieve/;
+
+    # various ways of getting things
+    #  - by filename
+    #  - by obsid
+    #  - by tstart+tstop
+
+    my $reqfields = '';
+    $reqfields .= exists $param{$_} ? '1' : '0' foreach qw/ filename obsid tstart tstop /;
+
+    unless ( grep { $reqfields eq $_ } qw/ 1000 0100 0011 / )
+    {
+      warn( "Error: specify one of obsid; filename; or tstart and tstop" );
+      return;
+    }
+
+
+    $param{operation} = $operation;
+    $param{dataset}   = 'flight' unless (exists $param{dataset});
+#    $param{version}   = 'last'   unless (exists $param{version});
+
+    # If no products are specified, then just retrieve currently specified keys
+
+    if (! @products) {
+      arc4gl_go();
+	return;
+    } 
+
+    foreach my $product (@products) {
+        my ($filespec, $filetype);
+        if ($product =~ /(.+)\[(.+)\]/) {
+            ($product, $filespec) = ($1, $2);
+        } elsif ($product =~ /(.+)\{(.+)\}/) {
+            ($product, $filetype) = ($1, $2);
+        }
+
+	if ( get_product_keys($product) ) {
+
+	    if ($filespec) {
+
+	      local (%param) = %param;
+
+	      $param{operation} = "browse";
+	      my @files = arc4gl_go();
+	      return unless @files;
+
+	      @files = match_files(\@files, $filespec);
+	      unless (@files) {
+		print "\nNo files matched $filespec for product $product\n";
+		return;
+	      }
+
+	      print "\n****** Following files matched $filespec ********\n";
+	      print "  $_->{name}\n" foreach @files;
+	      print "\n";
+
+	      if ($operation eq "retrieve") {
+		delete $param{obsid};
+		delete $param{tstart};
+		delete $param{tstop};
+		while (@files) {
+		  $param{filename} = join( ',', map { $_->{name} }
+					   splice( @files, 0, 8 ) );
+		  $param{operation} = "retrieve";
+		  arc4gl_go();
+		}
+	      }
+	    } 
+
+	    else {
+                if ($filetype) {
+                    $param{filetype} = $filetype;
+                }
+                arc4gl_go();
+	    }
+	}
+
+	# product doesn't exist?
+	else {
+	    print STDERR "Error - product '$product' is unknown\n";
+	}
+	
+    }
+}
+
+##***************************************************************************
+sub match_files 
+##***************************************************************************
+{
+  my ( $files, $filespec ) = @_;
+  my @files;
+
+  $filespec =~ s/\*/.*/g;	# More like UNIX file globbing
+  $filespec =~ s/\?/./g;
+
+  foreach my $file (@$files) {
+    my $name = $file->{name};
+    push @files, $file
+      if $name =~ /^($filespec)$/;	# matches file specification
+  }
+
+  @files;
+}
+
+##***************************************************************************
+sub arc4time {
+##***************************************************************************
+    local ($_) = shift;
+
+    my $format;
+    my $system;
+    my $arc4time;
+
+    # If the time already matches arc4gl format, then return unchanged
+    return $_ if m|\d{1,2} /
+                   \d{1,2} /
+                   \d{4}
+                   \s*,\s*
+                   \d{1,2} :
+                   \d{1,2}
+                   (:\d.*)?|x;
+
+    # Let Chandra::Time have a try at converting to FITS fmt in the UTC system
+    my $time3 = eval { Chandra::Time::convert($_, {fmt_out=>'fits',
+						   sys_out=>'utc'}) };
+    if ($@) {
+	print <<ERRMSG;
+Error - Time '$_' does not have one of following formats:
+  arc4gl  MM/DD/YYYY, hh:mm[:ss...]
+  SECS    Elapsed seconds since 1998-01-01T00:00:00
+  DATE    YYYY:DDD:hh:mm:ss.ss...
+  CALDATE YYYYMonDD at hh:mm:ss.ss...
+  FITS    FITS date/time format YYYY-MM-DD or YYYY-MM-DDThh:mm:ss.ss...
+
+ERRMSG
+	return;
+    }
+
+    my ($year, $mon, $day, $hr, $min, $sec) = ($time3 =~ /^(....)-(..)-(..)T(..):(..):(.+)/);
+    return "$mon/$day/$year, $hr:$min:$sec";
+
+}
+
+
+#########################################################################
+sub arc4gl_go {
+#########################################################################
+
+  local %param = %param;
+
+  # A true Hack!  if arc4gl connection is verbose, the prompt
+  # will be swallowed after the last command was sent, so 
+  # thing's look funny unless we stick a fake prompt in
+
+  print "arc4gl> "
+    if $arc4gl->verbosity;
+
+  # check parameters
+  my @missing;
+  push @missing, grep { ! exists $param{$_} } 
+     qw( operation level detector dataset );
+
+  if ( @missing )
+  {
+    print "missing keyword(s): ", join( ', ', @missing ), "\n";
+    return ();
+  }
+
+  if ( $param{operation} eq 'browse' )
+  {
+    delete $param{operation};
+    eval {@Files = @{$arc4gl->browse( \%param )} };
+    warn $@ if $@;
+    dumpfiles( @Files ) unless $arc4gl->verbosity;
+  }
+
+  elsif ( $param{operation} eq 'retrieve' ||
+	  $param{operation} eq 'get' 
+	)
+  {
+    my $files;
+    delete $param{operation};
+    eval { $files = $arc4gl->retrieve( \%param ) };
+    warn $@ if $@;
+    if ( defined $files && @$files && ! $arc4gl->verbosity )
+    {
+      print "Retrieved files:\n";
+      print "$_\n" foreach @$files;
+    }
+    else
+    {
+      print "Retrieved no files\n";
+    }
+  }
+
+  else
+  {
+    print "unknown operation, `$param{operation}'\n";
+  }
+
+  @Files;
+}
+
+
+##***************************************************************************
+sub arc4gl_connect {
+##***************************************************************************
+
+  my ( $no_arc4gl ) = @_;
+
+  my $arc4gl;
+
+
+  if ( $no_arc4gl )
+  {
+    $arc4gl = new FakeArchive;
+  }
+
+  else
+  {
+    my %attr;
+
+    $attr{User} = $opt{user}
+      if exists $opt{user};
+
+    require POSIX;
+
+    $attr{RemoteHost} = $opt{rhost}
+      if defined $opt{rhost};
+
+    $attr{PasswordFile} = "$HomeDir/.arc5gl_pwd"
+      unless $opt{guestuser};
+
+    $attr{ENV} = $opt{define};
+
+    $arc4gl = CXC::Archive->new({ %attr, 
+				  ifGuestUser => $opt{guestuser},
+				  Timeout => $opt{timeout}
+				});
+  }
+
+  $arc4gl;
+}
+
+##***************************************************************************
+## read_string( $prompt, @vals )
+##***************************************************************************
+#  calls $term->readline, strips leading and trailing spaces
+#  returns the read string
+{
+  # keep things local; only load Term::ReadLine if necessary
+  my $term;
+
+  sub read_string
+  {
+    my ( $prompt, @vals ) = @_;
+
+    unless ( $term || $opt{stdin})
+    {
+      $term = new Term::ReadLine "arc5gl";
+    }
+
+    print $prompt if ($opt{stdin});
+    my $string = $opt{stdin} ? <STDIN> : $term->readline( $prompt, @vals );
+
+    if ( defined $string )
+    {
+      $string =~ s/^\s+//;
+      $string =~ s/\s+$//;
+    }
+
+    return $string;
+  }
+
+}
+
+#########################################################################
+sub dumpfiles {
+#########################################################################
+
+  my ( @files ) = @_;
+
+  return unless @files;
+
+  # we wish to pretty print the files.  determine width of fields
+  my %width = ( name => 0, size => 0, time => 0 );
+
+  foreach my $file ( @files )
+  {
+    foreach my $key ( keys %width )
+    {
+      $width{$key} = length( $file->{$key} )
+	if length( $file->{$key} ) > $width{$key};
+    }
+  }
+
+  my $format = "%-$width{name}s   \%$width{size}s   \%-$width{time}s\n";
+
+  printf $format, 'Filename', 'Size', 'TimeStamp';
+  printf $format, '-' x $width{name},
+                  '-' x $width{size},
+                  '-' x $width{time};
+
+  printf $format, $_->{name}, $_->{size}, $_->{time}
+    foreach @files;
+}
+
+
+#########################################################################
+sub help {
+#########################################################################
+  my ( $verbose ) = @_;
+
+  my $exitval = 0;
+
+  if ( $verbose == -1 )
+  {
+    $exitval = 'NOEXIT';
+    $verbose = 2;
+  }
+  require IO::Pager::Page if $verbose < 2;
+  require Pod::Usage;
+  Pod::Usage::pod2usage( { -exitval => $exitval, -verbose => $verbose } );
+}
+
+__END__
+
+
+=pod
+
+=head1 NAME
+
+arc5gl - Browse and retrieve data from Chandra archive
+
+=head1 SYNOPSIS
+
+B<arc5gl>  [I<options>]
+
+=head1 OPTIONS
+
+=over 4
+
+=item B<-help>
+
+Print this help information and exit.
+
+=item B<-script <file>>
+
+Take commands from <file> instead of interactive input.
+
+=item B<-stdin>
+
+Use STDIN for input instead of the fancy Term::ReadLine interface.
+This is necessary if arc5gl is being driven from a pipe.
+
+=item B<-test>
+
+Run without actually connecting to the archive.  This will show
+the archive queries that are sent.
+
+=item B<-user> <username>
+
+Specify B<arc4gl> username.  This defaults to Unix account username.
+
+=item B<-guestuser>
+ 
+Run as the database guest user with no access to proprietary data.
+
+=item B<--rhost> <remote host name>
+
+If specified, B<arc4gl> is run on the remote host, rather than
+directly.
+
+=item B<--define> | B<-D> I<environment variable>=<value>
+
+Set the specified environment variable to the given value.  This is done
+after initializing the ASCDS environment, so it allows one to override
+ASCDS settings.
+
+=item B<--version>
+
+Print out the version of B<arc5gl> and exit.
+
+=back
+
+=head1 DESCRIPTION
+
+B<Arc5gl> provides a simple way of performing common Chandra archive
+search and retrieval tasks.  B<Arc5gl> is essentially an B<arc4gl>
+wrapper which takes care of the cumbersome query details required by
+B<arc4gl>.  In addition, B<arc5gl> provides a much more convenient
+working environment by allowing the user to change directories and
+issue any Unix command.
+
+This tool is intended for Chandra personnel who have archive accounts
+with access to restricted data.
+
+=head1 BASIC USAGE
+
+The basic method for archive search and retrieval using B<arc5gl> is
+as follows:
+
+=head2 SETUP
+
+If you create a file called ~/.arc5gl_pwd, containing a single line
+with your arc4gl password, then arc5gl will use that value instead of
+prompting for the password.  Remember to make this file readable only
+by you:
+
+ chmod og-rwx ~/.arc5gl_pwd
+
+=head2 SET OBSID OR TIME RANGE
+
+Set the obsid, or else a time interval with tstart and tstop:
+
+ ARC5GL> obsid = <N>
+     - or -
+ ARC5GL> tstart = <time_start>
+ ARC5GL> tstop  = <time_stop>
+
+ The <time> can be given in any of the following formats:
+   ssssssssss.ss... (Elapsed seconds since 1998-01-01T00:00:00)
+   YYYY:DDD:hh:mm:ss.ss...
+   YYYYMonDD at hh:mm:ss.ss...
+   YYYY-MM-DDThh:mm:ss.ss...
+
+=head2 BROWSE ARCHIVE TO FIND FILES
+
+Browse the archive for a certain type of CXC product in order to see
+what is available.  For instance, to look for ACIS Level 1 files:
+
+ ARC5GL> browse acis1
+
+The returns a list of files unless there are no such files in the
+archive.
+
+The product name ("acis1" in the example) specifies the type of
+product and (usually) the processing level.  The available products
+for browse/retrieval in B<arc5gl> include the following "shortcut"
+names:
+
+ Name       Product
+ ------   ----------------
+ acis0    ACIS   Level 0
+ acis05   ACIS   Level 0.5
+ acis1    ACIS   Level 1
+ acis15   ACIS   Level 1.5
+ acis2    ACIS   Level 2
+ bias0    ACIS   level 0 bias
+ hrc0     HRC    Level 0
+ hrc05    HRC    Level 0.5
+ hrc1     HRC    Level 1
+ hrc15    HRC    Level 1.5
+ hrc2     HRC    Level 2
+ aca0     ACA    Level 0
+ pcad0    PCAD   Level 0
+ asp05    Aspect Level 0.5
+ asp1     Aspect Level 1
+ sim05    SIM    Level 0.5
+ obspar   Obspar file
+
+In addition to the shortcuts, any of the products available in arc4gl (see the
+first table in https://icxc.harvard.edu/dbtm/archops/package.html) can be
+accessed with the name <detector>_<subdetector>_<level>.  In the case where
+there is no subdetector (e.g. EPHIN level 0), use <detector>_<level>.
+
+One can narrow the file set for a given product by filtering on filetype (which
+corresponds to the FITS file CONTENT header keyword).  This is done by
+placing the filetype in curly brackets following the product name:
+
+ ARC5GL> browse pcad0{pcad5eng}
+ ARC5GL> browse acis2{evt2}
+
+A list of possible filetype values is available at
+http://cxc.harvard.edu/contrib/arots/fits/content.txt.
+
+It is also possible to apply a wildcard filter to the files returned
+by browse by putting a wildcard file specifier in square brackets
+following the product name.  This is known to be very slow for retrieve
+requests.  For instance, to browse for ACIS Level 1
+and ACIS Level 2 source files, do
+
+ ARC5GL> browse acis1[*evt*] acis2[*src*]
+
+If you simply type "browse" with no product specifier, then a browse
+with the current set of query keywords (as seen with "show") will be
+performed.  See the MANUAL QUERY section for details.
+
+=head2 RETRIEVE THE FILES
+
+The final step is to actually get the files using the "get" command.
+This has exactly the same syntax as "browse", but actually retrieves
+the files from the archive and places them in the current directory.
+
+As with browse, the typical usage is to specify one or more products
+you wish to retrieve, optionally with file name wildcards in brackets.
+For example to retrieve the aspect solution and event file for OBSID
+1278:
+
+ ARC5GL> cd /data/foo/chandra
+ ARC5GL> mkdir obs1278
+ ARC5GL> cd obs1278
+ ARC5GL> obsid=1278
+ ARC5GL> get asp1[*asol*] acis1[*evt*]
+
+This will create subdirectories ./asp1/ and ./acis1/ into which the
+respective product files are placed.
+
+=head1 MANUAL QUERY
+
+B<Arc5gl> can also be used to do archive search and retrieval in a
+fashion similar to B<arc4gl> by defining query keywords (such as
+"obsid", "tstart", or "caltype") with the syntax
+
+  <keyword> = <value>
+
+This is useful for advanced queries which are not supported as a
+product type in "browse" and "get".  When a sufficient set of query
+keywords have been defined, one can then browse the files which match
+the specification, or retrieve them.  Manual queries may require a
+long list of query keywords.  For instance, PCAD level 0 requires the
+following B<arc5gl> commands:
+
+  obsid = 1278
+  caltype = cal
+  subdetector = eng
+  version = 1
+  dataset = flight
+  level = 0
+  detector = pcad
+  operation = retrieve
+  go
+
+The main advantage in this case of using B<arc5gl> is that the
+parameters are stored from one query to the next, so there is no need
+to re-type the entire list as in B<arc4gl>.  In addition, the current
+set of query keywords can be listed with the "show" command.
+
+A query keyword can be deleted from the list by doing
+
+  <keyword> =
+
+=head1 MISCELLANEOUS
+
+In addition to the B<arc5gl> commands listed below, any Unix command
+can be entered on the command line and it will be executed in a Unix
+shell.
+
+=head1 ARC5GL COMMANDS
+
+=over 4
+
+=item browse [<product> ...]
+
+Browse the archive contents.  Either an obsid or a tstart/tstop pair
+must be specified in order to browse.
+
+If no archive <products> are specified then browse will use the
+current set of query keywords (as listed with "show").
+
+If one or more archive <products> are given, then B<arc5gl> will
+construct the appropriate query to browse those products.  A product
+name can be followed by a wildcard file specifier enclosed in square
+brackets.  Only one wildcard file specifier is allowed for each
+product.
+
+=item get [<product> ...]
+
+Same as "browse", but actually retrieve the files.
+
+=item retrieve [<product> ...]
+
+Synonym for "get".
+
+=item set <product>
+
+Set the query keywords appropriate to the specified product.
+Typically one does this directly via browse, but it's useful if one
+wants to apply modifications to the keywords before a browse or
+retrieve.  In that case, B<don't> supply a product to browse or
+retrieve, or it'll override things set here.
+
+=item clear|reset
+
+Either of these will erase the current query keywords.
+
+=item files [<pattern>]
+
+Show a list of files that were last retrieved or browsed.  If
+I<pattern> is present, it will match those files against the pattern.
+The pattern is the same format as the wildcard specifier for the
+B<browse> command.
+
+=item <keyword> = <value>
+
+Directly set the value of an B<arc4gl> query keyword.
+
+=item <keyword> =
+
+Delete an B<arc4gl> from the current list of query keywords
+
+=item !<pattern>
+
+Same as the Unix ! to redo the last command matching <pattern>.
+
+=item show
+
+Show the current set of query keywords.
+
+=item source <file>
+
+Execute the B<arc5gl> commands in the <file>. Don't nest this too many times!
+
+=item history
+
+Show the history of arc5gl commands
+
+=item go
+
+Execute a manual query (either browse or retrieve, depending on
+the "operation" query keyword). 
+
+=item loud
+
+Configure B<arc5gl> so that all B<arc4gl> output is shown
+
+=item quiet
+
+Suppress B<arc4gl> output
+
+=item exit
+
+Exit from B<arc5gl>
+
+=item quit
+
+same as B<exit>
+
+=back
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2006 Smithsonian Astrophysical Observatory
+
+This software is released under the GNU General Public License.  You may find
+a copy at
+          http://www.fsf.org/copyleft/gpl.html
+
+=head1 VERSION
+
+This documents version 1.1.1 of B<arc5gl>.
+
+=head1 AUTHOR
+
+Tom Aldcroft ( taldcroft@cfa.harvard.edu )
+
+Diab Jerius ( djerius@cfa.harvard.edu )
+
+=cut
