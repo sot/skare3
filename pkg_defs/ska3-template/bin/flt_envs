@@ -44,6 +44,7 @@ envs['SKA_ARCH_OS'] = ska
 envs['SYBASE_OCS'] = 'OCS-16_0'
 envs['PGPLOT_DIR'] = os.path.join(ska, 'pgplot')
 envs['SYBASE'] = '/soft/SYBASE16.0'
+envs['APP_ENV_ASCDS_STR'] ='/home/ascds/DS.release/config/system/.ascrc'
 envs['CFITSIO'] = ska
 
 def prepend_unique_path(new_items, old_path):
