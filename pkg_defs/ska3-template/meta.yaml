@@ -1,6 +1,6 @@
 package:
   name: ska3-template
-  version:  2022.05.23
+  version:  2022.05.31
 
 build:
   noarch: generic
