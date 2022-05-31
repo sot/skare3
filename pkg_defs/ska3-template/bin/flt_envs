@@ -67,8 +67,7 @@ def prepend_unique_path(new_items, old_path):
 env_paths = {}
 env_paths['PERL5LIB'] = [os.path.join(ska, 'lib', 'perl'),
                          os.path.join(ska, 'lib', 'perl', 'lib')]
-env_paths['LD_LIBRARY_PATH'] = [os.path.join(ska, 'lib'),
-                                os.path.join(ska, 'pgplot'),
+env_paths['LD_LIBRARY_PATH'] = [os.path.join(ska, 'pgplot'),
                                 os.path.join(envs['SYBASE'], envs['SYBASE_OCS'], 'lib')]
 env_paths['PATH'] = [os.path.join(ska, 'bin')]
 for libpath in env_paths:
