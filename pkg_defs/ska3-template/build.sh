@@ -2,7 +2,7 @@
 
 mkdir ${PREFIX}/bin
 
-for file in flt_envs ska_envs.sh ska_envs.csh ska_version skare perlwrap arc5gl
+for file in flt_envs ska_envs.sh ska_envs.csh ska_version skare arc5gl
    do
     cp -a ${RECIPE_DIR}/bin/${file} ${PREFIX}/bin
     chmod +x ${PREFIX}/bin/${file}
