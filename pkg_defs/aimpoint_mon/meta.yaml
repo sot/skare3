@@ -1,0 +1,43 @@
+package:
+  name: aimpoint_mon
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/aimpoint_mon
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - pytables
+    - jinja2
+    - numpy
+    - matplotlib
+    - astropy
+    - chandra.time
+    - kadi
+    - pyyaks
+    - mica
+    - ska.dbi
+    - ska.arc5gl
+    - ska.shell
+    - ska.engarchive
+    - ska_helpers
+
+about:
+  home: https://github.com/sot/aimpoint_mon
+
