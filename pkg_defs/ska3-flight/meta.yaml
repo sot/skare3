@@ -16,6 +16,7 @@ requirements:
     - acis_thermal_check ==4.3.1
     - acispy ==2.4.0
     - agasc ==4.12.0
+    - aimpoint_mon ==1.0.1
     - annie ==0.11.1
     - backstop_history ==1.5.3
     - chandra.cmd_states ==3.17.0
@@ -26,7 +27,7 @@ requirements:
     - find_attitude ==3.4.2
     - fot-matlab ==2.0.0
     - hopper ==4.5.2
-    - jobwatch ==0.7.0
+    - jobwatch ==0.8.0
     - kadi ==5.11.0
     - maude ==3.9.0
     - mica ==4.29.0
@@ -39,7 +40,7 @@ requirements:
     - ska.arc5gl ==3.2.0
     - ska.astro ==3.3.0
     - ska.dbi ==4.1.0
-    - ska.engarchive ==4.55.2
+    - ska.engarchive ==4.55.3
     - ska.file ==3.4.5
     - ska.ftp ==3.6.0
     - ska.matplotlib ==3.14.1
@@ -47,11 +48,11 @@ requirements:
     - ska.parsecm ==3.4.0
     - ska.quatutil ==3.4.0
     - ska.report_ranges ==0.4.0
-    - ska.shell ==3.5.0
+    - ska.shell ==3.5.1
     - ska.sun ==3.8.1
     - ska.tdb ==3.6.0
     - ska3-core ==2022.6
-    - ska3-template ==2019.09.03
+    - ska3-template ==2022.06.02
     - ska_helpers ==0.5.0
     - ska_path ==3.1.2
     - ska_sync ==4.10.0
