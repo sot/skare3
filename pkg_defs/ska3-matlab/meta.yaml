@@ -24,7 +24,7 @@ requirements:
     - chandra_aca ==4.35.0
     - cxotime ==3.3.0
     - find_attitude ==3.4.2
-    - fot-matlab ==2.0.0
+    - fot-matlab ==2.0.1
     - hopper ==4.5.2
     - jobwatch ==0.7.0
     - kadi ==5.11.0
