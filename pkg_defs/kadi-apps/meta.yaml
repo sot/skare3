@@ -1,0 +1,36 @@
+package:
+  name: kadi-apps
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: python
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/kadi-apps
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - pip
+    - python
+    - setuptools
+    - setuptools_scm
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - setuptools_scm
+    - flask
+    - flask-cors
+    - flask-login
+    - flask-wtf
+
+about:
+  home: https://github.com/sot/kadi-apps
+  summary: Kadi Web Apps
+  dev_url: https://github.com/sot/kadi-apps
