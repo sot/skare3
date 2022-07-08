@@ -50,7 +50,7 @@ requirements:
     - ska.report_ranges ==0.4.0
     - ska.shell ==3.5.1
     - ska.sun ==3.8.1
-    - ska.tdb ==3.6.2
+    - ska.tdb ==3.6.1
     - ska3-core ==2022.6
     - ska3-template ==2022.06.02
     - ska_helpers ==0.5.0
