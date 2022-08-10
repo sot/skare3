@@ -12,6 +12,7 @@ requirements:
    - backports.zoneinfo
    - beautifulsoup4
    - bokeh
+   - black
    - cloudpickle # [win]
    - conda
    - conda-build

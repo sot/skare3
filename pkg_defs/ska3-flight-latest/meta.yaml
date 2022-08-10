@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2022.5
+  version: 2022.6
 
 build:
   noarch: generic
@@ -17,6 +17,7 @@ requirements:
     - acis_thermal_check
     - acispy
     - agasc
+    - aimpoint_mon
     - annie
     - backstop_history
     - chandra_aca
