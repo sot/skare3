@@ -26,6 +26,7 @@ requirements:
     - chandra.time
     - cxotime
     - find_attitude
+    - fot-matlab
     - hopper
     - jobwatch
     - kadi
