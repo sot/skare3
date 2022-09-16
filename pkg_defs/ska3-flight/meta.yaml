@@ -9,7 +9,7 @@ build:
 requirements:
   run:
     - aca_hi_bgd ==0.1.5
-    - aca_view ==0.10.0a1
+    - aca_view ==0.10.0a3
     - aca_weekly_report ==0.1.6
     - acdc ==4.8.1
     - acis_taco ==4.2.1
