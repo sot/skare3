@@ -1,0 +1,7 @@
+#!/bin/sh
+
+condadir=$(realpath $(dirname $0))
+eval "$(${condadir}/conda shell.bash hook)"
+exec "$@"
+
+exit 1
