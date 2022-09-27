@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2022.6
+  version: 2022.9
 
 build:
   noarch: generic
@@ -18,6 +18,7 @@ requirements:
     - acispy
     - agasc
     - aimpoint_mon
+    - astromon
     - annie
     - backstop_history
     - chandra_aca
@@ -30,6 +31,7 @@ requirements:
     - hopper
     - jobwatch
     - kadi
+    - kalman_watch
     - maude
     - mica
     - parse_cm

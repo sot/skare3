@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-perl
-  version: 2022.2
+  version: 2022.9
 
 build:
   skip: True  # [win]
@@ -35,7 +35,7 @@ requirements:
     - perl-tk ==804.035  # [linux]
     - pkg-config ==0.29.2
     - sysroot_linux-64 ==2.17  # [linux]
-    - task_schedule ==4.2.1
+    - task_schedule ==4.3.0
     - watch_cron_logs ==4.2.1
     - xorg-kbproto ==1.0.7  # [linux]
     - xorg-libx11 ==1.6.12  # [linux]
