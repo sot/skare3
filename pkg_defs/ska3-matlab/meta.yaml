@@ -29,9 +29,9 @@ requirements:
     - fot-matlab ==2.0.1
     - hopper ==4.5.2
     - jobwatch ==0.10.0
-    - kadi ==7.0.0
+    - kadi ==7.0.1
     - kalman_watch ==0.1.0
-    - maude ==3.10.2
+    - maude ==3.10.3
     - mica ==4.31.0
     - parse_cm ==3.9.1
     - perigee_health_plots ==0.3.1
