@@ -58,8 +58,8 @@ requirements:
     - ska_helpers ==0.6.1
     - ska_path ==3.1.2
     - ska_sync ==4.10.0
-    - skare3_tools ==1.0.7
+    - skare3_tools ==1.0.8
     - sparkles ==4.20.0
     - starcheck ==13.16.0
     - testr ==4.11.1
-    - xija ==4.28.0
+    - xija ==4.28.1
