@@ -33,7 +33,7 @@ if args.full:
                  for pkg in pkgs if pkg['name'].startswith('ska3-')]
 else:
     ska3_pkgs = [pkg['version']
-                 for pkg in pkgs if pkg['name'] == 'ska3-flight']
+                 for pkg in pkgs if pkg['name'] in ['ska3-flight', 'ska3-matlab']]
 
 # Get a list of all non-ska3-* metapackages conda pkgs and their versions
 # (not builds or channels)
