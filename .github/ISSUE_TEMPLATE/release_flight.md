@@ -16,6 +16,7 @@ assignees: ''
 - [ ] Check packages are built and automated tests pass.
 - [ ] Promote packages from `masters` to `test` channel (`skare3-promote --to test ...`).
 - [ ] Install on HEAD and GRETA Linux test environments (`ska3/test`).
+- [ ] Confirm that test data (SKA/data) is appropriate for release testing (any custom test data is set or previous test data cleaned out)
 - [ ] Run testr on HEAD and GRETA
 - [ ] Add related issues to PR (`python -m skare3_tools.github.scripts.milestone_issues ...` for now).
 - [ ] Document all changes (`skare3-changes-summary ...`).
