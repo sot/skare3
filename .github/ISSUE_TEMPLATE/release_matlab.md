@@ -8,6 +8,7 @@
 - [ ] Create PR titled {version} from {version}-branch into master
 - [ ] Create a pre-release `{version}rc{N}` at the latest commit in the branch
 - [ ] Check packages are built and copied to test channel.
+- [ ] List in PR any data products that need to be promoted to $SKA/data (check PR's interface impacts).
 - [ ] Document all changes (`skare3-changes-summary ...`).
 - [ ] Document test status (`skare3-test-dashboard ...`).
 - [ ] Promote packages from `masters` to `test` channel (`skare3-promote ...`).
@@ -23,6 +24,7 @@
 
 - [ ] Announce to aca@cfa/slack.
 - [ ] Update ska3/matlab on cheru as SOT user.
+- [ ] Make sure $SKA/data is updated on GRETA
 - [ ] Run ska_testr on cheru.
 - [ ] Document test results (`skare3-test-dashboard ...`).
 - [ ] Announce to aca@cfa/slack.

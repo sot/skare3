@@ -18,9 +18,10 @@ assignees: ''
 - [ ] Create a pre-release `{version}rc{N}` at the latest commit in the branch
 - [ ] Check packages are built and automated tests pass.
 - [ ] Promote packages from `masters` to `test` conda channel (`skare3-promote --to test ...`).
+- [ ] List in PR any data products that need to be promoted to $SKA/data (check PR's interface impacts).
 - [ ] Install on HEAD and GRETA Linux test environments (`ska3/test`).
-- [ ] Run testr on HEAD and GRETA
 - [ ] Confirm that test data (SKA/data) is appropriate for release testing (any custom test data is set or previous test data cleaned out)
+- [ ] Run testr on HEAD and GRETA
 - [ ] Add related issues to PR (`skare3-milestone-issues ...`).
 - [ ] Document all changes (`skare3-changes-summary ...`).
 - [ ] Write summary + highlight relevant changes.
@@ -32,6 +33,7 @@ assignees: ''
 - [ ] Announce to aca@cfa/slack.
 - [ ] Update ska3/flight on HEAD as aca user.
 - [ ] Update ska3/flight on GRETA as SOT user.
+- [ ] Promote any data products listed in PR to be promoted.
 - [ ] Run ska_testr on HEAD and GRETA.
 - [ ] Document test results (`skare3-test-dashboard ...`).
 - [ ] Announce to aca@cfa/slack.
