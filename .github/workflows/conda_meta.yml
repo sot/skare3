@@ -16,8 +16,8 @@ jobs:
     steps:
       - uses: sot/setup-miniconda@v2
         with:
-          miniconda-version: "py38_4.8.3"
-          python-version: "3.8"
+          miniconda-version: "py39_4.12.0"
+          python-version: "3.9"
           channels: defaults,conda-forge,https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
       - name: Checkout Skare3
         uses: actions/checkout@v2
@@ -29,7 +29,7 @@ jobs:
         shell: bash -l -e {0}
         run: |
           conda info
-          conda install -y --override-channels -c defaults -c conda-forge mamba
+          conda install -y --override-channels -c defaults -c conda-forge mamba yaml
           python ./skare3/pkg_defs/ska3-core-latest/install_from_scratch.py
           conda list --json > ska3-core-${ARCH}.json
       - name: ska3-flight
@@ -65,10 +65,10 @@ jobs:
     name: Combine Arch
     needs: [generate-json]
     steps:
-      - name: Set up Python 3.8
+      - name: Set up Python 3.9
         uses: actions/setup-python@v2
         with:
-          python-version: 3.8
+          python-version: 3.9
       - name: Checkout Skare3
         uses: actions/checkout@v2
         with:
@@ -151,8 +151,8 @@ jobs:
       - name: Setup conda environment
         uses: sot/setup-miniconda@v2
         with:
-          miniconda-version: "py38_4.8.3"
-          python-version: "3.8"
+          miniconda-version: "py39_4.12.0"
+          python-version: "3.9"
       - name: Setup build environment
         shell: bash -l -e {0}
         run: |
