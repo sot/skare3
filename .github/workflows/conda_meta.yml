@@ -29,7 +29,6 @@ jobs:
         shell: bash -l -e {0}
         run: |
           conda info
-          conda install -y --override-channels -c defaults -c conda-forge mamba pyyaml
           python ./skare3/pkg_defs/ska3-core-latest/install_from_scratch.py
           conda list --json > ska3-core-${ARCH}.json
       - name: ska3-flight
