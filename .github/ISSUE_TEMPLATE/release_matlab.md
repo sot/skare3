@@ -1,3 +1,12 @@
+---
+name: Ska3-matlab Release
+about: Release a new version of ska3-matlab
+title: Release ska3-matlab <version>
+labels: Package update
+assignees: ''
+
+---
+
 # Packages to include
 
 - List package name+version or github issue number
