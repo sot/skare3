@@ -29,13 +29,13 @@ jobs:
         shell: bash -l -e {0}
         run: |
           conda info
+          conda env update -f skare3/pkg_defs/ska3-core-latest/environment.yml
           python ./skare3/pkg_defs/ska3-core-latest/install_from_scratch.py
           conda list --json > ska3-core-${ARCH}.json
       - name: ska3-flight
         shell: bash -l -e {0}
         run: |
           conda info
-          conda env update -f skare3/pkg_defs/ska3-core-latest/environment.yml
           python ./skare3/pkg_defs/ska3-flight-latest/install_from_scratch.py
           conda list --json > ska3-flight-${ARCH}.json
       - name: ska3-perl
