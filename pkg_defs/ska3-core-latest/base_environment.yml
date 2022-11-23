@@ -1,0 +1,13 @@
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - conda-forge::libarchive  # libarchive from defaults is not good for mamba
+  - mamba
+  - setuptools_scm
+  - gitpython
+  - conda-build
+  - jinja2
+  - pyyaml
+  - numpy
+  - packaging

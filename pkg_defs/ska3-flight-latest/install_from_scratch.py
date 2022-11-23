@@ -10,16 +10,17 @@ assert "CONDA_PASSWORD" in os.environ, "CONDA_PASSWORD environmental variable is
 CHANNELS = [
     'defaults',
     'conda-forge',
-    f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight'
+    f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/prime'
 ]
 
 
 # This is a list of packages to be installed before installing whatever is in meta.yaml
 PACKAGES = [
     {
+        # quaternion is here because we don't want quaternion from other channels
         'channels': [
             f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu'
-            '/mta/ASPECT/ska3-conda/flight'],
+            '/mta/ASPECT/ska3-conda/prime'],
         'options': [],
         'packages': ['quaternion']
     },
@@ -39,7 +40,7 @@ def install_pkgs(pkgs):
     channels = sum([['-c', c] for c in pkgs['channels']], [])
     cmd = ['mamba', 'install', '-y'] + pkgs['options'] + channels + pkgs['packages']
     logging.info(' '.join(cmd))
-    subprocess.run(cmd)
+    subprocess.run(cmd, check=True)
 
 
 def install_yaml_requirements(meta_yaml):

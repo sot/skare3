@@ -4,34 +4,15 @@ import os
 import subprocess
 import pathlib
 import logging
+import yaml
+
 
 assert "CONDA_PASSWORD" in os.environ, "CONDA_PASSWORD environmental variable is not defined"
 
 CHANNELS = [
-    'defaults',
     'conda-forge',
+    'defaults',
     f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight'
-]
-
-
-# This is a list of packages to be installed before installing whatever is in meta.yaml
-PACKAGES = [
-    {
-        'channels': CHANNELS,
-        'options': ['--no-channel-priority'],
-        'packages': ['numpy', 'matplotlib', 'scipy', 'pandas', 'astropy', 'pyyaml', 'conda-build',
-                     'pyqt']
-    },
-    {  # this version is set so it is not the latest
-        'channels': CHANNELS,
-        'options': [],
-        'packages': ['django==3.1.7']
-    },
-    {  # this is not in defaults or conda-forge (for now?)
-        'channels': ['astropy'],
-        'options': [],
-        'packages': ['regions']
-    },
 ]
 
 
@@ -45,15 +26,18 @@ PLATFORM_OPTIONS = {
 
 
 def install_pkgs(pkgs):
+    from conda_build.config import Config
+    config = Config()
+    if config.platform not in pkgs['platforms']:
+        return
+
     channels = sum([['-c', c] for c in pkgs['channels']], [])
     cmd = ['mamba', 'install', '-y'] + pkgs['options'] + channels + pkgs['packages']
     logging.info(' '.join(cmd))
-    subprocess.run(cmd)
+    subprocess.run(cmd, check=True)
 
 
 def install_yaml_requirements(meta_yaml):
-    # imported here because they might not be present by default
-    import yaml
     from conda_build.config import Config
     from conda_build.metadata import select_lines
     with open(meta_yaml) as fh:
@@ -70,6 +54,7 @@ def install_yaml_requirements(meta_yaml):
     install_pkgs({
         'channels': CHANNELS,
         'options': [],
+        'platforms': [config.platform],
         'packages': dependencies,
     })
 
@@ -77,11 +62,14 @@ def install_yaml_requirements(meta_yaml):
 def main():
     logging.basicConfig(level="INFO")
 
-    for pkgs in PACKAGES:
-        install_pkgs(pkgs)
+    srcdir = pathlib.Path(__file__).parent
 
-    meta_yaml = pathlib.Path(__file__).parent / 'meta.yaml'
-    install_yaml_requirements(meta_yaml)
+    # note that base_environment is not updated here, because that updates python itself
+    # and should be updated before calling this script
+    for env in sorted(srcdir.glob('environment*.yml')):
+        subprocess.run(['mamba', 'env', 'update', '-f', env], check=True)
+
+    install_yaml_requirements(srcdir / 'meta.yaml')
 
 
 if __name__ == '__main__':
