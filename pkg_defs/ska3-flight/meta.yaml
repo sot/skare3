@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-flight
-  version: 2022.11
+  version: 2023.0
 
 build:
   noarch: generic
@@ -17,8 +17,8 @@ requirements:
     - acispy ==2.5.0
     - agasc ==4.13.1
     - aimpoint_mon ==1.0.1
-    - astromon ==1.1.0
     - annie ==0.11.1
+    - astromon ==1.1.0
     - backstop_history ==3.1.0
     - chandra.cmd_states ==3.17.0
     - chandra.maneuver ==3.8.0
@@ -53,7 +53,7 @@ requirements:
     - ska.shell ==3.5.1
     - ska.sun ==3.8.1
     - ska.tdb ==3.6.1
-    - ska3-core ==2022.6
+    - ska3-core ==2023.0
     - ska3-template ==2022.06.02
     - ska_helpers ==0.6.1
     - ska_path ==3.1.2
