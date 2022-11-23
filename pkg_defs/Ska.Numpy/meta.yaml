@@ -15,10 +15,10 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - gcc_linux-64==8.4.0 # [linux]
-    - libgcc-ng==9.1.0  # [linux]
+    - gcc_linux-64 # [linux]
+    - libgcc-ng  # [linux]
     - clang_osx-64 # [osx]
-    - python==3.8.10
+    - python==3.10
     - numpy
     - setuptools
     - setuptools_scm
