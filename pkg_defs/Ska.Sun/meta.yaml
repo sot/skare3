@@ -19,6 +19,7 @@ requirements:
     - setuptools
     - setuptools_scm
     - setuptools_scm_git_archive
+    - ska_helpers
   run:
     - python
     - ska.quatutil
