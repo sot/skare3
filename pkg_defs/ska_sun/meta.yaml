@@ -1,6 +1,6 @@
 
 package:
-  name: ska.sun  # lower case name of package, may contain '-' but no spaces
+  name: ska_sun  # lower case name of package, may contain '-' but no spaces
   version: {{ SKA_PKG_VERSION }}
 
 
@@ -9,7 +9,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.Sun
+  path: {{ SKA_TOP_SRC_DIR }}/ska_sun
 
 
 
@@ -20,16 +20,20 @@ requirements:
     - setuptools_scm
     - setuptools_scm_git_archive
     - ska_helpers
+    - testr
   run:
     - python
     - ska.quatutil
     - chandra.time
     - quaternion
     - numpy
+    - ska_helpers
+    - testr
 
 test:
   imports:
     - Ska.Sun
+    - ska_sun
 
 about:
-  home: https://github.com/sot/Ska.Sun
+  home: https://github.com/sot/ska_sun
