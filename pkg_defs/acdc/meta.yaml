@@ -35,7 +35,7 @@ requirements:
     - quaternion
     - ska.engarchive
     - ska.file
-    - ska.sun
+    - ska_sun
     - testr
 
 test:

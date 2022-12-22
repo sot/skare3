@@ -31,7 +31,7 @@ requirements:
     - ska.quatutil
     - chandra.time
     - ska.matplotlib
-    - ska.sun
+    - ska_sun
     - quaternion
     - ska.engarchive
     - testr

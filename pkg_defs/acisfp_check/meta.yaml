@@ -36,7 +36,7 @@ requirements:
     - ska.engarchive
     - ska.numpy
     - ska.matplotlib
-    - ska.sun
+    - ska_sun
     - xija
 
 test:
