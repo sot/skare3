@@ -24,7 +24,7 @@ requirements:
     - chandra_aca
     - chandra.cmd_states
     - chandra.maneuver
-    - chandra.time
+    - chandra_time
     - cxotime
     - find_attitude
     - fot-matlab

@@ -27,7 +27,7 @@ requirements:
     - pytables
     - numpy
     - numexpr
-    - chandra.time
+    - chandra_time
     - ska_path
     - astropy
     - h5py

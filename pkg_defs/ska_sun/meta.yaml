@@ -24,7 +24,7 @@ requirements:
   run:
     - python
     - ska.quatutil
-    - chandra.time
+    - chandra_time
     - quaternion
     - numpy
     - ska_helpers

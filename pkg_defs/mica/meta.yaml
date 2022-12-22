@@ -31,7 +31,7 @@ requirements:
     - jinja2
     - astropy
     - ska.shell
-    - chandra.time
+    - chandra_time
     - chandra_aca
     - quaternion
     - agasc

@@ -30,7 +30,7 @@ requirements:
     - pytest
     - chandra_aca
     - ska.quatutil
-    - chandra.time
+    - chandra_time
     - quaternion
     - agasc
     - ska.matplotlib

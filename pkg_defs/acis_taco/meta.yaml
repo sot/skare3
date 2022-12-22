@@ -29,7 +29,7 @@ requirements:
     - numpy
     - matplotlib
     - ska.quatutil
-    - chandra.time
+    - chandra_time
     - ska.matplotlib
     - ska_sun
     - quaternion

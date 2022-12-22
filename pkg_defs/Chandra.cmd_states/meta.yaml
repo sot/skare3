@@ -26,7 +26,7 @@ requirements:
   run:
     - python
     - six
-    - chandra.time
+    - chandra_time
     - ska.dbi
     - ska.file
     - chandra.maneuver

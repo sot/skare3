@@ -29,7 +29,7 @@ requirements:
     - ipython
     - ipyparallel
     - pytables
-    - chandra.time
+    - chandra_time
     - ska.numpy
     - ska.dbi
     - astropy

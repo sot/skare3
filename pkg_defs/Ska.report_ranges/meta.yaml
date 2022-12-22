@@ -24,7 +24,7 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - chandra.time
+    - chandra_time
     - testr
 
 test:
