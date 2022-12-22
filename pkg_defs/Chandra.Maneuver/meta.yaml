@@ -28,7 +28,7 @@ requirements:
     - six
     - quaternion
     - chandra.time
-    - ska.sun
+    - ska_sun
     - ska_helpers
 test:
   requires:

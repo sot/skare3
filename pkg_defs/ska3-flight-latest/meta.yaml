@@ -52,7 +52,7 @@ requirements:
     - ska.quatutil
     - ska.report_ranges
     - ska.shell
-    - ska.sun
+    - ska_sun
     - ska.tdb
     - ska3-template
     - ska_helpers

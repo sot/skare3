@@ -31,7 +31,7 @@ requirements:
     - ska.file
     - chandra.maneuver
     - quaternion
-    - ska.sun
+    - ska_sun
     - ska.parsecm
     - ska.numpy
     - ska.ftp
