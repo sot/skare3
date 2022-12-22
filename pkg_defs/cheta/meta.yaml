@@ -1,12 +1,12 @@
 package:
-  name: ska.engarchive
+  name: cheta
   version:  {{ SKA_PKG_VERSION }}
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.engarchive
+  path: {{ SKA_TOP_SRC_DIR }}/cheta
 
 # the build and runtime requirements. Dependencies of these requirements
 # are included automatically.
@@ -41,8 +41,9 @@ requirements:
 test:
   imports:
     - Ska.engarchive
+    - cheta
 
 about:
-  home: https://github.com/sot/eng_archive
+  home: https://github.com/sot/cheta
 
 
