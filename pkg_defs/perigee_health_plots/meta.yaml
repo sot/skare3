@@ -29,7 +29,7 @@ requirements:
     - chandra.time
     - kadi
     - pyyaks
-    - ska.engarchive
+    - cheta
     - ska.shell
     - ska.report_ranges
     - ska.matplotlib

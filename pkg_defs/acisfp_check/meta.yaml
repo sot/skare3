@@ -33,7 +33,7 @@ requirements:
     - chandra.time
     - kadi
     - ska.dbi
-    - ska.engarchive
+    - cheta
     - ska.numpy
     - ska.matplotlib
     - ska_sun

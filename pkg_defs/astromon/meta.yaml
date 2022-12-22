@@ -44,7 +44,7 @@ requirements:
     - pyyaks
     - ska.arc5gl
     - ska.dbi
-    - ska.engarchive
+    - cheta
     - ska.matplotlib
     - ska.tdb
     - ska.shell

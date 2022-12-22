@@ -28,7 +28,7 @@ requirements:
     - jinja2
     - chandra.time
     - pyyaks
-    - ska.engarchive
+    - cheta
     - kadi
     - ska.matplotlib
     - ska.numpy

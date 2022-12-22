@@ -35,7 +35,7 @@ requirements:
     - ska.dbi
     - ska.arc5gl
     - ska.shell
-    - ska.engarchive
+    - cheta
     - ska_helpers
 
 about:

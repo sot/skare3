@@ -33,7 +33,7 @@ requirements:
 test:
   requires:
     - agasc
-    - ska.engarchive
+    - cheta
     - testr
   imports:
     - Chandra.Maneuver

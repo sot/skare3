@@ -33,7 +33,7 @@ requirements:
     - ska.matplotlib
     - ska_sun
     - quaternion
-    - ska.engarchive
+    - cheta
     - testr
 
 test:

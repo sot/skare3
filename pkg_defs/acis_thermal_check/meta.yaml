@@ -38,7 +38,7 @@ requirements:
     - chandra.time
     - kadi
     - ska.dbi
-    - ska.engarchive
+    - cheta
     - ska.file
     - ska.numpy
     - ska.matplotlib

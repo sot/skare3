@@ -30,7 +30,7 @@ requirements:
     - kadi
     - mica
     - ska.dbi
-    - ska.engarchive
+    - cheta
     - ska.matplotlib
     - ska.numpy
     - proseco
