@@ -33,7 +33,7 @@ requirements:
     - mica
     - pyyaks
     - quaternion
-    - ska.engarchive
+    - cheta
     - ska.file
     - ska_sun
     - testr

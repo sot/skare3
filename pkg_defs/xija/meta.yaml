@@ -36,7 +36,7 @@ requirements:
     - pyyaks
     - chandra.time
     - testr
-    - ska.engarchive
+    - cheta
     - ska_helpers
 
 test:

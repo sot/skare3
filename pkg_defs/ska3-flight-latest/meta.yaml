@@ -43,7 +43,7 @@ requirements:
     - ska.arc5gl
     - ska.astro
     - ska.dbi
-    - ska.engarchive
+    - cheta
     - ska.file
     - ska.ftp
     - ska.numpy

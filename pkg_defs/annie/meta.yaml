@@ -34,7 +34,7 @@ requirements:
     - quaternion
     - agasc
     - ska.matplotlib
-    - ska.engarchive
+    - cheta
     - mica
     - testr
 

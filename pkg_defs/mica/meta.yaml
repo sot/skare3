@@ -40,7 +40,7 @@ requirements:
     - quaternion
     - ska.quatutil
     - ska.matplotlib
-    - ska.engarchive
+    - cheta
     - kadi
     - pyyaks
     - testr
