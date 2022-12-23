@@ -79,9 +79,9 @@ jobs:
       with:
         miniconda-version: "py38_4.8.3"
         python-version: "3.8"
-        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny,conda-forge
+        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight,conda-forge
     - name: Build Dependencies
-      run: conda install setuptools_scm gitpython conda-build jinja2 pyyaml python=3.8 numpy packaging
+      run: conda install setuptools_scm gitpython conda-build jinja2 pyyaml python=3.8 numpy packaging testr ska_helpers
     - name: Build Package
       run: |
         python skare3_tools/actions/build/files/build.py --arch-specific ${{ inputs.repository }} --tag ${{ inputs.tag }}
