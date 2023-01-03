@@ -34,7 +34,7 @@ requirements:
     - ska.matplotlib
     - ska.numpy
     - pyyaks
-    - chandra.time
+    - chandra_time
     - testr
     - cheta
     - ska_helpers

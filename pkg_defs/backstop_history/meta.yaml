@@ -28,7 +28,7 @@ requirements:
     - six
     - numpy
     - ska.parsecm
-    - chandra.time
+    - chandra_time
 
 test:
   imports:

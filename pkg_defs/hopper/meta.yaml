@@ -30,7 +30,7 @@ requirements:
     - chandra_aca
     - pyyaks
     - chandra.maneuver
-    - chandra.time
+    - chandra_time
     - cxotime
     - parse_cm
     - astropy

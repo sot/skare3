@@ -28,7 +28,7 @@ requirements:
     - testr
     - numba
     - scipy
-    - chandra.time
+    - chandra_time
     - ska.numpy
     - quaternion
     - astropy

@@ -24,7 +24,7 @@ requirements:
     - python
     - six
     - matplotlib
-    - chandra.time
+    - chandra_time
     - numpy
 
 test:

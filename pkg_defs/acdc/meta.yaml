@@ -29,7 +29,7 @@ requirements:
     - pytest
     - agasc
     - chandra_aca
-    - chandra.time
+    - chandra_time
     - mica
     - pyyaks
     - quaternion

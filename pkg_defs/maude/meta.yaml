@@ -32,7 +32,7 @@ requirements:
     - pyyaks
     - ska.ftp
     - ska.tdb
-    - chandra.time
+    - chandra_time
     - testr
 
 test:

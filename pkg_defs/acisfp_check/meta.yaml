@@ -30,7 +30,7 @@ requirements:
     - astropy
     - acis_thermal_check
     - acis_taco
-    - chandra.time
+    - chandra_time
     - kadi
     - ska.dbi
     - cheta

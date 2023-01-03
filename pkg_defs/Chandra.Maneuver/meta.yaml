@@ -27,7 +27,7 @@ requirements:
     - python
     - six
     - quaternion
-    - chandra.time
+    - chandra_time
     - ska_sun
     - ska_helpers
 test:

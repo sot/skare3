@@ -28,7 +28,7 @@ requirements:
     - numpy
     - matplotlib
     - astropy
-    - chandra.time
+    - chandra_time
     - kadi
     - pyyaks
     - mica
