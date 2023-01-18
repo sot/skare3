@@ -11,8 +11,7 @@ assert "CONDA_PASSWORD" in os.environ, "CONDA_PASSWORD environmental variable is
 
 CHANNELS = [
     'conda-forge',
-    'defaults',
-    f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight'
+    f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/prime'
 ]
 
 
