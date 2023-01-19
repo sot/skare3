@@ -7,3 +7,6 @@ __pycache__
 /shiny
 /ots
 repo*
+
+*~
+.DS_Store
