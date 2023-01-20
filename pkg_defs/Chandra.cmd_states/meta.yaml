@@ -34,7 +34,7 @@ requirements:
     - ska_sun
     - ska.parsecm
     - ska.numpy
-    - ska.ftp
+    - ska_ftp
 #    - kadi
     - testr
 

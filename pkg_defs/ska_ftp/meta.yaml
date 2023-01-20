@@ -1,5 +1,5 @@
 package:
-  name: ska.ftp
+  name: ska_ftp
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.ftp
+  path: {{ SKA_TOP_SRC_DIR }}/ska_ftp
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -33,10 +33,11 @@ requirements:
 test:
   imports:
     - Ska.ftp
+    - ska_ftp
 
   requires:
     - pyyaks
 
 
 about:
-  home: https://github.com/sot/Ska.ftp
+  home: https://github.com/sot/ska_ftp
