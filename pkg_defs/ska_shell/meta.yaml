@@ -1,6 +1,6 @@
 
 package:
-  name: ska.shell  # lower case name of package, may contain '-' but no spaces
+  name: ska_shell  # lower case name of package, may contain '-' but no spaces
   version: {{ SKA_PKG_VERSION }}
 
 build:
@@ -8,8 +8,8 @@ build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.Shell
-
+  path: {{ SKA_TOP_SRC_DIR }}/ska_shell
+  
 requirements:
   build:
     - python
@@ -28,7 +28,8 @@ requirements:
 test:
   imports:
     - Ska.Shell
+    - ska_shell
 
 about:
-  home: https://github.com/sot/Ska.Shell
+  home: https://github.com/sot/ska_shell
 

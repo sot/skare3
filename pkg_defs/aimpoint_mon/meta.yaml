@@ -34,7 +34,7 @@ requirements:
     - mica
     - ska_dbi
     - ska_arc5gl
-    - ska.shell
+    - ska_shell
     - cheta
     - ska_helpers
 

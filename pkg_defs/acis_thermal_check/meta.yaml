@@ -44,7 +44,7 @@ requirements:
     - ska_matplotlib
     - ska_parsecm
     - ska_sun
-    - ska.shell
+    - ska_shell
     - testr
     - xija
 

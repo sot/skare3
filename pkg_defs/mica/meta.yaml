@@ -30,7 +30,7 @@ requirements:
     - pytest
     - jinja2
     - astropy
-    - ska.shell
+    - ska_shell
     - chandra_time
     - chandra_aca
     - quaternion

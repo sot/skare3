@@ -30,7 +30,7 @@ requirements:
     - kadi
     - pyyaks
     - cheta
-    - ska.shell
+    - ska_shell
     - ska_report_ranges
     - ska_matplotlib
     - xija
