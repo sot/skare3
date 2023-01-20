@@ -31,7 +31,7 @@ requirements:
     - pyyaks
     - cheta
     - ska.shell
-    - ska.report_ranges
+    - ska_report_ranges
     - ska_matplotlib
     - xija
     - testr
