@@ -1,0 +1,6 @@
+channels:
+  - conda-forge
+dependencies:
+  - django==3.1.7
+  - astropy::regions
+  - sherpa::sherpa # [not win]
