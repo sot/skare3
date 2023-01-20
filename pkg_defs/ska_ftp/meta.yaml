@@ -1,5 +1,5 @@
 package:
-  name: ska.quatutil
+  name: ska_ftp
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.quatutil
+  path: {{ SKA_TOP_SRC_DIR }}/ska_ftp
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -26,15 +26,18 @@ requirements:
   run:
     - python
     - six
-    - numpy
-    - quaternion
+    - paramiko
     - testr
+    - ska_helpers
 
 test:
   imports:
-    - Ska.quatutil
+    - Ska.ftp
+    - ska_ftp
+
+  requires:
+    - pyyaks
 
 
 about:
-  home: https://github.com/sot/Ska.quatutil
-
+  home: https://github.com/sot/ska_ftp

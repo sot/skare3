@@ -1,12 +1,13 @@
 package:
-  name: ska.numpy
+  name: ska_astro
   version:  {{ SKA_PKG_VERSION }}
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.Numpy
+  path: {{ SKA_TOP_SRC_DIR }}/ska_astro
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -15,15 +16,10 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - gcc_linux-64==8.4.0 # [linux]
-    - libgcc-ng==9.1.0  # [linux]
-    - clang_osx-64 # [osx]
-    - python==3.8.10
-    - numpy
+    - python
     - setuptools
     - setuptools_scm
     - setuptools_scm_git_archive
-    - cython
     - ska_helpers
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
@@ -31,15 +27,14 @@ requirements:
     - python
     - six
     - numpy
-    - nose
     - testr
-    - ska_helpers
 
 test:
   imports:
-    - Ska.Numpy
+    - Ska.astro
+    - ska_astro
 
 
 about:
-  home: https://github.com/sot/Ska.Numpy
+  home: https://github.com/sot/ska_astro
 

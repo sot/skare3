@@ -1,14 +1,12 @@
 package:
-  name: ska.arc5gl
+  name: ska_report_ranges
   version:  {{ SKA_PKG_VERSION }}
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
-  noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.arc5gl
-
+  path: {{ SKA_TOP_SRC_DIR }}/ska_report_ranges
 
 # the build and runtime requirements. Dependencies of these requirements
 # are included automatically.
@@ -21,19 +19,19 @@ requirements:
     - setuptools_scm
     - setuptools_scm_git_archive
     - ska_helpers
+
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - six
-    - pexpect
+    - chandra_time
     - testr
 
 test:
   imports:
-    - Ska.arc5gl
+    - Ska.report_ranges
+    - ska_report_ranges
 
 
 about:
-  home: https://github.com/sot/Ska.arc5gl
-
+  home: https://github.com/sot/ska_report_ranges

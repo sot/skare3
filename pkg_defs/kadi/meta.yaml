@@ -29,15 +29,15 @@ requirements:
     - requests
     - django >=3.0
     - pyyaks
-    - ska.dbi
-    - ska.file
-    - ska.ftp
-    - ska.numpy
+    - ska_dbi
+    - ska_file
+    - ska_ftp
+    - ska_numpy
     - astropy
     - quaternion
     - chandra_time
     - cheta
-    - chandra.cmd_states
+    - chandra_cmd_states
     - numpy
     - mica
     - find_attitude

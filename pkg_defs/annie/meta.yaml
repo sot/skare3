@@ -29,11 +29,11 @@ requirements:
     - astropy
     - pytest
     - chandra_aca
-    - ska.quatutil
+    - ska_quatutil
     - chandra_time
     - quaternion
     - agasc
-    - ska.matplotlib
+    - ska_matplotlib
     - cheta
     - mica
     - testr

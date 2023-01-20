@@ -1,5 +1,5 @@
 package:
-  name: chandra.maneuver
+  name: chandra_cmd_states
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Chandra.Maneuver
+  path: {{ SKA_TOP_SRC_DIR }}/chandra_cmd_states
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -26,18 +26,23 @@ requirements:
   run:
     - python
     - six
-    - quaternion
     - chandra_time
+    - ska_dbi
+    - ska_file
+    - chandra_maneuver
+    - quaternion
     - ska_sun
-    - ska_helpers
-test:
-  requires:
-    - agasc
-    - cheta
+    - ska_parsecm
+    - ska_numpy
+    - ska_ftp
+#    - kadi
     - testr
+
+test:
   imports:
-    - Chandra.Maneuver
+    - Chandra.cmd_states
+    - chandra_cmd_states
 
 
 about:
-  home: https://github.com/sot/Chandra.Maneuver
+  home: https://github.com/sot/cmd_states

@@ -34,17 +34,17 @@ requirements:
     - docutils
     - astropy
     - backstop_history
-    - chandra.cmd_states
+    - chandra_cmd_states
     - chandra_time
     - kadi
-    - ska.dbi
+    - ska_dbi
     - cheta
-    - ska.file
-    - ska.numpy
-    - ska.matplotlib
-    - ska.parsecm
+    - ska_file
+    - ska_numpy
+    - ska_matplotlib
+    - ska_parsecm
     - ska_sun
-    - ska.shell
+    - ska_shell
     - testr
     - xija
 

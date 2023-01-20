@@ -32,10 +32,10 @@ requirements:
     - acis_taco
     - chandra_time
     - kadi
-    - ska.dbi
+    - ska_dbi
     - cheta
-    - ska.numpy
-    - ska.matplotlib
+    - ska_numpy
+    - ska_matplotlib
     - ska_sun
     - xija
 

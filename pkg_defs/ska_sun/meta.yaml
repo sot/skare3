@@ -23,7 +23,7 @@ requirements:
     - testr
   run:
     - python
-    - ska.quatutil
+    - ska_quatutil
     - chandra_time
     - quaternion
     - numpy

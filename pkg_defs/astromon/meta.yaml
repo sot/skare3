@@ -42,13 +42,13 @@ requirements:
     - quaternion
     - chandra_aca
     - pyyaks
-    - ska.arc5gl
-    - ska.dbi
+    - ska_arc5gl
+    - ska_dbi
     - cheta
-    - ska.matplotlib
-    - ska.tdb
-    - ska.shell
-    - ska.file
+    - ska_matplotlib
+    - ska_tdb
+    - ska_shell
+    - ska_file
     - sphinx-argparse
 
 about:

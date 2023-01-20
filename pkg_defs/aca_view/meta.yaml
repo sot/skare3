@@ -38,7 +38,7 @@ requirements:
     - cxotime
     - kadi
     - quaternion
-    - ska.matplotlib
+    - ska_matplotlib
 
 test:
   imports:

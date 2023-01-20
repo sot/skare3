@@ -30,8 +30,8 @@ requirements:
     - pyyaks
     - cheta
     - kadi
-    - ska.matplotlib
-    - ska.numpy
+    - ska_matplotlib
+    - ska_numpy
     - acdc
     - testr
 

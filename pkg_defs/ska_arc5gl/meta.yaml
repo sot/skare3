@@ -1,5 +1,5 @@
 package:
-  name: ska.tdb
+  name: ska_arc5gl
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.tdb
+  path: {{ SKA_TOP_SRC_DIR }}/ska_arc5gl
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -26,14 +26,15 @@ requirements:
   run:
     - python
     - six
-    - numpy
-    - astropy
+    - pexpect
     - testr
 
 test:
   imports:
-    - Ska.tdb
+    - Ska.arc5gl
+    - ska_arc5gl
 
 
 about:
-  home: https://github.com/sot/Ska.tdb
+  home: https://github.com/sot/ska_arc5gl
+

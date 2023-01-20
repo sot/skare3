@@ -1,12 +1,14 @@
 package:
-  name: ska.report_ranges
+  name: ska_dbi
   version:  {{ SKA_PKG_VERSION }}
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
+  noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.report_ranges
+  path: {{ SKA_TOP_SRC_DIR }}/ska_dbi
+
 
 # the build and runtime requirements. Dependencies of these requirements
 # are included automatically.
@@ -19,18 +21,22 @@ requirements:
     - setuptools_scm
     - setuptools_scm_git_archive
     - ska_helpers
-
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - chandra_time
+    - six
+    - sqlite
+    - pytest
+    - numpy
     - testr
 
 test:
   imports:
-    - Ska.report_ranges
-
+    - Ska.DBI
+    - ska_dbi
 
 about:
-  home: https://github.com/sot/Ska.report_ranges
+  home: https://github.com/sot/ska_dbi
+
+

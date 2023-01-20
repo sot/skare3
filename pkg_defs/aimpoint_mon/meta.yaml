@@ -32,9 +32,9 @@ requirements:
     - kadi
     - pyyaks
     - mica
-    - ska.dbi
-    - ska.arc5gl
-    - ska.shell
+    - ska_dbi
+    - ska_arc5gl
+    - ska_shell
     - cheta
     - ska_helpers
 

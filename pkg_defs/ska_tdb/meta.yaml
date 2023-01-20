@@ -1,5 +1,5 @@
 package:
-  name: ska.astro
+  name: ska_tdb
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.astro
+  path: {{ SKA_TOP_SRC_DIR }}/ska_tdb
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -27,13 +27,13 @@ requirements:
     - python
     - six
     - numpy
+    - astropy
     - testr
 
 test:
   imports:
-    - Ska.astro
-
+    - Ska.tdb
+    - ska_tdb
 
 about:
-  home: https://github.com/sot/Ska.astro
-
+  home: https://github.com/sot/ska_tdb

@@ -29,7 +29,7 @@ requirements:
     - chandra_aca
     - hopper
     - agasc
-    - ska.matplotlib
+    - ska_matplotlib
     - testr
 
 test:

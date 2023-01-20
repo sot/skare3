@@ -29,7 +29,7 @@ requirements:
     - quaternion
     - chandra_aca
     - pyyaks
-    - chandra.maneuver
+    - chandra_maneuver
     - chandra_time
     - cxotime
     - parse_cm

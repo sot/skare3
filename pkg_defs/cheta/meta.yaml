@@ -30,8 +30,8 @@ requirements:
     - ipyparallel
     - pytables
     - chandra_time
-    - ska.numpy
-    - ska.dbi
+    - ska_numpy
+    - ska_dbi
     - astropy
     - testr
     - jinja2
