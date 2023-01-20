@@ -39,7 +39,7 @@ requirements:
     - kadi
     - ska_dbi
     - cheta
-    - ska.file
+    - ska_file
     - ska.numpy
     - ska.matplotlib
     - ska.parsecm

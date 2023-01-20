@@ -28,7 +28,7 @@ requirements:
     - six
     - chandra_time
     - ska_dbi
-    - ska.file
+    - ska_file
     - chandra.maneuver
     - quaternion
     - ska_sun

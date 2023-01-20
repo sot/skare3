@@ -30,7 +30,7 @@ requirements:
     - django >=3.0
     - pyyaks
     - ska_dbi
-    - ska.file
+    - ska_file
     - ska.ftp
     - ska.numpy
     - astropy

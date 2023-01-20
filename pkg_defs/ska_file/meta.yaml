@@ -1,5 +1,5 @@
 package:
-  name: ska.file  # lower case name of package, may contain '-' but no spaces
+  name: ska_file  # lower case name of package, may contain '-' but no spaces
   version: {{ SKA_PKG_VERSION }}
 
 
@@ -8,7 +8,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.File
+  path: {{ SKA_TOP_SRC_DIR }}/ska_file
 
 
 
@@ -27,6 +27,7 @@ requirements:
 test:
   imports:
     - Ska.File
+    - ska_file
 
 about:
-  home: https://github.com/sot/Ska.File
+  home: https://github.com/sot/ska_file

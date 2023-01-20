@@ -48,7 +48,7 @@ requirements:
     - ska.matplotlib
     - ska.tdb
     - ska.shell
-    - ska.file
+    - ska_file
     - sphinx-argparse
 
 about:

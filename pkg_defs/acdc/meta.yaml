@@ -34,7 +34,7 @@ requirements:
     - pyyaks
     - quaternion
     - cheta
-    - ska.file
+    - ska_file
     - ska_sun
     - testr
 
