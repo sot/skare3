@@ -1,5 +1,5 @@
 package:
-  name: ska.arc5gl
+  name: ska_arc5gl
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.arc5gl
+  path: {{ SKA_TOP_SRC_DIR }}/ska_arc5gl
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -32,8 +32,9 @@ requirements:
 test:
   imports:
     - Ska.arc5gl
+    - ska_arc5gl
 
 
 about:
-  home: https://github.com/sot/Ska.arc5gl
+  home: https://github.com/sot/ska_arc5gl
 

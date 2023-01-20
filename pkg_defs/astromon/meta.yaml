@@ -42,7 +42,7 @@ requirements:
     - quaternion
     - chandra_aca
     - pyyaks
-    - ska.arc5gl
+    - ska_arc5gl
     - ska.dbi
     - cheta
     - ska.matplotlib

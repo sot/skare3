@@ -33,7 +33,7 @@ requirements:
     - pyyaks
     - mica
     - ska.dbi
-    - ska.arc5gl
+    - ska_arc5gl
     - ska.shell
     - cheta
     - ska_helpers
