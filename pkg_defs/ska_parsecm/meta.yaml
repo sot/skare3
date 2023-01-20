@@ -1,5 +1,5 @@
 package:
-  name: ska.parsecm
+  name: ska_parsecm
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.ParseCM
+  path: {{ SKA_TOP_SRC_DIR }}/ska_parsecm
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -31,8 +31,9 @@ requirements:
 test:
   imports:
     - Ska.ParseCM
+    - ska_parsecm
 
 
 about:
-  home: https://github.com/sot/Ska.ParseCM
+  home: https://github.com/sot/ska_parsecm
 

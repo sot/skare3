@@ -42,7 +42,7 @@ requirements:
     - ska_file
     - ska_numpy
     - ska_matplotlib
-    - ska.parsecm
+    - ska_parsecm
     - ska_sun
     - ska.shell
     - testr

@@ -32,7 +32,7 @@ requirements:
     - chandra.maneuver
     - quaternion
     - ska_sun
-    - ska.parsecm
+    - ska_parsecm
     - ska_numpy
     - ska_ftp
 #    - kadi
