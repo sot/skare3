@@ -29,7 +29,7 @@ requirements:
     - chandra_time
     - ska_dbi
     - ska_file
-    - chandra.maneuver
+    - chandra_maneuver
     - quaternion
     - ska_sun
     - ska_parsecm

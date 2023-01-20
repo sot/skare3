@@ -1,5 +1,5 @@
 package:
-  name: chandra.maneuver
+  name: chandra_maneuver
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Chandra.Maneuver
+  path: {{ SKA_TOP_SRC_DIR }}/chandra_maneuver
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -37,7 +37,8 @@ test:
     - testr
   imports:
     - Chandra.Maneuver
+    - chandra_maneuver
 
 
 about:
-  home: https://github.com/sot/Chandra.Maneuver
+  home: https://github.com/sot/chandra_maneuver
