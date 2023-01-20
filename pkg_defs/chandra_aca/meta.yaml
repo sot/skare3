@@ -29,7 +29,7 @@ requirements:
     - numba
     - scipy
     - chandra_time
-    - ska.numpy
+    - ska_numpy
     - quaternion
     - astropy
     - agasc

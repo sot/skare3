@@ -32,7 +32,7 @@ requirements:
     - numpy
     - matplotlib
     - ska_matplotlib
-    - ska.numpy
+    - ska_numpy
     - pyyaks
     - chandra_time
     - testr

@@ -32,7 +32,7 @@ requirements:
     - ska_dbi
     - ska_file
     - ska_ftp
-    - ska.numpy
+    - ska_numpy
     - astropy
     - quaternion
     - chandra_time

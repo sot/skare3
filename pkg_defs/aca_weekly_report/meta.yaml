@@ -32,7 +32,7 @@ requirements:
     - ska_dbi
     - cheta
     - ska_matplotlib
-    - ska.numpy
+    - ska_numpy
     - proseco
     - pyyaks
     - testr

@@ -33,7 +33,7 @@ requirements:
     - quaternion
     - ska_sun
     - ska.parsecm
-    - ska.numpy
+    - ska_numpy
     - ska_ftp
 #    - kadi
     - testr

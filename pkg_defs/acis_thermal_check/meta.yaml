@@ -40,7 +40,7 @@ requirements:
     - ska_dbi
     - cheta
     - ska_file
-    - ska.numpy
+    - ska_numpy
     - ska_matplotlib
     - ska.parsecm
     - ska_sun

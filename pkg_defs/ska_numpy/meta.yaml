@@ -1,12 +1,12 @@
 package:
-  name: ska.numpy
+  name: ska_numpy
   version:  {{ SKA_PKG_VERSION }}
 
 build:
   script: python setup.py install --single-version-externally-managed --record=record.txt
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.Numpy
+  path: {{ SKA_TOP_SRC_DIR }}/ska_numpy
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -38,8 +38,8 @@ requirements:
 test:
   imports:
     - Ska.Numpy
-
+    - ska_numpy
 
 about:
-  home: https://github.com/sot/Ska.Numpy
+  home: https://github.com/sot/ska_numpy
 

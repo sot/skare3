@@ -31,7 +31,7 @@ requirements:
     - cheta
     - kadi
     - ska_matplotlib
-    - ska.numpy
+    - ska_numpy
     - acdc
     - testr
 
