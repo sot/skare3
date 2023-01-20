@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2022.13
+  version: 2023.1
 
 build:
   noarch: generic
@@ -24,8 +24,7 @@ requirements:
     - chandra_aca
     - chandra.cmd_states
     - chandra.maneuver
-    - chandra_time
-    - cheta
+    - chandra.time
     - cxotime
     - find_attitude
     - fot-matlab
@@ -44,6 +43,7 @@ requirements:
     - ska.arc5gl
     - ska.astro
     - ska.dbi
+    - ska.engarchive
     - ska.file
     - ska.ftp
     - ska.numpy
@@ -52,7 +52,7 @@ requirements:
     - ska.quatutil
     - ska.report_ranges
     - ska.shell
-    - ska_sun
+    - ska.sun
     - ska.tdb
     - ska3-template
     - ska_helpers
