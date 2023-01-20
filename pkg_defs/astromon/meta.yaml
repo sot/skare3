@@ -43,7 +43,7 @@ requirements:
     - chandra_aca
     - pyyaks
     - ska_arc5gl
-    - ska.dbi
+    - ska_dbi
     - cheta
     - ska.matplotlib
     - ska.tdb

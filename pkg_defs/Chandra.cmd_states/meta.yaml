@@ -27,7 +27,7 @@ requirements:
     - python
     - six
     - chandra_time
-    - ska.dbi
+    - ska_dbi
     - ska.file
     - chandra.maneuver
     - quaternion

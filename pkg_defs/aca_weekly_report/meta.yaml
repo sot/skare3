@@ -29,7 +29,7 @@ requirements:
     - chandra_time
     - kadi
     - mica
-    - ska.dbi
+    - ska_dbi
     - cheta
     - ska.matplotlib
     - ska.numpy

@@ -37,7 +37,7 @@ requirements:
     - chandra.cmd_states
     - chandra_time
     - kadi
-    - ska.dbi
+    - ska_dbi
     - cheta
     - ska.file
     - ska.numpy

@@ -31,7 +31,7 @@ requirements:
     - pytables
     - chandra_time
     - ska.numpy
-    - ska.dbi
+    - ska_dbi
     - astropy
     - testr
     - jinja2

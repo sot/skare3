@@ -29,7 +29,7 @@ requirements:
     - requests
     - django >=3.0
     - pyyaks
-    - ska.dbi
+    - ska_dbi
     - ska.file
     - ska.ftp
     - ska.numpy

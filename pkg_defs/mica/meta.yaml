@@ -35,7 +35,7 @@ requirements:
     - chandra_aca
     - quaternion
     - agasc
-    - ska.dbi
+    - ska_dbi
     - pytables
     - quaternion
     - ska.quatutil

@@ -1,5 +1,5 @@
 package:
-  name: ska.dbi
+  name: ska_dbi
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Ska.DBI
+  path: {{ SKA_TOP_SRC_DIR }}/ska_dbi
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -34,8 +34,9 @@ requirements:
 test:
   imports:
     - Ska.DBI
+    - ska_dbi
 
 about:
-  home: https://github.com/sot/Ska.DBI
+  home: https://github.com/sot/ska_dbi
 
 

@@ -32,7 +32,7 @@ requirements:
     - kadi
     - pyyaks
     - mica
-    - ska.dbi
+    - ska_dbi
     - ska_arc5gl
     - ska.shell
     - cheta

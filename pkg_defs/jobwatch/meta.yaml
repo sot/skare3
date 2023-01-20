@@ -24,7 +24,7 @@ requirements:
   run:
     - python
     - numpy
-    - ska.dbi
+    - ska_dbi
     - jinja2
     - chandra_time
     - pytest
