@@ -46,7 +46,7 @@ requirements:
     - ska_dbi
     - cheta
     - ska_matplotlib
-    - ska.tdb
+    - ska_tdb
     - ska_shell
     - ska_file
     - sphinx-argparse

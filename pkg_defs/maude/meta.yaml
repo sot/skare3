@@ -31,7 +31,7 @@ requirements:
     - numpy
     - pyyaks
     - ska_ftp
-    - ska.tdb
+    - ska_tdb
     - chandra_time
     - testr
 
