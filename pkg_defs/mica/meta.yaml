@@ -44,7 +44,7 @@ requirements:
     - kadi
     - pyyaks
     - testr
-    - ska.arc5gl
+    - ska_arc5gl
     - ska_astro
     - ska_helpers
 
