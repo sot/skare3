@@ -38,7 +38,7 @@ requirements:
     - ska_dbi
     - pytables
     - quaternion
-    - ska.quatutil
+    - ska_quatutil
     - ska_matplotlib
     - cheta
     - kadi

@@ -33,7 +33,7 @@ requirements:
     - quaternion
     - astropy
     - agasc
-    - ska.quatutil
+    - ska_quatutil
     - matplotlib
     - six
 

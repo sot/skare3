@@ -28,7 +28,7 @@ requirements:
     - six
     - numpy
     - matplotlib
-    - ska.quatutil
+    - ska_quatutil
     - chandra_time
     - ska_matplotlib
     - ska_sun

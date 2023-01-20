@@ -32,7 +32,7 @@ requirements:
     - pytables
     - pyyaks
     - quaternion
-    - ska.quatutil
+    - ska_quatutil
 #   - sherpa
     - ska_helpers
 
