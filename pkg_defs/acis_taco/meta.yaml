@@ -30,7 +30,7 @@ requirements:
     - matplotlib
     - ska.quatutil
     - chandra_time
-    - ska.matplotlib
+    - ska_matplotlib
     - ska_sun
     - quaternion
     - cheta

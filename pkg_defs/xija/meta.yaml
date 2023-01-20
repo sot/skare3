@@ -31,7 +31,7 @@ requirements:
     - numba
     - numpy
     - matplotlib
-    - ska.matplotlib
+    - ska_matplotlib
     - ska.numpy
     - pyyaks
     - chandra_time

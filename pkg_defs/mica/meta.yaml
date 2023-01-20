@@ -39,7 +39,7 @@ requirements:
     - pytables
     - quaternion
     - ska.quatutil
-    - ska.matplotlib
+    - ska_matplotlib
     - cheta
     - kadi
     - pyyaks

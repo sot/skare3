@@ -33,7 +33,7 @@ requirements:
     - chandra_time
     - quaternion
     - agasc
-    - ska.matplotlib
+    - ska_matplotlib
     - cheta
     - mica
     - testr

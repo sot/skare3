@@ -32,7 +32,7 @@ requirements:
     - cheta
     - ska.shell
     - ska.report_ranges
-    - ska.matplotlib
+    - ska_matplotlib
     - xija
     - testr
 

@@ -35,7 +35,7 @@ requirements:
     - ska_dbi
     - cheta
     - ska.numpy
-    - ska.matplotlib
+    - ska_matplotlib
     - ska_sun
     - xija
 

@@ -31,7 +31,7 @@ requirements:
     - mica
     - ska_dbi
     - cheta
-    - ska.matplotlib
+    - ska_matplotlib
     - ska.numpy
     - proseco
     - pyyaks

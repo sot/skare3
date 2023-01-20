@@ -45,7 +45,7 @@ requirements:
     - ska_arc5gl
     - ska_dbi
     - cheta
-    - ska.matplotlib
+    - ska_matplotlib
     - ska.tdb
     - ska.shell
     - ska_file

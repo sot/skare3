@@ -41,7 +41,7 @@ requirements:
     - cheta
     - ska_file
     - ska.numpy
-    - ska.matplotlib
+    - ska_matplotlib
     - ska.parsecm
     - ska_sun
     - ska.shell
