@@ -37,7 +37,7 @@ requirements:
     - quaternion
     - chandra_time
     - cheta
-    - chandra.cmd_states
+    - chandra_cmd_states
     - numpy
     - mica
     - find_attitude

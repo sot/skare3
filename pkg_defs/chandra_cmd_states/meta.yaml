@@ -1,5 +1,5 @@
 package:
-  name: chandra.cmd_states
+  name: chandra_cmd_states
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -7,7 +7,7 @@ build:
   noarch: python
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/Chandra.cmd_states
+  path: {{ SKA_TOP_SRC_DIR }}/chandra_cmd_states
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -41,6 +41,7 @@ requirements:
 test:
   imports:
     - Chandra.cmd_states
+    - chandra_cmd_states
 
 
 about:

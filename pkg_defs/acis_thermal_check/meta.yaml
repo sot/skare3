@@ -34,7 +34,7 @@ requirements:
     - docutils
     - astropy
     - backstop_history
-    - chandra.cmd_states
+    - chandra_cmd_states
     - chandra_time
     - kadi
     - ska_dbi
