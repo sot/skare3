@@ -126,13 +126,30 @@ def build_package(name, args, src_dir, build_dir):
               f'{skare3_old_version} -> {skare3_new_version}')
         overwrite_skare3_version(skare3_old_version, skare3_new_version, pkg_path)
 
+    version = ''
     try:
-        version = subprocess.check_output(['python', 'setup.py', '--version'],
-                                          cwd=os.path.join(src_dir, name))
+        version = subprocess.check_output(
+            ['python', 'setup.py', '--version'],
+            cwd=os.path.join(src_dir, name)
+        )
         version = version.decode().split()[-1].strip()
-        print(f'  - SKA_PKG_VERSION={version}')
     except Exception:
-        version = ''
+        pass
+    if args.tag is not None and args.tag != version:
+        print(f"Version from scm differs from requested tag: {version} != {args.tag}")
+        try:
+            repo = git.Repo(os.path.join(src_dir, name))
+            tags = {tag.name: tag for tag in repo.tags}
+            if args.tag in tags and repo.commit().binsha == tags[args.tag].commit.binsha:
+                version = args.tag
+            elif args.tag not in tags:
+                print(f"Requested tag {args.tag} is not one of the repository tags")
+            else:
+                print(f"Requested tag {args.tag} does not correspond to the current commit")
+        except Exception:
+            pass
+    print(f'  - SKA_PKG_VERSION={version}')
+
     os.environ['SKA_PKG_VERSION'] = version
 
     cmd_list = ["conda", "build", str(pkg_path),
