@@ -59,6 +59,12 @@ jobs:
     steps:
     - name: Fetch
       uses: actions/checkout@v2
+    - name: Fetch Skare3
+      uses: actions/checkout@v2
+      with:
+        repository: sot/skare3
+        ref: ${{ inputs.skare3_branch }}
+        path: skare3
     - name: Fetch Skare3-tools
       uses: actions/checkout@v2
       with:
@@ -68,7 +74,7 @@ jobs:
     - uses: sot/setup-miniconda@v2
       with:
         miniconda-version: py39_4.12.0
-        environment-file: build-environment.yml
+        environment-file: ./skare3/build-environment.yml
         channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/prime,conda-forge
     - name: Env List
       run: conda list
