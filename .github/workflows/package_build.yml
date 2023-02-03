@@ -17,6 +17,26 @@ on:
         required: false
         type: boolean
         default: false
+      python_version:
+        description: Python version
+        required: false
+        type: string
+        default: "3.10"
+      numpy_version:
+        description: Numpy version
+        required: false
+        type: string
+        default: "1.21"
+      miniconda_version:
+        description: Miniconda version
+        required: false
+        type: string
+        default: py39_4.12.0
+      skare3_branch:
+        description: Branch of skare3
+        required: false
+        type: string
+        default: master
     secrets:
       CONDA_PASSWORD:
         required: true
@@ -26,49 +46,19 @@ on:
         required: true
 
 jobs:
-  build-linux:
-    runs-on: ubuntu-latest
-    name: Build on Linux
-    steps:
-    - name: Login to GitHub Package Registry
-      run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{ secrets.token }}
-    - name: Pull Docker image
-      run: docker pull docker.pkg.github.com/sot/skare3/centos7-builder:latest
-    - name: Build
-      id: build
-      run: >
-        docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace
-        -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD
-        docker.pkg.github.com/sot/skare3/centos7-builder:latest
-        ${{ inputs.repository }} --tag ${{ inputs.tag }}
-      env:
-        CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
-        GIT_USERNAME: chandra-xray
-        GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
-        GIT_ASKPASS: /home/aca/git_pass.py
-    - name: Save package
-      uses: actions/upload-artifact@v2
-      with:
-        name: conda-package
-        path: |
-          builds/noarch/
-          builds/linux-64/
-          !builds/*/*repodata*
-          !builds/*/index.html
-
-
-  build-other:
-    if: ${{ !inputs.noarch }}
+  build:
     runs-on: ${{ matrix.os }}
     name: Build on ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
-        os: ["macos-latest", "windows-2019"]
+        os: ["ubuntu-latest", "macos-latest", "windows-2019"]
     defaults:
       run:
         shell: bash -l {0}
     steps:
+    - name: Fetch
+      uses: actions/checkout@v2
     - name: Fetch Skare3-tools
       uses: actions/checkout@v2
       with:
@@ -77,14 +67,15 @@ jobs:
         path: skare3_tools
     - uses: sot/setup-miniconda@v2
       with:
-        miniconda-version: "py38_4.8.3"
-        python-version: "3.8"
-        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight,conda-forge
-    - name: Build Dependencies
-      run: conda install setuptools_scm gitpython conda-build jinja2 pyyaml python=3.8 numpy packaging testr ska_helpers
+        miniconda-version: py39_4.12.0
+        environment-file: build-environment.yml
+        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/prime,conda-forge
+    - name: Env List
+      run: conda list
     - name: Build Package
       run: |
-        python skare3_tools/actions/build/files/build.py --arch-specific ${{ inputs.repository }} --tag ${{ inputs.tag }}
+        arch_arg=`if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then echo; else echo '--arch-specific'; fi`
+        python skare3_tools/actions/build/files/build.py $arch_arg ${{ inputs.repository }} --tag ${{ inputs.tag }} --python ${{ inputs.python_version }} --numpy ${{ inputs.numpy_version }} --skare3-branch ${{ inputs.skare3_branch }}
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
@@ -96,6 +87,7 @@ jobs:
         name: conda-package
         path: |
           builds/noarch/
+          builds/linux-64/
           builds/osx-64/
           builds/win-64/
           !builds/*/*repodata*

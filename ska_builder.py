@@ -96,9 +96,7 @@ def clone_repo(name, args, src_dir, meta):
     if args.repo_url:
         # Get tags from the upstream URL
         repo.create_remote('upstream', upstream_url)
-        repo.remotes.upstream.fetch('--tags')
-    else:
-        repo.remotes.origin.fetch('--tags')
+        repo.remotes.upstream.fetch()
 
     # I think we want the commit/tag with the most recent date, though
     # if we actually want the most recently created tag, that would probably be
