@@ -9,38 +9,38 @@ build:
 requirements:
   run:
     - aca_hi_bgd ==0.1.7
-    - aca_view ==0.11.1
+    - aca_view ==0.12.0
     - aca_weekly_report ==0.1.7
     - acdc ==4.9.1
     - acis_taco ==4.2.3
     - acis_thermal_check ==4.5.1
     - acispy ==2.5.0
-    - agasc ==4.14.0
+    - agasc ==4.14.1
     - aimpoint_mon ==1.1.1
     - astromon ==1.1.1
     - annie ==0.11.2
     - backstop_history ==3.1.1
     - chandra_cmd_states ==4.0.0
     - chandra_maneuver ==4.0.0
-    - chandra_time ==4.1.1
-    - chandra_aca ==4.38.1
+    - chandra_time ==4.1.2
+    - chandra_aca ==4.38.2
     - cheta ==4.58.0
     - cxotime ==3.4.0
     - find_attitude ==3.4.3
     - fot-matlab ==2.1.1
-    - hopper ==4.5.3
+    - hopper ==4.5.4
     - jobwatch ==0.10.1
-    - kadi ==7.2.1
+    - kadi ==7.2.2
     - kalman_watch ==0.2.0
     - maude ==3.11.1
-    - mica ==4.31.1
+    - mica ==4.31.2
     - parse_cm ==3.9.1
     - perigee_health_plots ==0.3.2
-    - proseco ==5.8.0
+    - proseco ==5.8.1
     - pyyaks ==4.5.0
     - quaternion ==4.1.1
     - ska-sphinx-theme ==1.3.0
-    - ska_arc5gl ==4.0.0
+    - ska_arc5gl ==4.0.1
     - ska_astro ==4.0.0
     - ska_dbi ==5.0.0
     - ska_file ==4.0.0
@@ -61,5 +61,5 @@ requirements:
     - skare3_tools ==1.0.9
     - sparkles ==4.21.0
     - starcheck ==14.0.2
-    - testr ==4.11.1
+    - testr ==4.11.2
     - xija ==4.29.3
