@@ -22,7 +22,7 @@ requirements:
     - backstop_history ==3.1.1
     - chandra_cmd_states ==4.0.0
     - chandra_maneuver ==4.0.0
-    - chandra_time ==4.1.2
+    - chandra_time ==4.1.1
     - chandra_aca ==4.38.2
     - cheta ==4.58.0
     - cxotime ==3.4.0
