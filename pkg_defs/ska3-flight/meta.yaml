@@ -46,7 +46,7 @@ requirements:
     - ska_file ==4.0.0
     - ska_ftp ==4.0.0
     - ska_matplotlib ==4.0.0
-    - ska_numpy ==4.0.0
+    - ska_numpy ==4.0.1
     - ska_parsecm ==4.0.0
     - ska_quatutil ==4.0.0
     - ska_report_ranges ==0.5.0
@@ -61,5 +61,5 @@ requirements:
     - skare3_tools ==1.0.9
     - sparkles ==4.21.0
     - starcheck ==14.0.2
-    - testr ==4.11.2
+    - testr ==4.11.3
     - xija ==4.29.3
