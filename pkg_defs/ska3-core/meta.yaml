@@ -174,7 +174,7 @@ requirements:
     - libclang ==15.0.7  # [linux or win]
     - libclang13 ==15.0.7  # [linux or win]
     - libcups ==2.3.3  # [linux]
-    - libcurl ==7.87.0
+    - libcurl ==7.88.1
     - libcxx ==14.0.6  # [osx]
     - libdb ==6.2.32  # [linux]
     - libdeflate ==1.17
@@ -200,8 +200,8 @@ requirements:
     - libllvm13 ==13.0.1  # [osx]
     - libllvm14 ==14.0.6  # [osx]
     - libllvm15 ==15.0.7  # [linux]
-    - libmamba ==1.2.0
-    - libmambapy ==1.2.0
+    - libmamba ==1.3.1
+    - libmambapy ==1.3.1
     - libnghttp2 ==1.51.0  # [linux or osx]
     - libnsl ==2.0.0  # [linux]
     - libogg ==1.3.4
@@ -241,7 +241,7 @@ requirements:
     - m2w64-gcc-libs-core ==5.3.0  # [win]
     - m2w64-gmp ==6.1.0  # [win]
     - m2w64-libwinpthread-git ==5.0.0.4634.697f757  # [win]
-    - mamba ==1.2.0
+    - mamba ==1.3.1
     - markupsafe ==2.1.2
     - mathjax ==2.7.7
     - matplotlib ==3.6.3
@@ -288,7 +288,7 @@ requirements:
     - oauthlib ==3.2.2
     - openjpeg ==2.5.0
     - openpyxl ==3.0.10
-    - openssl ==3.0.7
+    - openssl ==3.0.8
     - packaging ==23.0
     - pandas ==1.5.3
     - pandoc ==2.19.2
