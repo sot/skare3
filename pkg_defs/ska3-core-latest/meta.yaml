@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2022.2
+  version: 2023.1
 
 requirements:
   run:
@@ -16,6 +16,7 @@ requirements:
    - cloudpickle # [win]
    - conda
    - conda-build
+   - coverage
    - cython
    - docxtpl
    - django
@@ -54,8 +55,10 @@ requirements:
    - pylint
    - plotly
    - ply
+   - pytest-timeout
    - python-kaleido
    - python-docx
+   - pyqt
    - pyqtgraph
    - pyyaml
    - qt
@@ -63,6 +66,7 @@ requirements:
    - requests
    - rope
    - runipy # [win]
+   - ruff
    - scikit-learn
    - scipy
    - setuptools
