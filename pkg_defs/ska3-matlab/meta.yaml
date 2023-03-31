@@ -27,7 +27,7 @@ requirements:
     - cheta ==4.58.0
     - cxotime ==3.4.0
     - find_attitude ==3.4.3
-    - fot-matlab ==2.1.1
+    - fot-matlab ==2.2.0
     - hopper ==4.5.4
     - jobwatch ==0.10.1
     - kadi ==7.3.0
