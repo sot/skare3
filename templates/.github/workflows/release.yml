@@ -1,0 +1,11 @@
+name: Release
+on:
+  release:
+    types:
+      - released
+
+jobs:
+  release:
+    uses: sot/skare3/.github/workflows/package_release.yml@master
+    secrets:
+      SKARE3_CI_API_TOKEN: ${{ secrets.SKARE3_CI_API_TOKEN }}
