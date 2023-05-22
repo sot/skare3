@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2022.13
+  version: 2023.3
 
 build:
   noarch: generic
@@ -22,8 +22,8 @@ requirements:
     - annie
     - backstop_history
     - chandra_aca
-    - chandra.cmd_states
-    - chandra.maneuver
+    - chandra_cmd_states
+    - chandra_maneuver
     - chandra_time
     - cheta
     - cxotime
@@ -41,19 +41,19 @@ requirements:
     - pyyaks
     - quaternion
     - ska-sphinx-theme
-    - ska.arc5gl
-    - ska.astro
-    - ska.dbi
-    - ska.file
-    - ska.ftp
-    - ska.numpy
-    - ska.matplotlib
-    - ska.parsecm
-    - ska.quatutil
-    - ska.report_ranges
-    - ska.shell
+    - ska_arc5gl
+    - ska_astro
+    - ska_dbi
+    - ska_file
+    - ska_ftp
+    - ska_numpy
+    - ska_matplotlib
+    - ska_parsecm
+    - ska_quatutil
+    - ska_report_ranges
+    - ska_shell
     - ska_sun
-    - ska.tdb
+    - ska_tdb
     - ska3-template
     - ska_helpers
     - ska_path
