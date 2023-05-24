@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2023.1
+  version: 2023.3
 
 requirements:
   run:
@@ -65,7 +65,6 @@ requirements:
    - regions
    - requests
    - rope
-   - runipy # [win]
    - ruff
    - scikit-learn
    - scipy
