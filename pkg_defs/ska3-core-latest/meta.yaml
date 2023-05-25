@@ -51,7 +51,6 @@ requirements:
    - pip
    - flake8
    - pycrypto
-   - prompt-toolkit<3.0.0a0 # [win]
    - pylint
    - plotly
    - ply
