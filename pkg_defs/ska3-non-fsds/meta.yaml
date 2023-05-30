@@ -13,7 +13,9 @@ requirements:
     - aca_weekly_report
     - aimpoint_mon
     - astromon
+    - attitude_error_mon
     - annie
+    - fid_drift_mon
     - jobwatch
     - kalman_watch
     - perigee_health_plots
