@@ -1,0 +1,21 @@
+name: Conda build
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  build:
+    uses: sot/skare3/.github/workflows/package_build.yml@master
+    with:
+      noarch: true
+    secrets:
+      CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
+      CHANDRA_XRAY_TOKEN: ${{ secrets.CHANDRA_XRAY_TOKEN }}
+      token: ${{ secrets.GITHUB_TOKEN }}
+
+  upload:
+    needs: [build]
+    uses: sot/skare3/.github/workflows/package_upload.yml@master
+    with:
+      channel: masters

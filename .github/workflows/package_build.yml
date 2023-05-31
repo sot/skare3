@@ -75,7 +75,7 @@ jobs:
       with:
         miniconda-version: py39_4.12.0
         environment-file: ./skare3/build-environment.yml
-        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/prime,conda-forge
+        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight,conda-forge
     - name: Env List
       run: conda list
     - name: Build Package
