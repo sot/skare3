@@ -23,7 +23,7 @@ requirements:
     - chandra_cmd_states ==4.0.0
     - chandra_maneuver ==4.0.0
     - chandra_time ==4.1.1
-    - chandra_aca ==4.39.0
+    - chandra_aca ==4.40.0
     - cheta ==4.59.0
     - cxotime ==3.5.0
     - find_attitude ==3.4.3
