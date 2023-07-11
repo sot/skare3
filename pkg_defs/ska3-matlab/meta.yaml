@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-matlab
-  version: 2023.2
+  version: 2023.4
 
 build:
   noarch: generic
@@ -10,31 +10,31 @@ requirements:
   run:
     - aca_hi_bgd ==0.1.7
     - aca_view ==0.12.0
-    - aca_weekly_report ==0.1.7
-    - acdc ==4.9.1
+    - aca_weekly_report ==0.2.0
+    - acdc ==4.10.0
     - acis_taco ==4.2.3
     - acis_thermal_check ==4.6.0
     - acispy ==2.5.0
-    - agasc ==4.14.1
-    - aimpoint_mon ==1.1.1
+    - agasc ==4.15.0
+    - aimpoint_mon ==1.1.2
     - astromon ==1.1.1
     - annie ==0.11.2
     - backstop_history ==3.1.1
     - chandra_cmd_states ==4.0.0
     - chandra_maneuver ==4.0.0
     - chandra_time ==4.1.1
-    - chandra_aca ==4.38.3
-    - cheta ==4.58.0
-    - cxotime ==3.4.0
+    - chandra_aca ==4.40.0
+    - cheta ==4.59.0
+    - cxotime ==3.5.0
     - find_attitude ==3.4.3
     - fot-matlab ==2.2.0
     - hopper ==4.5.4
     - jobwatch ==0.10.1
-    - kadi ==7.3.0
+    - kadi ==7.4.0
     - kalman_watch ==0.2.0
     - maude ==3.11.1
-    - mica ==4.31.3
-    - parse_cm ==3.9.1
+    - mica ==4.32.0
+    - parse_cm ==3.10.0
     - perigee_health_plots ==0.3.2
     - proseco ==5.8.1
     - pyyaks ==4.5.0
@@ -51,15 +51,15 @@ requirements:
     - ska_quatutil ==4.0.0
     - ska_report_ranges ==0.5.0
     - ska_shell ==4.0.0
-    - ska_sun ==3.9.1
+    - ska_sun ==3.10.0
     - ska_tdb ==4.0.0
     - ska3-core ==2023.1
     - ska3-template ==2022.06.02
-    - ska_helpers ==0.8.0
+    - ska_helpers ==0.9.1
     - ska_path ==3.1.2
     - ska_sync ==4.10.1
     - skare3_tools ==1.0.9
-    - sparkles ==4.21.0
-    - starcheck ==14.0.2
+    - sparkles ==4.22.1
+    - starcheck ==14.0.3
     - testr ==4.11.3
-    - xija ==4.29.3
+    - xija ==4.30.0
