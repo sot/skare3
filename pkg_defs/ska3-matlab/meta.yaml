@@ -53,7 +53,7 @@ requirements:
     - ska_shell ==4.0.1
     - ska_sun ==3.10.1
     - ska_tdb ==4.0.0
-    - ska3-core ==2023.3
+    - ska3-core ==2023.5
     - ska3-template ==2022.06.02
     - ska_helpers ==0.10.2
     - ska_path ==3.1.2
