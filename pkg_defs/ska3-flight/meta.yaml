@@ -11,7 +11,7 @@ requirements:
     - aca_hi_bgd ==0.1.7
     - aca_view ==0.12.0
     - aca_weekly_report ==0.2.0
-    - acdc ==4.10.0
+    - acdc ==4.10.1
     - acis_taco ==4.2.3
     - acis_thermal_check ==4.6.0
     - acispy ==2.5.0
@@ -25,15 +25,15 @@ requirements:
     - chandra_time ==4.1.2
     - chandra_aca ==4.41.0
     - cheta ==4.59.0
-    - cxotime ==3.5.0
+    - cxotime ==3.6.0
     - find_attitude ==3.4.3
     - fot-matlab ==2.2.0
     - hopper ==4.5.4
     - jobwatch ==0.10.1
-    - kadi ==7.4.0
+    - kadi ==7.4.1
     - kalman_watch ==0.2.0
     - maude ==3.11.1
-    - mica ==4.32.0
+    - mica ==4.33.0
     - parse_cm ==3.10.0
     - perigee_health_plots ==0.3.2
     - proseco ==5.9.0
@@ -45,7 +45,7 @@ requirements:
     - ska_dbi ==5.0.0
     - ska_file ==4.0.0
     - ska_ftp ==4.0.0
-    - ska_matplotlib ==4.0.0
+    - ska_matplotlib ==4.0.1
     - ska_numpy ==4.0.1
     - ska_parsecm ==4.0.0
     - ska_quatutil ==4.0.0
@@ -58,8 +58,8 @@ requirements:
     - ska_helpers ==0.10.0
     - ska_path ==3.1.2
     - ska_sync ==4.10.1
-    - skare3_tools ==1.0.9
-    - sparkles ==4.22.1
+    - skare3_tools ==1.0.10
+    - sparkles ==4.22.2
     - starcheck ==14.1.0
     - testr ==4.11.3
     - xija ==4.30.0
