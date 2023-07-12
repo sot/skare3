@@ -162,6 +162,8 @@ jobs:
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
                 -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight \
                 ska3-perl
+          ln -s /proj/sot/ska3/test/data $CONDA_PREFIX/data
+          export SKA=$CONDA_PREFIX
           run_testr --root ./ska_testr --outputs-dir /export/jgonzale/ska_testr/release_tests
           skare3-test-results --stream releases --tag head /export/jgonzale/ska_testr/release_tests/logs/last
           # add test result report to PR description
