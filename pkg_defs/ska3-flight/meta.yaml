@@ -19,7 +19,7 @@ requirements:
     - aimpoint_mon ==1.1.2
     - astromon ==1.1.1
     - annie ==0.11.2
-    - backstop_history ==3.1.1
+    - backstop_history ==3.2.1
     - chandra_cmd_states ==4.0.0
     - chandra_maneuver ==4.0.0
     - chandra_time ==4.1.2
