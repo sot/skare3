@@ -430,6 +430,7 @@ requirements:
     - unicodedata2 ==15.0.0
     - urllib3 ==1.26.14
     - vc ==14.3  # [win]
+    - vc14_runtime ==14.34.31931  # [win]
     - vs2015_runtime ==14.34.31931  # [win]
     - wcwidth ==0.2.6
     - webencodings ==0.5.1
