@@ -60,6 +60,6 @@ requirements:
     - ska_sync ==4.10.1
     - skare3_tools ==1.0.10
     - sparkles ==4.22.2
-    - starcheck ==14.1.0
+    - starcheck ==14.2.1
     - testr ==4.11.3
     - xija ==4.30.0
