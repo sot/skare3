@@ -47,8 +47,8 @@ def get_opt():
                         action="store_true",
                         help="Build only architecture-specific packages")
     parser.add_argument("--python",
-                        default="3.8",
-                        help="Target version of Python (default=3.8)")
+                        default="3.10",
+                        help="Target version of Python (default=3.10)")
     parser.add_argument("--perl",
                         default="5.26.2",
                         help="Target version of Perl (default=5.26.2)")
