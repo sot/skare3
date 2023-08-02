@@ -9,15 +9,5 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-    - aca_hi_bgd
-    - aca_weekly_report
-    - aimpoint_mon
-    - astromon
-    - attitude_error_mon
-    - annie
-    - fid_drift_mon
-    - jobwatch
-    - kalman_watch
-    - perigee_health_plots
-    - ska_report_ranges
-
+    - vv_trending
+    - fss_check
