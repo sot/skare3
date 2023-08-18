@@ -2,6 +2,17 @@ channels:
   - https://icxc.cfa.harvard.edu/aspect/ska3-conda/flight
 dependencies:
   - attitude_error_mon
+  - aca_hi_bgd
+  - aca_weekly_report
+  - acdc
+  - acis_taco
+  - aimpoint_mon
+  - astromon
+  - annie
   - fss_check
+  - jobwatch
+  - kalman_watch
+  - perigee_health_plots
+  - ska_report_ranges
   - vv_trending
   - twiki-wg
