@@ -30,6 +30,7 @@ requirements:
     - proseco
     - pyyaks
     - quaternion
+    - ska-sphinx-theme
     - ska_arc5gl
     - ska_astro
     - ska_dbi
