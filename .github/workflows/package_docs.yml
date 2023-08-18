@@ -8,7 +8,9 @@ on:
         type: string
         default: ${{ github.action_repository }}
     secrets:
-      CHANDRA_XRAY_TOKEN:
+      # This is the token used to push to the gh-pages branch
+      # It is a personal access token with the repo scope
+      token:
         required: true
 
 jobs:
@@ -16,22 +18,14 @@ jobs:
     runs-on: head
     name: Deploy Docs
     steps:
-      - name: Fetch gh-pages
-        uses: actions/checkout@v2
-        with:
-          repository: ${{ inputs.repository }}
-          path: gh-pages
-          ref: gh-pages
       - name: Fetch source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: ${{ inputs.repository }}
           path: source
           # this is so git fetches all metadata required by setuptools_scm to get the version
           fetch-depth: 0
-      - name: clear
-        run: rm -fr gh-pages/docs/*
-      - name: build
+      - name: Build docs
         run: |
           eval "$(/export/jgonzale/github-workflows/miniconda3-shiny/bin/conda shell.bash hook)"
           conda activate ska3-masters
@@ -40,18 +34,24 @@ jobs:
         working-directory: source/docs
         env:
           PYTHONPATH: ${{ github.workspace }}/source
-          GITHUB_API_TOKEN: ${{ secrets.CHANDRA_XRAY_TOKEN }}
+          GITHUB_API_TOKEN: ${{ secrets.token }}
           SKA: /proj/sot/ska
-      - name: copy
-        run: cp -fr source/docs/_build/html/* gh-pages/docs
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v4
+      - name: Fetch gh-pages
+        uses: actions/checkout@v3
         with:
-          ref: "gh-pages"
-          cwd: "gh-pages"
-          author_name: Javier Gonzalez
-          author_email: javierggt@yahoo.com
-          message: "Deploy docs"
-          add: "docs"
-        env:
-          GITHUB_TOKEN: ${{ secrets.CHANDRA_XRAY_TOKEN }}
+          repository: ${{ inputs.repository }}
+          path: gh-pages
+          ref: gh-pages
+          token: ${{ secrets.token }}
+      - name: Replace docs
+        run: |
+          rm -fr gh-pages/docs/*
+          cp -fr source/docs/_build/html/* gh-pages/docs
+      - name: Commit changes
+        run: |
+          git config --global user.name 'Javier Gonzalez'
+          git config --global user.email 'javierggt@yahoo.com'
+          git add docs
+          git commit -am "Deploy docs"
+          git push
+        working-directory: gh-pages
