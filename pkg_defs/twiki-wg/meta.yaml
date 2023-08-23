@@ -23,7 +23,6 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - bs4
     - requests
     - ska_ftp
     - cxotime
