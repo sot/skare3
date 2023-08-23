@@ -1,5 +1,7 @@
 channels:
-  - https://icxc.cfa.harvard.edu/aspect/ska3-conda/test
+  - https://icxc.cfa.harvard.edu/aspect/ska3-conda/flight
 dependencies:
+  - attitude_error_mon
   - fss_check
   - vv_trending
+  - twiki-wg
