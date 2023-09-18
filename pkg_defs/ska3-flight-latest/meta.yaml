@@ -9,17 +9,10 @@ requirements:
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
-    - aca_hi_bgd
     - aca_view
-    - aca_weekly_report
-    - acdc
-    - acis_taco
     - acis_thermal_check
     - acispy
     - agasc
-    - aimpoint_mon
-    - astromon
-    - annie
     - backstop_history
     - chandra_aca
     - chandra_cmd_states
@@ -30,13 +23,10 @@ requirements:
     - find_attitude
     - fot-matlab
     - hopper
-    - jobwatch
     - kadi
-    - kalman_watch
     - maude
     - mica
     - parse_cm
-    - perigee_health_plots
     - proseco
     - pyyaks
     - quaternion
@@ -50,7 +40,6 @@ requirements:
     - ska_matplotlib
     - ska_parsecm
     - ska_quatutil
-    - ska_report_ranges
     - ska_shell
     - ska_sun
     - ska_tdb
