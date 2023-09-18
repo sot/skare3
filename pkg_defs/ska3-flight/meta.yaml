@@ -8,25 +8,25 @@ build:
 
 requirements:
   run:
-    - aca_view ==0.12.0
-    - acis_thermal_check ==4.6.0
+    - aca_view ==0.13.0
+    - acis_thermal_check ==4.7.0
     - acispy ==2.5.0
-    - agasc ==4.15.0
+    - agasc ==4.16.0
     - backstop_history ==3.2.1
     - chandra_cmd_states ==4.0.0
     - chandra_limits ==0.5.0
     - chandra_maneuver ==4.0.0
     - chandra_time ==4.1.2
-    - chandra_aca ==4.41.0
-    - cheta ==4.59.0
+    - chandra_aca ==4.42.0
+    - cheta ==4.60.0
     - cxotime ==3.6.0
     - find_attitude ==3.4.3
     - fot-matlab ==2.3.0
     - hopper ==4.5.4
-    - kadi ==7.5.0
+    - kadi ==7.6.0
     - maude ==3.11.1
-    - mica ==4.33.0
-    - parse_cm ==3.11.0
+    - mica ==4.33.1
+    - parse_cm ==3.12.0
     - proseco ==5.10.0
     - pyyaks ==4.5.0
     - quaternion ==4.1.1
@@ -41,15 +41,15 @@ requirements:
     - ska_parsecm ==4.0.0
     - ska_quatutil ==4.0.0
     - ska_shell ==4.0.1
-    - ska_sun ==3.10.1
+    - ska_sun ==3.11.0
     - ska_tdb ==4.0.0
     - ska3-core ==2023.3
     - ska3-template ==2022.06.02
     - ska_helpers ==0.11.0
     - ska_path ==3.1.2
     - ska_sync ==4.11.0
-    - skare3_tools ==1.0.10
+    - skare3_tools ==1.1.0
     - sparkles ==4.23.0
-    - starcheck ==14.3.0
+    - starcheck ==14.4.0
     - testr ==4.12.0
     - xija ==4.31.0
