@@ -16,6 +16,7 @@ requirements:
     - backstop_history
     - chandra_aca
     - chandra_cmd_states
+    - chandra_limits
     - chandra_maneuver
     - chandra_time
     - cheta
