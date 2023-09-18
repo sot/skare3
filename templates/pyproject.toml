@@ -18,3 +18,11 @@ exclude = '''
 
 [tool.isort]
 profile = "black"
+
+[tool.pyright]
+ignore = [
+    "**/node_modules",
+    "**/__pycache__",
+    "**/*.ipynb",
+    ".git"
+]
