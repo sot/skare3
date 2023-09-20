@@ -10,6 +10,7 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - aca_view
+    - acis_taco
     - acis_thermal_check
     - acispy
     - agasc

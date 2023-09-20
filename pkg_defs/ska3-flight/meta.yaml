@@ -9,6 +9,7 @@ build:
 requirements:
   run:
     - aca_view ==0.13.0
+    - acis_taco ==4.2.3
     - acis_thermal_check ==4.7.0
     - acispy ==2.5.0
     - agasc ==4.16.0
