@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2023.3
+  version: 2023.7
 
 build:
   noarch: generic
@@ -10,12 +10,14 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - aca_view
+    - acis_taco
     - acis_thermal_check
     - acispy
     - agasc
     - backstop_history
     - chandra_aca
     - chandra_cmd_states
+    - chandra_limits
     - chandra_maneuver
     - chandra_time
     - cheta
