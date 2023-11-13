@@ -43,9 +43,8 @@ ignore = [
   "PLR0911", # Too many returns
   "PLR0912", # Too many branches
   "PLR0913", # Too many arguments to function call
-  "PLR2004", # Magic number
-  "PYI021", # Docstrings should not be included in stubs
   "PLR0915", # Too many statements
+  "PLR2004", # Magic number
 ]
 
 # TODO : fix these and stop ignoring. Commented out ones are common and OK to except.
@@ -69,3 +68,4 @@ max-line-length = 100 # E501 reports lines that exceed the length of 100.
 
 [lint.extend-per-file-ignores]
 "__init__.py" = ["E402", "F401", "F403"]
+"**/tests/test_*.py" = ["D205"]  # Don't worry about test docstrings
