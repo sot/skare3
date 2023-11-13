@@ -23,6 +23,16 @@ select = [
   "PGH" # pygrep-hooks
 ]
 
+# Some additional rules that are useful
+extend-select = [
+"UP009",  # UTF-8 encoding declaration is unnecessary
+"SIM118",  # Use `key in dict` instead of `key in dict.keys()`
+"D205",  # One blank line required between summary line and description
+"ARG001",  # Unused function argument
+"RSE102",  # Unnecessary parentheses on raised exception
+"PERF401",  # Use a list comprehension to create a transformed list
+]
+
 ignore = [
   "ISC001", # Disable this for compatibility with ruff format
   "B028", # No explicit `stacklevel` keyword argument found
