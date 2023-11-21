@@ -16,7 +16,7 @@ requirements:
     - backstop_history ==3.2.1
     - chandra_cmd_states ==4.0.0
     - chandra_limits ==0.5.0
-    - chandra_maneuver == 4.1.0
+    - chandra_maneuver ==4.1.0
     - chandra_time ==4.1.2
     - chandra_aca ==4.43.0
     - cheta ==4.60.0
@@ -24,9 +24,9 @@ requirements:
     - find_attitude ==3.4.3
     - fot-matlab ==2.3.0
     - hopper ==4.6.0
-    - kadi == 7.7.0
+    - kadi ==7.7.0
     - maude ==3.11.1
-    - mica == 4.34.0
+    - mica ==4.34.0
     - parse_cm ==3.13.0
     - proseco ==5.11.0
     - pyyaks ==4.5.0
@@ -50,7 +50,7 @@ requirements:
     - ska_path ==3.1.2
     - ska_sync ==4.11.0
     - skare3_tools ==1.1.0
-    - sparkles == 4.24.1
+    - sparkles ==4.24.1
     - starcheck ==14.6.0
     - testr ==4.12.0
     - xija ==4.31.0
