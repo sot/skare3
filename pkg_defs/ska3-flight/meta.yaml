@@ -18,7 +18,7 @@ requirements:
     - chandra_limits ==0.5.0
     - chandra_maneuver ==4.1.0
     - chandra_time ==4.1.2
-    - chandra_aca ==4.43.0
+    - chandra_aca ==4.44.0
     - cheta ==4.60.0
     - cxotime ==3.7.0
     - find_attitude ==3.4.3
