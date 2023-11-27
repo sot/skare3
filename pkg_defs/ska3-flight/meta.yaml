@@ -24,7 +24,7 @@ requirements:
     - find_attitude ==3.4.3
     - fot-matlab ==2.3.0
     - hopper ==4.6.0
-    - kadi ==7.7.0
+    - kadi ==7.7.1
     - maude ==3.11.1
     - mica ==4.34.0
     - parse_cm ==3.13.0
