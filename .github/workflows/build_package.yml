@@ -1,23 +1,132 @@
 name: Build Ska Package
 
+# This workflow builds a Ska package and optionally uploads it to a ska3-conda channel.
+
+# It takes the following arguments:
+#
+#   - package: the name of the package to build
+#   - tag: the tag to use for the package
+#   - arch: whether to build it for all architectures or as noarch (default is false)
+#   - upload: whether to upload the package to the ska3-conda channel (default is false)
+#   - python_version: the python version to use for the build (default is 3.11)
+#   - numpy_version: the numpy version to use for the build (default is 1.26.2)
+#   - channel_in: the channel to use for the build environment (default is flight).
+#     This channel gets passed to package_build workflow, which also adds conda-forge
+#   - channel_out: the channel to upload the package to (default is test)
+#   - skare3_branch: the branch of skare3 to use for the build (default is master)
+#
+# You call it like this:
+#     from skare3_tools import github
+#     repo = github.Repository("sot/skare3")
+#     repo.dispatch_event(
+#         "build-package",
+#         client_payload={
+#             "package": "sot/ska_helpers",
+#             "tag": '0.13.0',
+#             "arch": False,
+#             "upload": True
+#         }
+#     )
+
 on:
   repository_dispatch:
     types:
       - build-package
 
 jobs:
+  # this job checks the arguments, sets defaults, and writes a summary
+  arguments:
+    runs-on: ubuntu-latest
+    outputs:
+      # this section is needed so later jobs can use the arguments
+      # as ${{ steps.arguments.outputs.<variable name> }}
+      package: ${{ steps.arguments.outputs.package }}
+      tag: ${{ steps.arguments.outputs.tag }}
+      arch: ${{ steps.arguments.outputs.arch }}
+      upload: ${{ steps.arguments.outputs.upload }}
+      python_version: ${{ steps.arguments.outputs.python_version }}
+      numpy_version: ${{ steps.arguments.outputs.numpy_version }}
+      channel_in: ${{ steps.arguments.outputs.channel_in }}
+      channel_out: ${{ steps.arguments.outputs.channel_out }}
+      skare3_branch: ${{ steps.arguments.outputs.skare3_branch }}
+    steps:
+    - name: Check arguments
+      id: arguments
+      run: |
+        MISSING=""
+        set_default() {
+          if [[ -z "$2" ]]; then
+            echo "Setting default value for $1"
+            echo "$1=$3" >> $GITHUB_OUTPUT
+          else
+            echo "$1=$2" >> $GITHUB_OUTPUT
+          fi
+        }
+        require () {
+          if [[ -z "$2" ]]; then
+            echo "Required value $1 not given"
+            MISSING="$MISSING $1"
+          else
+            echo "$1=$2" >> $GITHUB_OUTPUT
+          fi
+        }
+        set_boolean_default() {
+          if [[ -z "$2" ]]; then
+            echo "Setting default value for $1"
+            echo "$1=$3" >> $GITHUB_OUTPUT
+          elif [[ "$2" == "true" || "$2" == "True" ]]; then
+            echo "$1=true" >> $GITHUB_OUTPUT
+          else
+            echo "$1=false" >> $GITHUB_OUTPUT
+          fi
+        }
+        require package ${{ github.event.client_payload.package }}
+        require tag ${{ github.event.client_payload.tag }}
+        set_boolean_default arch "${{ github.event.client_payload.arch }}" false
+        set_boolean_default upload "${{ github.event.client_payload.upload }}" false
+        set_default python_version "${{ github.event.client_payload.python_version }}" 3.11
+        set_default numpy_version "${{ github.event.client_payload.numpy_version }}" 1.26.2
+        set_default channel_in "${{ github.event.client_payload.channel_in }}" "flight"
+        set_default channel_out "${{ github.event.client_payload.channel_out }}" "test"
+        set_default skare3_branch "${{ github.event.client_payload.skare3_branch }}" "master"
+        if [ "${{ github.event.client_payload.upload }}" == "" ]; then echo upload is not given; fi
+        if [ "${{ github.event.client_payload.upload }}" == "false" ]; then echo upload is false; fi
+        if [ "${{ github.event.client_payload.upload }}" == "False" ]; then echo upload is False; fi
+        if [[ ! -z $MISSING ]]; then echo "::warning:: Missing parameters: $MISSING"; exit 1; fi
+    - name: Add summary
+      run: |
+        echo "## Payload Arguments" >> $GITHUB_STEP_SUMMARY
+        echo "- Package: ${{ steps.arguments.outputs.package }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Tag: ${{ steps.arguments.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Arch: ${{ steps.arguments.outputs.arch }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Upload: ${{ steps.arguments.outputs.upload }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Skare3 branch: ${{ steps.arguments.outputs.skare3_branch }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Python version: ${{ steps.arguments.outputs.python_version }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Numpy version: ${{ steps.arguments.outputs.numpy_version }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Input channel: ${{ steps.arguments.outputs.channel_in }}" >> $GITHUB_STEP_SUMMARY
+        echo "- Output channel: ${{ steps.arguments.outputs.channel_out }}" >> $GITHUB_STEP_SUMMARY
   build:
+    # This steps does the actual building
+    needs: arguments  # this job needs the arguments job because it uses the outputs
     uses: sot/skare3/.github/workflows/package_build.yml@master
     with:
       repository: ${{ github.event.client_payload.package }}
       tag: ${{ github.event.client_payload.tag }}
-      noarch: ${{ !github.event.client_payload.arch }}
+      noarch: ${{ !github.event.client_payload.arch && (github.event.client_payload.arch != 'true') && (github.event.client_payload.arch != 'True')}}
+      python_version: ${{ needs.arguments.outputs.python_version }}
+      numpy_version: ${{ needs.arguments.outputs.numpy_version }}
+      skare3_branch: ${{ needs.arguments.outputs.skare3_branch }}
+      # the following channel in ska3-conda is used to create the build environment
+      channel: ${{ needs.arguments.outputs.channel_in }}
     secrets:
       CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
       CHANDRA_XRAY_TOKEN: ${{ secrets.CHANDRA_XRAY_TOKEN }}
       token: ${{ secrets.GITHUB_TOKEN }}
 
   upload:
-    if: ${{ github.event.client_payload.upload }}
-    needs: [build]
+    if: ${{ github.event.client_payload.upload == 'true' }}
+    needs: [build, arguments]  # this job needs the arguments job because it uses the outputs
     uses: sot/skare3/.github/workflows/package_upload.yml@master
+    with:
+      # this is the destination ska3-conda channel
+      channel: ${{ needs.arguments.outputs.channel_out }}

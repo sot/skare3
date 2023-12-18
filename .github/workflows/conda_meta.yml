@@ -14,11 +14,14 @@ jobs:
       matrix:
         os: ["ubuntu", "macos", "windows"]
     steps:
-      - uses: sot/setup-miniconda@v2
+      - name: Setup Conda Environment
+        uses: conda-incubator/setup-miniconda@v3
         with:
-          miniconda-version: "py39_4.12.0"
-          python-version: "3.9"
-          channels: defaults,conda-forge,https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
+          auto-update-conda: true
+          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+          python-version: ${{ github.event.client_payload.python_version }}
+          activate-environment: conda-build
+          channels: conda-forge,https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }}
       - name: Checkout Skare3
         uses: actions/checkout@v2
         with:
@@ -29,7 +32,7 @@ jobs:
         shell: bash -l -e {0}
         run: |
           conda info
-          conda env update -f skare3/pkg_defs/ska3-core-latest/environment.yml
+          conda env update -f skare3/pkg_defs/ska3-core-latest/base_environment.yml
           python ./skare3/pkg_defs/ska3-core-latest/install_from_scratch.py
           conda list --json > ska3-core-${ARCH}.json
       - name: ska3-flight

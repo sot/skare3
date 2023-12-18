@@ -22,7 +22,7 @@ jobs:
     name: Patch Release
     steps:
     - name: Fetch Skare3 Tools
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
       with:
         repository: sot/skare3_tools
         ref: master
