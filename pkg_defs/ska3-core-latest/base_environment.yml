@@ -1,7 +1,7 @@
 channels:
   - conda-forge
 dependencies:
-  - python=3.10
+  - python=3.11
   - libblas=*=*mkl  # on conda-forge, libblas uses open_blas by default
   - conda-forge::libarchive  # libarchive from defaults is not good for mamba
   - mamba
