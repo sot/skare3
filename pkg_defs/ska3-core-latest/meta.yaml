@@ -50,7 +50,6 @@ requirements:
    - pillow
    - pip
    - flake8
-   - pycrypto
    - pylint
    - plotly
    - ply
