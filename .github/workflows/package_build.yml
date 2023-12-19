@@ -144,6 +144,14 @@ jobs:
       if: ${{ ((steps.conda_cache.outputs.cache-hit != 'true') && (steps.conda_cache_win.outputs.cache-hit != 'true')) && ((matrix.os == 'ubuntu-latest') || !inputs.noarch) }}
       run:
         conda env update -n conda-build -f ./skare3/build-environment.yml
+    - name: Install ska_helpers
+      if: ${{ ((steps.conda_cache.outputs.cache-hit != 'true') && (steps.conda_cache_win.outputs.cache-hit != 'true')) && ((matrix.os == 'ubuntu-latest') || !inputs.noarch) }}
+      run: |
+        conda search ska_helpers
+        err=$?
+        if [ !$err ]
+        then ${CONDA_EXE} install ska_helpers
+        fi
     - name: Env List
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       run: conda list
