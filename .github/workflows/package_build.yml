@@ -37,6 +37,11 @@ on:
         required: false
         type: string
         default: master
+      channel:
+        description: Ska Conda channel
+        required: false
+        type: string
+        default: flight
     secrets:
       CONDA_PASSWORD:
         required: true
@@ -59,32 +64,94 @@ jobs:
     steps:
     - name: Fetch
       uses: actions/checkout@v2
+    - name: Show Inputs
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
+      run: |
+        echo OS: ${{ matrix.os }}
+        echo repository: \'${{ inputs.repository }}\'
+        echo tag: \'${{ inputs.tag }}\'
+        echo noarch: \'${{ inputs.noarch }}\'
+        echo python_version: \'${{ inputs.python_version }}\'
+        echo numpy_version: \'${{ inputs.numpy_version }}\'
+        echo miniconda_version: \'${{ inputs.miniconda_version }}\'
+        echo skare3_branch: \'${{ inputs.skare3_branch }}\'
     - name: Fetch Skare3
       uses: actions/checkout@v2
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       with:
         repository: sot/skare3
         ref: ${{ inputs.skare3_branch }}
         path: skare3
     - name: Fetch Skare3-tools
       uses: actions/checkout@v2
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       with:
         repository: sot/skare3_tools
         ref: master
         path: skare3_tools
-    - uses: conda-incubator/setup-miniconda@v3
+    - name: Cache Conda Packages
+      uses: actions/cache@v3
+      env:
+        # Increase this value to reset cache if etc/example-environment.yml has not changed
+        CACHE_NUMBER: 0
+      with:
+        path: ~/conda_pkgs_dir
+        key:
+          conda-build-pkgs-${{ runner.os }}-${{hashFiles('./skare3/build-environment.yml') }}-${{ env.CACHE_NUMBER }}
+    - name: Setup Conda Environment
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
+      uses: conda-incubator/setup-miniconda@v3
       with:
         # mamba-version: "*"
         auto-update-conda: true
         use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
         python-version: ${{ inputs.python_version }}
-        environment-file: ./skare3/build-environment.yml
-        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight,conda-forge
+        activate-environment: conda-build
+        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }},conda-forge
+    #- name: Debug
+    #  if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
+    #  run: |
+    #    env
+    #    echo $CONDA_EXE info --envs
+    #    $CONDA_EXE info --envs
+    - name: Cache Conda Environment
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
+      uses: actions/cache@v3
+      with:
+        # it seems that env.CONDA is not available, so I am caching the directories for windows and
+        # linux (only one will succeed)
+        # path: ${{ env.CONDA }}/envs
+        path: /c/Miniconda/envs
+        key:
+          conda-build-${{ runner.os }}--${{ runner.arch }}--${{ hashFiles('./skare3/build-environment.yml') }}-${{ env.CACHE_NUMBER }}
+      env:
+        # Increase this value to reset cache if etc/example-environment.yml has not changed
+        CACHE_NUMBER: 0
+      id: conda_cache
+    - name: Cache Conda Environment
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
+      uses: actions/cache@v3
+      with:
+        # path: ${{ env.CONDA }}/envs
+        path: /usr/share/miniconda/envs
+        key:
+          conda-build-${{ runner.os }}--${{ runner.arch }}--${{ hashFiles('./skare3/build-environment.yml') }}-${{ env.CACHE_NUMBER }}
+      env:
+        # Increase this value to reset cache if etc/example-environment.yml has not changed
+        CACHE_NUMBER: 0
+      id: conda_cache_win
+    - name: Update Conda Environment
+      if: ${{ ((steps.conda_cache.outputs.cache-hit != 'true') && (steps.conda_cache_win.outputs.cache-hit != 'true')) && ((matrix.os == 'ubuntu-latest') || !inputs.noarch) }}
+      run:
+        conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Env List
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       run: conda list
     - name: Build Package
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       run: |
         arch_arg=`if [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then echo; else echo '--arch-specific'; fi`
-        python skare3_tools/actions/build/files/build.py $arch_arg ${{ inputs.repository }} --tag ${{ inputs.tag }} --python ${{ inputs.python_version }} --numpy ${{ inputs.numpy_version }} --skare3-branch ${{ inputs.skare3_branch }}
+        python skare3_tools/actions/build/files/build.py $arch_arg ${{ inputs.repository }} --tag ${{ inputs.tag }} --python ${{ inputs.python_version }} --numpy ${{ inputs.numpy_version }} --skare3-branch ${{ inputs.skare3_branch }} -c https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }}
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
@@ -92,6 +159,7 @@ jobs:
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
     - name: Save package
       uses: actions/upload-artifact@v2.2.4
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       with:
         name: conda-package
         path: |
