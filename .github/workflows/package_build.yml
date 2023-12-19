@@ -71,9 +71,12 @@ jobs:
         repository: sot/skare3_tools
         ref: master
         path: skare3_tools
-    - uses: sot/setup-miniconda@v2
+    - uses: conda-incubator/setup-miniconda@v3
       with:
-        miniconda-version: py39_4.12.0
+        # mamba-version: "*"
+        auto-update-conda: true
+        use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+        python-version: ${{ inputs.python_version }}
         environment-file: ./skare3/build-environment.yml
         channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight,conda-forge
     - name: Env List
