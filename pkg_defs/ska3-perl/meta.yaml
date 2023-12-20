@@ -10,8 +10,6 @@ requirements:
   run:
     - _sysroot_linux-64_curr_repodata_hack ==3  # [linux]
     - blas ==1.0  # [linux]
-    - ca-certificates ==2022.12.7
-    - certifi ==2022.12.7
     - cfitsio ==4.2.0  # [linux]
     - expat ==2.5.0  # [osx]
     - gsl ==2.7  # [linux]
