@@ -60,7 +60,7 @@ def get_opt():
                         "except on Windows")
     parser.add_argument("--repo-url",
                         help="Use this URL instead of meta['about']['home']")
-    parser.add_argument("--channel", "-c", help="channel", action="append")
+    parser.add_argument("--channel", "-c", help="channel", action="append", default=[])
     parser.add_argument("--override-channels", action="store_true", default=False)
     parser.add_argument('--ska3-overwrite-version',
                         metavar='[<initial-version>:]<final-version>',
