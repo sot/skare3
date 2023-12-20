@@ -8,7 +8,6 @@ import logging
 assert "CONDA_PASSWORD" in os.environ, "CONDA_PASSWORD environmental variable is not defined"
 
 CHANNELS = [
-    'defaults',
     'conda-forge',
     f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight'
 ]
@@ -37,7 +36,7 @@ PLATFORM_OPTIONS = {
 
 def install_pkgs(pkgs):
     channels = sum([['-c', c] for c in pkgs['channels']], [])
-    cmd = ['mamba', 'install', '-y'] + pkgs['options'] + channels + pkgs['packages']
+    cmd = ['mamba', 'install', '-y', '--override-channels'] + pkgs['options'] + channels + pkgs['packages']
     logging.info(' '.join(cmd))
     subprocess.run(cmd)
 
