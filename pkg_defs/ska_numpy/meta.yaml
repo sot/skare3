@@ -18,7 +18,7 @@ requirements:
     - gcc_linux-64 # [linux]
     - libgcc-ng  # [linux]
     - clang_osx-64 # [osx]
-    - python==3.10
+    - python
     - numpy
     - setuptools
     - setuptools_scm
