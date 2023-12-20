@@ -152,6 +152,11 @@ jobs:
         if [ !$err ]
         then ${CONDA_EXE} install ska_helpers
         fi
+        conda search testr
+        err=$?
+        if [ !$err ]
+        then ${CONDA_EXE} install testr
+        fi
     - name: Env List
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       run: conda list
