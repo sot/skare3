@@ -30,7 +30,7 @@ requirements:
     - babel ==2.14.0
     - backports ==1.0
     - backports.zoneinfo ==0.2.1
-    - bcrypt ==3.2.0
+    - bcrypt ==4.1.2
     - beautifulsoup4 ==4.12.2
     - black ==23.11.0
     - bleach ==6.1.0
@@ -44,7 +44,7 @@ requirements:
     - bzip2 ==1.0.8
     - c-ares ==1.24.0  # [linux or osx]
     - c-blosc2 ==2.11.3
-    - ca-certificates ==2023.12.12
+    - ca-certificates ==2023.11.17
     - cached-property ==1.5.2
     - cached_property ==1.5.2
     - cairo ==1.18.0  # [linux]
@@ -65,7 +65,7 @@ requirements:
     - conda-libmamba-solver ==23.12.0
     - conda-package-handling ==2.2.0
     - conda-package-streaming ==0.9.0
-    - configobj ==5.0.6
+    - configobj ==5.0.8
     - contourpy ==1.2.0
     - coverage ==7.3.3
     - cryptography ==41.0.7
@@ -125,7 +125,7 @@ requirements:
     - intel-openmp ==2023.2.0  # [win]
     - ipykernel ==6.26.0
     - ipympl ==0.9.3
-    - ipyparallel ==8.4.1
+    - ipyparallel ==8.6.1
     - ipython ==8.18.1
     - ipython_genutils ==0.2.0
     - ipywidgets ==8.1.1
@@ -289,7 +289,7 @@ requirements:
     - pandas ==2.1.4
     - pandoc ==3.1.3
     - pandocfilters ==1.5.0
-    - paramiko ==2.8.1
+    - paramiko ==3.4.0
     - parso ==0.8.3
     - patch ==2.7.6  # [linux or osx]
     - patchelf ==0.17.2  # [linux]
@@ -356,7 +356,7 @@ requirements:
     - qt ==5.15.8
     - qt-main ==5.15.8
     - qt-webengine ==5.15.8
-    - qtconsole ==5.5.0
+    - qtconsole ==5.5.1
     - qtconsole-base ==5.5.1
     - qtpy ==2.4.1
     - readline ==8.2  # [linux or osx]
