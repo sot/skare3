@@ -18,6 +18,7 @@ requirements:
     - {{ compiler('cxx') }}
   host:
     - python
+    - cython
     - numpy
     - setuptools
     - setuptools_scm
