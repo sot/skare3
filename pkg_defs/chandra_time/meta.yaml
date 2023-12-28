@@ -3,7 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script: {{PYTHON}} setup.py install --single-version-externally-managed --record=record.txt
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/chandra_time
@@ -14,14 +14,13 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - gxx_linux-64 # [linux]
-    - libgcc-ng  # [linux]
-    - clangxx_osx-64 # [osx]
+    - {{ compiler('cxx') }}
+  host:
     - python
+    - cython
     - setuptools
     - setuptools_scm
     - setuptools_scm_git_archive
-    - cython
     - ska_helpers
     - testr
   # Packages required to run the package. These are the dependencies that
