@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2023.3
+  version: 2024.0
 
 requirements:
   run:
@@ -35,7 +35,7 @@ requirements:
    - mamba
    - matplotlib
    - mpld3
-   - nb_conda
+   - nb_conda # [not arm64]
    - nbconvert
    - networkx
    - nodejs
