@@ -33,7 +33,7 @@ PACKAGES = [
         'packages': ['notebook==6.5.6']
     },
     {  # this is not in defaults or conda-forge (for now?)
-        'channels': ['sherpa'] + CHANNELS,
+        'channels': ['https://cxc.cfa.harvard.edu/conda/ciao/'] + CHANNELS,
         'options': [],
         'packages': ['sherpa']
     },
@@ -45,7 +45,8 @@ PACKAGES = [
 PLATFORM_OPTIONS = {
     'linux-64': {'linux': True, 'linux64': True},
     'osx-64': {'osx': True, 'osx64': True},
-    'win-64': {'win': True, 'win64': True}
+    'win-64': {'win': True, 'win64': True},
+    'osx-arm64': {'osx': True, 'osx64': False, 'osx-arm64': True},
 }
 
 
