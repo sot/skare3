@@ -5,6 +5,7 @@ package:
 requirements:
   run:
    - astropy
+   - astropy-iers-data
    - astropy-sphinx-theme
    - astropy-healpix
    - astroquery
