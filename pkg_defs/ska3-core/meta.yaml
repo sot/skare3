@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-core
-  version: 2023.3
+  version: "2023.10"
 
 requirements:
   run:
@@ -18,6 +18,7 @@ requirements:
     - astroid ==2.13.2
     - astropy ==5.3.1
     - astropy-healpix ==0.7
+    - astropy-iers-data==0.2024.1.8.0.30.55
     - astropy-sphinx-theme ==1.1
     - astroquery ==0.4.6
     - asttokens ==2.2.1

@@ -13,5 +13,6 @@ dependencies:
   - kalman_watch
   - perigee_health_plots
   - ska_report_ranges
+  - skare3_tools
   - vv_trending
   - twiki-wg

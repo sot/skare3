@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2023.7
+  version: "2023.10"
 
 build:
   noarch: generic
@@ -49,7 +49,6 @@ requirements:
     - ska_helpers
     - ska_path
     - ska_sync
-    - skare3_tools
     - sparkles
     - starcheck
     - testr
