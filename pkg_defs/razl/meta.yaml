@@ -1,0 +1,50 @@
+package:
+  name: razl
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/razl
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - numpy
+    - astropy
+    - matplotlib
+    - chandra_maneuver
+    - cheta
+    - cxotime
+    - kadi
+    - maude
+    - parse_cm
+    - proseco
+    - quaternion
+    - ska_matplotib
+    - ska_helpers
+    - sparkles
+    - testr
+
+test:
+  imports:
+    - razl
+
+
+about:
+  home: https://github.com/sot/razl
+  license: BSD
+  summary: razl
