@@ -129,7 +129,7 @@ def build_package(name, args, src_dir, build_dir, conda_args=None):
         overwrite_skare3_version(skare3_old_version, skare3_new_version, pkg_path)
 
     try:
-        version = subprocess.check_output(['python', 'setup.py', '--version'],
+        version = subprocess.check_output(['python', '-m', 'setuptools_scm'],
                                           cwd=os.path.join(src_dir, name))
         version = version.decode().split()[-1].strip()
         print(f'  - SKA_PKG_VERSION={version}')
