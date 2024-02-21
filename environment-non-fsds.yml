@@ -8,6 +8,7 @@ dependencies:
   - aimpoint_mon
   - astromon
   - annie
+  - fid_drift_mon
   - fss_check
   - jobwatch
   - kalman_watch
