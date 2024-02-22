@@ -21,7 +21,7 @@ on:
         description: Python version
         required: false
         type: string
-        default: "3.10"
+        default: "3.11"
       numpy_version:
         description: Numpy version
         required: false
@@ -41,7 +41,7 @@ on:
         description: Ska Conda channel
         required: false
         type: string
-        default: flight
+        default: test
     secrets:
       CONDA_PASSWORD:
         required: true
