@@ -60,6 +60,8 @@ def get_opt():
                         "except on Windows")
     parser.add_argument("--repo-url",
                         help="Use this URL instead of meta['about']['home']")
+    parser.add_argument("--channel", "-c", help="channel", action="append", default=[])
+    parser.add_argument("--override-channels", action="store_true", default=False)
     parser.add_argument('--ska3-overwrite-version',
                         metavar='[<initial-version>:]<final-version>',
                         help="This option is intended to overwrite ska3-* meta-package versions "
@@ -73,7 +75,7 @@ def get_opt():
 
 def clone_repo(name, args, src_dir, meta):
     tag = args.tag
-    print("  - Cloning or updating source source %s." % name)
+    print("  - Cloning or updating source: %s." % name)
     clone_path = os.path.join(src_dir, name)
 
     # Upstream (home) URL is for the tags
@@ -114,7 +116,9 @@ def clone_repo(name, args, src_dir, meta):
         print(f'  - Checked out at {tag} and pulled')
 
 
-def build_package(name, args, src_dir, build_dir):
+def build_package(name, args, src_dir, build_dir, conda_args=None):
+    if conda_args is None:
+        conda_args = []
     pkg_path = Path(src_dir) / 'pkg_defs' / name
     shutil.copytree(PKG_DEFS_PATH / name, pkg_path)
 
@@ -125,7 +129,7 @@ def build_package(name, args, src_dir, build_dir):
         overwrite_skare3_version(skare3_old_version, skare3_new_version, pkg_path)
 
     try:
-        version = subprocess.check_output(['python', 'setup.py', '--version'],
+        version = subprocess.check_output(['python', '-m', 'setuptools_scm'],
                                           cwd=os.path.join(src_dir, name))
         version = version.decode().split()[-1].strip()
         print(f'  - SKA_PKG_VERSION={version}')
@@ -140,6 +144,7 @@ def build_package(name, args, src_dir, build_dir):
                 "--python", args.python,
                 "--numpy", args.numpy,
                 "--perl", args.perl]
+    cmd_list += conda_args
 
     if not args.test:
         cmd_list.append("--no-test")
@@ -170,7 +175,7 @@ def build_package(name, args, src_dir, build_dir):
     subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
-def build_list_packages(pkg_names, args, src_dir, build_dir):
+def build_list_packages(pkg_names, args, src_dir, build_dir, conda_args=None):
     failures = []
     tstart = time.time()
 
@@ -200,7 +205,7 @@ def build_list_packages(pkg_names, args, src_dir, build_dir):
         try:
             if has_git:
                 clone_repo(pkg_name, args, src_dir, meta)
-            build_package(pkg_name, args, src_dir, build_dir)
+            build_package(pkg_name, args, src_dir, build_dir, conda_args=conda_args)
             print('')
         except Exception:
             # If there's a failure, confirm before continuing
@@ -306,11 +311,17 @@ def main():
         # Always use https on Windows since it just works
         args.github_https = True
 
+    conda_args = []
+    if args.override_channels:
+        conda_args += ["--override-channels"]
+    for channel in args.channel:
+        conda_args += ["-c", channel]
+
     build_dir = Path(args.build_root) / 'builds'
     with tempfile.TemporaryDirectory() as src_dir:
         print(f'Using temporary directory {src_dir} for cloning')
         os.environ["SKA_TOP_SRC_DIR"] = src_dir
-        build_list_packages(pkg_names, args, src_dir, build_dir)
+        build_list_packages(pkg_names, args, src_dir, build_dir, conda_args=conda_args)
 
 
 if __name__ == '__main__':

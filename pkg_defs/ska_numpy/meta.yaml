@@ -3,7 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script: pip install .
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/ska_numpy
@@ -18,7 +18,7 @@ requirements:
     - gcc_linux-64 # [linux]
     - libgcc-ng  # [linux]
     - clang_osx-64 # [osx]
-    - python==3.10
+    - python
     - numpy
     - setuptools
     - setuptools_scm

@@ -5,7 +5,7 @@ package:
 
 build:
   noarch: python
-  script: python setup.py install --single-version-externally-managed --record=record.txt
+  script: pip install .
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/ska_shell

@@ -1,8 +1,9 @@
 channels:
   - conda-forge
 dependencies:
-  - python=3.10
-  - conda-forge::libarchive  # libarchive from defaults is not good for mamba
+  # note that ska3 packages should not be here, because this is used to build all ska3 packages
+  - python                   # python version specified in the workflow
+  - libarchive               # libarchive from defaults might not be good for mamba
   - mamba
   - setuptools_scm
   - gitpython
@@ -11,5 +12,3 @@ dependencies:
   - pyyaml
   - numpy
   - packaging
-  - ska_helpers
-  - testr
