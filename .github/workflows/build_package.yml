@@ -124,7 +124,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   upload:
-    if: ${{ github.event.client_payload.upload == 'true' }}
+    if: ${{ needs.arguments.outputs.upload }}
     needs: [build, arguments]  # this job needs the arguments job because it uses the outputs
     uses: sot/skare3/.github/workflows/package_upload.yml@master
     with:
