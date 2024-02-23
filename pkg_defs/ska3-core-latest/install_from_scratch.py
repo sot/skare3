@@ -8,9 +8,9 @@ import logging
 assert "CONDA_PASSWORD" in os.environ, "CONDA_PASSWORD environmental variable is not defined"
 
 CHANNELS = [
-    'defaults',
+    # 'defaults',
     'conda-forge',
-    f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight'
+    # f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight'
 ]
 
 
@@ -18,7 +18,7 @@ CHANNELS = [
 PACKAGES = [
     {
         'channels': CHANNELS,
-        'options': ['--no-channel-priority'],
+        'options': [],
         'packages': ['numpy', 'matplotlib', 'scipy', 'pandas', 'astropy', 'pyyaml', 'conda-build',
                      'pyqt']
     },
@@ -27,10 +27,15 @@ PACKAGES = [
         'options': [],
         'packages': ['django==3.1.7']
     },
-    {  # this is not in defaults or conda-forge (for now?)
-        'channels': ['astropy'],
+    {  # later versions cause a conflict with nb_conda
+        'channels': CHANNELS,
         'options': [],
-        'packages': ['regions']
+        'packages': ['notebook==6.5.6']
+    },
+    {  # this is not in defaults or conda-forge (for now?)
+        'channels': ['sherpa'] + CHANNELS,
+        'options': [],
+        'packages': ['sherpa']
     },
 ]
 
@@ -46,7 +51,7 @@ PLATFORM_OPTIONS = {
 
 def install_pkgs(pkgs):
     channels = sum([['-c', c] for c in pkgs['channels']], [])
-    cmd = ['mamba', 'install', '-y'] + pkgs['options'] + channels + pkgs['packages']
+    cmd = ['mamba', 'install', '-y', '--override-channels'] + pkgs['options'] + channels + pkgs['packages']
     logging.info(' '.join(cmd))
     subprocess.run(cmd)
 
