@@ -39,6 +39,7 @@ lint.ignore = [
   "E731", # do not assign a lambda expression, use a def
   "PLR2004", # Magic number
   "B028", # No explicit `stacklevel` keyword argument found
+  "PLR0913", # Too many arguments to function call
 ]
 
 extend-exclude = [
@@ -53,4 +54,5 @@ max-line-length = 100 # E501 reports lines that exceed the length of 100.
 # For tests:
 # - D205: Don't worry about test docstrings
 # - ARG001: Unused function argument false positives for some fixtures
-"**/tests/test_*.py" = ["D205", "ARG001"]
+# - E501: Line-too-long
+"**/tests/test_*.py" = ["D205", "ARG001", "E501"]

@@ -1,5 +1,10 @@
 extend = "ruff-base.toml"
 
+# These are files to exclude for this project.
+extend-exclude = [
+  # "**/*.ipynb",  # commonly not ruff-compliant
+]
+
 # These are rules that commonly cause many ruff warnings. Code will be improved by
 # incrementally fixing code to adhere to these rules, but for practical purposes they
 # can be ignored by uncommenting each one. You can also add to this list as needed.
@@ -8,7 +13,6 @@ lint.extend-ignore = [
   # "PLC1901", # compare-to-empty-string
   # "PLR0911", # Too many returns
   # "PLR0912", # Too many branches
-  # "PLR0913", # Too many arguments to function call
   # "PLR0915", # Too many statements
   # "PGH004", # Use specific rule codes when using `noqa`
   # "C401", # Unnecessary generator (rewrite as a `set` comprehension)
