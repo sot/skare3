@@ -9,17 +9,17 @@ requirements:
     - _openmp_mutex ==4.5  # [linux]
     - alabaster ==0.7.16
     - alsa-lib ==1.2.10  # [linux]
-    - anyio ==4.2.0
-    - appnope ==0.1.3  # [osx]
-    - archspec ==0.2.2
+    - anyio ==4.3.0
+    - appnope ==0.1.4  # [osx]
+    - archspec ==0.2.3
     - argon2-cffi ==23.1.0
     - argon2-cffi-bindings ==21.2.0
     - arrow ==1.3.0
     - asgiref ==3.3.4
-    - astroid ==3.0.2
+    - astroid ==3.1.0
     - astropy ==6.0.0
     - astropy-healpix ==1.0.2
-    - astropy-iers-data ==0.2024.1.8.0.30.55
+    - astropy-iers-data ==0.2024.2.26.0.28.55
     - astropy-sphinx-theme ==1.1
     - astroquery ==0.4.6
     - asttokens ==2.4.1
@@ -31,26 +31,26 @@ requirements:
     - backports ==1.0
     - backports.zoneinfo ==0.2.1
     - bcrypt ==4.1.2
-    - beautifulsoup4 ==4.12.2
-    - black ==23.12.1
+    - beautifulsoup4 ==4.12.3
+    - black ==24.2.0
     - bleach ==6.1.0
     - blinker ==1.7.0
     - blosc ==1.21.5
-    - bokeh ==3.3.3
+    - bokeh ==3.3.4
     - boltons ==23.1.1
     - brotli ==1.1.0
     - brotli-bin ==1.1.0
     - brotli-python ==1.1.0
     - bzip2 ==1.0.8
-    - c-ares ==1.25.0  # [linux or osx]
-    - c-blosc2 ==2.12.0
-    - ca-certificates ==2023.11.17
+    - c-ares ==1.27.0  # [linux or osx]
+    - c-blosc2 ==2.13.2
+    - ca-certificates ==2024.2.2
     - cached-property ==1.5.2
     - cached_property ==1.5.2
     - cairo ==1.18.0  # [linux]
     - cctools ==973.0.1  # [osx]
     - cctools_osx-64 ==973.0.1  # [osx]
-    - certifi ==2023.11.17
+    - certifi ==2024.2.2
     - cffi ==1.16.0
     - chardet ==5.2.0
     - charset-normalizer ==3.3.2
@@ -60,22 +60,22 @@ requirements:
     - comm ==0.2.1
     - commonmark ==0.9.1
     - conda ==23.11.0
-    - conda-build ==3.28.3
-    - conda-index ==0.3.0
-    - conda-libmamba-solver ==23.12.0
+    - conda-build ==24.1.2
+    - conda-index ==0.4.0
+    - conda-libmamba-solver ==24.1.0
     - conda-package-handling ==2.2.0
     - conda-package-streaming ==0.9.0
     - configobj ==5.0.8
     - contourpy ==1.2.0
-    - coverage ==7.4.0
-    - cryptography ==41.0.7
+    - coverage ==7.4.3
+    - cryptography ==42.0.5
     - cycler ==0.12.1
-    - cython ==3.0.7
+    - cython ==3.0.8
     - dbus ==1.13.6  # [linux]
-    - debugpy ==1.8.0
+    - debugpy ==1.8.1
     - decorator ==5.1.1
     - defusedxml ==0.7.1
-    - dill ==0.3.7
+    - dill ==0.3.8
     - distro ==1.9.0
     - django ==3.1.7
     - docutils ==0.20.1
@@ -87,7 +87,7 @@ requirements:
     - expat ==2.5.0  # [linux]
     - filelock ==3.13.1
     - flake8 ==7.0.0
-    - fmt ==10.1.1
+    - fmt ==10.2.1
     - font-ttf-dejavu-sans-mono ==2.37  # [linux]
     - font-ttf-inconsolata ==3.000  # [linux]
     - font-ttf-source-code-pro ==2.038  # [linux]
@@ -95,74 +95,80 @@ requirements:
     - fontconfig ==2.14.2  # [linux]
     - fonts-conda-ecosystem ==1  # [linux]
     - fonts-conda-forge ==1  # [linux]
-    - fonttools ==4.47.0
+    - fonttools ==4.49.0
     - fqdn ==1.5.1
     - freetype ==2.12.1
-    - future ==0.18.3
+    - future ==1.0.0
     - gettext ==0.21.1
     - giflib ==5.2.1  # [linux or osx]
-    - git ==2.43.0  # [win]
+    - git ==2.44.0  # [win]
     - gitdb ==4.0.11
-    - gitpython ==3.1.40
-    - glib ==2.78.3
-    - glib-tools ==2.78.3
-    - gmp ==6.3.0  # [linux]
+    - gitpython ==3.1.42
+    - glib ==2.78.4
+    - glib-tools ==2.78.4
     - graphite2 ==1.3.13  # [linux]
     - greenlet ==3.0.3  # [win]
-    - gst-plugins-base ==1.22.8
-    - gstreamer ==1.22.8
+    - gst-plugins-base ==1.22.9
+    - gstreamer ==1.22.9
+    - h11 ==0.14.0
+    - h2 ==4.1.0
     - h5py ==3.10.0
     - harfbuzz ==8.3.0  # [linux]
     - hdf5 ==1.14.3
+    - hpack ==4.0.0
     - html5lib ==1.1
+    - httpcore ==1.0.4
+    - httpx ==0.27.0
+    - hyperframe ==6.0.1
     - icu ==73.2
     - idna ==3.6
     - imagesize ==1.4.1
     - importlib-metadata ==7.0.1
     - importlib_metadata ==7.0.1
-    - importlib_resources ==6.1.1
+    - importlib_resources ==6.1.2
     - iniconfig ==2.0.0
     - intel-openmp ==2024.0.0  # [win]
-    - ipykernel ==6.28.0
+    - ipykernel ==6.29.3
     - ipympl ==0.9.3
     - ipyparallel ==8.6.1
-    - ipython ==8.20.0
+    - ipython ==8.22.1
     - ipython_genutils ==0.2.0
-    - ipywidgets ==8.1.1
+    - ipywidgets ==8.1.2
     - isoduration ==20.11.0
     - isort ==5.13.2
-    - jaraco.classes ==3.3.0
+    - jaraco.classes ==3.3.1
     - jedi ==0.19.1
     - jeepney ==0.8.0  # [linux]
-    - jinja2 ==3.1.2
+    - jinja2 ==3.1.3
     - jira ==3.6.0
     - joblib ==1.3.2
     - jplephem ==2.21
-    - json5 ==0.9.14
+    - json5 ==0.9.17
     - jsonpatch ==1.33
     - jsonpointer ==2.4
-    - jsonschema ==4.20.0
+    - jsonschema ==4.21.1
     - jsonschema-specifications ==2023.12.1
-    - jsonschema-with-format-nongpl ==4.20.0
+    - jsonschema-with-format-nongpl ==4.21.1
     - jupyter ==1.0.0
-    - jupyter-lsp ==2.2.1
+    - jupyter-lsp ==2.2.3
     - jupyter_client ==7.4.9
     - jupyter_console ==6.6.3
     - jupyter_core ==5.7.1
     - jupyter_events ==0.9.0
-    - jupyter_server ==2.12.3
-    - jupyter_server_terminals ==0.5.1
-    - jupyterlab ==4.0.10
+    - jupyter_server ==2.12.5
+    - jupyter_server_terminals ==0.5.2
+    - jupyterlab ==4.1.2
     - jupyterlab_pygments ==0.3.0
-    - jupyterlab_server ==2.25.2
-    - jupyterlab_widgets ==3.0.9
+    - jupyterlab_server ==2.25.3
+    - jupyterlab_widgets ==3.0.10
     - kaleido-core ==0.2.1
-    - keyring ==24.3.0
+    - keyring ==24.3.1
     - keyutils ==1.6.1  # [linux]
     - kiwisolver ==1.4.5
     - krb5 ==1.21.2
     - lame ==3.100  # [linux]
-    - lcms2 ==2.16
+    - lcms2 ==2.15  # [win]
+    - lcms2 ==2.16  # [linux or osx]
     - ld64 ==609  # [osx]
     - ld64_osx-64 ==609  # [osx]
     - ld_impl_linux-64 ==2.40  # [linux]
@@ -180,7 +186,8 @@ requirements:
     - libcups ==2.3.3  # [linux]
     - libcurl ==8.5.0
     - libcxx ==16.0.6  # [osx]
-    - libdeflate ==1.19
+    - libdeflate ==1.18  # [win]
+    - libdeflate ==1.19  # [linux or osx]
     - libedit ==3.1.20191231  # [linux or osx]
     - libev ==4.33  # [linux or osx]
     - libevent ==2.1.12  # [linux]
@@ -192,10 +199,12 @@ requirements:
     - libgfortran ==5.0.0  # [osx]
     - libgfortran-ng ==13.2.0  # [linux]
     - libgfortran5 ==13.2.0  # [linux or osx]
-    - libglib ==2.78.3
-    - libgpg-error ==1.47  # [linux]
+    - libglib ==2.78.4
+    - libgpg-error ==1.48  # [linux]
+    - libhwloc ==2.9.3
     - libiconv ==1.17
-    - libjpeg-turbo ==3.0.0
+    - libjpeg-turbo ==2.1.5.1  # [win]
+    - libjpeg-turbo ==3.0.0  # [linux or osx]
     - liblapack ==3.9.0
     - liblief ==0.12.3
     - libllvm14 ==14.0.6  # [linux or osx]
@@ -207,56 +216,52 @@ requirements:
     - libnsl ==2.0.1  # [linux]
     - libogg ==1.3.4
     - libopus ==1.3.1  # [linux or osx]
-    - libpng ==1.6.39
-    - libpq ==16.1  # [linux or osx]
+    - libpng ==1.6.43
+    - libpq ==16.2  # [linux or osx]
     - libsndfile ==1.2.2  # [linux]
     - libsodium ==1.0.18
-    - libsolv ==0.7.27
-    - libsqlite ==3.44.2
+    - libsolv ==0.7.28
+    - libsqlite ==3.45.1
     - libssh2 ==1.11.0
     - libstdcxx-ng ==13.2.0  # [linux]
     - libsystemd0 ==255  # [linux]
-    - libtiff ==4.6.0
+    - libtiff ==4.5.1  # [win]
+    - libtiff ==4.6.0  # [linux or osx]
     - libuuid ==2.38.1  # [linux]
     - libuv ==1.46.0  # [linux or osx]
     - libvorbis ==1.3.7
     - libwebp ==1.3.2
     - libwebp-base ==1.3.2
-    - libxcb ==1.15
+    - libxcb ==1.13  # [win]
+    - libxcb ==1.15  # [linux or osx]
     - libxcrypt ==4.4.36  # [linux]
     - libxkbcommon ==1.6.0  # [linux]
-    - libxml2 ==2.12.3
+    - libxml2 ==2.12.5
     - libxslt ==1.1.39
     - libzlib ==1.2.13
     - line_profiler ==4.1.1
     - llvm-openmp ==17.0.6  # [linux or osx]
-    - llvmlite ==0.41.1
+    - llvmlite ==0.42.0
     - lxml ==5.1.0
     - lz4-c ==1.9.4
     - lzo ==2.10
-    - m2-msys2-runtime ==2.5.0.17080.65c939c  # [win]
-    - m2-patch ==2.7.5  # [win]
-    - m2w64-gcc-libgfortran ==5.3.0  # [win]
-    - m2w64-gcc-libs ==5.3.0  # [win]
-    - m2w64-gcc-libs-core ==5.3.0  # [win]
-    - m2w64-gmp ==6.1.0  # [win]
-    - m2w64-libwinpthread-git ==5.0.0.4634.697f757  # [win]
+    - m2-conda-epoch ==20230914  # [win]
+    - m2-patch ==2.7.6.2  # [win]
     - mamba ==1.5.6
-    - markupsafe ==2.1.3
+    - markupsafe ==2.1.5
     - mathjax ==2.7.7
-    - matplotlib ==3.8.2
-    - matplotlib-base ==3.8.2
+    - matplotlib ==3.8.3
+    - matplotlib-base ==3.8.3
     - matplotlib-inline ==0.1.6
     - mccabe ==0.7.0
-    - menuinst ==2.0.1
+    - menuinst ==2.0.2
     - mistune ==3.0.2
     - mkl ==2022.1.0  # [win]
     - mkl ==2022.2.1  # [linux]
     - mkl ==2023.2.0  # [osx]
     - more-itertools ==10.2.0
-    - mpg123 ==1.32.3  # [linux]
+    - mpg123 ==1.32.4  # [linux]
     - mpld3 ==0.5.10
-    - msys2-conda-epoch ==20160418  # [win]
     - munkres ==1.1.4
     - mypy_extensions ==1.0.0
     - mysql-common ==8.0.33  # [linux or osx]
@@ -265,31 +270,33 @@ requirements:
     - nb_conda_kernels ==2.3.1
     - nbclassic ==1.0.0
     - nbclient ==0.8.0
-    - nbconvert ==7.14.0
-    - nbconvert-core ==7.14.0
-    - nbconvert-pandoc ==7.14.0
+    - nbconvert ==7.16.1
+    - nbconvert-core ==7.16.1
+    - nbconvert-pandoc ==7.16.1
     - nbformat ==5.9.2
+    - nbsphinx ==0.9.3
     - ncurses ==6.4  # [linux or osx]
-    - nest-asyncio ==1.5.8
+    - nest-asyncio ==1.6.0
     - networkx ==3.2.1
     - nodejs ==20.9.0
     - nose ==1.3.7
     - notebook ==6.5.6
-    - notebook-shim ==0.2.3
+    - notebook-shim ==0.2.4
     - nspr ==4.35  # [linux or osx]
-    - nss ==3.96  # [linux or osx]
-    - numba ==0.58.1
+    - nss ==3.98  # [linux or osx]
+    - numba ==0.59.0
     - numexpr ==2.8.4
-    - numpy ==1.26.3
+    - numpy ==1.26.4
     - numpydoc ==1.6.0
     - oauthlib ==3.2.2
-    - openjpeg ==2.5.0
+    - openjpeg ==2.5.0  # [win]
+    - openjpeg ==2.5.1  # [linux or osx]
     - openpyxl ==3.1.2
-    - openssl ==3.2.0
-    - overrides ==7.4.0
+    - openssl ==3.2.1
+    - overrides ==7.7.0
     - packaging ==23.2
-    - pandas ==2.1.4
-    - pandoc ==3.1.3
+    - pandas ==2.2.1
+    - pandoc ==3.1.12.1
     - pandocfilters ==1.5.0
     - paramiko ==3.4.0
     - parso ==0.8.3
@@ -297,22 +304,24 @@ requirements:
     - patchelf ==0.17.2  # [linux]
     - pathspec ==0.12.1
     - pcre2 ==10.42
-    - pexpect ==4.8.0
+    - pexpect ==4.9.0
     - pickleshare ==0.7.5
-    - pillow ==10.2.0
-    - pip ==23.3.2
-    - pixman ==0.43.0  # [linux]
+    - pillow ==10.2.0  # [linux or osx]
+    - pillow ==9.5.0  # [win]
+    - pip ==24.0
+    - pixman ==0.43.2  # [linux]
     - pkginfo ==1.9.6
     - pkgutil-resolve-name ==1.3.10
-    - platformdirs ==4.1.0
-    - plotly ==5.18.0
-    - pluggy ==1.3.0
+    - platformdirs ==4.2.0
+    - plotly ==5.19.0
+    - pluggy ==1.4.0
     - ply ==3.11
-    - prometheus_client ==0.19.0
+    - prometheus_client ==0.20.0
     - prompt-toolkit ==3.0.42
     - prompt_toolkit ==3.0.42
-    - psutil ==5.9.7
-    - pthread-stubs ==0.4
+    - psutil ==5.9.8
+    - pthread-stubs ==0.4  # [linux or osx]
+    - pthreads-win32 ==2.9.1  # [win]
     - ptyprocess ==0.7.0
     - pulseaudio-client ==16.1  # [linux]
     - pure_eval ==0.2.2
@@ -326,7 +335,7 @@ requirements:
     - pyflakes ==3.2.0
     - pygments ==2.17.2
     - pyjwt ==2.8.0
-    - pylint ==3.0.3
+    - pylint ==3.1.0
     - pynacl ==1.5.0
     - pyobjc-core ==10.1  # [osx]
     - pyobjc-framework-cocoa ==10.1  # [osx]
@@ -336,23 +345,23 @@ requirements:
     - pyqtgraph ==0.13.3
     - pysocks ==1.7.1
     - pytables ==3.9.2
-    - pytest ==7.4.4
+    - pytest ==8.0.2
     - pytest-timeout ==2.2.0
-    - python ==3.11.7
+    - python ==3.11.8
     - python-dateutil ==2.8.2
     - python-docx ==1.1.0
     - python-fastjsonschema ==2.19.1
     - python-json-logger ==2.0.7
     - python-kaleido ==0.2.1
     - python-libarchive-c ==5.0
-    - python-tzdata ==2023.4
+    - python-tzdata ==2024.1
     - python_abi ==3.11
     - pytoolconfig ==1.2.5
-    - pytz ==2023.3.post1
-    - pyvo ==1.5
+    - pytz ==2024.1
+    - pyvo ==1.5.1
     - pywin32 ==306  # [win]
     - pywin32-ctypes ==0.2.2  # [win]
-    - pywinpty ==2.0.12  # [win]
+    - pywinpty ==2.0.13  # [win]
     - pyyaml ==6.0.1
     - pyzmq ==24.0.1
     - qt ==5.15.8
@@ -362,7 +371,7 @@ requirements:
     - qtconsole-base ==5.5.1
     - qtpy ==2.4.1
     - readline ==8.2  # [linux or osx]
-    - referencing ==0.32.1
+    - referencing ==0.33.0
     - regions ==0.8
     - reproc ==14.2.4.post0
     - reproc-cpp ==14.2.4.post0
@@ -371,17 +380,18 @@ requirements:
     - requests-toolbelt ==1.0.0
     - rfc3339-validator ==0.1.4
     - rfc3986-validator ==0.1.1
-    - ripgrep ==14.0.3
-    - rope ==1.11.0
-    - rpds-py ==0.16.2
-    - ruamel.yaml ==0.18.5
-    - ruamel.yaml.clib ==0.2.7
-    - ruff ==0.1.11
-    - scikit-learn ==1.3.2
-    - scipy ==1.11.4
+    - ripgrep ==11.0.2  # [win]
+    - ripgrep ==14.1.0  # [linux or osx]
+    - rope ==1.12.0
+    - rpds-py ==0.18.0
+    - ruamel.yaml ==0.18.6
+    - ruamel.yaml.clib ==0.2.8
+    - ruff ==0.2.2
+    - scikit-learn ==1.4.1.post1
+    - scipy ==1.12.0
     - secretstorage ==3.3.3  # [linux]
     - send2trash ==1.8.2
-    - setuptools ==69.0.3
+    - setuptools ==69.1.1
     - setuptools-scm ==8.0.4
     - setuptools_scm ==8.0.4
     - sherpa ==4.15.1  # [linux or osx]
@@ -390,45 +400,44 @@ requirements:
     - six ==1.16.0
     - smmap ==5.0.0
     - snappy ==1.1.10
-    - sniffio ==1.3.0
+    - sniffio ==1.3.1
     - snowballstemmer ==2.2.0
     - soupsieve ==2.5
     - sphinx ==7.2.6
     - sphinx-argparse ==0.4.0
-    - sphinxcontrib-applehelp ==1.0.7
-    - sphinxcontrib-devhelp ==1.0.5
-    - sphinxcontrib-htmlhelp ==2.0.4
+    - sphinxcontrib-applehelp ==1.0.8
+    - sphinxcontrib-devhelp ==1.0.6
+    - sphinxcontrib-htmlhelp ==2.0.5
     - sphinxcontrib-jsmath ==1.0.1
-    - sphinxcontrib-qthelp ==1.0.6
-    - sphinxcontrib-serializinghtml ==1.1.9
-    - sqlalchemy ==2.0.25  # [win]
-    - sqlite ==3.44.2
+    - sphinxcontrib-qthelp ==1.0.7
+    - sphinxcontrib-serializinghtml ==1.1.10
+    - sqlalchemy ==2.0.27  # [win]
+    - sqlite ==3.45.1
     - sqlparse ==0.4.4
     - stack_data ==0.6.2
     - tabulate ==0.9.0
     - tapi ==1100.0.11  # [osx]
-    - tbb ==2021.10.0  # [osx]
-    - tbb ==2021.7.0  # [linux or win]
+    - tbb ==2021.11.0
     - tenacity ==8.2.3
     - terminado ==0.18.0
-    - threadpoolctl ==3.2.0
+    - threadpoolctl ==3.3.0
     - tinycss2 ==1.2.1
     - tk ==8.6.13
     - toml ==0.10.2
     - tomli ==2.0.1
-    - tomlkit ==0.12.3
-    - tornado ==6.3.3
-    - tqdm ==4.66.1
+    - tomlkit ==0.12.4
+    - tornado ==6.4
+    - tqdm ==4.66.2
     - traitlets ==5.14.1
     - truststore ==0.8.0
     - types-python-dateutil ==2.8.19.20240106
-    - typing-extensions ==4.9.0
-    - typing_extensions ==4.9.0
+    - typing-extensions ==4.10.0
+    - typing_extensions ==4.10.0
     - typing_utils ==0.1.0
-    - tzdata ==2023d
+    - tzdata ==2024a
     - ucrt ==10.0.22621.0  # [win]
     - uri-template ==1.3.0
-    - urllib3 ==2.1.0
+    - urllib3 ==2.2.1
     - vc ==14.3  # [win]
     - vc14_runtime ==14.38.33130  # [win]
     - vs2015_runtime ==14.38.33130  # [win]
@@ -437,7 +446,7 @@ requirements:
     - webencodings ==0.5.1
     - websocket-client ==1.7.0
     - wheel ==0.42.0
-    - widgetsnbextension ==4.0.9
+    - widgetsnbextension ==4.0.10
     - win_inet_pton ==1.1.0  # [win]
     - winpty ==0.4.3  # [win]
     - xcb-util ==0.4.0  # [linux]
@@ -445,7 +454,7 @@ requirements:
     - xcb-util-keysyms ==0.4.0  # [linux]
     - xcb-util-renderutil ==0.3.9  # [linux]
     - xcb-util-wm ==0.4.1  # [linux]
-    - xkeyboard-config ==2.40  # [linux]
+    - xkeyboard-config ==2.41  # [linux]
     - xorg-compositeproto ==0.4.2  # [linux]
     - xorg-damageproto ==1.2.1  # [linux]
     - xorg-fixesproto ==5.0  # [linux]
@@ -454,10 +463,12 @@ requirements:
     - xorg-libice ==1.1.1  # [linux]
     - xorg-libsm ==1.2.4  # [linux]
     - xorg-libx11 ==1.8.7  # [linux]
-    - xorg-libxau ==1.0.11
+    - xorg-libxau ==1.0.11  # [linux or osx]
+    - xorg-libxau ==1.0.8  # [win]
     - xorg-libxcomposite ==0.4.6  # [linux]
     - xorg-libxdamage ==1.1.5  # [linux]
-    - xorg-libxdmcp ==1.1.3
+    - xorg-libxdmcp ==1.1.2  # [win]
+    - xorg-libxdmcp ==1.1.3  # [linux or osx]
     - xorg-libxext ==1.3.4  # [linux]
     - xorg-libxfixes ==5.0.3  # [linux]
     - xorg-libxi ==1.7.10  # [linux]
