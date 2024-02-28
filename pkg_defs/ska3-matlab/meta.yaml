@@ -47,7 +47,7 @@ requirements:
     - ska_sun ==3.14.0
     - ska_sync ==4.11.0
     - ska_tdb ==4.0.0
-    - ska3-core ==2024.1
+    - ska3-core ==2024.2
     - ska3-template ==2022.06.02
     - sparkles ==4.26.0
     - starcheck ==14.8.0
