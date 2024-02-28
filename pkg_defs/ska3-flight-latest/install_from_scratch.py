@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import subprocess
 import pathlib
 import logging
@@ -105,6 +106,10 @@ def main():
             f'https://ska:{os.environ["CONDA_PASSWORD"]}'
             f"@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/{channel}"
         )
+
+    if not SKA_CHANNELS:
+        logging.error("No ska channels specified")
+        sys.exit(1)
 
     try:
         for pkgs in get_package_list():
