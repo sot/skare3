@@ -17,6 +17,13 @@ def get_package_list():
     """
     return [
         {
+            # conda-build first so on windows it installs
+            # m2-conda-epoch==20230914 and not msys2-conda-epoch (#1156)
+            "channels": CHANNELS,
+            "options": [],
+            "packages": ["conda-build"],
+        },
+        {
             "channels": CHANNELS,
             "options": [],
             "packages": [
@@ -26,7 +33,6 @@ def get_package_list():
                 "pandas",
                 "astropy",
                 "pyyaml",
-                "conda-build",
                 "pyqt",
             ],
         },
@@ -44,6 +50,7 @@ def get_package_list():
             "channels": ["sherpa"] + CHANNELS,
             "options": [],
             "packages": ["sherpa"],
+            "platform": ["linux-64", "osx-64"],
         },
     ]
 
@@ -58,6 +65,12 @@ PLATFORM_OPTIONS = {
 
 
 def install_pkgs(pkgs):
+    # conda-build is imported here because it is not installed initially
+    # (it is installed by this script)
+    from conda_build.config import Config
+    config = Config()
+    if "platform" in pkgs and config.target_subdir not in pkgs["platform"]:
+        return
     channels = sum([["-c", c] for c in pkgs["channels"]], [])
     if channels:
         channels = ["--override-channels"] + channels
