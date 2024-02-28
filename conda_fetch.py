@@ -27,7 +27,6 @@ import pprint
 import tqdm
 from pathlib import Path
 
-logging.basicConfig(level="DEBUG")
 
 logger = logging.getLogger("skare3")
 
@@ -219,9 +218,11 @@ def get_packages(packages=(), conda_list=None, output_dir=None):
             else:
                 logger.warning(f"Package spec {pkg_string} not found")
         conda_list = tmp
-    pprint.pprint(conda_list)
+
     tmpdir = Path()
     for pkg in tqdm.tqdm(conda_list):
+        if list((base_dir / pkg["platform"]).glob(f"{pkg['dist_name']}*")):
+           continue
         try:
             pkg["base_url"] = pkg["base_url"].replace(
                 "cxc.cfa.harvard.edu/mta/ASPECT", "icxc.cfa.harvard.edu/aspect"
@@ -379,6 +380,32 @@ def save_patches(patches, output_dir, if_exists=None, zip_patches=True):
                 )
 
 
+def configure_logging():
+    logging.config.dictConfig({
+        "version": 1,
+        "formatters": {
+            "default": {
+                "format": "%(levelname)-8s %(message)s"  # noqa
+            }
+        },
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "default",
+                "level": "DEBUG",
+            },
+        },
+        "loggers": {
+            "skare3": {
+                "level": "INFO",
+                "handlers": ["console"],
+                "propagate": False,
+            },
+        },
+        "root": {"level": "WARNING", "handlers": ["console"]},
+    })
+
+
 def get_parser():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -406,12 +433,15 @@ def get_parser():
     parser.add_argument("--no-patches", dest="get_patches", action="store_false")
     parser.add_argument("--no-packages", dest="get_packages", action="store_false")
     parser.add_argument("--if-patches-exist", choices=["merge", "overwrite"])
+    parser.add_argument("--log-level", default="INFO", choice=["debug", "info", "warning"])
     return parser
 
 
 def main():
     parser = get_parser()
     args = parser.parse_args()
+
+    logger.setLevel(args.log_level.upper())
 
     for line in pprint.pformat(vars(args)).split("\n"):
         logger.info(line)
