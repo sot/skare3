@@ -36,7 +36,9 @@ def install_pkgs(pkgs):
         + pkgs["packages"]
     )
     logging.info(" ".join(cmd))
-    subprocess.run(cmd)
+    proc = subprocess.run(cmd)
+    if proc.returncode != 0:
+        raise RuntimeError(f"Error installing {pkgs['packages']}")
 
 
 def install_yaml_requirements(meta_yaml):
@@ -99,11 +101,14 @@ def main():
             f"@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/{channel}"
         )
 
-    for pkgs in PACKAGES:
-        install_pkgs(pkgs)
+    try:
+        for pkgs in PACKAGES:
+            install_pkgs(pkgs)
 
-    meta_yaml = pathlib.Path(__file__).parent / "meta.yaml"
-    install_yaml_requirements(meta_yaml)
+        meta_yaml = pathlib.Path(__file__).parent / "meta.yaml"
+        install_yaml_requirements(meta_yaml)
+    except Exception as e:
+        logging.error(f"Error: {e}")
 
 
 if __name__ == "__main__":
