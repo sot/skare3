@@ -32,8 +32,10 @@ PLATFORM_OPTIONS = {
 
 def install_pkgs(pkgs):
     channels = sum([["-c", c] for c in pkgs["channels"]], [])
+    if channels:
+        channels = ["--override-channels"] + channels
     cmd = (
-        ["mamba", "install", "-y", "--override-channels"]
+        ["mamba", "install", "-y"]
         + pkgs["options"]
         + channels
         + pkgs["packages"]
