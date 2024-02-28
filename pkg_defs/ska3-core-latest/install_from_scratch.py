@@ -12,38 +12,40 @@ assert (
 CHANNELS = []
 
 
-# This is a list of packages to be installed before installing whatever is in meta.yaml
-PACKAGES = [
-    {
-        "channels": CHANNELS,
-        "options": [],
-        "packages": [
-            "numpy",
-            "matplotlib",
-            "scipy",
-            "pandas",
-            "astropy",
-            "pyyaml",
-            "conda-build",
-            "pyqt",
-        ],
-    },
-    {  # this version is set so it is not the latest
-        "channels": CHANNELS,
-        "options": [],
-        "packages": ["django==3.1.7"],
-    },
-    {  # later versions cause a conflict with nb_conda
-        "channels": CHANNELS,
-        "options": [],
-        "packages": ["notebook==6.5.6"],
-    },
-    {  # this is not in defaults or conda-forge (for now?)
-        "channels": ["sherpa"] + CHANNELS,
-        "options": [],
-        "packages": ["sherpa"],
-    },
-]
+def get_package_list():
+    """Packages to be installed before installing whatever is in meta.yaml
+    """
+    return [
+        {
+            "channels": CHANNELS,
+            "options": [],
+            "packages": [
+                "numpy",
+                "matplotlib",
+                "scipy",
+                "pandas",
+                "astropy",
+                "pyyaml",
+                "conda-build",
+                "pyqt",
+            ],
+        },
+        {  # this version is set so it is not the latest
+            "channels": CHANNELS,
+            "options": [],
+            "packages": ["django==3.1.7"],
+        },
+        {  # later versions cause a conflict with nb_conda
+            "channels": CHANNELS,
+            "options": [],
+            "packages": ["notebook==6.5.6"],
+        },
+        {  # this is not in defaults or conda-forge (for now?)
+            "channels": ["sherpa"] + CHANNELS,
+            "options": [],
+            "packages": ["sherpa"],
+        },
+    ]
 
 
 # These options are passed to conda_build.metadata.select_lines after reading meta.yaml.
@@ -131,7 +133,7 @@ def main():
         )
 
     try:
-        for pkgs in PACKAGES:
+        for pkgs in get_package_list():
             install_pkgs(pkgs)
 
         meta_yaml = pathlib.Path(__file__).parent / "meta.yaml"

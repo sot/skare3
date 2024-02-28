@@ -12,11 +12,14 @@ assert (
 CHANNELS = []
 SKA_CHANNELS = []
 
-# This is a list of packages to be installed before installing whatever is in meta.yaml
-# the reason is that we do not want to get quaternion from conda-forge, which is unrelated.
-PACKAGES = [
-    {"channels": SKA_CHANNELS, "options": [], "packages": ["quaternion"]},
-]
+
+def get_package_list():
+    """Packages to be installed before installing whatever is in meta.yaml
+    """
+    return [
+        # we do not want to get quaternion from conda-forge, which is unrelated.
+        {"channels": SKA_CHANNELS, "options": [], "packages": ["quaternion"]},
+    ]
 
 # These options are passed to conda_build.metadata.select_lines after reading meta.yaml.
 # This causes, for example, the lines that read " # [win]" to be read only on win-64.
@@ -102,7 +105,7 @@ def main():
         )
 
     try:
-        for pkgs in PACKAGES:
+        for pkgs in get_package_list():
             install_pkgs(pkgs)
 
         meta_yaml = pathlib.Path(__file__).parent / "meta.yaml"
