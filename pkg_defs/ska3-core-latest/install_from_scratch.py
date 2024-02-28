@@ -67,10 +67,13 @@ PLATFORM_OPTIONS = {
 def install_pkgs(pkgs):
     # conda-build is imported here because it is not installed initially
     # (it is installed by this script)
-    from conda_build.config import Config
-    config = Config()
-    if "platform" in pkgs and config.target_subdir not in pkgs["platform"]:
-        return
+    try:
+        from conda_build.config import Config
+        config = Config()
+        if "platform" in pkgs and config.target_subdir not in pkgs["platform"]:
+            return
+    except ImportError:
+        pass
     channels = sum([["-c", c] for c in pkgs["channels"]], [])
     if channels:
         channels = ["--override-channels"] + channels
