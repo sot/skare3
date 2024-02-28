@@ -37,6 +37,7 @@ requirements:
    - mpld3
    - nb_conda
    - nbconvert
+   - nbsphinx
    - networkx
    - nodejs
    - notebook
