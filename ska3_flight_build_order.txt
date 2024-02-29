@@ -47,11 +47,9 @@ perigee_health_plots
 aca_hi_bgd
 chandra_limits
 ska3-template
-ska3-pinned
 ska3-core
 ska3-flight
 ska3-matlab
-ska3-dev
 ska3-perl
 ska3-flight-latest
 ska3-core-latest
