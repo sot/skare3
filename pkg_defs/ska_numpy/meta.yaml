@@ -15,17 +15,16 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - gcc_linux-64 # [linux]
-    - libgcc-ng  # [linux]
-    - clang_osx-64 # [osx]
+    - {{ compiler('cxx') }}
+  host:
     - python
     - numpy
     - setuptools
     - setuptools_scm
     - setuptools_scm_git_archive
     - cython
-    - ska_helpers
-    - testr
+    - ska_helpers # needed for duplicate_package_info
+    - testr # needed for ska_helpers
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
