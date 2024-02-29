@@ -107,10 +107,12 @@ def clone_repo(name, args, src_dir, meta):
     if tag is None:
         tags = sorted(repo.tags, key=lambda t: t.commit.committed_datetime)
         repo.git.checkout(tags[-1].name)
-        if tags[-1].commit == repo.heads.master.commit:
-            print("  - Auto-checked out at {} which is also tip of master".format(tags[-1].name))
+        # Check to see if heads has master or main
+        head_name = 'master' if hasattr(repo.heads, 'master') else 'main'
+        if tags[-1].commit == getattr(repo.heads, head_name).commit:
+            print(f"  - Auto-checked out at {tags[-1].name} which is also tip of {head_name}")
         else:
-            print("  - Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
+            print(f"  - Auto-checked out at {tags[-1].name} NOT AT tip of {head_name}")
     else:
         repo.git.checkout(tag)
         print(f'  - Checked out at {tag} and pulled')
