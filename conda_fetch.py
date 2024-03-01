@@ -434,7 +434,7 @@ def get_parser():
     parser.add_argument("--no-patches", dest="get_patches", action="store_false", help="Do not get patches")
     parser.add_argument("--no-packages", dest="get_packages", action="store_false", help="Do not get packages")
     parser.add_argument("--if-patches-exist", default="merge", choices=["merge", "overwrite"], help="What to do if patch instructions already exist")
-    parser.add_argument("--log-level", default="INFO", choice=["debug", "info", "warning"])
+    parser.add_argument("--log-level", default="INFO", choices=["debug", "info", "warning"])
     return parser
 
 
