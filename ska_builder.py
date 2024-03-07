@@ -47,13 +47,13 @@ def get_opt():
                         action="store_true",
                         help="Build only architecture-specific packages")
     parser.add_argument("--python",
-                        default="3.10",
+                        default="3.11",
                         help="Target version of Python (default=3.10)")
     parser.add_argument("--perl",
                         default="5.26.2",
                         help="Target version of Perl (default=5.26.2)")
     parser.add_argument("--numpy",
-                        default="1.21",
+                        default="1.26.3",
                         help="Build version of NumPy")
     parser.add_argument("--github-https", action="store_true", default=False,
                         help="Authenticate using basic auth and https. Default is ssh "
@@ -107,10 +107,12 @@ def clone_repo(name, args, src_dir, meta):
     if tag is None:
         tags = sorted(repo.tags, key=lambda t: t.commit.committed_datetime)
         repo.git.checkout(tags[-1].name)
-        if tags[-1].commit == repo.heads.master.commit:
-            print("  - Auto-checked out at {} which is also tip of master".format(tags[-1].name))
+        # Check to see if heads has master or main
+        head_name = 'master' if hasattr(repo.heads, 'master') else 'main'
+        if tags[-1].commit == getattr(repo.heads, head_name).commit:
+            print(f"  - Auto-checked out at {tags[-1].name} which is also tip of {head_name}")
         else:
-            print("  - Auto-checked out at {} NOT AT tip of master".format(tags[-1].name))
+            print(f"  - Auto-checked out at {tags[-1].name} NOT AT tip of {head_name}")
     else:
         repo.git.checkout(tag)
         print(f'  - Checked out at {tag} and pulled')
@@ -292,15 +294,14 @@ def main():
                 f'{version_info["release"]}{version_info["label"]}:{version_info["version"]}'
 
     if args.packages:
-        pkg_names = args.packages
+        pkg_names = sorted(args.packages)
     else:
         if args.build_list:
             with open(args.build_list) as fh:
                 pkg_names = [line.strip() for line in fh
                              if not re.match(r'\s*#', line) and line.strip()]
         else:
-            pkg_names = [str(pth.name) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()]
-        pkg_names = sorted(pkg_names)
+            pkg_names = sorted([str(pth.name) for pth in PKG_DEFS_PATH.glob('*') if pth.is_dir()])
 
     print(f'Building packages {pkg_names}')
 
