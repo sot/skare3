@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: "2023.10"
+  version: 2024.1
 
 requirements:
   run:
@@ -38,6 +38,7 @@ requirements:
    - mpld3
    - nb_conda
    - nbconvert
+   - nbsphinx
    - networkx
    - nodejs
    - notebook
@@ -51,7 +52,6 @@ requirements:
    - pillow
    - pip
    - flake8
-   - pycrypto
    - pylint
    - plotly
    - ply

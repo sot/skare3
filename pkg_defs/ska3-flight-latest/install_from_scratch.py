@@ -1,77 +1,125 @@
 #!/usr/bin/env python
 
 import os
+import sys
 import subprocess
 import pathlib
 import logging
 
-assert "CONDA_PASSWORD" in os.environ, "CONDA_PASSWORD environmental variable is not defined"
+assert (
+    "CONDA_PASSWORD" in os.environ
+), "CONDA_PASSWORD environmental variable is not defined"
 
-CHANNELS = [
-    'defaults',
-    'conda-forge',
-    f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight'
-]
+CHANNELS = []
+SKA_CHANNELS = []
 
 
-# This is a list of packages to be installed before installing whatever is in meta.yaml
-PACKAGES = [
-    {
-        'channels': [
-            f'https://ska:{os.environ["CONDA_PASSWORD"]}@cxc.cfa.harvard.edu'
-            '/mta/ASPECT/ska3-conda/flight'],
-        'options': [],
-        'packages': ['quaternion']
-    },
-]
-
+def get_package_list():
+    """Packages to be installed before installing whatever is in meta.yaml
+    """
+    return [
+        # we do not want to get quaternion from conda-forge, which is unrelated.
+        {"channels": SKA_CHANNELS, "options": [], "packages": ["quaternion"]},
+    ]
 
 # These options are passed to conda_build.metadata.select_lines after reading meta.yaml.
 # This causes, for example, the lines that read " # [win]" to be read only on win-64.
 PLATFORM_OPTIONS = {
-    'linux-64': {'linux': True, 'linux64': True},
-    'osx-64': {'osx': True, 'osx64': True},
-    'win-64': {'win': True, 'win64': True}
+    "linux-64": {"linux": True, "linux64": True},
+    "osx-64": {"osx": True, "osx64": True},
+    "win-64": {"win": True, "win64": True},
 }
 
 
 def install_pkgs(pkgs):
-    channels = sum([['-c', c] for c in pkgs['channels']], [])
-    cmd = ['mamba', 'install', '-y'] + pkgs['options'] + channels + pkgs['packages']
-    logging.info(' '.join(cmd))
-    subprocess.run(cmd)
+    channels = sum([["-c", c] for c in pkgs["channels"]], [])
+    if channels:
+        channels = ["--override-channels"] + channels
+    cmd = (
+        ["mamba", "install", "-y"]
+        + pkgs["options"]
+        + channels
+        + pkgs["packages"]
+    )
+    logging.info(" ".join(cmd))
+    proc = subprocess.run(cmd)
+    if proc.returncode != 0:
+        raise RuntimeError(f"Error installing {pkgs['packages']}")
 
 
 def install_yaml_requirements(meta_yaml):
     # imported here because they might not be present by default
     import yaml
     import conda_build.metadata
+
     with open(meta_yaml) as fh:
         meta = fh.read()
 
-    data = conda_build.metadata.select_lines(meta, PLATFORM_OPTIONS['osx-64'], {})
+    # we use "osx-64" because ska3-flight-latest should not depend on the platform anyway
+    data = conda_build.metadata.select_lines(meta, PLATFORM_OPTIONS["osx-64"], {})
     data = yaml.load(data, Loader=yaml.BaseLoader)
 
     dependencies = sum(
-        [data['requirements'][k] for k in ['build', 'run'] if k in data['requirements']],
-        []
+        [
+            data["requirements"][k]
+            for k in ["build", "run"]
+            if k in data["requirements"]
+        ],
+        [],
     )
-    install_pkgs({
-        'channels': CHANNELS,
-        'options': [],
-        'packages': dependencies,
-    })
+    install_pkgs(
+        {
+            "channels": CHANNELS + SKA_CHANNELS,
+            "options": [],
+            "packages": dependencies,
+        }
+    )
+
+
+def get_parser():
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Install core packages from ska3-core-latest/meta.yaml"
+    )
+    parser.add_argument(
+        "--ska-channel", action="append", default=[], help="Ska channels to use"
+    )
+    parser.add_argument(
+        "--conda-channel", action="append", default=[], help="Conda channels to use"
+    )
+    return parser
 
 
 def main():
     logging.basicConfig(level="INFO")
 
-    for pkgs in PACKAGES:
-        install_pkgs(pkgs)
+    args = get_parser().parse_args()
 
-    meta_yaml = pathlib.Path(__file__).parent / 'meta.yaml'
-    install_yaml_requirements(meta_yaml)
+    if not args.conda_channel:
+        args.conda_channel.append("conda-forge")
+
+    for channel in args.conda_channel:
+        CHANNELS.append(channel)
+    for channel in args.ska_channel:
+        SKA_CHANNELS.append(
+            f'https://ska:{os.environ["CONDA_PASSWORD"]}'
+            f"@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/{channel}"
+        )
+
+    if not SKA_CHANNELS:
+        logging.error("No ska channels specified")
+        sys.exit(1)
+
+    try:
+        for pkgs in get_package_list():
+            install_pkgs(pkgs)
+
+        meta_yaml = pathlib.Path(__file__).parent / "meta.yaml"
+        install_yaml_requirements(meta_yaml)
+    except Exception as e:
+        logging.error(f"Error: {e}")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
