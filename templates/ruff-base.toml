@@ -1,5 +1,5 @@
 # Copied originally from pandas. This config requires ruff >= 0.2.
-target-version = "py310"
+target-version = "py311"
 
 # fix = true
 lint.unfixable = []
