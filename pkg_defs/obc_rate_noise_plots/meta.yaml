@@ -3,10 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  script: |
-    pip install .
-    mkdir -p $PREFIX/share/obc_rate_noise_plots
-    cp task_schedule.cfg $PREFIX/share/obc_rate_noise_plots/
+  script: pip install .
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/obc_rate_noise_plots
