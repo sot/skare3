@@ -19,4 +19,5 @@ dependencies:
   - skare3_tools
   - vv_trending
   - twiki-wg
+  - obc_rate_noise_plots
   
