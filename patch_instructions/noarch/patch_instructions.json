@@ -1,0 +1,983 @@
+{
+  "packages": {
+    "appdirs-1.4.4-pyh9f0ad1d_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "astroquery-0.4.6-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "babel-2.11.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "blinker-1.5-pyhd8ed1ab_0.tar.bz2": {
+      "depends": [
+        "python ==2.7.*|>=3.5"
+      ],
+      "license_family": "MIT"
+    },
+    "charset-normalizer-2.1.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "colorama-0.4.6-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "cycler-0.11.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "decorator-5.1.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "django-3.1.7-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "entrypoints-0.4-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "glob2-0.7-py_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "idna-3.4-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "imagesize-1.4.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "jinja2-3.1.2-pyhd8ed1ab_1.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "jira-3.4.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "joblib-1.2.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "jplephem-2.18-pyh78acc04_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "jupyter_console-6.4.4-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "nbclassic-0.4.8-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "notebook-shim-0.2.2-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "numpydoc-1.5.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "pandocfilters-1.5.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "pickleshare-0.7.5-py_1003.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "pycparser-2.21-pyhd8ed1ab_0.tar.bz2": {
+      "depends": [
+        "python ==2.7.*|>=3.4"
+      ],
+      "license_family": "BSD"
+    },
+    "pyparsing-3.0.9-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "python-dateutil-2.8.2-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "APACHE"
+    },
+    "python-docx-0.8.11-pyhd8ed1ab_0.tar.bz2": {
+      "depends": [
+        "lxml >=2.3.2",
+        "python ==2.7.*|>=3.4"
+      ],
+      "license_family": "MIT"
+    },
+    "qtconsole-5.4.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "qtconsole-base-5.4.0-pyha770c72_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "qtpy-2.3.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "requests-toolbelt-0.10.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "APACHE"
+    },
+    "rfc3339-validator-0.1.4-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "rfc3986-validator-0.1.1-pyh9f0ad1d_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "smmap-3.0.5-pyh44b312d_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "snowballstemmer-2.2.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "soupsieve-2.3.2.post1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "sphinx-argparse-0.3.1-pyhd8ed1ab_0.tar.bz2": {
+      "depends": [
+        "commonmark >=0.5.6",
+        "python ==2.7.*|>=3.6",
+        "sphinx"
+      ],
+      "license_family": "MIT"
+    },
+    "sqlparse-0.4.3-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "tenacity-8.1.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "APACHE"
+    },
+    "terminado-0.17.0-pyh08f2357_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "tomli-2.0.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "toolz-0.12.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "websocket-client-1.4.2-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "APACHE"
+    },
+    "wheel-0.38.4-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "fqdn-1.5.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MOZILLA"
+    },
+    "isoduration-20.11.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "smmap-5.0.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "typing_utils-0.1.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "APACHE"
+    },
+    "packages": {
+      "packages": {
+        "astroquery-0.4.6-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "BSD"
+        },
+        "colorama-0.4.6-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "BSD"
+        },
+        "decorator-5.1.1-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "BSD"
+        },
+        "django-3.1.7-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "BSD"
+        },
+        "entrypoints-0.4-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "MIT"
+        },
+        "fqdn-1.5.1-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "MOZILLA"
+        },
+        "imagesize-1.4.1-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "MIT"
+        },
+        "isoduration-20.11.0-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "MIT"
+        },
+        "pandocfilters-1.5.0-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "BSD"
+        },
+        "pickleshare-0.7.5-py_1003.tar.bz2": {
+          "license_family": "MIT"
+        },
+        "pycparser-2.21-pyhd8ed1ab_0.tar.bz2": {
+          "depends": [
+            "python ==2.7.*|>=3.4"
+          ],
+          "license_family": "BSD"
+        },
+        "python-dateutil-2.8.2-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "APACHE"
+        },
+        "rfc3339-validator-0.1.4-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "MIT"
+        },
+        "rfc3986-validator-0.1.1-pyh9f0ad1d_0.tar.bz2": {
+          "license_family": "MIT"
+        },
+        "smmap-5.0.0-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "BSD"
+        },
+        "snowballstemmer-2.2.0-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "BSD"
+        },
+        "tomli-2.0.1-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "MIT"
+        },
+        "typing_utils-0.1.0-pyhd8ed1ab_0.tar.bz2": {
+          "license_family": "APACHE"
+        }
+      },
+      "packages.conda": {
+        "alabaster-0.7.16-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "astropy-iers-data-0.2024.2.26.0.28.55-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "astropy-sphinx-theme-1.1-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "async-lru-2.0.4-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "babel-2.14.0-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "backports-1.0-pyhd8ed1ab_3.conda": {
+          "license_family": "BSD"
+        },
+        "blinker-1.7.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "boltons-23.1.1-pyhd8ed1ab_0.conda": {
+          "depends": [
+            "python ==2.7.*|>=3.7"
+          ],
+          "license_family": "BSD"
+        },
+        "charset-normalizer-3.3.2-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "cloudpickle-3.0.0-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "conda-index-0.4.0-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "conda-package-streaming-0.9.0-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "configobj-5.0.8-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "cycler-0.12.1-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "distro-1.9.0-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "gitdb-4.0.11-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "idna-3.6-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "importlib_resources-6.1.2-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "isort-5.13.2-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "jinja2-3.1.3-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "jira-3.6.0-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "joblib-1.3.2-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "jplephem-2.21-pyh864a33b_0.conda": {
+          "license_family": "MIT"
+        },
+        "json5-0.9.17-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "jsonschema-4.21.1-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "jsonschema-specifications-2023.12.1-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "jsonschema-with-format-nongpl-4.21.1-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "jupyter_console-6.6.3-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "jupyter_server_terminals-0.5.2-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "jupyterlab_server-2.25.3-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "jupyterlab_widgets-3.0.10-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "mpld3-0.5.10-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "nb_conda_kernels-2.3.1-pyh707e725_4.conda": {
+          "license_family": "BSD"
+        },
+        "nb_conda_kernels-2.3.1-pyh7428d3b_4.conda": {
+          "license_family": "BSD"
+        },
+        "nbclassic-1.0.0-pyhb4ecaf3_1.conda": {
+          "license_family": "BSD"
+        },
+        "nbconvert-7.16.1-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "nbconvert-core-7.16.1-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "nbformat-5.9.2-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "notebook-shim-0.2.4-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "numpydoc-1.6.0-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "packaging-23.2-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "pathspec-0.12.1-pyhd8ed1ab_0.conda": {
+          "license_family": "MOZILLA"
+        },
+        "platformdirs-4.2.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "plotly-5.19.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "prompt-toolkit-3.0.42-pyha770c72_0.conda": {
+          "license_family": "BSD"
+        },
+        "prompt_toolkit-3.0.42-hd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "pyflakes-3.2.0-pyhd8ed1ab_0.conda": {
+          "depends": [
+            "python ==2.7.*|>=3.5"
+          ]
+        },
+        "pygments-2.17.2-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "pylint-3.1.0-pyhd8ed1ab_0.conda": {
+          "license_family": "GPL"
+        },
+        "pyparsing-3.1.1-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "pytest-7.4.4-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "pytest-8.0.2-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "pytest-timeout-2.2.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "python-docx-1.1.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "python-tzdata-2024.1-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "pytoolconfig-1.2.5-pyhd8ed1ab_0.conda": {
+          "license_family": "LGPL"
+        },
+        "pytz-2024.1-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "qtconsole-5.5.1-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "qtconsole-base-5.5.1-pyha770c72_0.conda": {
+          "license_family": "BSD"
+        },
+        "qtpy-2.4.1-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "referencing-0.33.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "requests-2.31.0-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "requests-toolbelt-1.0.0-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "rope-1.12.0-pyhd8ed1ab_0.conda": {
+          "license_family": "LGPL"
+        },
+        "setuptools-scm-8.0.4-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "setuptools_scm-8.0.4-hd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "soupsieve-2.5-pyhd8ed1ab_1.conda": {
+          "license_family": "MIT"
+        },
+        "sphinx-7.2.6-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "sphinx-argparse-0.4.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "sqlparse-0.4.4-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "tenacity-8.2.3-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "terminado-0.18.0-pyh0d859eb_0.conda": {
+          "license_family": "BSD"
+        },
+        "terminado-0.18.0-pyh31c8845_0.conda": {
+          "license_family": "BSD"
+        },
+        "terminado-0.18.0-pyh5737063_0.conda": {
+          "license_family": "BSD"
+        },
+        "traitlets-5.14.1-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "truststore-0.8.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "wcwidth-0.2.13-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        },
+        "webcolors-1.13-pyhd8ed1ab_0.conda": {
+          "license_family": "BSD"
+        },
+        "webencodings-0.5.1-pyhd8ed1ab_2.conda": {
+          "license_family": "BSD"
+        },
+        "websocket-client-1.7.0-pyhd8ed1ab_0.conda": {
+          "license_family": "APACHE"
+        },
+        "wheel-0.42.0-pyhd8ed1ab_0.conda": {
+          "license_family": "MIT"
+        }
+      },
+      "patch_instructions_version": 1,
+      "remove": [],
+      "revoke": []
+    },
+    "packages.conda": {
+      "alabaster-0.7.16-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "astropy-iers-data-0.2024.2.26.0.28.55-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "astropy-sphinx-theme-1.1-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "async-lru-2.0.4-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "babel-2.14.0-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "backports-1.0-pyhd8ed1ab_3.conda": {
+        "license_family": "BSD"
+      },
+      "blinker-1.7.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "boltons-23.1.1-pyhd8ed1ab_0.conda": {
+        "depends": [
+          "python ==2.7.*|>=3.7"
+        ],
+        "license_family": "BSD"
+      },
+      "charset-normalizer-3.3.2-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "cloudpickle-3.0.0-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "conda-index-0.4.0-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "conda-package-streaming-0.9.0-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "configobj-5.0.8-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "cycler-0.12.1-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "distro-1.9.0-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "gitdb-4.0.11-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "idna-3.6-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "importlib_resources-6.1.2-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "isort-5.13.2-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "jinja2-3.1.3-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "jira-3.6.0-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "joblib-1.3.2-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "jplephem-2.21-pyh864a33b_0.conda": {
+        "license_family": "MIT"
+      },
+      "json5-0.9.17-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "jsonschema-4.21.1-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "jsonschema-specifications-2023.12.1-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "jsonschema-with-format-nongpl-4.21.1-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "jupyter_console-6.6.3-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "jupyter_server_terminals-0.5.2-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "jupyterlab_server-2.25.3-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "jupyterlab_widgets-3.0.10-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "mpld3-0.5.10-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "nb_conda_kernels-2.3.1-pyh707e725_4.conda": {
+        "license_family": "BSD"
+      },
+      "nb_conda_kernels-2.3.1-pyh7428d3b_4.conda": {
+        "license_family": "BSD"
+      },
+      "nbclassic-1.0.0-pyhb4ecaf3_1.conda": {
+        "license_family": "BSD"
+      },
+      "nbconvert-7.16.1-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "nbconvert-core-7.16.1-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "nbformat-5.9.2-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "notebook-shim-0.2.4-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "numpydoc-1.6.0-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "packaging-23.2-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "pathspec-0.12.1-pyhd8ed1ab_0.conda": {
+        "license_family": "MOZILLA"
+      },
+      "platformdirs-4.2.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "plotly-5.19.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "prompt-toolkit-3.0.42-pyha770c72_0.conda": {
+        "license_family": "BSD"
+      },
+      "prompt_toolkit-3.0.42-hd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "pyflakes-3.2.0-pyhd8ed1ab_0.conda": {
+        "depends": [
+          "python ==2.7.*|>=3.5"
+        ]
+      },
+      "pygments-2.17.2-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "pylint-3.1.0-pyhd8ed1ab_0.conda": {
+        "license_family": "GPL"
+      },
+      "pyparsing-3.1.1-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "pytest-7.4.4-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "pytest-8.0.2-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "pytest-timeout-2.2.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "python-docx-1.1.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "python-tzdata-2024.1-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "pytoolconfig-1.2.5-pyhd8ed1ab_0.conda": {
+        "license_family": "LGPL"
+      },
+      "pytz-2024.1-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "qtconsole-5.5.1-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "qtconsole-base-5.5.1-pyha770c72_0.conda": {
+        "license_family": "BSD"
+      },
+      "qtpy-2.4.1-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "referencing-0.33.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "requests-2.31.0-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "requests-toolbelt-1.0.0-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "rope-1.12.0-pyhd8ed1ab_0.conda": {
+        "license_family": "LGPL"
+      },
+      "setuptools-scm-8.0.4-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "setuptools_scm-8.0.4-hd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "soupsieve-2.5-pyhd8ed1ab_1.conda": {
+        "license_family": "MIT"
+      },
+      "sphinx-7.2.6-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "sphinx-argparse-0.4.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "sqlparse-0.4.4-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "tenacity-8.2.3-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "terminado-0.18.0-pyh0d859eb_0.conda": {
+        "license_family": "BSD"
+      },
+      "terminado-0.18.0-pyh31c8845_0.conda": {
+        "license_family": "BSD"
+      },
+      "terminado-0.18.0-pyh5737063_0.conda": {
+        "license_family": "BSD"
+      },
+      "traitlets-5.14.1-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "truststore-0.8.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "wcwidth-0.2.13-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      },
+      "webcolors-1.13-pyhd8ed1ab_0.conda": {
+        "license_family": "BSD"
+      },
+      "webencodings-0.5.1-pyhd8ed1ab_2.conda": {
+        "license_family": "BSD"
+      },
+      "websocket-client-1.7.0-pyhd8ed1ab_0.conda": {
+        "license_family": "APACHE"
+      },
+      "wheel-0.42.0-pyhd8ed1ab_0.conda": {
+        "license_family": "MIT"
+      }
+    },
+    "patch_instructions_version": 1,
+    "remove": [],
+    "revoke": []
+  },
+  "packages.conda": {
+    "alabaster-0.7.16-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "astropy-iers-data-0.2024.2.26.0.28.55-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "astropy-sphinx-theme-1.1-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "async-lru-2.0.4-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "babel-2.14.0-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "backports-1.0-pyhd8ed1ab_3.conda": {
+      "license_family": "BSD"
+    },
+    "blinker-1.7.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "boltons-23.1.1-pyhd8ed1ab_0.conda": {
+      "depends": [
+        "python ==2.7.*|>=3.7"
+      ],
+      "license_family": "BSD"
+    },
+    "charset-normalizer-3.3.2-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "conda-index-0.4.0-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "conda-package-streaming-0.9.0-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "configobj-5.0.8-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "cycler-0.12.1-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "distro-1.9.0-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "gitdb-4.0.11-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "idna-3.6-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "importlib_resources-6.1.2-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "isort-5.13.2-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "jinja2-3.1.3-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "jira-3.6.0-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "joblib-1.3.2-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "jplephem-2.21-pyh864a33b_0.conda": {
+      "license_family": "MIT"
+    },
+    "json5-0.9.17-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "jsonschema-4.21.1-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "jsonschema-specifications-2023.12.1-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "jsonschema-with-format-nongpl-4.21.1-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "jupyter_console-6.6.3-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "jupyter_server_terminals-0.5.2-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "jupyterlab_server-2.25.3-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "jupyterlab_widgets-3.0.10-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "mpld3-0.5.10-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "nb_conda_kernels-2.3.1-pyh707e725_4.conda": {
+      "license_family": "BSD"
+    },
+    "nbclassic-1.0.0-pyhb4ecaf3_1.conda": {
+      "license_family": "BSD"
+    },
+    "nbconvert-7.16.1-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "nbconvert-core-7.16.1-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "nbformat-5.9.2-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "notebook-shim-0.2.4-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "numpydoc-1.6.0-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "packaging-23.2-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "pathspec-0.12.1-pyhd8ed1ab_0.conda": {
+      "license_family": "MOZILLA"
+    },
+    "platformdirs-4.2.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "plotly-5.19.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "prompt-toolkit-3.0.42-pyha770c72_0.conda": {
+      "license_family": "BSD"
+    },
+    "prompt_toolkit-3.0.42-hd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "pyflakes-3.2.0-pyhd8ed1ab_0.conda": {
+      "depends": [
+        "python ==2.7.*|>=3.5"
+      ]
+    },
+    "pygments-2.17.2-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "pylint-3.1.0-pyhd8ed1ab_0.conda": {
+      "license_family": "GPL"
+    },
+    "pyparsing-3.1.1-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "pytest-7.4.4-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "pytest-timeout-2.2.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "python-docx-1.1.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "python-tzdata-2024.1-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "pytoolconfig-1.2.5-pyhd8ed1ab_0.conda": {
+      "license_family": "LGPL"
+    },
+    "pytz-2024.1-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "qtconsole-5.5.1-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "qtconsole-base-5.5.1-pyha770c72_0.conda": {
+      "license_family": "BSD"
+    },
+    "qtpy-2.4.1-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "referencing-0.33.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "requests-2.31.0-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "requests-toolbelt-1.0.0-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "rope-1.12.0-pyhd8ed1ab_0.conda": {
+      "license_family": "LGPL"
+    },
+    "setuptools-scm-8.0.4-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "setuptools_scm-8.0.4-hd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "soupsieve-2.5-pyhd8ed1ab_1.conda": {
+      "license_family": "MIT"
+    },
+    "sphinx-7.2.6-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "sphinx-argparse-0.4.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "sqlparse-0.4.4-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "tenacity-8.2.3-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "terminado-0.18.0-pyh31c8845_0.conda": {
+      "license_family": "BSD"
+    },
+    "traitlets-5.14.1-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "truststore-0.8.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "wcwidth-0.2.13-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "webcolors-1.13-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "webencodings-0.5.1-pyhd8ed1ab_2.conda": {
+      "license_family": "BSD"
+    },
+    "websocket-client-1.7.0-pyhd8ed1ab_0.conda": {
+      "license_family": "APACHE"
+    },
+    "wheel-0.42.0-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "cloudpickle-3.0.0-pyhd8ed1ab_0.conda": {
+      "license_family": "BSD"
+    },
+    "nb_conda_kernels-2.3.1-pyh7428d3b_4.conda": {
+      "license_family": "BSD"
+    },
+    "pytest-8.0.2-pyhd8ed1ab_0.conda": {
+      "license_family": "MIT"
+    },
+    "terminado-0.18.0-pyh0d859eb_0.conda": {
+      "license_family": "BSD"
+    },
+    "terminado-0.18.0-pyh5737063_0.conda": {
+      "license_family": "BSD"
+    }
+  },
+  "remove": [],
+  "revoke": [],
+  "patch_instructions_version": 1
+}

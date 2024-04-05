@@ -15,6 +15,7 @@ import json
 import os
 import re
 import logging
+import logging.config
 import subprocess
 import requests
 import collections
@@ -25,10 +26,104 @@ import shutil
 import functools
 import pprint
 import tqdm
+import itertools
 from pathlib import Path
+from urllib.parse import urlparse, urlunparse
 
 
 logger = logging.getLogger("skare3")
+
+
+def get_conda_list(
+    conda_lists=(), packages=(), subdirs=(), channels=(), override_channels=False
+):
+    conda_options = []
+    for channel in channels:
+        conda_options += ["-c", channel]
+    if override_channels:
+        conda_options += ["--override-channels"]
+
+    if conda_lists:
+        return _conda_list_from_files(conda_lists)
+    elif packages:
+        return _conda_list_from_search(
+            packages, conda_options=conda_options, subdirs=subdirs
+        )
+    else:
+        return _default_conda_list(" ".join(conda_options))
+
+
+@functools.cache
+def _default_conda_list(conda_options=None):
+    # get list of all installed packages
+    cmd = ["conda", "list", "--json"]
+    if conda_options:
+        cmd += conda_options.split()
+    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE)
+    stdout, _ = proc.communicate()
+    return json.loads(stdout.decode())
+
+
+def _conda_list_from_files(filenames):
+    missing = []
+    conda_list = []
+    for filename in filenames:
+        if not Path(filename).exists():
+            missing.append(filename)
+            continue
+        with open(filename) as fh:
+            conda_list += json.load(fh)
+    if missing:
+        raise Exception(f"Missing conda list files: {', '.join(missing)}")
+    return conda_list
+
+
+def _conda_list_from_search(packages, conda_options=None, subdirs=()):
+    conda_list = []
+    cmd = ["conda", "search", "--json"]
+    if conda_options:
+        cmd += conda_options
+
+    if subdirs:
+        cmds = [cmd + ["--subdir", subdir] for subdir in subdirs]
+    else:
+        cmds = [cmd]
+    for pkg_spec, cmd in tqdm.tqdm(itertools.product(packages, cmds)):
+        proc = subprocess.Popen(cmd + [pkg_spec], stdout=subprocess.PIPE)
+        stdout, _ = proc.communicate()
+        if proc.returncode == 0:
+            result = json.loads(stdout.decode())
+            if len(result) > 1:
+                msg = f"Search for {pkg_spec} yields more than one package:"
+                for name in result:
+                    msg += f"\n  {name}"
+                raise Exception(msg)
+            result = list(result.values())[0]
+            result = [pkg for pkg in result if match(pkg, pkg_spec)]
+            if len(result) > 1:
+                msg = f"Search for {pkg_spec} yields more than one package:"
+                for pkg in result:
+                    msg += f"\n  {pkg['name']}-{pkg['version']}-{pkg['build']} {pkg['channel']}"
+                raise Exception(msg)
+            if result:
+                url = urlparse(result[0]["url"])
+                url = url._replace(
+                    path=url.path.replace(
+                        f"/{result[0]['subdir']}/{result[0]['fn']}", ""
+                    )
+                )
+                conda_list.append(
+                    {
+                        "name": result[0]["name"],
+                        "version": result[0]["version"],
+                        "build": result[0]["build"],
+                        "platform": result[0]["subdir"],
+                        "url": result[0]["url"],
+                        "dist_name": f"{result[0]['name']}-{result[0]['version']}-{result[0]['build']}",
+                        "base_url": urlunparse(url),
+                    }
+                )
+    return conda_list
 
 
 def match(package, spec_string):
@@ -42,17 +137,25 @@ def match(package, spec_string):
     package : dict
         Usually the output of `conda list --json`
     spec_string : str
-        a string of the form <name>[==<version>]
+        a string of the form <name>[=[=]<version>[=<build>]]
 
     Returns
     -------
     bool
     """
-    m = re.match(r"(?P<name>[-_a-zA-Z0-9]+)(==)?(?P<version>\S+)?", spec_string)
-    if m:
+    if m := re.match(
+        r"(?P<name>[-_a-zA-Z0-9]+)==?(?P<version>\S+)=(?P<build>\S+)", spec_string
+    ):
         parts = m.groupdict()
-        return parts["name"] == package["name"] and (
-            (parts["version"] is None) or (parts["version"] == package["version"])
+        return (
+            parts["name"] == package["name"]
+            and parts["version"] == package["version"]
+            and parts["build"] == package["build"]
+        )
+    elif m := re.match(r"(?P<name>[-_a-zA-Z0-9]+)==?(?P<version>\S+)", spec_string):
+        parts = m.groupdict()
+        return (
+            parts["name"] == package["name"] and parts["version"] == package["version"]
         )
     return False
 
@@ -74,10 +177,8 @@ def get_patch_instructions(packages=(), conda_list=None):
         The patch instructions
     """
     if conda_list is None:
-        # get all installed packages
-        p = subprocess.Popen(["conda", "list", "--json"], stdout=subprocess.PIPE)
-        stdout, _ = p.communicate()
-        conda_list = json.loads(stdout.decode())
+        conda_list = get_conda_list()
+
     if packages:
         # only consider the ones requested
         tmp = []
@@ -96,9 +197,6 @@ def get_patch_instructions(packages=(), conda_list=None):
     upstream_patches = {
         url: json.loads(r.content.decode()) for url, r in rc.items() if r.ok
     }
-
-    with open("debug.json", "w") as fh:
-        json.dump(upstream_patches, fh)
 
     # put those instructions in our on dictionary
     patches = collections.defaultdict(
@@ -133,9 +231,9 @@ def get_patch_instructions(packages=(), conda_list=None):
                     != upstream_patches[url]["patch_instructions_version"]
                 ):
                     logger.warning("patch_instructions_version mismatch")
-                patches[pkg["platform"]][
-                    "patch_instructions_version"
-                ] = upstream_patches[url]["patch_instructions_version"]
+                patches[pkg["platform"]]["patch_instructions_version"] = (
+                    upstream_patches[url]["patch_instructions_version"]
+                )
     patches = dict(patches)
     return patches
 
@@ -174,6 +272,7 @@ def merge_patch_instructions(patch_instructions):
     different JSON files for the noarch directory, since it depends on the packages actually
     installed. We then gather all packages and need to merge the patches.
     """
+    logger.debug("Merging patch instructions")
     platforms = set([key for item in patch_instructions for key in item.keys()])
     patches = {
         platform: _merge_patch_instructions(
@@ -203,15 +302,14 @@ def get_packages(packages=(), conda_list=None, output_dir=None):
     fail = []
     base_dir = output_dir if output_dir is not None else Path()
     if conda_list is None:
-        # get all installed packages
-        p = subprocess.Popen(["conda", "list", "--json"], stdout=subprocess.PIPE)
-        stdout, _ = p.communicate()
-        conda_list = json.loads(stdout.decode())
+        conda_list = get_conda_list()
+
     if packages:
         # only consider the ones requested
         tmp = []
-        for pkg_string in packages:
-            for pkg in conda_list:
+        # a single pkg_string can match multiple entries in the list (from different platforms)
+        for pkg in conda_list:
+            for pkg_string in packages:
                 if match(pkg, pkg_string):
                     tmp.append(pkg)
                     break
@@ -222,10 +320,13 @@ def get_packages(packages=(), conda_list=None, output_dir=None):
     tmpdir = Path()
     for pkg in tqdm.tqdm(conda_list):
         if list((base_dir / pkg["platform"]).glob(f"{pkg['dist_name']}*")):
-           continue
+            continue
         try:
             pkg["base_url"] = pkg["base_url"].replace(
                 "cxc.cfa.harvard.edu/mta/ASPECT", "icxc.cfa.harvard.edu/aspect"
+            )
+            logger.debug(
+                f"Trying {pkg['base_url']}/{pkg['platform']}/{pkg['dist_name']}.tar.bz2"
             )
             proc = subprocess.run(
                 [
@@ -235,6 +336,9 @@ def get_packages(packages=(), conda_list=None, output_dir=None):
                 capture_output=True,
             )
             if proc.returncode != 0:
+                logger.debug(
+                    f"Trying {pkg['base_url']}/{pkg['platform']}/{pkg['dist_name']}.conda"
+                )
                 proc = subprocess.run(
                     [
                         "wget",
@@ -243,12 +347,14 @@ def get_packages(packages=(), conda_list=None, output_dir=None):
                     capture_output=True,
                 )
             if proc.returncode != 0:
+                logger.debug(f"Failed {pkg['dist_name']}")
                 fail.append(pkg)
             else:
                 platform = base_dir / pkg["platform"]
                 platform.mkdir(exist_ok=True, parents=True)
                 output = list(tmpdir.glob(f"{pkg['dist_name']}*"))
                 if output:
+                    logger.debug(f"Moving {output[0]} -> {platform}")
                     shutil.move(output[0], platform)
                 else:
                     raise Exception(
@@ -302,7 +408,37 @@ def _wget_alt(url, destination):
     return url.name
 
 
+def load_patches(path):
+    """
+    Load patch instructions from a directory or compressed file.
+
+    If the path is a directory, the function will check whether there is a compressed file in the
+    directory. If there is a compressed file and also JSON files, then it will issue a warning,
+    since this should normally not happen, and it will read from the JSON files.
+    """
+    path = Path(path)
+    if path.is_dir():
+        json_files = list(path.glob("*/patch_instructions.json"))
+        zip_file = path / "patch_instructions.tar.bz2"
+        if json_files and zip_file.exists():
+            logger.warning(
+                f"Directory {path} has both json and zipped patch files. Loading from JSON files."
+            )
+        if zip_file.exists() and not json_files:
+            return _read_zipped_patch_files(zip_file)
+        else:
+            return _read_patch_files(path)
+
+    elif path.name[-8:] == ".tar.bz2":
+        return _read_zipped_patch_files(path)
+    else:
+        raise Exception(
+            f"Cannot read patch instructions: {path} (it must be a directory or a .tar.bz2 file)"
+        )
+
+
 def _read_patch_files(path):
+    logger.debug(f"Loading patches from JSON files at {path}")
     patches = {}
     patch_files = path.glob("*/patch_instructions.json")
     for patch_file in patch_files:
@@ -312,22 +448,32 @@ def _read_patch_files(path):
     return patches
 
 
-def load_patches(path):
-    path = Path(path)
-    if path.is_dir():
-        return _read_patch_files(path)
-    elif path.name[-8:] == ".tar.bz2":
-        with tempfile.TemporaryDirectory() as tmpdir:
-            with tarfile.open(path, "r:bz2") as zf:
-                zf.extractall(tmpdir)
-                return _read_patch_files(Path(tmpdir))
-    else:
-        raise Exception(
-            f"Cannot read patch instructions: {path} (it must be a directory or a .tar.bz2 file)"
-        )
+def _read_zipped_patch_files(filename):
+    logger.debug(f"Loading patches from {filename}")
+    with tempfile.TemporaryDirectory() as tmpdir:
+        with tarfile.open(filename, "r:bz2") as zf:
+            zf.extractall(tmpdir)
+            return _read_patch_files(Path(tmpdir))
 
 
 def save_patches(patches, output_dir, if_exists=None, zip_patches=True):
+    """
+    Save patch instructions in a directory.
+
+    Parameters
+    ----------
+    patches : dict
+        The patch instructions
+    output_dir : Path
+        Directory where to put the patches.
+    if_exists : str (optional)
+        One of:
+        - 'overwrite'. Discard any patches that might be in the output directory.
+        - 'merge'. Merge these patches with the existing ones.
+        - anything else will cause an exception of there are patches in the output directory
+    zip_patches : bool
+        Whether to store in a compressed file (True) or in JSON files (False).
+    """
     output_dir = Path(output_dir)
 
     # these are the files that will be overwritten by this function
@@ -350,7 +496,8 @@ def save_patches(patches, output_dir, if_exists=None, zip_patches=True):
             msg += ", ".join([str(file) for file in existing_patch_files])
             raise Exception(msg)
 
-    # merge if needed, and then save in a temporary directory
+    logger.debug(f"Saving patches in {output_dir}")
+    # save in a temporary directory
     with tempfile.TemporaryDirectory() as td:
         tempdir = Path(td)
 
@@ -381,36 +528,33 @@ def save_patches(patches, output_dir, if_exists=None, zip_patches=True):
 
 
 def configure_logging():
-    logging.config.dictConfig({
-        "version": 1,
-        "formatters": {
-            "default": {
-                "format": "%(levelname)-8s %(message)s"  # noqa
-            }
-        },
-        "handlers": {
-            "console": {
-                "class": "logging.StreamHandler",
-                "formatter": "default",
-                "level": "DEBUG",
+    logging.config.dictConfig(
+        {
+            "version": 1,
+            "formatters": {
+                "default": {"format": "%(levelname)-8s %(message)s"}  # noqa
             },
-        },
-        "loggers": {
-            "skare3": {
-                "level": "INFO",
-                "handlers": ["console"],
-                "propagate": False,
+            "handlers": {
+                "console": {
+                    "class": "logging.StreamHandler",
+                    "formatter": "default",
+                    "level": "DEBUG",
+                },
             },
-        },
-        "root": {"level": "WARNING", "handlers": ["console"]},
-    })
+            "loggers": {
+                "skare3": {
+                    "level": "INFO",
+                    "handlers": ["console"],
+                    "propagate": False,
+                },
+            },
+            "root": {"level": "WARNING", "handlers": ["console"]},
+        }
+    )
 
 
 def get_parser():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "action", choices=["get", "merge-patches"], help="Action to perform."
-    )
     parser.add_argument(
         "items",
         nargs="*",
@@ -428,17 +572,65 @@ def get_parser():
         default=Path("packages"),
         help="directory where to place packages and patch instructions.",
     )
-    parser.add_argument("--conda-list", type=Path, help="Output of `conda list --json`")
+    parser.add_argument(
+        "--conda-list",
+        type=Path,
+        action="append",
+        default=[],
+        help="File(s) with the output of `conda list --json`, one for each environment.",
+    )
     parser.add_argument("--zip", action="store_true", default=True, help="Zip patches")
-    parser.add_argument("--no-zip", action="store_false", dest="zip", help="Do not zip patches")
-    parser.add_argument("--no-patches", dest="get_patches", action="store_false", help="Do not get patches")
-    parser.add_argument("--no-packages", dest="get_packages", action="store_false", help="Do not get packages")
-    parser.add_argument("--if-patches-exist", default="merge", choices=["merge", "overwrite"], help="What to do if patch instructions already exist")
-    parser.add_argument("--log-level", default="INFO", choices=["debug", "info", "warning"])
+    parser.add_argument(
+        "--no-zip", action="store_false", dest="zip", help="Do not zip patches"
+    )
+    parser.add_argument(
+        "--no-patches",
+        dest="get_patches",
+        action="store_false",
+        help="Do not get patches",
+    )
+    parser.add_argument(
+        "--no-packages",
+        dest="get_packages",
+        action="store_false",
+        help="Do not get packages",
+    )
+    parser.add_argument(
+        "--merge-patches",
+        action="store_true",
+        dest="merge_patches",
+        help="Do not get anything, just merge the given patch instructions.",
+    )
+    parser.add_argument(
+        "--if-patches-exist",
+        default="merge",
+        choices=["merge", "overwrite"],
+        help="What to do if patch instructions already exist",
+    )
+    parser.add_argument(
+        "--log-level", default="INFO", choices=["debug", "info", "warning"]
+    )
+    parser.add_argument(
+        "--channel", "-c", help="Conda channel", action="append", default=[]
+    )
+    parser.add_argument(
+        "--subdir",
+        help="Conda subdir (noarch, linux-64, etc)",
+        action="append",
+        default=[],
+    )
+    parser.add_argument(
+        "--override-channels",
+        action="store_true",
+        default=False,
+        help="Override default conda channels",
+    )
     return parser
 
 
 def main():
+    configure_logging()
+
     parser = get_parser()
     args = parser.parse_args()
 
@@ -447,14 +639,21 @@ def main():
     for line in pprint.pformat(vars(args)).split("\n"):
         logger.info(line)
 
-    conda_list = None
-    if args.conda_list:
-        if not args.conda_list.exists():
-            parser.exit(status=1, message=f"{args.conda_list} does not exist")
-        with open(args.conda_list) as fh:
-            conda_list = json.load(fh)
+    if args.merge_patches:
+        items = [load_patches(item) for item in args.items]
+        patches = merge_patch_instructions(items)
+        save_patches(
+            patches, args.out, if_exists=args.if_patches_exist, zip_patches=args.zip
+        )
+    else:
+        conda_list = get_conda_list(
+            packages=args.items,
+            conda_lists=args.conda_list,
+            channels=args.channel,
+            override_channels=args.override_channels,
+            subdirs=args.subdir,
+        )
 
-    if args.action == "get":
         if args.get_patches:
             patches = get_patch_instructions(args.items, conda_list=conda_list)
             save_patches(
@@ -462,12 +661,6 @@ def main():
             )
         if args.get_packages:
             get_packages(args.items, conda_list=conda_list, output_dir=args.out)
-    elif args.action == "merge-patches":
-        items = [load_patches(item) for item in args.items]
-        patches = merge_patch_instructions(items)
-        save_patches(
-            patches, args.out, if_exists=args.if_patches_exist, zip_patches=args.zip
-        )
 
 
 if __name__ == "__main__":

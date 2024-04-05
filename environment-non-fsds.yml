@@ -13,6 +13,7 @@ dependencies:
   - jobwatch
   - kalman_watch
   - perigee_health_plots
+  - schedule_view3
   - ska_report_ranges
   - ska_trend
   - skare3_tools

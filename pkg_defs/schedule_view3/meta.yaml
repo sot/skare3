@@ -1,12 +1,12 @@
 package:
-  name: ska_numpy
+  name: schedule_view3
   version:  {{ SKA_PKG_VERSION }}
 
 build:
   script: pip install .
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/ska_numpy
+  path: {{ SKA_TOP_SRC_DIR }}/schedule_view3
 
 
 # the build and runtime requirements. Dependencies of these requirements
@@ -15,32 +15,27 @@ requirements:
   # Packages required to build the package. python and numpy must be
   # listed explicitly if they are required.
   build:
-    - {{ compiler('cxx') }}
-  host:
     - python
-    - numpy
     - setuptools
     - setuptools_scm
     - setuptools_scm_git_archive
-    - cython
-    - ska_helpers # needed for duplicate_package_info
-    - testr # needed for ska_helpers
   # Packages required to run the package. These are the dependencies that
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - six
     - numpy
-    - nose
+    - matplotlib
+    - astropy
+    - pytest
+    - kadi
     - testr
     - ska_helpers
 
 test:
   imports:
-    - Ska.Numpy
-    - ska_numpy
+    - schedule_view
 
 
 about:
-  home: https://github.com/sot/ska_numpy
+  home: https://github.com/sot/schedule_view3
 
