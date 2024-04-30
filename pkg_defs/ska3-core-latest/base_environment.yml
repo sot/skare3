@@ -3,7 +3,7 @@ channels:
 dependencies:
   - python=3.11
   - numexpr<2.8.5
-  - libblas=*=*mkl  # on conda-forge, libblas uses open_blas by default
+  - libblas         # on conda-forge, libblas uses open_blas by default
   - libarchive      # libarchive from defaults is not good for mamba
   - mamba
   - setuptools_scm
