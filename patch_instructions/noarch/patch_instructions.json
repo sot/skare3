@@ -1,10 +1,64 @@
 {
   "packages": {
-    "appdirs-1.4.4-pyh9f0ad1d_0.tar.bz2": {
-      "license_family": "MIT"
-    },
     "astroquery-0.4.6-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "BSD"
+    },
+    "colorama-0.4.6-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "decorator-5.1.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "django-3.1.7-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "entrypoints-0.4-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "fqdn-1.5.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MOZILLA"
+    },
+    "imagesize-1.4.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "isoduration-20.11.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "pandocfilters-1.5.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "pickleshare-0.7.5-py_1003.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "pycparser-2.21-pyhd8ed1ab_0.tar.bz2": {
+      "depends": [
+        "python ==2.7.*|>=3.4"
+      ],
+      "license_family": "BSD"
+    },
+    "python-dateutil-2.8.2-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "APACHE"
+    },
+    "rfc3339-validator-0.1.4-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "rfc3986-validator-0.1.1-pyh9f0ad1d_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "smmap-5.0.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "snowballstemmer-2.2.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "BSD"
+    },
+    "tomli-2.0.1-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "MIT"
+    },
+    "typing_utils-0.1.0-pyhd8ed1ab_0.tar.bz2": {
+      "license_family": "APACHE"
+    },
+    "appdirs-1.4.4-pyh9f0ad1d_0.tar.bz2": {
+      "license_family": "MIT"
     },
     "babel-2.11.0-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "BSD"
@@ -18,29 +72,14 @@
     "charset-normalizer-2.1.1-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "MIT"
     },
-    "colorama-0.4.6-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "BSD"
-    },
     "cycler-0.11.0-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "BSD"
-    },
-    "decorator-5.1.1-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "django-3.1.7-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "entrypoints-0.4-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "MIT"
     },
     "glob2-0.7-py_0.tar.bz2": {
       "license_family": "BSD"
     },
     "idna-3.4-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "BSD"
-    },
-    "imagesize-1.4.1-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "MIT"
     },
     "jinja2-3.1.2-pyhd8ed1ab_1.tar.bz2": {
       "license_family": "BSD"
@@ -66,23 +105,8 @@
     "numpydoc-1.5.0-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "BSD"
     },
-    "pandocfilters-1.5.0-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "pickleshare-0.7.5-py_1003.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "pycparser-2.21-pyhd8ed1ab_0.tar.bz2": {
-      "depends": [
-        "python ==2.7.*|>=3.4"
-      ],
-      "license_family": "BSD"
-    },
     "pyparsing-3.0.9-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "MIT"
-    },
-    "python-dateutil-2.8.2-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "APACHE"
     },
     "python-docx-0.8.11-pyhd8ed1ab_0.tar.bz2": {
       "depends": [
@@ -103,16 +127,7 @@
     "requests-toolbelt-0.10.1-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "APACHE"
     },
-    "rfc3339-validator-0.1.4-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "rfc3986-validator-0.1.1-pyh9f0ad1d_0.tar.bz2": {
-      "license_family": "MIT"
-    },
     "smmap-3.0.5-pyh44b312d_0.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "snowballstemmer-2.2.0-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "BSD"
     },
     "soupsieve-2.3.2.post1-pyhd8ed1ab_0.tar.bz2": {
@@ -135,9 +150,6 @@
     "terminado-0.17.0-pyh08f2357_0.tar.bz2": {
       "license_family": "BSD"
     },
-    "tomli-2.0.1-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "MIT"
-    },
     "toolz-0.12.0-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "BSD"
     },
@@ -146,18 +158,6 @@
     },
     "wheel-0.38.4-pyhd8ed1ab_0.tar.bz2": {
       "license_family": "MIT"
-    },
-    "fqdn-1.5.1-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "MOZILLA"
-    },
-    "isoduration-20.11.0-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "smmap-5.0.0-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "typing_utils-0.1.0-pyhd8ed1ab_0.tar.bz2": {
-      "license_family": "APACHE"
     },
     "packages": {
       "packages": {
