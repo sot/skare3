@@ -36,7 +36,7 @@ requirements:
     - pkg-config ==0.29.2
     - sysroot_linux-64 ==2.17  # [linux]
     - task_schedule ==4.3.0
-    - watch_cron_logs ==4.2.1
+    - watch_cron_logs ==4.2.2
     - xorg-libxft ==2.3.8  # [linux]
     - xtime ==1.2.2  # [linux]
     - zip ==3.0
