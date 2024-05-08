@@ -396,7 +396,7 @@ requirements:
     - setuptools ==69.1.1
     - setuptools-scm ==8.0.4
     - setuptools_scm ==8.0.4
-    - sherpa ==4.16  # [linux or osx]
+    - sherpa ==4.16  # [not win and not arm64]
     - sigtool ==0.1.3  # [osx]
     - sip ==6.7.12
     - six ==1.16.0
