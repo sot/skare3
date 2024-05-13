@@ -47,10 +47,11 @@ def get_package_list():
             "packages": ["notebook==6.5.6"],
         },
         {  # this is not in defaults or conda-forge (for now?)
-            "channels": ["sherpa"] + CHANNELS,
+            # "channels": ["sherpa"] + CHANNELS,
+            "channels": ["https://cxc.cfa.harvard.edu/conda/ciao"] + CHANNELS,
             "options": [],
             "packages": ["sherpa"],
-            "platform": ["linux-64", "osx-64"],
+            "platform": ["linux-64", "osx-64", "osx-arm64"],
         },
     ]
 
@@ -58,9 +59,10 @@ def get_package_list():
 # These options are passed to conda_build.metadata.select_lines after reading meta.yaml.
 # This causes, for example, the lines that read " # [win]" to be read only on win-64.
 PLATFORM_OPTIONS = {
-    "linux-64": {"linux": True, "linux64": True},
-    "osx-64": {"osx": True, "osx64": True},
-    "win-64": {"win": True, "win64": True},
+    "linux-64": {"linux": True, "linux64": True, "arm64":   False},
+    "osx-64": {"osx": True, "osx64": True, "arm64": False},
+    "osx-arm64": {"osx": True, "osx64": True, "arm64":  True},
+    "win-64": {"win": True, "win64": True, "arm64": False},
 }
 
 
