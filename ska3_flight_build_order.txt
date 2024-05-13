@@ -38,6 +38,12 @@ dea_check
 dpa_check
 proseco
 sparkles
+aca_view
+acispy
+skare3_tools
+chandra_limits
+aca_weekly_report
+astromon
 annie
 acdc
 find_attitude
@@ -51,5 +57,6 @@ ska3-core
 ska3-flight
 ska3-matlab
 ska3-perl
+ska3-perl-latest
 ska3-flight-latest
 ska3-core-latest
