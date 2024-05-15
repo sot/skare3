@@ -28,7 +28,7 @@ requirements:
     - maude ==3.11.1
     - mica ==4.35.2
     - parse_cm ==3.15.0
-    - proseco ==5.13.0
+    - proseco ==5.13.1
     - pyyaks ==4.5.0
     - quaternion ==4.3.1
     - ska-sphinx-theme ==1.3.0
