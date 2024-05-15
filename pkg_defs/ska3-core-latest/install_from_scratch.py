@@ -47,8 +47,7 @@ def get_package_list():
             "packages": ["notebook==6.5.6"],
         },
         {  # this is not in defaults or conda-forge (for now?)
-            # "channels": ["sherpa"] + CHANNELS,
-            "channels": ["https://cxc.cfa.harvard.edu/conda/ciao"] + CHANNELS,
+            "channels": ["sherpa"] + CHANNELS,
             "options": [],
             "packages": ["sherpa"],
             "platform": ["linux-64", "osx-64", "osx-arm64"],
