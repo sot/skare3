@@ -80,6 +80,10 @@ jobs:
       run:
         shell: bash -l {0}
     steps:
+    - name: Fetch Skare3
+      uses: actions/checkout@v4
+      with:
+        path: skare3
     - name: Fetch Skare3-tools
       uses: actions/checkout@v2
       with:
