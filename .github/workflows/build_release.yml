@@ -69,13 +69,16 @@ jobs:
           !builds/*/index.html
 
   build-other:
-    runs-on: ${{ matrix.os }}-latest
+    runs-on: ${{ matrix.os }}
     name: Build on ${{ matrix.os }}
     needs: [sanity_check]
     strategy:
       fail-fast: false
       matrix:
-        os: ["macos", "windows"]
+        os: ["macos-13", "macos-latest", "windows-latest"]
+    defaults:
+      run:
+        shell: bash -l {0}
     steps:
     - name: Fetch Skare3-tools
       uses: actions/checkout@v2
@@ -83,16 +86,17 @@ jobs:
         repository: sot/skare3_tools
         ref: master
         path: skare3_tools
-    - uses: sot/setup-miniconda@v2
+    - name: Setup Conda Environment
+      uses: conda-incubator/setup-miniconda@v3
       with:
-        miniconda-version: "py38_4.8.3"
-        python-version: "3.8"
-        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/shiny
-    - name: Build Dependencies
-      shell: bash -l -e {0}
-      run: conda install setuptools_scm gitpython conda-build jinja2 pyyaml python=3.8 numpy packaging
+        auto-update-conda: true
+        use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+        python-version: "3.11"
+        activate-environment: conda-build
+        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
+    - name: Update Conda Environment
+      run: conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Build Package
-      shell: bash -l -e {0}
       run: |
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
         echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
@@ -112,6 +116,7 @@ jobs:
         path: |
           builds/noarch/
           builds/osx-64/
+          builds/osx-arm64/
           builds/win-64/
           !builds/*/*repodata*
           !builds/*/index.html
