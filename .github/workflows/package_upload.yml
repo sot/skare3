@@ -13,9 +13,9 @@ jobs:
     name: Update Conda Channel
     steps:
       - name: Get linux package
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4
         with:
-          name: conda-package
+          pattern: conda-package-*
           path: package
       - name: Update channel
         run: |

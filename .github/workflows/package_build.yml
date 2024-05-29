@@ -63,7 +63,7 @@ jobs:
         shell: bash -l {0}
     steps:
     - name: Fetch
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Show Inputs
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       run: |
@@ -76,14 +76,14 @@ jobs:
         echo miniconda_version: \'${{ inputs.miniconda_version }}\'
         echo skare3_branch: \'${{ inputs.skare3_branch }}\'
     - name: Fetch Skare3
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       with:
         repository: sot/skare3
         ref: ${{ inputs.skare3_branch }}
         path: skare3
     - name: Fetch Skare3-tools
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       with:
         repository: sot/skare3_tools
@@ -177,10 +177,10 @@ jobs:
         echo "## Packages Built:" >> $GITHUB_STEP_SUMMARY
         for f in $files; do echo "- $f" >> $GITHUB_STEP_SUMMARY; done;
     - name: Save package
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v4
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       with:
-        name: conda-package
+        name: conda-package-${{ matrix.os }}
         path: |
           builds/noarch/
           builds/linux-64/
