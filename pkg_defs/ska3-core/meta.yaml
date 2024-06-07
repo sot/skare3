@@ -85,7 +85,7 @@ requirements:
     - et_xmlfile ==1.1.0
     - exceptiongroup ==1.2.0
     - executing ==2.0.1
-    - expat ==2.6.2  # [linux]
+    - expat ==2.6.2
     - filelock ==3.13.1
     - flake8 ==7.0.0
     - fmt ==10.2.1
@@ -187,8 +187,7 @@ requirements:
     - libclang13 ==15.0.7
     - libcups ==2.3.3  # [linux]
     - libcurl ==8.8.0
-    - libcxx ==16.0.6  # [osx and x86_64]
-    - libcxx ==17.0.6 # [osx and arm64]
+    - libcxx ==17.0.6 # [osx]
     - libdeflate ==1.18  # [win]
     - libdeflate ==1.19  # [linux or osx]
     - libedit ==3.1.20191231  # [linux or osx]
