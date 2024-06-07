@@ -48,10 +48,10 @@ def get_opt():
                         help="Build only architecture-specific packages")
     parser.add_argument("--python",
                         default="3.11",
-                        help="Target version of Python (default=3.10)")
+                        help="Target version of Python (default=3.11)")
     parser.add_argument("--perl",
-                        default="5.26.2",
-                        help="Target version of Perl (default=5.26.2)")
+                        default="5.32.1",
+                        help="Target version of Perl (default=5.32.1)")
     parser.add_argument("--numpy",
                         default="1.26.3",
                         help="Build version of NumPy")
