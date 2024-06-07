@@ -102,11 +102,14 @@ jobs:
       run: conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Build Package
       run: |
+        os="${{ matrix.os }}"
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
         echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
         for package in ${{needs.sanity_check.outputs.packages}}; do
-          python skare3_tools/skare3_tools/scripts/build.py ${package} \
-          --arch-specific --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
+          if [[ ("${os:0:7}" != "windows") || ("${package:0:9}" != "ska3-perl") ]]; then
+            python skare3_tools/skare3_tools/scripts/build.py ${package} \
+            --arch-specific --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
+          fi;
         done;
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
