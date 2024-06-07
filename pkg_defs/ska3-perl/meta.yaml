@@ -5,14 +5,14 @@ package:
 
 build:
   skip: True  # [win]
+  number: 1
 
 requirements:
   run:
     - _sysroot_linux-64_curr_repodata_hack ==3  # [linux]
     - blas ==1.0  # [linux]
     - cfitsio ==4.4.0  # [linux]
-    - expat ==2.5.0  # [osx]
-    - expat ==2.6.2  # [linux]
+    - expat ==2.6.2
     - gsl ==2.7  # [linux]
     - kernel-headers_linux-64 ==3.10.0  # [linux]
     - libx11-common-cos7-x86_64 ==1.6.7  # [linux]
