@@ -97,7 +97,8 @@ jobs:
         python-version: "3.11"
         miniconda-version: "latest"
         activate-environment: conda-build
-        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
+    - name: Add flight channel
+        run: conda config --env --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
     - name: Update Conda Environment
       run: conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Build Package
