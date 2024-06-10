@@ -63,10 +63,10 @@ jobs:
       with:
         name: conda-package-ubuntu-latest
         path: |
-          linux-64/
-          noarch/
-          !*/*repodata*
-          !*/index.html
+          builds/linux-64/
+          builds/noarch/
+          !builds/*/*repodata*
+          !builds/*/index.html
 
   build-other:
     runs-on: ${{ matrix.os }}
@@ -122,12 +122,12 @@ jobs:
       with:
         name: conda-package-${{ matrix.os }}
         path: |
-          noarch/
-          osx-64/
-          osx-arm64/
-          win-64/
-          !*/*repodata*
-          !*/index.html
+          builds/noarch/
+          builds/osx-64/
+          builds/osx-arm64/
+          builds/win-64/
+          !builds/*/*repodata*
+          !builds/*/index.html
 
   update-channel:
     runs-on: head
