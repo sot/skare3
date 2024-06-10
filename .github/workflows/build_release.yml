@@ -143,7 +143,7 @@ jobs:
         run: tree
       - name: Update channel
         run: |
-	  echo $CONDA_CHANNEL_DIR
+          echo ${CONDA_CHANNEL_DIR}
           rsync -av package/ ${CONDA_CHANNEL_DIR}
           conda index ${CONDA_CHANNEL_DIR}
         env:
