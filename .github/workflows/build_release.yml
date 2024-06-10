@@ -95,6 +95,7 @@ jobs:
       with:
         use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
         python-version: "3.11"
+        miniconda-version: "latest"
         activate-environment: conda-build
         channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
     - name: Update Conda Environment
