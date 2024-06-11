@@ -117,7 +117,7 @@ jobs:
         GIT_ASKPASS: ${{ github.workspace }}/skare3_tools/actions/build/files/git_pass.py
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
     - name: Review built packages
-      run: tree builds
+      run: ls -l builds/*
     - name: Save package
       uses: actions/upload-artifact@v4
       with:
