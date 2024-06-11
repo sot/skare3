@@ -31,7 +31,7 @@ requirements:
     - perl-extended-deps ==0.4.0  # [linux]
     - perl-io-tty ==1.16 # [osx and x86_64]
     - perl-io-tty ==1.20 # [linux or arm64]
-    - perl-ska-agasc =3.5.0=pl5321h3fd9d12_0  # [linux]
+    - perl-ska-agasc =3.5.0=pl5321_2# [linux]
     - perl-ska-classic ==0.6
     - perl-ska-convert ==4.3  # [linux]
     - perl-ska-web ==4.0  # [linux]
