@@ -465,7 +465,7 @@ requirements:
     - xorg-kbproto ==1.0.7  # [linux]
     - xorg-libice ==1.1.1  # [linux]
     - xorg-libsm ==1.2.4  # [linux]
-    - xorg-libx11 ==1.8.7  # [linux]
+    - xorg-libx11 ==1.8.9  # [linux]
     - xorg-libxau ==1.0.11  # [linux or osx]
     - xorg-libxau ==1.0.8  # [win]
     - xorg-libxcomposite ==0.4.6  # [linux]
