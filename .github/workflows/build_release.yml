@@ -183,7 +183,7 @@ jobs:
           ln -s /proj/sot/ska3/test/data $CONDA_PREFIX/data
           export SKA=$CONDA_PREFIX
           run_testr --root ./ska_testr --outputs-dir /export/kadi/ska_testr/release_tests
-          skare3-test-results --stream releases --tag /export/kadi/ska_testr/release_tests/logs/last
+          skare3-test-results --stream releases --tag head /export/kadi/ska_testr/release_tests/logs/last
           # add test result report to PR description
         env:
           CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
