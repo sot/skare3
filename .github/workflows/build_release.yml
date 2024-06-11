@@ -96,6 +96,7 @@ jobs:
         use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
         python-version: "3.11"
         activate-environment: conda-build
+        channels: conda-forge
     - name: Add flight channel
       run: conda config --env --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
     - name: Update Conda Environment
