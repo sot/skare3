@@ -19,7 +19,7 @@ jobs:
           path: package
       - name: Update channel
         run: |
-          rsync -av package/ ${CONDA_CHANNEL_DIR}
+          rsync -av package/conda-package-*/ ${CONDA_CHANNEL_DIR}/
           conda index ${CONDA_CHANNEL_DIR}
         env:
           CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/${{ inputs.channel }}
