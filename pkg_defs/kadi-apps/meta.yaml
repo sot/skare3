@@ -4,7 +4,6 @@ package:
 
 build:
   script: pip install .
-  noarch: python
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/kadi-apps
