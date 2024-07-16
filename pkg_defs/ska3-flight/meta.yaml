@@ -12,7 +12,7 @@ requirements:
     - acis_taco ==4.2.3
     - acis_thermal_check ==5.1.1
     - acispy ==2.6.0
-    - agasc ==4.20.0
+    - agasc ==4.21.0
     - backstop_history ==3.2.1
     - chandra_aca ==4.45.1
     - chandra_cmd_states ==4.1.0
@@ -24,7 +24,7 @@ requirements:
     - find_attitude ==3.4.4
     - fot-matlab ==2.4.0
     - hopper ==4.6.0
-    - kadi ==7.10.1
+    - kadi ==7.11.0
     - maude ==3.11.1
     - mica ==4.35.2
     - parse_cm ==3.15.0
@@ -45,11 +45,11 @@ requirements:
     - ska_quatutil ==4.0.0
     - ska_shell ==4.0.1
     - ska_sun ==3.14.0
-    - ska_sync ==4.12.0
+    - ska_sync ==4.13.0
     - ska_tdb ==4.0.0
     - ska3-core ==2024.7
     - ska3-template ==2022.06.02
     - sparkles ==4.26.1
-    - starcheck ==14.10.0
+    - starcheck ==14.11.0
     - testr ==4.12.0
     - xija ==4.32.0
