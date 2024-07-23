@@ -97,7 +97,9 @@ jobs:
         use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
         python-version: "3.11"
         activate-environment: conda-build
-        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
+        channels: conda-forge
+    - name: Add flight channel
+      run: conda config --env --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
     - name: Update Conda Environment
       run: conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Build Package
@@ -116,6 +118,8 @@ jobs:
         GIT_USERNAME: chandra-xray
         GIT_ASKPASS: ${{ github.workspace }}/skare3_tools/actions/build/files/git_pass.py
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
+    - name: Review built packages
+      run: ls -l builds/*
     - name: Save package
       uses: actions/upload-artifact@v4
       with:
@@ -138,9 +142,12 @@ jobs:
         with:
           pattern: conda-package-*
           path: package
+      - name: Show files
+        run: tree package
       - name: Update channel
         run: |
-          rsync -a package/ ${CONDA_CHANNEL_DIR}
+          echo ${CONDA_CHANNEL_DIR}
+          rsync -av package/conda-package-*/* ${CONDA_CHANNEL_DIR}
           conda index ${CONDA_CHANNEL_DIR}
         env:
           CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/test
@@ -177,7 +184,7 @@ jobs:
           ln -s /proj/sot/ska3/test/data $CONDA_PREFIX/data
           export SKA=$CONDA_PREFIX
           run_testr --root ./ska_testr --outputs-dir /export/kadi/ska_testr/release_tests
-          skare3-test-results --stream releases --tag /export/kadi/ska_testr/release_tests/logs/last
+          skare3-test-results --stream releases --tag head /export/kadi/ska_testr/release_tests/logs/last
           # add test result report to PR description
         env:
           CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
