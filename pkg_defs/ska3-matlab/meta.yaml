@@ -22,7 +22,7 @@ requirements:
     - cheta ==4.62.0
     - cxotime ==3.8.0
     - find_attitude ==3.4.4
-    - fot-matlab ==2.4.0
+    - fot-matlab ==2.4.1
     - hopper ==4.6.0
     - kadi ==7.11.0
     - maude ==3.11.1
