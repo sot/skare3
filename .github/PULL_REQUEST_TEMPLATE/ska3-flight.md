@@ -21,8 +21,6 @@ conda create -n ska3-flight-{version}rc# --override-channels \
 
 For non-Aspect users doing install testing, the ska3-perl package at the end of that install command (which supports the starcheck LR tool) may be safely omitted.
 
-
-
 ## Review
 
 All operations critical or impacting PR's are independently and carefully reviewed. For other PR's the level of detail for review is calibrated to operations criticality. Some PR's that are confined to aspect-team-specific processing may have little to no independent review.
