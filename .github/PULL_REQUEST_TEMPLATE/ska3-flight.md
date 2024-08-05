@@ -1,7 +1,7 @@
 # ska3-flight {version}
 
 This PR includes:
-- 
+-
 
 ## Interface Impacts:
 
@@ -16,8 +16,12 @@ The latest release candidates will be installed in `/proj/sot/ska3/test` on HEAD
 conda create -n ska3-flight-{version}rc# --override-channels \
   -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/flight \
   -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/test \
-  ska3-flight=={version}rc#
+  ska3-flight=={version}rc# ska3-perl=={version}rc#
 ```
+
+For non-Aspect users doing install testing, the ska3-perl package at the end of that install command (which supports the starcheck LR tool) may be safely omitted.
+
+
 
 ## Review
 

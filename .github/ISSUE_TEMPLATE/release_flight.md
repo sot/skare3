@@ -32,7 +32,9 @@ assignees: ''
 - [ ] Promote packages to `flight` conda channel (`skare3-promote ...`).
 - [ ] Announce to aca@cfa/slack.
 - [ ] Update ska3/flight on HEAD as aca user.
+- [ ] Confirm installed versions of ska3-flight and ska3-perl on HEAD with `conda list`
 - [ ] Update ska3/flight on GRETA as SOT user.
+- [ ] Confirm installed versions of ska3-flight and ska3-perl on GRETA with `conda list`
 - [ ] Promote any data products listed in PR to be promoted.
 - [ ] Run ska_testr on HEAD and GRETA.
 - [ ] Document test results (`skare3-test-dashboard ...`).
