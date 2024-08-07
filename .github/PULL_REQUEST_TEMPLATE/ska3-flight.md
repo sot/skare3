@@ -19,7 +19,7 @@ conda create -n ska3-flight-{version}rc# --override-channels \
   ska3-flight=={version}rc#
 ```
 
-If this release includes an update to ska3-perl, the install process for Aspect will include that. Note ska3-perl is generally not needed for non-Aspect users.
+If this release includes an update to ska3-perl, the install process for Aspect will include that. Note: ska3-perl is generally not needed for non-Aspect users.
 
 ```
 conda create -n ska3-flight-{version}rc# --override-channels \
