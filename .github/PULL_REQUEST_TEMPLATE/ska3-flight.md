@@ -16,10 +16,17 @@ The latest release candidates will be installed in `/proj/sot/ska3/test` on HEAD
 conda create -n ska3-flight-{version}rc# --override-channels \
   -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/flight \
   -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/test \
-  ska3-flight=={version}rc# ska3-perl=={version}rc#
+  ska3-flight=={version}rc#
 ```
 
-For non-Aspect users doing install testing, the ska3-perl package at the end of that install command (which supports the starcheck LR tool) may be safely omitted.
+If this release includes an update to ska3-perl, the install process for Aspect will include that. Note ska3-perl is generally not needed for non-Aspect users.
+
+```
+conda create -n ska3-flight-{version}rc# --override-channels \
+  -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/flight \
+  -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/test \
+  ska3-flight=={version}rc# ska3-perl=={version}rc#
+```
 
 ## Review
 
