@@ -1,7 +1,7 @@
 # ska3-flight {version}
 
 This PR includes:
-- 
+-
 
 ## Interface Impacts:
 
@@ -17,6 +17,15 @@ conda create -n ska3-flight-{version}rc# --override-channels \
   -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/flight \
   -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/test \
   ska3-flight=={version}rc#
+```
+
+If this release includes an update to ska3-perl, the install process for Aspect will include that. Note: ska3-perl is generally not needed for non-Aspect users.
+
+```
+conda create -n ska3-flight-{version}rc# --override-channels \
+  -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/flight \
+  -c https://icxc.cfa.harvard.edu/aspect/ska3-conda/test \
+  ska3-flight=={version}rc# ska3-perl=={version}rc#
 ```
 
 ## Review
