@@ -40,6 +40,7 @@ lint.ignore = [
   "PLR2004", # Magic number
   "B028", # No explicit `stacklevel` keyword argument found
   "PLR0913", # Too many arguments to function call
+  "PLR1730", # Checks for if statements that can be replaced with min() or max() calls
 ]
 
 extend-exclude = [
