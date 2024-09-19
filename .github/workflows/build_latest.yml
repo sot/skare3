@@ -99,7 +99,7 @@ jobs:
     needs: [build-linux, build-other]
     steps:
       - name: Get linux package
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: conda-package
           path: package

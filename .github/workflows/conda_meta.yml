@@ -79,7 +79,7 @@ jobs:
           ref: ${{ github.event.client_payload.skare3_branch }}
           path: skare3
       - name: Get json files
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: json-files
           path: json
@@ -147,7 +147,7 @@ jobs:
         os: ["ubuntu", "macos", "windows"]
     steps:
       - name: Get yaml files
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: conda-meta-yaml
           path: pkg_defs
