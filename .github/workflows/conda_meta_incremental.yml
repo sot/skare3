@@ -28,6 +28,12 @@ jobs:
           auto-update-conda: true
           use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
           channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }},conda-forge
+      - name: set channels
+        shell: bash -l -e {0}
+        run: |
+          conda config --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }}
+          conda config --add channels conda-forge
+          conda config --env --remove channels defaults
       - name: install ska3-core
         shell: bash -l -e {0}
         run: |
