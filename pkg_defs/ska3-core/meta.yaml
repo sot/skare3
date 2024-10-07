@@ -196,9 +196,11 @@ requirements:
     - libexpat ==2.6.2
     - libffi ==3.4.2
     - libflac ==1.4.3  # [linux]
+    - libgcc ==14.1.0  # [linux]
     - libgcc-ng ==14.1.0  # [linux]
     - libgcrypt ==1.10.3  # [linux]
     - libgfortran ==5.0.0  # [osx]
+    - libgfortran ==14.1.0  # [linux]
     - libgfortran-ng ==14.1.0  # [linux]
     - libgfortran5 ==14.1.0  # [linux or osx]
     - libglib ==2.78.4
