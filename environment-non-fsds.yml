@@ -6,6 +6,7 @@ dependencies:
   - aca_weekly_report
   - acdc
   - aimpoint_mon
+  - aperoll
   - astromon
   - annie
   - fid_drift_mon
