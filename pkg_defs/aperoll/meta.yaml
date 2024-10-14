@@ -25,15 +25,18 @@ requirements:
   run:
     - python
     - numpy
-    - scipy
     - pyqt
     - pyqtwebengine
-    - maude
+    - astropy
+    - agasc
     - chandra_aca
-    - mica
     - cxotime
     - kadi
+    - maude
+    - proseco
     - quaternion
+    - ska_helpers
+    - sparkles
 
 test:
   imports:
