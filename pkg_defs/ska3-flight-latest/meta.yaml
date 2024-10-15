@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: "2023.10"
+  version: 2023.9
 
 build:
   noarch: generic
@@ -16,13 +16,11 @@ requirements:
     - agasc
     - backstop_history
     - chandra_aca
-    - chandra_cmd_states
     - chandra_limits
     - chandra_maneuver
     - chandra_time
     - cheta
     - cxotime
-    - find_attitude
     - fot-matlab
     - hopper
     - kadi
