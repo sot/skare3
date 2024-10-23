@@ -4,11 +4,13 @@ dependencies:
   - attitude_error_mon
   - aca_hi_bgd
   - aca_weekly_report
+  - acq_stat_reports
   - acdc
   - aimpoint_mon
   - astromon
   - annie
   - fid_drift_mon
+  - guide_stat_reports
   - fss_check
   - jobwatch
   - kalman_watch
