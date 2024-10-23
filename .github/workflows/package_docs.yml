@@ -27,7 +27,7 @@ jobs:
           fetch-depth: 0
       - name: Build docs
         run: |
-          eval "$(/export/jgonzale/github-workflows/miniconda3-shiny/bin/conda shell.bash hook)"
+          eval "$(/export/kadi/miniconda3/bin/conda shell.bash hook)"
           conda activate ska3-masters
           mkdir -p _static
           make html
