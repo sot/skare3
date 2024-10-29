@@ -31,6 +31,7 @@ lint.extend-select = [
 "ARG001",  # Unused function argument
 "RSE102",  # Unnecessary parentheses on raised exception
 "PERF401",  # Use a list comprehension to create a transformed list
+"S101",  # Use of `assert` detected
 ]
 
 lint.ignore = [
@@ -56,4 +57,4 @@ max-line-length = 100 # E501 reports lines that exceed the length of 100.
 # - D205: Don't worry about test docstrings
 # - ARG001: Unused function argument false positives for some fixtures
 # - E501: Line-too-long
-"**/tests/test_*.py" = ["D205", "ARG001", "E501"]
+"**/tests/test_*.py" = ["D205", "ARG001", "E501", "S101"]
