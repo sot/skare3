@@ -14,17 +14,17 @@ requirements:
     - acispy ==2.7.0
     - agasc ==4.21.2
     - backstop_history ==3.2.1
-    - chandra_aca ==4.46.0
+    - chandra_aca ==4.47.0
     - chandra_limits ==0.9.2
     - chandra_maneuver ==4.3.0
     - chandra_time ==4.1.2
-    - cheta ==4.62.0
-    - cxotime ==3.8.0
+    - cheta ==4.62.1
+    - cxotime ==3.9.0
     - fot-matlab ==2.4.1
     - hopper ==4.6.0
-    - kadi ==7.12.0
+    - kadi ==7.13.0
     - maude ==3.11.1
-    - mica ==4.36.0
+    - mica ==4.37.0
     - parse_cm ==3.16.0
     - proseco ==5.15.0
     - pyyaks ==4.5.0
@@ -47,7 +47,7 @@ requirements:
     - ska_tdb ==4.1.0
     - ska3-core ==2024.11
     - ska3-template ==2022.06.02
-    - sparkles ==4.27.0
+    - sparkles ==4.27.1
     - starcheck ==14.12.0
     - testr ==4.12.0
     - xija ==4.32.0
