@@ -57,4 +57,5 @@ max-line-length = 100 # E501 reports lines that exceed the length of 100.
 # - D205: Don't worry about test docstrings
 # - ARG001: Unused function argument false positives for some fixtures
 # - E501: Line-too-long
+# - S101: Do not use assert
 "**/tests/test_*.py" = ["D205", "ARG001", "E501", "S101"]
