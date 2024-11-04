@@ -15,7 +15,7 @@ requirements:
     - agasc ==4.21.2
     - backstop_history ==3.2.1
     - chandra_aca ==4.47.0
-    - chandra_limits ==0.9.2
+    - chandra_limits ==0.10.0
     - chandra_maneuver ==4.3.0
     - chandra_time ==4.1.2
     - cheta ==4.62.1
