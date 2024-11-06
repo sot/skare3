@@ -100,7 +100,7 @@ jobs:
           conda-build-pkgs-${{ runner.os }}-${{hashFiles('./skare3/build-environment.yml') }}-${{ env.CACHE_NUMBER }}
     - name: Setup Conda Environment
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
-      uses: conda-incubator/setup-miniconda@v3
+      uses: conda-incubator/setup-miniconda@v3.0.4
       with:
         # mamba-version: "*"
         auto-update-conda: true
