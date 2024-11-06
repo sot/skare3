@@ -31,7 +31,7 @@ on:
         description: Miniconda version
         required: false
         type: string
-        default: latest
+        default: py39_4.12.0
       skare3_branch:
         description: Branch of skare3
         required: false
@@ -103,11 +103,9 @@ jobs:
       uses: conda-incubator/setup-miniconda@v3
       with:
         # mamba-version: "*"
-        conda-remove-defaults: true
         auto-update-conda: true
         use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
         python-version: ${{ inputs.python_version }}
-        miniconda-version: ${{ inputs.miniconda_version }}
         activate-environment: conda-build
         channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }},conda-forge
     #- name: Debug
