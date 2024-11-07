@@ -1,0 +1,34 @@
+
+package:
+  name: fotmp  # lower case name of package, may contain '-' but no spaces
+  version: {{ SKA_PKG_VERSION }}
+
+
+build:
+  script: pip install .
+  noarch: python
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/fotmp
+
+
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+    - ska_helpers
+    - testr
+  run:
+    - python
+    - ska_helpers
+    - testr
+
+test:
+  imports:
+    - fotmp
+
+about:
+  home: https://github.com/sot/fotmp
