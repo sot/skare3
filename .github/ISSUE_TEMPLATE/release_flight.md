@@ -20,6 +20,7 @@ assignees: ''
 - [ ] Promote packages from `masters` to `test` conda channel (`skare3-promote --to test ...`).
 - [ ] List in PR any data products that need to be promoted to $SKA/data (check PR's interface impacts).
 - [ ] Install on HEAD and GRETA Linux test environments (`ska3/test`).
+- [ ] `python -m compileall $SKA/lib`
 - [ ] Confirm that test data (SKA/data) is appropriate for release testing (any custom test data is set or previous test data cleaned out)
 - [ ] Run testr on HEAD and GRETA
 - [ ] Add related issues to PR (`skare3-milestone-issues ...`).
@@ -34,6 +35,7 @@ assignees: ''
 - [ ] Update ska3/flight on HEAD as aca user.
 - [ ] Confirm installed versions of ska3-flight and ska3-perl on HEAD with `conda list`
 - [ ] Update ska3/flight on GRETA as SOT user.
+- [ ] `python -m compileall $SKA/lib`
 - [ ] Confirm installed versions of ska3-flight and ska3-perl on GRETA with `conda list`
 - [ ] Promote any data products listed in PR to be promoted.
 - [ ] Run ska_testr on HEAD and GRETA.
