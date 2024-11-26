@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-core
-  version: "2024.10"
+  version: 2024.11
 
 requirements:
   run:
@@ -133,7 +133,7 @@ requirements:
     - ipykernel ==6.29.3
     - ipympl ==0.9.3
     - ipyparallel ==8.6.1
-    - ipython ==8.22.1
+    - ipython ==8.29.0
     - ipython_genutils ==0.2.0
     - ipywidgets ==8.1.2
     - isoduration ==20.11.0
@@ -202,7 +202,8 @@ requirements:
     - libgfortran ==5.0.0  # [osx]
     - libgfortran ==14.1.0  # [linux]
     - libgfortran-ng ==14.1.0  # [linux]
-    - libgfortran5 ==14.1.0  # [linux or osx]
+    - libgfortran5 ==14.1.0  # [linux]
+    - libgfortran5 ==13.2.0  # [osx]
     - libglib ==2.78.4
     - libgpg-error ==1.48  # [linux]
     - libhwloc ==2.9.3
