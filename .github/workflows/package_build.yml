@@ -42,6 +42,11 @@ on:
         required: false
         type: string
         default: test
+      install_ska_helpers:
+        description: Install ska_helpers and testr
+        required: false
+        type: boolean
+        default: true
     secrets:
       CONDA_PASSWORD:
         required: true
@@ -145,7 +150,7 @@ jobs:
       run:
         conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Install ska_helpers
-      if: ${{ ((steps.conda_cache.outputs.cache-hit != 'true') && (steps.conda_cache_win.outputs.cache-hit != 'true')) && ((matrix.os == 'ubuntu-latest') || !inputs.noarch) }}
+      if: ${{ inputs.install_ska_helpers && ((steps.conda_cache.outputs.cache-hit != 'true') && (steps.conda_cache_win.outputs.cache-hit != 'true')) && ((matrix.os == 'ubuntu-latest') || !inputs.noarch) }}
       run: |
         conda search ska_helpers
         err=$?

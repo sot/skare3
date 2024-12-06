@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2024.1
+  version: 2025.0
 
 requirements:
   run:
