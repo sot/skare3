@@ -26,6 +26,7 @@ assignees: ''
 - [ ] Notify FOT team of candidate release.
 - [ ] FOT gives green light to install release candidate.
 - [ ] Install on GRETA test as SOT user (`ska3/matlab/test`).
+- [ ] `python -m compileall $SKA/lib`
 - [ ] Confirm that test data (SKA/data) is appropriate for release testing (any custom test data is set or previous test data cleaned out)
 - [ ] FOT tests and approves.
 - [ ] Promote packages to main conda channel (`skare3-promote ...`).
@@ -33,6 +34,7 @@ assignees: ''
 
 - [ ] Announce to aca@cfa/slack.
 - [ ] Update ska3/matlab on cheru as SOT user.
+- [ ] `python -m compileall $SKA/lib`
 - [ ] Make sure $SKA/data is updated on GRETA
 - [ ] Run ska_testr on cheru.
 - [ ] Document test results (`skare3-test-dashboard ...`).
