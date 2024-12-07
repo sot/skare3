@@ -43,6 +43,7 @@ jobs:
       package: ${{ steps.arguments.outputs.package }}
       tag: ${{ steps.arguments.outputs.tag }}
       arch: ${{ steps.arguments.outputs.arch }}
+      install_ska_helpers: ${{ steps.arguments.outputs.install_ska_helpers }}
       upload: ${{ steps.arguments.outputs.upload }}
       python_version: ${{ steps.arguments.outputs.python_version }}
       numpy_version: ${{ steps.arguments.outputs.numpy_version }}
@@ -83,6 +84,7 @@ jobs:
         require package ${{ github.event.client_payload.package }}
         require tag ${{ github.event.client_payload.tag }}
         set_boolean_default arch "${{ github.event.client_payload.arch }}" false
+        set_boolean_default install_ska_helpers "${{ github.event.client_payload.install_ska_helpers }}" true
         set_boolean_default upload "${{ github.event.client_payload.upload }}" false
         set_default python_version "${{ github.event.client_payload.python_version }}" 3.11
         set_default numpy_version "${{ github.event.client_payload.numpy_version }}" 1.26.2
@@ -99,6 +101,7 @@ jobs:
         echo "- Package: ${{ steps.arguments.outputs.package }}" >> $GITHUB_STEP_SUMMARY
         echo "- Tag: ${{ steps.arguments.outputs.tag }}" >> $GITHUB_STEP_SUMMARY
         echo "- Arch: ${{ steps.arguments.outputs.arch }}" >> $GITHUB_STEP_SUMMARY
+        echo "- install_ska_helpers: ${{ steps.arguments.outputs.install_ska_helpers }}" >> $GITHUB_STEP_SUMMARY
         echo "- Upload: ${{ steps.arguments.outputs.upload }}" >> $GITHUB_STEP_SUMMARY
         echo "- Skare3 branch: ${{ steps.arguments.outputs.skare3_branch }}" >> $GITHUB_STEP_SUMMARY
         echo "- Python version: ${{ steps.arguments.outputs.python_version }}" >> $GITHUB_STEP_SUMMARY
@@ -116,6 +119,7 @@ jobs:
       python_version: ${{ needs.arguments.outputs.python_version }}
       numpy_version: ${{ needs.arguments.outputs.numpy_version }}
       skare3_branch: ${{ needs.arguments.outputs.skare3_branch }}
+      install_ska_helpers: ${{ github.event.client_payload.install_ska_helpers }}
       # the following channel in ska3-conda is used to create the build environment
       channel: ${{ needs.arguments.outputs.channel_in }}
     secrets:
