@@ -41,11 +41,11 @@ def get_package_list():
             "options": [],
             "packages": ["django==3.1.7"],
         },
-        {  # later versions cause a conflict with nb_conda
-            "channels": CHANNELS,
-            "options": [],
-            "packages": ["notebook==6.5.6"],
-        },
+        # {  # later versions cause a conflict with nb_conda
+        #     "channels": CHANNELS,
+        #     "options": [],
+        #     "packages": ["notebook==6.5.6"],
+        # },
         {  # this is not in defaults or conda-forge (for now?)
             "channels": ["sherpa"] + CHANNELS,
             "options": [],
