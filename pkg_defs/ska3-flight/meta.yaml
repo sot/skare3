@@ -1,32 +1,32 @@
 ---
 package:
   name: ska3-flight
-  version: 2024.11
+  version: 2024.12
 
 build:
   noarch: generic
 
 requirements:
   run:
-    - aca_view ==0.15.0
+    - aca_view ==0.16.0
     - acis_taco ==4.2.3
-    - acis_thermal_check ==5.1.1
+    - acis_thermal_check ==5.2.0
     - acispy ==2.7.0
-    - agasc ==4.21.2
+    - agasc ==4.22.0
     - backstop_history ==3.2.1
-    - chandra_aca ==4.47.0
+    - chandra_aca ==4.48.0
     - chandra_limits ==0.10.0
     - chandra_maneuver ==4.3.0
     - chandra_time ==4.1.2
-    - cheta ==4.62.1
-    - cxotime ==3.9.0
+    - cheta ==4.62.2
+    - cxotime ==3.9.1
     - fot-matlab ==2.4.1
     - hopper ==4.6.0
-    - kadi ==7.13.0
-    - maude ==3.11.1
-    - mica ==4.37.0
-    - parse_cm ==3.16.0
-    - proseco ==5.15.0
+    - kadi ==7.14.0
+    - maude ==3.12.0
+    - mica ==4.38.0
+    - parse_cm ==3.16.1
+    - proseco ==5.16.0
     - pyyaks ==4.5.0
     - quaternion ==4.3.1
     - ska-sphinx-theme ==1.3.0
@@ -47,7 +47,7 @@ requirements:
     - ska_tdb ==4.1.0
     - ska3-core ==2024.11
     - ska3-template ==2022.06.02
-    - sparkles ==4.27.1
+    - sparkles ==4.28.0
     - starcheck ==14.12.0
     - testr ==4.12.0
     - xija ==4.32.0
