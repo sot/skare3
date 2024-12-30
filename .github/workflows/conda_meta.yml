@@ -127,7 +127,7 @@ jobs:
         shell: bash -l -e {0}
         run: |
           ls -R json
-          pip install requests urllib3
+          pip install requests urllib3 tqdm
           ./skare3/conda_fetch.py --merge-patches --no-zip json/patch_instructions-* \
             -o patch_instructions/noarch
           cp -fr json/patch_instructions-*/linux-64 patch_instructions/
