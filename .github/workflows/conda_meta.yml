@@ -23,6 +23,7 @@ jobs:
       - name: Set Conda Channels
         # for some reason, defaults is added when we add our channel
         run: |
+          conda config --add channels conda-forge
           conda config --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }}
           conda config --remove channels defaults
           conda config --show-sources
@@ -43,7 +44,7 @@ jobs:
         shell: bash -l -e {0}
         run: |
           conda info
-          python ./skare3/pkg_defs/ska3-flight-latest/install_from_scratch.py
+          python ./skare3/pkg_defs/ska3-flight-latest/install_from_scratch.py --ska-channel ${{ github.event.client_payload.channel }}
           conda list --json > ska3-flight-${ARCH}.json
       - name: ska3-perl
         if: ${{ matrix.os != 'windows' }}
