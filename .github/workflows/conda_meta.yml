@@ -23,8 +23,8 @@ jobs:
       - name: Set Conda Channels
         # for some reason, defaults is added when we add our channel
         run: |
-          conda config --add channels conda-forge
           conda config --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }}
+          conda config --add channels conda-forge
           conda config --remove channels defaults
           conda config --show-sources
       - name: Checkout Skare3
