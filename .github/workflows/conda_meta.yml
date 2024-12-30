@@ -61,7 +61,7 @@ jobs:
       - name: Save
         uses: actions/upload-artifact@v4
         with:
-          name: json-files
+          name: json-files-${{ matrix.os }}
           path: |
             patch_instructions-${{ matrix.os }}/**/*json
             ska3-*.json
@@ -87,7 +87,7 @@ jobs:
       - name: Get json files
         uses: actions/download-artifact@v4.1.7
         with:
-          name: json-files
+          pattern: json-files-*
           path: json
       - name: pip
         run: python -m pip install jinja2 PyYAML
