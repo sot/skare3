@@ -56,7 +56,8 @@ jobs:
           conda list --json > ska3-perl-${ARCH}.json
       - name: patches
         shell: bash -l -e {0}
-        run: ./skare3/patch_instructions.py get -o patch_instructions-${ARCH}
+        # this fetches only patch instructions, not packages, and does not zip them
+        run: ./skare3/conda_fetch.py --no-zip --no-packages -o patch_instructions-${ARCH}
       - name: Save
         uses: actions/upload-artifact@v4
         with:
@@ -123,7 +124,7 @@ jobs:
         run: |
           ls -R json
           pip install requests urllib3
-          ./skare3/patch_instructions.py merge json/patch_instructions-*/noarch/*json \
+          ./skare3/conda_fetch.py --merge-patches --no-zip json/patch_instructions-*/noarch/*json \
             -o patch_instructions/noarch
           cp -fr json/patch_instructions-*/linux-64 patch_instructions/
           cp -fr json/patch_instructions-*/osx-64 patch_instructions/
