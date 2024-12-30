@@ -559,10 +559,10 @@ def get_parser():
         "items",
         nargs="*",
         help=(
-            "If action==merge-patches: a list of JSON files to merge. "
-            "If action==get: spec strings listing packages. "
-            "If not provided, all installed packages are fetched. "
+            "If --merge-patches is given, this should be a list of JSON files to merge. "
+            "If --merge-patches is given, this is a list of spec strings listing packages. "
             "Each spec string must be of the form <name>[==<version>]."
+            "If the list is empty, all installed packages are fetched. "
         ),
     )
     parser.add_argument(

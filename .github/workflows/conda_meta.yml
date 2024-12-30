@@ -91,6 +91,10 @@ jobs:
           path: json
       - name: pip
         run: python -m pip install jinja2 PyYAML
+      - name: move
+        run: |
+          mv json/json-files-*/* json/
+          rmdir json/json-files-*
       - name: ska3-core
         run: |
           ./skare3/combine_arch_meta.py --name ska3-core --version ${SKA3_VERSION} \
@@ -124,7 +128,7 @@ jobs:
         run: |
           ls -R json
           pip install requests urllib3
-          ./skare3/conda_fetch.py --merge-patches --no-zip json/patch_instructions-*/noarch/*json \
+          ./skare3/conda_fetch.py --merge-patches --no-zip json/patch_instructions-* \
             -o patch_instructions/noarch
           cp -fr json/patch_instructions-*/linux-64 patch_instructions/
           cp -fr json/patch_instructions-*/osx-64 patch_instructions/
