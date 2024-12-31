@@ -131,7 +131,7 @@ jobs:
           ./skare3/conda_fetch.py --merge-patches --no-zip json/patch_instructions-* \
             -o patch_instructions/noarch
           cp -fr json/patch_instructions-*/linux-64 patch_instructions/
-          cp -fr json/patch_instructions-*/osx-64 patch_instructions/
+          cp -fr json/patch_instructions-*/osx-arm64 patch_instructions/
           cp -fr json/patch_instructions-*/win-64 patch_instructions/
           ls -R patch_instructions
       - name: Save patches
@@ -198,8 +198,8 @@ jobs:
         working-directory: ./skare3
         run: |
           rm -f builds/*/*json builds/*/*repodata* builds/*/index*
-          mkdir -p builds/osx-64 builds/win-64 builds/linux-64 conda_packages
-          mv builds/noarch builds/osx-64 builds/win-64 builds/linux-64 conda_packages
+          mkdir -p builds/osx-arm64 builds/win-64 builds/linux-64 conda_packages
+          mv builds/noarch builds/osx-arm64 builds/win-64 builds/linux-64 conda_packages
       - name: Save conda packages
         uses: actions/upload-artifact@v4
         with:
