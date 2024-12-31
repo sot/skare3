@@ -166,16 +166,16 @@ jobs:
         with:
           miniforge-version: latest
           python-version: ${{ github.event.client_payload.python_version }}
-      - name: Setup build environment
-        shell: bash -l -e {0}
-        run: |
-          conda env update -n conda-build -f ./skare3/build-environment.yml
       - name: Checkout Skare3
         uses: actions/checkout@v2
         with:
           repository: sot/skare3
           ref: ${{ github.event.client_payload.skare3_branch }}
           path: skare3
+      - name: Setup build environment
+        shell: bash -l -e {0}
+        run: |
+          conda env update -n conda-build -f ./skare3/build-environment.yml
       - name: Copy yaml files
         shell: bash -l -e {0}
         run: |
