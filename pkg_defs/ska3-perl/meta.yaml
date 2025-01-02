@@ -1,6 +1,6 @@
 ---
 package:
-  name: ska3-core
+  name: ska3-perl
   version: 2025.0
 
 build:
