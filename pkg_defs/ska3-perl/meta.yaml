@@ -35,7 +35,7 @@ requirements:
     - perl-cxc-sysarch ==1.00  # [linux]
     - perl-dbd-sybase ==1.24  # [linux]
     - perl-extended-deps ==0.5.0  # [linux]
-    - perl-io-tty ==1.16  # [osx-64]
+    - perl-io-tty ==1.16  # [osx and not arm64]
     - perl-io-tty ==1.20  # [linux or arm64]
     - perl-pdl ==2.089  # [linux]
     - perl-ska-agasc ==3.5.0  # [linux]
