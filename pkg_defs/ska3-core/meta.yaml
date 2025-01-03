@@ -337,7 +337,7 @@ requirements:
     - mccabe ==0.7.0
     - menuinst ==2.2.0
     - mistune ==3.0.2
-    - mkl ==2024.2.2
+    - mkl ==2024.2.2  # [linux]
     - more-itertools ==10.5.0
     - mpg123 ==1.32.9  # [linux]
     - mpld3 ==0.5.10
