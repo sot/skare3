@@ -55,17 +55,18 @@ requirements:
    - pylint
    - plotly
    - ply
+   - pre-commit
    - pytest-timeout
    - python-kaleido
    - python-docx
    - pyqt
    - pyqtgraph
+   - pyqtwebengine
    - pyyaml
    - qt
    - regions
    - requests
    - rope
-   - ruff
    - scikit-learn
    - scipy
    - setuptools

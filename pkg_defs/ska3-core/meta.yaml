@@ -81,6 +81,7 @@ requirements:
     - cctools_osx-arm64 ==1010.6  # [arm64]
     - certifi ==2024.12.14
     - cffi ==1.17.1
+    - cfgv ==3.3.1
     - chardet ==5.2.0
     - charset-normalizer ==3.4.0
     - click ==8.1.8
@@ -109,6 +110,7 @@ requirements:
     - decorator ==5.1.1
     - defusedxml ==0.7.1
     - dill ==0.3.9
+    - distlib ==0.3.9
     - distro ==1.9.0
     - django ==3.1.7
     - docutils ==0.21.2
@@ -161,6 +163,7 @@ requirements:
     - httpx ==0.28.1
     - hyperframe ==6.0.1
     - icu ==75.1
+    - identify ==2.6.4
     - idna ==3.10
     - imagesize ==1.4.1
     - importlib-metadata ==8.5.0
@@ -363,6 +366,7 @@ requirements:
     - nodejs ==22.12.0
     - nomkl ==1.0  # [win]
     - nose ==1.3.7
+    - nodeenv ==1.9.1
     - notebook ==6.5.7
     - notebook-shim ==0.2.4
     - nspr ==4.36  # [linux or osx]
@@ -400,6 +404,7 @@ requirements:
     - plotly ==5.24.1
     - pluggy ==1.5.0
     - ply ==3.11
+    - pre-commit ==4.0.1
     - prometheus_client ==0.21.1
     - prompt-toolkit ==3.0.48
     - prompt_toolkit ==3.0.48
@@ -430,6 +435,7 @@ requirements:
     - pyqt ==5.15.9
     - pyqt5-sip ==12.12.2
     - pyqtgraph ==0.13.7
+    - pyqtwebengine ==5.15.9
     - pysocks ==1.7.1
     - pytables ==3.10.1
     - pytest ==8.3.4
@@ -474,7 +480,6 @@ requirements:
     - rpds-py ==0.22.3
     - ruamel.yaml ==0.18.6
     - ruamel.yaml.clib ==0.2.8
-    - ruff ==0.8.5
     - s2n ==1.5.10  # [linux]
     - s3fs ==2024.12.0
     - scikit-learn ==1.6.0
@@ -531,11 +536,13 @@ requirements:
     - typing_utils ==0.1.0
     - tzdata ==2024b
     - ucrt ==10.0.22621.0  # [win]
+    - ukkonen ==1.0.1
     - unicodedata2 ==15.1.0
     - uri-template ==1.3.0
     - urllib3 ==2.3.0
     - vc ==14.3  # [win]
     - vc14_runtime ==14.42.34433  # [win]
+    - virtualenv ==20.28.1
     - vs2015_runtime ==14.42.34433  # [win]
     - wcwidth ==0.2.13
     - webcolors ==24.11.1
