@@ -107,6 +107,7 @@ jobs:
         os="${{ matrix.os }}"
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
         echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
+        echo "### ${os} packages: " >> $GITHUB_STEP_SUMMARY
         for package in ${{needs.sanity_check.outputs.packages}}; do
           if [[ ("${os:0:7}" != "windows") || ("${package:0:9}" != "ska3-perl") ]]; then
             python skare3_tools/skare3_tools/scripts/build.py ${package} \
