@@ -102,7 +102,6 @@ requirements:
     - cpython ==3.12.8  # [win]
     - cryptography ==44.0.0
     - cycler ==0.12.1
-    - cyrus-sasl ==2.1.27  # [arm64]
     - cython ==3.0.11
     - dask-core ==2024.12.1
     - dbus ==1.13.6  # [linux]
@@ -236,7 +235,6 @@ requirements:
     - libcap ==2.71  # [linux]
     - libcblas ==3.9.0
     - libclang-cpp15 ==15.0.7  # [linux or osx]
-    - libclang-cpp17 ==17.0.6  # [arm64]
     - libclang13 ==19.1.6
     - libcrc32c ==1.1.2
     - libcups ==2.3.3  # [linux]
@@ -277,14 +275,12 @@ requirements:
     - liblief ==0.14.1
     - libllvm14 ==14.0.6  # [linux or osx]
     - libllvm15 ==15.0.7  # [linux or osx]
-    - libllvm17 ==17.0.6  # [arm64]
     - libllvm19 ==19.1.6  # [linux or osx]
     - liblzma ==5.6.3
     - libmamba ==2.0.5
     - libmambapy ==2.0.5
     - libnghttp2 ==1.64.0  # [linux or osx]
     - libnsl ==2.0.1  # [linux]
-    - libntlm ==1.8  # [arm64]
     - libogg ==1.3.5
     - libopenblas ==0.3.28  # [osx or win]
     - libopus ==1.3.1  # [linux or osx]
@@ -377,7 +373,6 @@ requirements:
     - numpydoc ==1.8.0
     - oauthlib ==3.2.2
     - openjpeg ==2.5.3
-    - openldap ==2.6.9  # [arm64]
     - openpyxl ==3.1.5
     - openssl ==3.4.0
     - orc ==2.0.3
