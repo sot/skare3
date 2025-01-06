@@ -51,8 +51,6 @@ requirements:
    - openpyxl
    - pillow
    - pip
-   - flake8
-   - pylint
    - plotly
    - ply
    - pre-commit

@@ -120,7 +120,6 @@ requirements:
     - executing ==2.1.0
     - expat ==2.6.4  # [linux]
     - filelock ==3.16.1
-    - flake8 ==7.1.1
     - fmt ==11.0.2
     - font-ttf-dejavu-sans-mono ==2.37  # [linux]
     - font-ttf-inconsolata ==3.000  # [linux]
@@ -419,10 +418,8 @@ requirements:
     - pycosat ==0.6.6
     - pycparser ==2.22
     - pyerfa ==2.0.1.5
-    - pyflakes ==3.2.0
     - pygments ==2.18.0
     - pyjwt ==2.10.1
-    - pylint ==3.3.3
     - pynacl ==1.5.0
     - pyobjc-core ==10.3.2  # [osx]
     - pyobjc-framework-cocoa ==10.3.2  # [osx]
