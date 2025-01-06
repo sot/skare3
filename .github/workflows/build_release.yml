@@ -31,51 +31,14 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         GITHUB_API_TOKEN: ${{ secrets.CHANDRA_XRAY_TOKEN }}
 
-  build-linux:
-    runs-on: ubuntu-latest
-    name: Build on Linux
-    needs: [sanity_check]
-    steps:
-    - name: Login to GitHub Package Registry
-      run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p ${{ secrets.GITHUB_TOKEN }}
-    - name: Pull Docker image
-      run: docker pull docker.pkg.github.com/sot/skare3/centos7-builder:latest
-    - name: Build
-      id: build
-      run: |
-        echo "Packages: ${{needs.sanity_check.outputs.packages}}"
-        echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
-        for package in ${{needs.sanity_check.outputs.packages}}; do
-          docker run --rm  --name builder -v $GITHUB_WORKSPACE:/github/workspace -w /github/workspace \
-                 -e CONDA_PASSWORD -e GIT_USERNAME -e GIT_PASSWORD \
-                 docker.pkg.github.com/sot/skare3/centos7-builder:latest ${package} \
-                 --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
-        done;
-        touch builds/linux-64/.empty
-        touch builds/noarch/.empty
-      env:
-        CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
-        GIT_USERNAME: chandra-xray
-        GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
-        GIT_ASKPASS: /home/aca/git_pass.py
-    - name: Save packages
-      uses: actions/upload-artifact@v4
-      with:
-        name: conda-package-ubuntu-latest
-        path: |
-          builds/linux-64/
-          builds/noarch/
-          !builds/*/*repodata*
-          !builds/*/index.html
-
-  build-other:
+  build:
     runs-on: ${{ matrix.os }}
     name: Build on ${{ matrix.os }}
     needs: [sanity_check]
     strategy:
       fail-fast: false
       matrix:
-        os: ["macos-13", "macos-latest", "windows-2019"]
+        os: ["ubuntu-latest", "macos-13", "macos-latest", "windows-2019"]
     defaults:
       run:
         shell: bash -l {0}
@@ -94,8 +57,8 @@ jobs:
       uses: conda-incubator/setup-miniconda@v3
       with:
         auto-update-conda: true
-        use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
-        python-version: "3.11"
+        miniforge-version: latest
+        python-version: "3.12"
         activate-environment: conda-build
         channels: conda-forge
     - name: Add flight channel
@@ -136,7 +99,7 @@ jobs:
   update-channel:
     runs-on: head
     name: Update Conda Channel
-    needs: [build-linux, build-other]
+    needs: [build]
     steps:
       - name: Get packages
         uses: actions/download-artifact@v4.1.7
