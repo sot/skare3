@@ -36,6 +36,11 @@ def get_package_list():
                 "pyqt",
             ],
         },
+        {  # 0.60 is incompatible with VS code debugger
+            "channels": CHANNELS,
+            "options": [],
+            "packages": ["numba==0.59.1"],
+        },
         {  # this version is set so it is not the latest
             "channels": CHANNELS,
             "options": [],
