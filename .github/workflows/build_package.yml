@@ -88,7 +88,7 @@ jobs:
         set_boolean_default upload "${{ github.event.client_payload.upload }}" false
         set_default python_version "${{ github.event.client_payload.python_version }}" 3.12
         set_default numpy_version "${{ github.event.client_payload.numpy_version }}" 1.26.2
-        set_default channel_in "${{ github.event.client_payload.channel_in }}" "flight"
+        set_default channel_in "${{ github.event.client_payload.channel_in }}" "test"
         set_default channel_out "${{ github.event.client_payload.channel_out }}" "test"
         set_default skare3_branch "${{ github.event.client_payload.skare3_branch }}" "master"
         if [ "${{ github.event.client_payload.upload }}" == "" ]; then echo upload is not given; fi
