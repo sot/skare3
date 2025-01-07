@@ -23,36 +23,8 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - astropy
-    - django >=3.0,<4.0
-    - jinja2
-    - matplotlib
     - numpy
-    - tqdm
-    - plotly
-    - acdc
-    - agasc
-    - chandra_aca
-    - chandra_cmd_states
-    - chandra_maneuver
-    - chandra_time
-    - cheta
-    - cxotime
-    - kadi
-    - mica
-    - maude
-    - parse_cm
-    - proseco
-    - pyyaks
-    - quaternion
-    - ska_file
-    - ska_ftp
-    - ska_helpers
-    - ska_matplotlib
-    - ska_numpy
-    - ska_sun
-    - ska_tdb
-    - testr
+    - django >=3.0,<4.0
 
 test:
   imports:
