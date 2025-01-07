@@ -23,25 +23,8 @@ requirements:
   # will be installed automatically whenever the package is installed.
   run:
     - python
-    - six
-    - pytables
-    - configobj
-    - requests
-    - django >=3.0
-    - pyyaks
-    - ska_dbi
-    - ska_file
-    - ska_ftp
-    - ska_numpy
-    - astropy
-    - quaternion
-    - chandra_time
-    - cheta
     - numpy
-    - mica
-    - find_attitude
-    - testr
-    - ska_helpers
+    - django >=3.0,<4.0
 
 test:
   imports:
