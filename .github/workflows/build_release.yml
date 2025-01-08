@@ -68,13 +68,15 @@ jobs:
     - name: Build Package
       run: |
         os="${{ matrix.os }}"
+        if [[ ("${os:0:6}" != "ubuntu") ]]; then arch_flag=""; else arch_flag="--arch-specific"; fi
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
+        echo "Arch flag: ${arch_flag}"
         echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
         echo "### ${os} packages: " >> $GITHUB_STEP_SUMMARY
         for package in ${{needs.sanity_check.outputs.packages}}; do
           if [[ ("${os:0:7}" != "windows") || ("${package:0:9}" != "ska3-perl") ]]; then
             python skare3_tools/skare3_tools/scripts/build.py ${package} \
-            --arch-specific --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
+            ${arch_flag} --tag ${GITHUB_SHA} --skare3-branch ${GITHUB_SHA} ${{needs.sanity_check.outputs.overwrite_flag}};
           fi;
         done;
       env:
