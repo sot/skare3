@@ -68,7 +68,7 @@ jobs:
     - name: Build Package
       run: |
         os="${{ matrix.os }}"
-        if [[ ("${os:0:6}" != "ubuntu") ]]; then arch_flag=""; else arch_flag="--arch-specific"; fi
+        if [[ ("${os:0:6}" == "ubuntu") ]]; then arch_flag=""; else arch_flag="--arch-specific"; fi
         echo "Packages: ${{needs.sanity_check.outputs.packages}}"
         echo "Arch flag: ${arch_flag}"
         echo "Override flag: ${{needs.sanity_check.outputs.overwrite_flag}}"
