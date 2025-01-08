@@ -92,6 +92,7 @@ jobs:
         name: conda-package-${{ matrix.os }}
         path: |
           builds/noarch/
+          builds/linux-64/
           builds/osx-64/
           builds/osx-arm64/
           builds/win-64/
