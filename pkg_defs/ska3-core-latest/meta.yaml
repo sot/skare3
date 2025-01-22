@@ -54,6 +54,7 @@ requirements:
    - pip
    - plotly
    - ply
+   - pydata-sphinx-theme
    - pre-commit
    - pytest-timeout
    - python-kaleido
@@ -72,6 +73,7 @@ requirements:
    - setuptools_scm
    - sherpa # [not win]
    - sphinx-argparse
+   - sphinx-copybutton
    - six
    - sphinx
    - sqlalchemy
