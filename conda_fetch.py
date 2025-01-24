@@ -322,44 +322,24 @@ def get_packages(packages=(), conda_list=None, output_dir=None):
         if list((base_dir / pkg["platform"]).glob(f"{pkg['dist_name']}*")):
             continue
         try:
+            if pkg["platform"] == "pypi":
+                continue
             pkg["base_url"] = pkg["base_url"].replace(
                 "cxc.cfa.harvard.edu/mta/ASPECT", "icxc.cfa.harvard.edu/aspect"
             )
-            logger.debug(
-                f"Trying {pkg['base_url']}/{pkg['platform']}/{pkg['dist_name']}.tar.bz2"
+            url = f"{pkg['base_url']}/{pkg['platform']}/{pkg['dist_name']}.tar.bz2"
+            filename = wget(
+                url,
+                base_dir / pkg["platform"]
             )
-            proc = subprocess.run(
-                [
-                    "wget",
-                    f"{pkg['base_url']}/{pkg['platform']}/{pkg['dist_name']}.tar.bz2",
-                ],
-                capture_output=True,
-            )
-            if proc.returncode != 0:
-                logger.debug(
-                    f"Trying {pkg['base_url']}/{pkg['platform']}/{pkg['dist_name']}.conda"
+            if not filename:
+                url = f"{pkg['base_url']}/{pkg['platform']}/{pkg['dist_name']}.conda"
+                filename = wget(
+                    url,
+                    base_dir / pkg["platform"]
                 )
-                proc = subprocess.run(
-                    [
-                        "wget",
-                        f"{pkg['base_url']}/{pkg['platform']}/{pkg['dist_name']}.conda",
-                    ],
-                    capture_output=True,
-                )
-            if proc.returncode != 0:
-                logger.debug(f"Failed {pkg['dist_name']}")
-                fail.append(pkg)
-            else:
-                platform = base_dir / pkg["platform"]
-                platform.mkdir(exist_ok=True, parents=True)
-                output = list(tmpdir.glob(f"{pkg['dist_name']}*"))
-                if output:
-                    logger.debug(f"Moving {output[0]} -> {platform}")
-                    shutil.move(output[0], platform)
-                else:
-                    raise Exception(
-                        f"Could not find downloaded file '{pkg['dist_name']}*' at {tmpdir}"
-                    )
+            if not filename:
+                raise Exception("failed downloads")
         except Exception as e:
             logger.warning(f"fail {pkg['dist_name']}: {e}")
             fail.append(pkg)
@@ -370,9 +350,31 @@ def get_packages(packages=(), conda_list=None, output_dir=None):
 def _with_wget():
     return subprocess.run(["wget", "--help"], capture_output=True) == 0
 
+@functools.cache
+def _with_python_wget():
+    return subprocess.run(["wget", "--help"], capture_output=True) == 0
+
+
+def _python_wget(url, destination):
+    import os
+    import urllib.parse
+    import wget
+    try:
+        p = urllib.parse.urlparse(url)
+        destination.mkdir(parents=True, exist_ok=True)
+        filename = destination / os.path.basename(p.path)
+        if filename.exists():
+            return filename.name
+        logger.debug(f"Trying {url}")
+        return wget.download(url, out=str(filename))
+    except Exception as e:
+        logger.debug(f"failed: {e}")
+        pass
 
 def wget(url, destination):
     logger.debug(f"wget {url} -> {destination}")
+    if _with_python_wget():
+        return _python_wget(url, destination)
     if _with_wget():
         filename = _wget(url)
     else:
