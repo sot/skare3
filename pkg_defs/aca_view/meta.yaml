@@ -4,6 +4,9 @@ package:
 
 build:
   script: pip install .
+  entry_points:
+    - aca_view=aca_view.scripts.aca_viewer:main
+    - aca_view_fetch=aca_view.scripts.fetch:main
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/aca_view
