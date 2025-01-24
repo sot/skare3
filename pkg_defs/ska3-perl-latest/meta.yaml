@@ -1,6 +1,6 @@
 package:
   name: ska3-perl-latest
-  version: 2024.7
+  version: 2025.0
 
 build:
   skip: True  # [win]
@@ -14,7 +14,9 @@ requirements:
     - xtime # [linux]
     - perl-extended-deps # [linux]
     - perl-pdl # [linux]
+    - perl-io-tty # [linux]
     - perl-astro-fits-cfitsio-simple # [linux]
+    - perl-astro-fits-cfitsio # [linux]
     - perl-chandra-time # [linux]
     - perl-cxc-sysarch # [linux]
     - perl-ska-convert # [linux]
