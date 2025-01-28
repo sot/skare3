@@ -17,6 +17,7 @@ requirements:
    - cloudpickle # [win]
    - conda
    - conda-build
+   - configobj
    - coverage
    - cython
    - docxtpl
