@@ -73,6 +73,7 @@ requirements:
    - setuptools_scm
    - sherpa # [not win]
    - sphinx-argparse
+   - sphinx-autoapi
    - sphinx-copybutton
    - six
    - sphinx
