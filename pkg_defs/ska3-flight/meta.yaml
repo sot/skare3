@@ -22,7 +22,7 @@ requirements:
     - cxotime ==3.9.2
     - fot-matlab ==2.4.1
     - hopper ==4.6.0
-    - kadi ==7.14.1
+    - kadi ==7.14.2
     - maude ==3.12.1
     - mica ==4.38.1
     - parse_cm ==3.16.2
@@ -50,4 +50,4 @@ requirements:
     - sparkles ==4.28.1
     - starcheck ==14.12.0
     - testr ==4.13.0
-    - xija ==4.32.0
+    - xija ==4.33.1
