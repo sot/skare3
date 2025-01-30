@@ -17,7 +17,7 @@ assignees: ''
 - [ ] Create PR titled {version} from {version}-branch into master
 - [ ] Create a pre-release `{version}rc{N}` at the latest commit in the branch
 - [ ] Check packages are built and automated tests pass.
-- [ ] Promote packages from `masters` to `test` conda channel as aca user (`skare3-promote --ska3-conda /proj/sot/ska/www/ASPECT/ska3-conda --to test ...`).
+- [ ] Promote packages from `masters` to `test` conda channel as kadi user (`skare3-promote --ska3-conda /proj/sot/ska/www/ASPECT/ska3-conda --to test ...`).
 - [ ] List in PR any data products that need to be promoted to $SKA/data (check PR's interface impacts).
 - [ ] Install on HEAD and GRETA Linux test environments (`ska3/test`).
 - [ ] `python -m compileall $SKA/lib`
