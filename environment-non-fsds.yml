@@ -11,7 +11,6 @@ dependencies:
   - astromon
   - annie
   - fid_drift_mon
-  - guide_stat_reports
   - fss_check
   - jobwatch
   - kalman_watch
