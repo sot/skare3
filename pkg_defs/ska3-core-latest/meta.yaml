@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2024.1
+  version: 2025.1
 
 requirements:
   run:
@@ -51,21 +51,20 @@ requirements:
    - openpyxl
    - pillow
    - pip
-   - flake8
-   - pylint
    - plotly
    - ply
+   - pre-commit
    - pytest-timeout
    - python-kaleido
    - python-docx
    - pyqt
    - pyqtgraph
+   - pyqtwebengine
    - pyyaml
    - qt
    - regions
    - requests
    - rope
-   - ruff
    - scikit-learn
    - scipy
    - setuptools
@@ -74,7 +73,7 @@ requirements:
    - sphinx-argparse
    - six
    - sphinx
-   - sqlalchemy # [win]
+   - sqlalchemy
    - sqlite
    - tk
    - tqdm
