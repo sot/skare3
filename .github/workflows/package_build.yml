@@ -104,7 +104,8 @@ jobs:
         channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }},conda-forge
     - name: Update Conda Environment
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
-      run:
+      run: |
+        conda list ^python$ --export | grep python >> $CONDA_PREFIX/conda-meta/pinned
         conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Install ska_helpers
       if: ${{ inputs.install_ska_helpers && ((matrix.os == 'ubuntu-latest') || !inputs.noarch) }}
