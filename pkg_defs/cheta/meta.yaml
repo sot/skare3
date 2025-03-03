@@ -4,6 +4,14 @@ package:
 
 build:
   script: pip install .
+  entry_points:
+    - ska_fetch=cheta.get_telem:main
+    - cheta_sync=cheta.update_client_archive:main
+    - cheta_update_server_sync=cheta.update_server_sync:main
+    - cheta_update_server_archive=cheta.update_archive:main
+    - cheta_check_integrity=cheta.check_integrity:main
+    - cheta_fix_bad_values=cheta.fix_bad_values:main
+    - cheta_add_derived=cheta.add_derived:main
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/cheta
