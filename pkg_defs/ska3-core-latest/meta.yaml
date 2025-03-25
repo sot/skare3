@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2025.1
+  version: 2025.3
 
 requirements:
   run:
@@ -17,6 +17,7 @@ requirements:
    - cloudpickle # [win]
    - conda
    - conda-build
+   - configobj
    - coverage
    - cython
    - docxtpl
@@ -53,6 +54,7 @@ requirements:
    - pip
    - plotly
    - ply
+   - pydata-sphinx-theme
    - pre-commit
    - pytest-timeout
    - python-kaleido
@@ -71,6 +73,8 @@ requirements:
    - setuptools_scm
    - sherpa # [not win]
    - sphinx-argparse
+   - sphinx-autoapi
+   - sphinx-copybutton
    - six
    - sphinx
    - sqlalchemy
