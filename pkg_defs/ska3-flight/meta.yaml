@@ -10,8 +10,8 @@ requirements:
   run:
     - aca_view ==0.16.0
     - acis_taco ==4.2.3
-    - acis_thermal_check ==5.2.0
-    - acispy ==2.7.0
+    - acis_thermal_check ==5.3.0
+    - acispy ==2.8.0
     - agasc ==4.22.0
     - backstop_history ==3.2.1
     - chandra_aca ==4.49.0
@@ -24,7 +24,7 @@ requirements:
     - hopper ==4.6.0
     - kadi ==7.16.0
     - maude ==3.12.1
-    - mica ==4.38.2
+    - mica ==4.38.3
     - parse_cm ==3.17.0
     - proseco ==5.16.1
     - pyyaks ==4.5.0
