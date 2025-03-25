@@ -43,7 +43,7 @@ requirements:
     - ska_parsecm ==4.0.1
     - ska_path ==3.1.2
     - ska_quatutil ==4.0.0
-    - ska_shell ==4.1.0
+    - ska_shell ==4.1.1
     - ska_sun ==3.15.0
     - ska_sync ==4.13.0
     - ska_tdb ==4.1.0
