@@ -4,6 +4,8 @@ package:
 
 build:
   script: pip install .
+  entry_points:
+    - sparkles=sparkles.core:main
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/sparkles
