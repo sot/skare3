@@ -1,16 +1,16 @@
 #!/usr/bin/env python
 
-import sys
-import os
-import subprocess
-import re
 import argparse
+import os
 import platform
+import re
 import shutil
-from pathlib import Path
+import subprocess
+import sys
 import tempfile
-from fnmatch import fnmatch
 import time
+from fnmatch import fnmatch
+from pathlib import Path
 
 import git
 import jinja2
@@ -47,13 +47,13 @@ def get_opt():
                         action="store_true",
                         help="Build only architecture-specific packages")
     parser.add_argument("--python",
-                        default="3.11",
-                        help="Target version of Python (default=3.11)")
+                        default="3.12",
+                        help="Target version of Python (default=3.12)")
     parser.add_argument("--perl",
                         default="5.32.1",
                         help="Target version of Perl (default=5.32.1)")
     parser.add_argument("--numpy",
-                        default="1.26.3",
+                        default="1.26.4",
                         help="Build version of NumPy")
     parser.add_argument("--github-https", action="store_true", default=False,
                         help="Authenticate using basic auth and https. Default is ssh "
