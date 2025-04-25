@@ -4,6 +4,10 @@ package:
 
 build:
   script: pip install .
+  entry_points:
+    - skare3-build=skare3_tools.scripts.build:main
+    - skare3-changes-summary=skare3_tools.scripts.skare3_update_summary:main
+    - skare3-test-dashboard=skare3_tools.dashboard.views.test_results:main
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/skare3_tools
