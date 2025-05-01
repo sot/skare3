@@ -101,7 +101,15 @@ jobs:
         miniforge-version: latest
         python-version: ${{ inputs.python_version }}
         activate-environment: conda-build
-        channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }},conda-forge
+    - name: Set channels
+      if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
+      run: |
+        python --version
+        echo "adding ${{ inputs.channel }} channel"
+        conda config --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }}
+        conda config --remove channels defaults  # defaults is added "implicitly" by conda in the previous line
+        conda config --show-sources
+        conda config --show channels
     - name: Update Conda Environment
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
       run: |
