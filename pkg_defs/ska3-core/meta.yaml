@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-core
-  version: 2025.4
+  version: 2025.5
 
 requirements:
   run:
@@ -73,14 +73,14 @@ requirements:
     - bzip2 ==1.0.8
     - c-ares ==1.34.4
     - c-blosc2 ==2.15.2
-    - ca-certificates ==2024.12.14
+    - ca-certificates ==2025.4.26
     - cached-property ==1.5.2
     - cached_property ==1.5.2
     - cairo ==1.18.2  # [linux]
     - cctools ==1010.6  # [osx]
     - cctools_osx-64 ==1010.6  # [osx and not arm64]
     - cctools_osx-arm64 ==1010.6  # [arm64]
-    - certifi ==2024.12.14
+    - certifi ==2025.1.31
     - cffi ==1.17.1
     - cfgv ==3.3.1
     - chardet ==5.2.0
@@ -255,10 +255,8 @@ requirements:
     - libgcrypt-lib ==1.11.0  # [linux]
     - libgettextpo ==0.22.5  # [linux]
     - libgettextpo-devel ==0.22.5  # [linux]
-    - libgfortran ==14.2.0  # [linux]
-    - libgfortran ==5.0.0  # [osx]
-    - libgfortran5 ==13.2.0  # [osx]
-    - libgfortran5 ==14.2.0  # [linux]
+    - libgfortran ==14.2.0
+    - libgfortran5 ==14.2.0
     - libgl ==1.7.0  # [linux]
     - libglib ==2.82.2
     - libglvnd ==1.7.0  # [linux]
@@ -375,7 +373,7 @@ requirements:
     - oauthlib ==3.2.2
     - openjpeg ==2.5.3
     - openpyxl ==3.1.5
-    - openssl ==3.4.0
+    - openssl ==3.5.0
     - orc ==2.0.3
     - overrides ==7.7.0
     - packaging ==24.2
@@ -478,7 +476,7 @@ requirements:
     - s2n ==1.5.10  # [linux]
     - s3fs ==2024.12.0
     - scikit-learn ==1.6.0
-    - scipy ==1.14.1
+    - scipy ==1.15.2
     - secretstorage ==3.3.3  # [linux]
     - send2trash ==1.8.3
     - setuptools ==75.6.0
