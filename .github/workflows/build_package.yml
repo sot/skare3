@@ -13,6 +13,7 @@ name: Build Ska Package
 #   - channel_in: the channel to use for the build environment (default is flight).
 #     This channel gets passed to package_build workflow, which also adds conda-forge
 #   - channel_out: the channel to upload the package to (default is test)
+#   - with_conda_forge: whether to add conda-forge to the channel list (default is false)
 #   - skare3_branch: the branch of skare3 to use for the build (default is master)
 #
 # You call it like this:
@@ -49,6 +50,7 @@ jobs:
       numpy_version: ${{ steps.arguments.outputs.numpy_version }}
       channel_in: ${{ steps.arguments.outputs.channel_in }}
       channel_out: ${{ steps.arguments.outputs.channel_out }}
+      with_conda_forge: ${{ steps.arguments.outputs.with_conda_forge }}
       skare3_branch: ${{ steps.arguments.outputs.skare3_branch }}
     steps:
     - name: Check arguments
@@ -90,6 +92,7 @@ jobs:
         set_default numpy_version "${{ github.event.client_payload.numpy_version }}" 1.26.2
         set_default channel_in "${{ github.event.client_payload.channel_in }}" "test"
         set_default channel_out "${{ github.event.client_payload.channel_out }}" "test"
+        set_boolean_default with_conda_forge "${{ github.event.client_payload.with_conda_forge }}" false
         set_default skare3_branch "${{ github.event.client_payload.skare3_branch }}" "master"
         if [ "${{ github.event.client_payload.upload }}" == "" ]; then echo upload is not given; fi
         if [ "${{ github.event.client_payload.upload }}" == "false" ]; then echo upload is false; fi
@@ -108,6 +111,7 @@ jobs:
         echo "- Numpy version: ${{ steps.arguments.outputs.numpy_version }}" >> $GITHUB_STEP_SUMMARY
         echo "- Input channel: ${{ steps.arguments.outputs.channel_in }}" >> $GITHUB_STEP_SUMMARY
         echo "- Output channel: ${{ steps.arguments.outputs.channel_out }}" >> $GITHUB_STEP_SUMMARY
+        echo "- With conda-forge: ${{ steps.arguments.outputs.with_conda_forge }}" >> $GITHUB_STEP_SUMMARY
   build:
     # This steps does the actual building
     needs: arguments  # this job needs the arguments job because it uses the outputs
@@ -122,6 +126,7 @@ jobs:
       install_ska_helpers: ${{ needs.arguments.outputs.install_ska_helpers == 'true' }}
       # the following channel in ska3-conda is used to create the build environment
       channel: ${{ needs.arguments.outputs.channel_in }}
+      with_conda_forge: ${{ needs.arguments.outputs.with_conda_forge == 'true' }}
     secrets:
       CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
       CHANDRA_XRAY_TOKEN: ${{ secrets.CHANDRA_XRAY_TOKEN }}
