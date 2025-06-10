@@ -1,35 +1,5 @@
 {
   "packages": {
-    "brotli-1.0.9-hb7f2c08_8.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "brotli-bin-1.0.9-hb7f2c08_8.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "giflib-5.2.1-hbcb3906_2.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "h5py-3.7.0-nompi_py310h5555e59_102.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "icu-70.1-h96cf925_0.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "libblas-3.9.0-16_osx64_mkl.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "libbrotlicommon-1.0.9-hb7f2c08_8.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "libbrotlidec-1.0.9-hb7f2c08_8.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "libbrotlienc-1.0.9-hb7f2c08_8.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "libcblas-3.9.0-16_osx64_mkl.tar.bz2": {
-      "license_family": "BSD"
-    },
     "libedit-3.1.20191231-h0678c8f_2.tar.bz2": {
       "depends": [
         "ncurses >=6.2,<7.0.0a0"
@@ -38,707 +8,143 @@
     "libffi-3.4.2-h0d85af4_5.tar.bz2": {
       "license_family": "MIT"
     },
-    "liblapack-3.9.0-16_osx64_mkl.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "libogg-1.3.4-h35c211d_1.tar.bz2": {
-      "license_family": "BSD"
-    },
     "libopus-1.3.1-hc929b4f_1.tar.bz2": {
       "license_family": "BSD"
-    },
-    "libwebp-base-1.2.4-h775f41a_0.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "libxslt-1.1.37-h5d22bc9_0.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "llvmlite-0.39.1-py310h2bfb868_1.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "lz4-c-1.9.3-he49afe7_1.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "nb_conda_kernels-2.3.1-py310h2ec42d9_2.tar.bz2": {
-      "license_family": "BSD"
-    },
-    "nodejs-18.12.1-hd0c9b3c_0.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "nss-3.78-ha8197d3_0.tar.bz2": {
-      "license_family": "MOZILLA"
-    },
-    "numexpr-2.8.3-py310hecf8f37_1.tar.bz2": {
-      "license_family": "MIT"
     },
     "patch-2.7.6-hbcf498f_1002.tar.bz2": {
       "license_family": "GPL"
     },
-    "pkg-config-0.29.2-ha3d46e9_1008.tar.bz2": {
-      "depends": [
-        "libiconv >=1.16,<2.0.0a0"
-      ],
-      "license_family": "GPL"
-    },
-    "pycosat-0.6.4-py310h90acd4f_1.tar.bz2": {
-      "license_family": "MIT"
-    },
-    "readline-8.1.2-h3899abd_0.tar.bz2": {
-      "license_family": "GPL"
-    },
-    "ruamel.yaml-0.17.21-py310h90acd4f_2.tar.bz2": {
-      "license_family": "MIT"
-    },
     "sigtool-0.1.3-h88f4db0_0.tar.bz2": {
       "license_family": "MIT"
     },
-    "wrapt-1.14.1-py310h90acd4f_1.tar.bz2": {
-      "license_family": "BSD"
-    },
     "yaml-0.2.5-h0d85af4_2.tar.bz2": {
       "license_family": "MIT"
-    },
-    "zeromq-4.3.4-he49afe7_1.tar.bz2": {
-      "license_family": "LGPL"
-    },
-    "packages": {
-      "packages": {
-        "libedit-3.1.20191231-h0678c8f_2.tar.bz2": {
-          "depends": [
-            "ncurses >=6.2,<7.0.0a0"
-          ]
-        },
-        "libffi-3.4.2-h0d85af4_5.tar.bz2": {
-          "license_family": "MIT"
-        },
-        "libogg-1.3.4-h35c211d_1.tar.bz2": {
-          "license_family": "BSD"
-        },
-        "libopus-1.3.1-hc929b4f_1.tar.bz2": {
-          "license_family": "BSD"
-        },
-        "patch-2.7.6-hbcf498f_1002.tar.bz2": {
-          "license_family": "GPL"
-        },
-        "sigtool-0.1.3-h88f4db0_0.tar.bz2": {
-          "license_family": "MIT"
-        },
-        "yaml-0.2.5-h0d85af4_2.tar.bz2": {
-          "license_family": "MIT"
-        }
-      },
-      "packages.conda": {
-        "astropy-6.0.0-py311hc9a392d_0.conda": {
-          "license_family": "BSD"
-        },
-        "blosc-1.21.5-heccf04b_0.conda": {
-          "license_family": "BSD"
-        },
-        "brotli-1.1.0-h0dc2134_1.conda": {
-          "license_family": "MIT"
-        },
-        "brotli-bin-1.1.0-h0dc2134_1.conda": {
-          "license_family": "MIT"
-        },
-        "brotli-python-1.1.0-py311hdf8f085_1.conda": {
-          "license_family": "MIT"
-        },
-        "cffi-1.16.0-py311hc0b63fd_0.conda": {
-          "license_family": "MIT"
-        },
-        "conda-23.11.0-py311h6eed73b_1.conda": {
-          "license_family": "BSD"
-        },
-        "contourpy-1.2.0-py311h7bea37d_0.conda": {
-          "license_family": "BSD"
-        },
-        "coverage-7.4.3-py311he705e18_1.conda": {
-          "license_family": "APACHE"
-        },
-        "cython-3.0.8-py311hdd0406b_0.conda": {
-          "license_family": "APACHE"
-        },
-        "giflib-5.2.1-hb7f2c08_3.conda": {
-          "license_family": "MIT"
-        },
-        "gst-plugins-base-1.22.9-h3fb38fc_0.conda": {
-          "license_family": "LGPL"
-        },
-        "gstreamer-1.22.9-hf63bbb8_0.conda": {
-          "license_family": "LGPL"
-        },
-        "h5py-3.10.0-nompi_py311hf7b785c_101.conda": {
-          "license_family": "BSD"
-        },
-        "icu-73.2-hf5e326d_0.conda": {
-          "license_family": "MIT"
-        },
-        "jsonpointer-2.4-py311h6eed73b_3.conda": {
-          "license_family": "BSD"
-        },
-        "krb5-1.21.2-hb884880_0.conda": {
-          "license_family": "MIT"
-        },
-        "libarchive-3.7.2-hd35d340_1.conda": {
-          "depends": [
-            "bzip2 >=1.0.8,<2.0a0",
-            "libiconv >=1.17,<2.0a0",
-            "libxml2 >=2.12.2,<3.0.0a0",
-            "libzlib >=1.2.13,<1.3.0a0",
-            "lz4-c >=1.9.3,<1.10.0a0",
-            "lzo >=2.10,<3.0a0",
-            "openssl >=3.2.0,<4.0a0",
-            "xz >=5.2.6,<6.0a0",
-            "zstd >=1.5.5,<1.6.0a0"
-          ]
-        },
-        "libblas-3.9.0-20_osx64_mkl.conda": {
-          "license_family": "BSD"
-        },
-        "libbrotlicommon-1.1.0-h0dc2134_1.conda": {
-          "license_family": "MIT"
-        },
-        "libbrotlidec-1.1.0-h0dc2134_1.conda": {
-          "license_family": "MIT"
-        },
-        "libbrotlienc-1.1.0-h0dc2134_1.conda": {
-          "license_family": "MIT"
-        },
-        "libcblas-3.9.0-20_osx64_mkl.conda": {
-          "license_family": "BSD"
-        },
-        "libdeflate-1.19-ha4e1b8e_0.conda": {
-          "license_family": "MIT"
-        },
-        "libhwloc-2.9.3-default_h24e0189_1009.conda": {
-          "depends": [
-            "__osx >=10.9",
-            "libcxx >=16.0.6",
-            "libxml2 >=2.11.5,<3.0.0a0"
-          ],
-          "license_family": "BSD"
-        },
-        "liblapack-3.9.0-20_osx64_mkl.conda": {
-          "license_family": "BSD"
-        },
-        "libllvm15-15.0.7-hbedff68_4.conda": {
-          "depends": [
-            "libcxx >=16",
-            "libxml2 >=2.12.1,<3.0.0a0",
-            "libzlib >=1.2.13,<1.3.0a0",
-            "zstd >=1.5.5,<1.6.0a0"
-          ]
-        },
-        "libllvm16-16.0.6-hbedff68_3.conda": {
-          "depends": [
-            "libcxx >=16",
-            "libxml2 >=2.12.1,<3.0.0a0",
-            "libzlib >=1.2.13,<1.3.0a0",
-            "zstd >=1.5.5,<1.6.0a0"
-          ]
-        },
-        "libwebp-1.3.2-h44782d1_1.conda": {
-          "license_family": "BSD"
-        },
-        "libwebp-base-1.3.2-h0dc2134_0.conda": {
-          "license_family": "BSD"
-        },
-        "libxslt-1.1.39-h03b04e6_0.conda": {
-          "depends": [
-            "libxml2 >=2.12.1,<3.0.0a0"
-          ],
-          "license_family": "MIT"
-        },
-        "llvm-openmp-17.0.6-hb6ac08f_0.conda": {
-          "license_family": "APACHE"
-        },
-        "llvmlite-0.42.0-py311hb5c2e0a_1.conda": {
-          "license_family": "BSD"
-        },
-        "lxml-5.1.0-py311h033124e_0.conda": {
-          "depends": [
-            "libxml2 >=2.12.3,<3.0.0a0",
-            "libxslt >=1.1.39,<2.0a0",
-            "libzlib >=1.2.13,<1.3.0a0",
-            "python >=3.11,<3.12.0a0",
-            "python_abi 3.11.* *_cp311"
-          ]
-        },
-        "lz4-c-1.9.4-hf0c8a7f_0.conda": {
-          "license_family": "BSD"
-        },
-        "nodejs-20.9.0-h9adec40_0.conda": {
-          "license_family": "MIT"
-        },
-        "nspr-4.35-hea0b92c_0.conda": {
-          "license_family": "MOZILLA"
-        },
-        "nss-3.98-ha05da47_0.conda": {
-          "license_family": "MOZILLA"
-        },
-        "numexpr-2.8.4-py311hab14417_1.conda": {
-          "license_family": "MIT"
-        },
-        "numpy-1.26.4-py311hc43a94b_0.conda": {
-          "license_family": "BSD"
-        },
-        "openjpeg-2.5.1-h7310d3a_0.conda": {
-          "license_family": "BSD"
-        },
-        "pandas-2.2.1-py311h8f6166a_0.conda": {
-          "license_family": "BSD"
-        },
-        "pycosat-0.6.6-py311h2725bcf_0.conda": {
-          "license_family": "MIT"
-        },
-        "pyobjc-framework-cocoa-10.1-py311h9b70068_0.conda": {
-          "license_family": "MIT"
-        },
-        "pytables-3.8.0-py311h21e7aa0_4.conda": {
-          "depends": [
-            "blosc >=1.21.5,<2.0a0",
-            "bzip2 >=1.0.8,<2.0a0",
-            "c-blosc2 >=2.10.4,<3.0a0",
-            "hdf5 >=1.14.2,<1.14.4.0a0",
-            "libcxx >=15.0.7",
-            "libzlib >=1.2.13,<1.3.0a0",
-            "numexpr",
-            "numpy >=1.23.5,<2.0a0",
-            "packaging",
-            "py-cpuinfo",
-            "python >=3.11,<3.12.0a0",
-            "python_abi 3.11.* *_cp311"
-          ],
-          "license_family": "BSD"
-        },
-        "pytables-3.9.2-py311h3cee394_1.conda": {
-          "depends": [
-            "__osx >=10.9",
-            "blosc >=1.21.5,<2.0a0",
-            "bzip2 >=1.0.8,<2.0a0",
-            "c-blosc2 >=2.11.3,<3.0a0",
-            "hdf5 >=1.14.2,<1.14.4.0a0",
-            "libcxx >=16.0.6",
-            "libzlib >=1.2.13,<1.3.0a0",
-            "numexpr",
-            "numpy >=1.23.5,<2.0a0",
-            "packaging",
-            "py-cpuinfo",
-            "python >=3.11,<3.12.0a0",
-            "python_abi 3.11.* *_cp311"
-          ],
-          "license_family": "BSD"
-        },
-        "qt-5.15.8-h93fa01e_0.conda": {
-          "license_family": "LGPL"
-        },
-        "qt-main-5.15.8-h4385fff_19.conda": {
-          "license_family": "LGPL"
-        },
-        "qt-webengine-5.15.8-h5f65913_4.conda": {
-          "license_family": "LGPL"
-        },
-        "readline-8.2-h9e318b2_1.conda": {
-          "license_family": "GPL"
-        },
-        "reproc-14.2.4.post0-h10d778d_1.conda": {
-          "license_family": "MIT"
-        },
-        "reproc-cpp-14.2.4.post0-h93d8f39_1.conda": {
-          "license_family": "MIT"
-        },
-        "rpds-py-0.18.0-py311hd64b9fd_0.conda": {
-          "license_family": "MIT"
-        },
-        "ruamel.yaml-0.18.6-py311he705e18_0.conda": {
-          "license_family": "MIT"
-        },
-        "scikit-learn-1.4.1.post1-py311he2b4599_0.conda": {
-          "license_family": "BSD"
-        },
-        "scipy-1.12.0-py311h86d0cd9_2.conda": {
-          "license_family": "BSD"
-        },
-        "tbb-2021.11.0-h7728843_1.conda": {
-          "license_family": "APACHE"
-        },
-        "zeromq-4.3.5-h93d8f39_0.conda": {
-          "license_family": "MOZILLA"
-        },
-        "zstandard-0.22.0-py311hed14148_0.conda": {
-          "license_family": "BSD"
-        },
-        "zstd-1.5.5-h829000d_0.conda": {
-          "license_family": "BSD"
-        }
-      },
-      "patch_instructions_version": 1,
-      "remove": [],
-      "revoke": []
-    },
-    "packages.conda": {
-      "astropy-6.0.0-py311hc9a392d_0.conda": {
-        "license_family": "BSD"
-      },
-      "blosc-1.21.5-heccf04b_0.conda": {
-        "license_family": "BSD"
-      },
-      "brotli-1.1.0-h0dc2134_1.conda": {
-        "license_family": "MIT"
-      },
-      "brotli-bin-1.1.0-h0dc2134_1.conda": {
-        "license_family": "MIT"
-      },
-      "brotli-python-1.1.0-py311hdf8f085_1.conda": {
-        "license_family": "MIT"
-      },
-      "cffi-1.16.0-py311hc0b63fd_0.conda": {
-        "license_family": "MIT"
-      },
-      "conda-23.11.0-py311h6eed73b_1.conda": {
-        "license_family": "BSD"
-      },
-      "contourpy-1.2.0-py311h7bea37d_0.conda": {
-        "license_family": "BSD"
-      },
-      "coverage-7.4.3-py311he705e18_1.conda": {
-        "license_family": "APACHE"
-      },
-      "cython-3.0.8-py311hdd0406b_0.conda": {
-        "license_family": "APACHE"
-      },
-      "giflib-5.2.1-hb7f2c08_3.conda": {
-        "license_family": "MIT"
-      },
-      "gst-plugins-base-1.22.9-h3fb38fc_0.conda": {
-        "license_family": "LGPL"
-      },
-      "gstreamer-1.22.9-hf63bbb8_0.conda": {
-        "license_family": "LGPL"
-      },
-      "h5py-3.10.0-nompi_py311hf7b785c_101.conda": {
-        "license_family": "BSD"
-      },
-      "icu-73.2-hf5e326d_0.conda": {
-        "license_family": "MIT"
-      },
-      "jsonpointer-2.4-py311h6eed73b_3.conda": {
-        "license_family": "BSD"
-      },
-      "krb5-1.21.2-hb884880_0.conda": {
-        "license_family": "MIT"
-      },
-      "libarchive-3.7.2-hd35d340_1.conda": {
-        "depends": [
-          "bzip2 >=1.0.8,<2.0a0",
-          "libiconv >=1.17,<2.0a0",
-          "libxml2 >=2.12.2,<3.0.0a0",
-          "libzlib >=1.2.13,<1.3.0a0",
-          "lz4-c >=1.9.3,<1.10.0a0",
-          "lzo >=2.10,<3.0a0",
-          "openssl >=3.2.0,<4.0a0",
-          "xz >=5.2.6,<6.0a0",
-          "zstd >=1.5.5,<1.6.0a0"
-        ]
-      },
-      "libblas-3.9.0-20_osx64_mkl.conda": {
-        "license_family": "BSD"
-      },
-      "libbrotlicommon-1.1.0-h0dc2134_1.conda": {
-        "license_family": "MIT"
-      },
-      "libbrotlidec-1.1.0-h0dc2134_1.conda": {
-        "license_family": "MIT"
-      },
-      "libbrotlienc-1.1.0-h0dc2134_1.conda": {
-        "license_family": "MIT"
-      },
-      "libcblas-3.9.0-20_osx64_mkl.conda": {
-        "license_family": "BSD"
-      },
-      "libdeflate-1.19-ha4e1b8e_0.conda": {
-        "license_family": "MIT"
-      },
-      "libhwloc-2.9.3-default_h24e0189_1009.conda": {
-        "depends": [
-          "__osx >=10.9",
-          "libcxx >=16.0.6",
-          "libxml2 >=2.11.5,<3.0.0a0"
-        ],
-        "license_family": "BSD"
-      },
-      "liblapack-3.9.0-20_osx64_mkl.conda": {
-        "license_family": "BSD"
-      },
-      "libllvm15-15.0.7-hbedff68_4.conda": {
-        "depends": [
-          "libcxx >=16",
-          "libxml2 >=2.12.1,<3.0.0a0",
-          "libzlib >=1.2.13,<1.3.0a0",
-          "zstd >=1.5.5,<1.6.0a0"
-        ]
-      },
-      "libllvm16-16.0.6-hbedff68_3.conda": {
-        "depends": [
-          "libcxx >=16",
-          "libxml2 >=2.12.1,<3.0.0a0",
-          "libzlib >=1.2.13,<1.3.0a0",
-          "zstd >=1.5.5,<1.6.0a0"
-        ]
-      },
-      "libwebp-1.3.2-h44782d1_1.conda": {
-        "license_family": "BSD"
-      },
-      "libwebp-base-1.3.2-h0dc2134_0.conda": {
-        "license_family": "BSD"
-      },
-      "libxslt-1.1.39-h03b04e6_0.conda": {
-        "depends": [
-          "libxml2 >=2.12.1,<3.0.0a0"
-        ],
-        "license_family": "MIT"
-      },
-      "llvm-openmp-17.0.6-hb6ac08f_0.conda": {
-        "license_family": "APACHE"
-      },
-      "llvmlite-0.42.0-py311hb5c2e0a_1.conda": {
-        "license_family": "BSD"
-      },
-      "lxml-5.1.0-py311h033124e_0.conda": {
-        "depends": [
-          "libxml2 >=2.12.3,<3.0.0a0",
-          "libxslt >=1.1.39,<2.0a0",
-          "libzlib >=1.2.13,<1.3.0a0",
-          "python >=3.11,<3.12.0a0",
-          "python_abi 3.11.* *_cp311"
-        ]
-      },
-      "lz4-c-1.9.4-hf0c8a7f_0.conda": {
-        "license_family": "BSD"
-      },
-      "nodejs-20.9.0-h9adec40_0.conda": {
-        "license_family": "MIT"
-      },
-      "nspr-4.35-hea0b92c_0.conda": {
-        "license_family": "MOZILLA"
-      },
-      "nss-3.98-ha05da47_0.conda": {
-        "license_family": "MOZILLA"
-      },
-      "numexpr-2.8.4-py311hab14417_1.conda": {
-        "license_family": "MIT"
-      },
-      "numpy-1.26.4-py311hc43a94b_0.conda": {
-        "license_family": "BSD"
-      },
-      "openjpeg-2.5.1-h7310d3a_0.conda": {
-        "license_family": "BSD"
-      },
-      "pandas-2.2.1-py311h8f6166a_0.conda": {
-        "license_family": "BSD"
-      },
-      "pycosat-0.6.6-py311h2725bcf_0.conda": {
-        "license_family": "MIT"
-      },
-      "pyobjc-framework-cocoa-10.1-py311h9b70068_0.conda": {
-        "license_family": "MIT"
-      },
-      "pytables-3.8.0-py311h21e7aa0_4.conda": {
-        "depends": [
-          "blosc >=1.21.5,<2.0a0",
-          "bzip2 >=1.0.8,<2.0a0",
-          "c-blosc2 >=2.10.4,<3.0a0",
-          "hdf5 >=1.14.2,<1.14.4.0a0",
-          "libcxx >=15.0.7",
-          "libzlib >=1.2.13,<1.3.0a0",
-          "numexpr",
-          "numpy >=1.23.5,<2.0a0",
-          "packaging",
-          "py-cpuinfo",
-          "python >=3.11,<3.12.0a0",
-          "python_abi 3.11.* *_cp311"
-        ],
-        "license_family": "BSD"
-      },
-      "pytables-3.9.2-py311h3cee394_1.conda": {
-        "depends": [
-          "__osx >=10.9",
-          "blosc >=1.21.5,<2.0a0",
-          "bzip2 >=1.0.8,<2.0a0",
-          "c-blosc2 >=2.11.3,<3.0a0",
-          "hdf5 >=1.14.2,<1.14.4.0a0",
-          "libcxx >=16.0.6",
-          "libzlib >=1.2.13,<1.3.0a0",
-          "numexpr",
-          "numpy >=1.23.5,<2.0a0",
-          "packaging",
-          "py-cpuinfo",
-          "python >=3.11,<3.12.0a0",
-          "python_abi 3.11.* *_cp311"
-        ],
-        "license_family": "BSD"
-      },
-      "qt-5.15.8-h93fa01e_0.conda": {
-        "license_family": "LGPL"
-      },
-      "qt-main-5.15.8-h4385fff_19.conda": {
-        "license_family": "LGPL"
-      },
-      "qt-webengine-5.15.8-h5f65913_4.conda": {
-        "license_family": "LGPL"
-      },
-      "readline-8.2-h9e318b2_1.conda": {
-        "license_family": "GPL"
-      },
-      "reproc-14.2.4.post0-h10d778d_1.conda": {
-        "license_family": "MIT"
-      },
-      "reproc-cpp-14.2.4.post0-h93d8f39_1.conda": {
-        "license_family": "MIT"
-      },
-      "rpds-py-0.18.0-py311hd64b9fd_0.conda": {
-        "license_family": "MIT"
-      },
-      "ruamel.yaml-0.18.6-py311he705e18_0.conda": {
-        "license_family": "MIT"
-      },
-      "scikit-learn-1.4.1.post1-py311he2b4599_0.conda": {
-        "license_family": "BSD"
-      },
-      "scipy-1.12.0-py311h86d0cd9_2.conda": {
-        "license_family": "BSD"
-      },
-      "tbb-2021.11.0-h7728843_1.conda": {
-        "license_family": "APACHE"
-      },
-      "zeromq-4.3.5-h93d8f39_0.conda": {
-        "license_family": "MOZILLA"
-      },
-      "zstandard-0.22.0-py311hed14148_0.conda": {
-        "license_family": "BSD"
-      },
-      "zstd-1.5.5-h829000d_0.conda": {
-        "license_family": "BSD"
-      }
-    },
-    "patch_instructions_version": 1,
-    "remove": [],
-    "revoke": []
+    }
   },
   "packages.conda": {
-    "astropy-6.0.0-py311hc9a392d_0.conda": {
+    "astropy-base-7.0.0-py312h7322dab_3.conda": {
       "license_family": "BSD"
     },
-    "blosc-1.21.5-heccf04b_0.conda": {
+    "blosc-1.21.6-hd145fbb_1.conda": {
       "license_family": "BSD"
     },
-    "brotli-1.1.0-h0dc2134_1.conda": {
+    "brotli-1.1.0-h00291cd_2.conda": {
       "license_family": "MIT"
     },
-    "brotli-bin-1.1.0-h0dc2134_1.conda": {
+    "brotli-bin-1.1.0-h00291cd_2.conda": {
       "license_family": "MIT"
     },
-    "brotli-python-1.1.0-py311hdf8f085_1.conda": {
+    "brotli-python-1.1.0-py312h5861a67_2.conda": {
       "license_family": "MIT"
     },
-    "cffi-1.16.0-py311hc0b63fd_0.conda": {
+    "cffi-1.17.1-py312hf857d28_0.conda": {
       "license_family": "MIT"
     },
-    "conda-23.11.0-py311h6eed73b_1.conda": {
+    "conda-24.11.2-py312hb401068_0.conda": {
       "license_family": "BSD"
     },
-    "contourpy-1.2.0-py311h7bea37d_0.conda": {
+    "contourpy-1.3.1-py312hc47a885_0.conda": {
       "license_family": "BSD"
     },
-    "coverage-7.4.3-py311he705e18_1.conda": {
+    "coverage-7.6.10-py312h3520af0_0.conda": {
       "license_family": "APACHE"
     },
-    "cython-3.0.8-py311hdd0406b_0.conda": {
+    "cython-3.0.11-py312h6891801_3.conda": {
       "license_family": "APACHE"
     },
-    "giflib-5.2.1-hb7f2c08_3.conda": {
-      "license_family": "MIT"
-    },
-    "gst-plugins-base-1.22.9-h3fb38fc_0.conda": {
-      "license_family": "LGPL"
-    },
-    "gstreamer-1.22.9-hf63bbb8_0.conda": {
-      "license_family": "LGPL"
-    },
-    "h5py-3.10.0-nompi_py311hf7b785c_101.conda": {
-      "license_family": "BSD"
-    },
-    "icu-73.2-hf5e326d_0.conda": {
-      "license_family": "MIT"
-    },
-    "jsonpointer-2.4-py311h6eed73b_3.conda": {
-      "license_family": "BSD"
-    },
-    "krb5-1.21.2-hb884880_0.conda": {
-      "license_family": "MIT"
-    },
-    "libarchive-3.7.2-hd35d340_1.conda": {
+    "freetype-2.12.1-h60636b9_2.conda": {
       "depends": [
-        "bzip2 >=1.0.8,<2.0a0",
-        "libiconv >=1.17,<2.0a0",
-        "libxml2 >=2.12.2,<3.0.0a0",
-        "libzlib >=1.2.13,<1.3.0a0",
-        "lz4-c >=1.9.3,<1.10.0a0",
-        "lzo >=2.10,<3.0a0",
-        "openssl >=3.2.0,<4.0a0",
-        "xz >=5.2.6,<6.0a0",
-        "zstd >=1.5.5,<1.6.0a0"
+        "libpng >=1.6.39,<1.7.0a0",
+        "libzlib >=1.2.13,<2.0.0a0"
       ]
     },
-    "libblas-3.9.0-20_osx64_mkl.conda": {
+    "frozenlist-1.5.0-py312h3d0f464_0.conda": {
+      "license_family": "APACHE"
+    },
+    "gflags-2.2.2-hac325c4_1005.conda": {
       "license_family": "BSD"
     },
-    "libbrotlicommon-1.1.0-h0dc2134_1.conda": {
+    "giflib-5.2.2-h10d778d_0.conda": {
       "license_family": "MIT"
     },
-    "libbrotlidec-1.1.0-h0dc2134_1.conda": {
-      "license_family": "MIT"
-    },
-    "libbrotlienc-1.1.0-h0dc2134_1.conda": {
-      "license_family": "MIT"
-    },
-    "libcblas-3.9.0-20_osx64_mkl.conda": {
+    "glog-0.7.1-h2790a97_0.conda": {
       "license_family": "BSD"
     },
-    "libdeflate-1.19-ha4e1b8e_0.conda": {
+    "gst-plugins-base-1.24.7-h0ee1d58_0.conda": {
+      "license_family": "LGPL"
+    },
+    "gstreamer-1.24.7-h3271b85_0.conda": {
+      "license_family": "LGPL"
+    },
+    "h5py-3.12.1-nompi_py312hf5b0cce_103.conda": {
+      "license_family": "BSD"
+    },
+    "icu-75.1-h120a0e1_0.conda": {
       "license_family": "MIT"
     },
-    "libhwloc-2.9.3-default_h24e0189_1009.conda": {
+    "jsonpointer-3.0.0-py312hb401068_1.conda": {
+      "license_family": "BSD"
+    },
+    "krb5-1.21.3-h37d8d59_0.conda": {
+      "license_family": "MIT"
+    },
+    "lcms2-2.16-ha2f27b4_0.conda": {
       "depends": [
-        "__osx >=10.9",
-        "libcxx >=16.0.6",
-        "libxml2 >=2.11.5,<3.0.0a0"
-      ],
+        "libjpeg-turbo >=3.0.0,<4.0a0",
+        "libtiff >=4.6.0,<4.8.0a0"
+      ]
+    },
+    "libblas-3.9.0-26_osx64_openblas.conda": {
       "license_family": "BSD"
     },
-    "liblapack-3.9.0-20_osx64_mkl.conda": {
+    "libbrotlicommon-1.1.0-h00291cd_2.conda": {
+      "license_family": "MIT"
+    },
+    "libbrotlidec-1.1.0-h00291cd_2.conda": {
+      "license_family": "MIT"
+    },
+    "libbrotlienc-1.1.0-h00291cd_2.conda": {
+      "license_family": "MIT"
+    },
+    "libcblas-3.9.0-26_osx64_openblas.conda": {
       "license_family": "BSD"
+    },
+    "libdeflate-1.23-he65b83e_0.conda": {
+      "license_family": "MIT"
+    },
+    "liblapack-3.9.0-26_osx64_openblas.conda": {
+      "license_family": "BSD"
+    },
+    "libllvm14-14.0.6-hc8e404f_4.conda": {
+      "depends": [
+        "libcxx >=15",
+        "libzlib >=1.2.13,<2.0.0a0"
+      ]
     },
     "libllvm15-15.0.7-hbedff68_4.conda": {
       "depends": [
         "libcxx >=16",
         "libxml2 >=2.12.1,<3.0.0a0",
-        "libzlib >=1.2.13,<1.3.0a0",
+        "libzlib >=1.2.13,<2.0.0a0",
         "zstd >=1.5.5,<1.6.0a0"
       ]
     },
-    "libllvm16-16.0.6-hbedff68_3.conda": {
-      "depends": [
-        "libcxx >=16",
-        "libxml2 >=2.12.1,<3.0.0a0",
-        "libzlib >=1.2.13,<1.3.0a0",
-        "zstd >=1.5.5,<1.6.0a0"
-      ]
-    },
-    "libwebp-1.3.2-h44782d1_1.conda": {
+    "libogg-1.3.5-hfdf4475_0.conda": {
       "license_family": "BSD"
     },
-    "libwebp-base-1.3.2-h0dc2134_0.conda": {
+    "libopenblas-0.3.28-openmp_hbf64a52_1.conda": {
+      "license_family": "BSD"
+    },
+    "libre2-11-2024.07.02-h0e468a2_2.conda": {
+      "license_family": "BSD"
+    },
+    "libthrift-0.21.0-h75589b3_0.conda": {
+      "license_family": "APACHE"
+    },
+    "libwebp-1.5.0-h2bf92d2_0.conda": {
+      "license_family": "BSD"
+    },
+    "libwebp-base-1.5.0-h6cf52b4_0.conda": {
       "license_family": "BSD"
     },
     "libxslt-1.1.39-h03b04e6_0.conda": {
@@ -747,127 +153,174 @@
       ],
       "license_family": "MIT"
     },
-    "llvm-openmp-17.0.6-hb6ac08f_0.conda": {
+    "llvm-openmp-19.1.6-ha54dae1_0.conda": {
       "license_family": "APACHE"
     },
-    "llvmlite-0.42.0-py311hb5c2e0a_1.conda": {
-      "license_family": "BSD"
-    },
-    "lxml-5.1.0-py311h033124e_0.conda": {
+    "llvmlite-0.42.0-py312h534208b_1.conda": {
       "depends": [
-        "libxml2 >=2.12.3,<3.0.0a0",
-        "libxslt >=1.1.39,<2.0a0",
-        "libzlib >=1.2.13,<1.3.0a0",
-        "python >=3.11,<3.12.0a0",
-        "python_abi 3.11.* *_cp311"
-      ]
-    },
-    "lz4-c-1.9.4-hf0c8a7f_0.conda": {
-      "license_family": "BSD"
-    },
-    "nodejs-20.9.0-h9adec40_0.conda": {
-      "license_family": "MIT"
-    },
-    "nspr-4.35-hea0b92c_0.conda": {
-      "license_family": "MOZILLA"
-    },
-    "nss-3.98-ha05da47_0.conda": {
-      "license_family": "MOZILLA"
-    },
-    "numexpr-2.8.4-py311hab14417_1.conda": {
-      "license_family": "MIT"
-    },
-    "numpy-1.26.4-py311hc43a94b_0.conda": {
-      "license_family": "BSD"
-    },
-    "openjpeg-2.5.1-h7310d3a_0.conda": {
-      "license_family": "BSD"
-    },
-    "pandas-2.2.1-py311h8f6166a_0.conda": {
-      "license_family": "BSD"
-    },
-    "pycosat-0.6.6-py311h2725bcf_0.conda": {
-      "license_family": "MIT"
-    },
-    "pyobjc-framework-cocoa-10.1-py311h9b70068_0.conda": {
-      "license_family": "MIT"
-    },
-    "pytables-3.8.0-py311h21e7aa0_4.conda": {
-      "depends": [
-        "blosc >=1.21.5,<2.0a0",
-        "bzip2 >=1.0.8,<2.0a0",
-        "c-blosc2 >=2.10.4,<3.0a0",
-        "hdf5 >=1.14.2,<1.14.4.0a0",
-        "libcxx >=15.0.7",
-        "libzlib >=1.2.13,<1.3.0a0",
-        "numexpr",
-        "numpy >=1.23.5,<2.0a0",
-        "packaging",
-        "py-cpuinfo",
-        "python >=3.11,<3.12.0a0",
-        "python_abi 3.11.* *_cp311"
+        "libcxx >=16",
+        "libllvm14 >=14.0.6,<14.1.0a0",
+        "libzlib >=1.2.13,<2.0.0a0",
+        "python >=3.12,<3.13.0a0",
+        "python_abi 3.12.* *_cp312"
       ],
+      "license_family": "BSD"
+    },
+    "llvmlite-0.43.0-py312hcc8fd36_1.conda": {
+      "license_family": "BSD"
+    },
+    "lz4-c-1.10.0-h240833e_1.conda": {
+      "license_family": "BSD"
+    },
+    "multidict-6.1.0-py312h6f3313d_1.conda": {
+      "license_family": "APACHE"
+    },
+    "mysql-common-9.0.1-h4d37847_4.conda": {
+      "license_family": "GPL"
+    },
+    "mysql-libs-9.0.1-h2381dc1_4.conda": {
+      "license_family": "GPL"
+    },
+    "nodejs-22.12.0-hffbc63d_0.conda": {
+      "license_family": "MIT"
+    },
+    "nspr-4.36-h97d8b74_0.conda": {
+      "license_family": "MOZILLA"
+    },
+    "nss-3.107-h81a00e3_0.conda": {
+      "license_family": "MOZILLA"
+    },
+    "numexpr-2.10.2-py312ha51eba0_0.conda": {
+      "license_family": "MIT"
+    },
+    "numpy-1.26.4-py312he3a82b2_0.conda": {
+      "license_family": "BSD"
+    },
+    "openjpeg-2.5.3-h7fd6d84_0.conda": {
+      "license_family": "BSD"
+    },
+    "pandas-2.2.2-py312h1171441_1.conda": {
+      "license_family": "BSD"
+    },
+    "pkg-config-0.29.2-hf7e621a_1009.conda": {
+      "license_family": "GPL"
+    },
+    "propcache-0.2.1-py312h01d7ebd_0.conda": {
+      "license_family": "APACHE"
+    },
+    "pyarrow-18.1.0-py312hb401068_0.conda": {
+      "license_family": "APACHE"
+    },
+    "pyarrow-core-18.1.0-py312h5157fe3_0_cpu.conda": {
+      "license_family": "APACHE"
+    },
+    "pycosat-0.6.6-py312h01d7ebd_2.conda": {
+      "license_family": "MIT"
+    },
+    "pyobjc-framework-cocoa-10.3.2-py312h2365019_0.conda": {
+      "license_family": "MIT"
+    },
+    "pytables-3.10.1-py312h3276d9a_4.conda": {
+      "license_family": "BSD"
+    },
+    "pyzmq-26.2.0-py312h1060d5c_3.conda": {
       "license_family": "BSD"
     },
     "qt-5.15.8-h93fa01e_0.conda": {
       "license_family": "LGPL"
     },
-    "qt-main-5.15.8-h4385fff_19.conda": {
+    "qt-main-5.15.8-h63f3aef_26.conda": {
       "license_family": "LGPL"
     },
     "qt-webengine-5.15.8-h5f65913_4.conda": {
+      "depends": [
+        "__osx >=10.9",
+        "libcxx >=15.0.7",
+        "libiconv >=1.17,<2.0a0",
+        "libjpeg-turbo >=3.0.0,<4.0a0",
+        "libpng >=1.6.39,<1.7.0a0",
+        "libsqlite >=3.44.0,<4.0a0",
+        "libwebp",
+        "libwebp-base >=1.3.2,<2.0a0",
+        "libzlib >=1.2.13,<2.0.0a0",
+        "nspr >=4.35,<5.0a0",
+        "nss >=3.94,<4.0a0",
+        "qt-main >=5.15.8,<5.16.0a0"
+      ],
       "license_family": "LGPL"
+    },
+    "re2-2024.07.02-ha5e900a_2.conda": {
+      "license_family": "BSD"
     },
     "readline-8.2-h9e318b2_1.conda": {
       "license_family": "GPL"
     },
-    "reproc-14.2.4.post0-h10d778d_1.conda": {
+    "reproc-14.2.5.post0-h6e16a3a_0.conda": {
       "license_family": "MIT"
     },
-    "reproc-cpp-14.2.4.post0-h93d8f39_1.conda": {
+    "reproc-cpp-14.2.5.post0-h240833e_0.conda": {
       "license_family": "MIT"
     },
-    "rpds-py-0.18.0-py311hd64b9fd_0.conda": {
+    "rpds-py-0.22.3-py312h0d0de52_0.conda": {
       "license_family": "MIT"
     },
-    "ruamel.yaml-0.18.6-py311he705e18_0.conda": {
+    "ruamel.yaml-0.18.6-py312h3d0f464_1.conda": {
       "license_family": "MIT"
     },
-    "scikit-learn-1.4.1.post1-py311he2b4599_0.conda": {
+    "scikit-learn-1.6.0-py312he1a5313_0.conda": {
       "license_family": "BSD"
     },
-    "scipy-1.12.0-py311h86d0cd9_2.conda": {
+    "scipy-1.14.1-py312h3b0f538_2.conda": {
       "license_family": "BSD"
     },
-    "tbb-2021.11.0-h7728843_1.conda": {
+    "simdjson-3.11.3-h9275861_0.conda": {
       "license_family": "APACHE"
     },
-    "zeromq-4.3.5-h93d8f39_0.conda": {
+    "sqlalchemy-2.0.36-py312h3d0f464_0.conda": {
+      "license_family": "MIT"
+    },
+    "tk-8.6.13-h1abcd95_1.conda": {
+      "depends": [
+        "libzlib >=1.2.13,<2.0.0a0"
+      ]
+    },
+    "wrapt-1.17.0-py312h01d7ebd_0.conda": {
+      "license_family": "BSD"
+    },
+    "zeromq-4.3.5-h7130eaa_7.conda": {
       "license_family": "MOZILLA"
     },
-    "zstandard-0.22.0-py311hed14148_0.conda": {
+    "zstandard-0.23.0-py312h7122b0e_1.conda": {
       "license_family": "BSD"
     },
-    "zstd-1.5.5-h829000d_0.conda": {
-      "license_family": "BSD"
-    },
-    "pytables-3.9.2-py311h3cee394_1.conda": {
+    "zstd-1.5.6-h915ae27_0.conda": {
       "depends": [
         "__osx >=10.9",
-        "blosc >=1.21.5,<2.0a0",
-        "bzip2 >=1.0.8,<2.0a0",
-        "c-blosc2 >=2.11.3,<3.0a0",
-        "hdf5 >=1.14.2,<1.14.4.0a0",
-        "libcxx >=16.0.6",
-        "libzlib >=1.2.13,<1.3.0a0",
-        "numexpr",
-        "numpy >=1.23.5,<2.0a0",
-        "packaging",
-        "py-cpuinfo",
-        "python >=3.11,<3.12.0a0",
-        "python_abi 3.11.* *_cp311"
+        "libzlib >=1.2.13,<2.0.0a0"
       ],
       "license_family": "BSD"
+    },
+    "nodejs-16.20.2-hb52e3ad_3.conda": {
+      "license_family": "MIT"
+    },
+    "pandas-2.2.3-py312h98e817e_1.conda": {
+      "license_family": "BSD"
+    },
+    "libllvm17-17.0.6-hbedff68_1.conda": {
+      "depends": [
+        "libcxx >=16",
+        "libxml2 >=2.12.1,<3.0.0a0",
+        "libzlib >=1.2.13,<2.0.0a0",
+        "zstd >=1.5.5,<1.6.0a0"
+      ]
+    },
+    "llvm-tools-17.0.6-hbedff68_1.conda": {
+      "depends": [
+        "libllvm17 17.0.6 hbedff68_1",
+        "libxml2 >=2.12.1,<3.0.0a0",
+        "libzlib >=1.2.13,<2.0.0a0",
+        "zstd >=1.5.5,<1.6.0a0"
+      ]
     }
   },
   "remove": [],
