@@ -23,10 +23,10 @@ requirements:
     - arrow ==1.3.0
     - asgiref ==3.3.4
     - astroid ==3.3.8
-    - astropy ==7.0.0
-    - astropy-base ==7.0.0
+    - astropy ==7.1.0
+    - astropy-base ==7.1.0
     - astropy-healpix ==1.0.3
-    - astropy-iers-data ==0.2024.12.30.0.33.36
+    - astropy-iers-data ==0.2025.6.9.0.39.3
     - astropy-sphinx-theme ==1.1
     - astroquery ==0.4.7
     - asttokens ==3.0.0
@@ -534,6 +534,7 @@ requirements:
     - tzdata ==2024b
     - ucrt ==10.0.22621.0  # [win]
     - ukkonen ==1.0.1
+    - uncompresspy ==0.4.0
     - unicodedata2 ==15.1.0
     - uri-template ==1.3.0
     - urllib3 ==2.3.0
