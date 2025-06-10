@@ -25,14 +25,15 @@ jobs:
         with:
           miniforge-version: "latest"
           python-version: "3.12"
-          auto-update-conda: true
-          channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }},conda-forge
-      # - name: set channels
-      #   shell: bash -l -e {0}
-      #   run: |
-      #     conda config --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }}
-      #     conda config --add channels conda-forge
-      #     conda config --env --remove channels defaults
+      - name: Set channels
+        run: |
+          python --version
+          echo "adding flight channel"
+          conda config --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight
+          conda config --add channels conda-forge
+          conda config --remove channels defaults  # defaults is added "implicitly" by conda in the previous lines
+          conda config --show-sources
+          conda config --show channels
       - name: install ska3-core
         shell: bash -l -e {0}
         run: |
