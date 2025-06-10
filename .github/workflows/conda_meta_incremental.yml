@@ -12,7 +12,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: ["ubuntu-latest", "macos-latest", "windows-2019"]
+        os: ["ubuntu-latest", "macos-13", "macos-latest", "windows-2019"]
     steps:
       - name: Checkout skare3_tools
         uses: actions/checkout@v4
@@ -23,7 +23,7 @@ jobs:
       - name: Setup Conda Environment
         uses: conda-incubator/setup-miniconda@v3
         with:
-          miniforge-version: "24.7.1-2"
+          miniforge-version: "latest"
           python-version: "3.12"
           auto-update-conda: true
           channels: https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }},conda-forge
