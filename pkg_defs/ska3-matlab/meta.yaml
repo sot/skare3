@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-matlab
-  version: 2025.5
+  version: 2025.7
 
 build:
   noarch: generic
@@ -10,19 +10,19 @@ requirements:
   run:
     - aca_view ==0.16.0
     - acis_taco ==4.2.3
-    - acis_thermal_check ==5.3.0
+    - acis_thermal_check ==5.3.1
     - acispy ==2.8.0
     - agasc ==4.23.0
     - backstop_history ==3.2.1
     - chandra_aca ==4.51.0
-    - chandra_limits ==0.10.0
+    - chandra_limits ==0.10.1
     - chandra_maneuver ==4.3.1
     - chandra_time ==4.2.0
-    - cheta ==4.63.1
+    - cheta ==4.63.2
     - cxotime ==3.10.1
-    - fot-matlab ==2.4.1
+    - fot-matlab ==2.5.0
     - hopper ==4.6.0
-    - kadi ==7.16.0
+    - kadi ==7.17.0
     - maude ==3.13.0
     - mica ==4.39.0
     - parse_cm ==3.17.0
@@ -30,7 +30,7 @@ requirements:
     - pyyaks ==4.5.0
     - quaternion ==4.3.1
     - ska-sphinx-theme ==1.3.0
-    - ska3-core ==2025.4
+    - ska3-core ==2025.7
     - ska3-template ==2022.06.02
     - ska_arc5gl ==4.0.1
     - ska_astro ==4.0.0
@@ -48,6 +48,6 @@ requirements:
     - ska_sync ==4.13.0
     - ska_tdb ==4.1.0
     - sparkles ==4.29.0
-    - starcheck ==14.13.0
+    - starcheck ==14.14.0
     - testr ==4.13.0
     - xija ==4.33.2
