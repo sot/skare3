@@ -255,8 +255,8 @@ requirements:
     - libgcrypt-lib ==1.11.0  # [linux]
     - libgettextpo ==0.22.5  # [linux]
     - libgettextpo-devel ==0.22.5  # [linux]
-    - libgfortran ==14.2.0
-    - libgfortran5 ==14.2.0
+    - libgfortran ==14.2.0  # [linux or osx]
+    - libgfortran5 ==14.2.0  # [linux or osx]
     - libgl ==1.7.0  # [linux]
     - libglib ==2.82.2
     - libglvnd ==1.7.0  # [linux]
