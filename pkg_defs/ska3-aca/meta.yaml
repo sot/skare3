@@ -53,25 +53,25 @@ requirements:
     - testr ==4.13.0
     - xija ==4.33.2
     # The following packages are specific to ACA
-    - attitude_error_mon ==0.2.0
-    - aca_hi_bgd ==0.3.0
-    - aca_weekly_report ==0.3.0
-    - acq_stat_reports ==1.0.0
-    - acdc ==4.14.0
-    - aimpoint_mon ==1.1.4
-    - aperoll ==0.1.0
-    - astromon ==1.1.1
-    - annie ==0.11.2
-    - fid_drift_mon ==2.0.1
-    - fss_check ==1.0.1
-    - jobwatch ==0.14.2
-    - kalman_watch ==0.6.0
-    - perigee_health_plots ==0.4.0
-    - schedule_view3 ==0.1.3
-    - ska_report_ranges ==0.5.0
-    - ska_trend ==0.2.0
-    - skare3_tools ==1.6.0
-    - vv_trending ==0.1.0
-    - twiki-wg ==0.13.0
-    - obc_rate_noise_plots ==1.0.1
-  
+    - attitude_error_mon
+    - aca_hi_bgd
+    - aca_weekly_report
+    - acq_stat_reports
+    - acdc
+    - aimpoint_mon
+    - aperoll
+    - astromon
+    - annie
+    - fid_drift_mon
+    - find_attitude
+    - fss_check
+    - jobwatch
+    - kalman_watch
+    - perigee_health_plots
+    - schedule_view3
+    - ska_report_ranges
+    - ska_trend
+    - skare3_tools
+    - vv_trending
+    - twiki-wg
+    - obc_rate_noise_plots
