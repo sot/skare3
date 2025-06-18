@@ -79,6 +79,18 @@
     "h5py-3.12.1-nompi_py312hf5b0cce_103.conda": {
       "license_family": "BSD"
     },
+    "hdf5-1.14.4-nompi_h1607680_105.conda": {
+      "depends": [
+        "__osx >=10.13",
+        "libaec >=1.1.3,<2.0a0",
+        "libcurl >=8.10.1,<9.0a0",
+        "libcxx >=18",
+        "libgfortran >=5",
+        "libgfortran5 >=13.2.0",
+        "libzlib >=1.3.1,<2.0a0",
+        "openssl >=3.4.0,<4.0a0"
+      ]
+    },
     "icu-75.1-h120a0e1_0.conda": {
       "license_family": "MIT"
     },
@@ -133,6 +145,12 @@
       "license_family": "BSD"
     },
     "libopenblas-0.3.28-openmp_hbf64a52_1.conda": {
+      "depends": [
+        "__osx >=10.13",
+        "libgfortran >=5",
+        "libgfortran5 >=13.2.0",
+        "llvm-openmp >=18.1.8"
+      ],
       "license_family": "BSD"
     },
     "libre2-11-2024.07.02-h0e468a2_2.conda": {
@@ -271,6 +289,23 @@
       "license_family": "BSD"
     },
     "scipy-1.14.1-py312h3b0f538_2.conda": {
+      "license_family": "BSD"
+    },
+    "scipy-1.15.2-py312hd04560d_0.conda": {
+      "depends": [
+        "__osx >=10.13",
+        "libblas >=3.9.0,<4.0a0",
+        "libcblas >=3.9.0,<4.0a0",
+        "libcxx >=18",
+        "libgfortran >=5",
+        "libgfortran5 >=13.2.0",
+        "liblapack >=3.9.0,<4.0a0",
+        "numpy <2.5",
+        "numpy >=1.19,<3",
+        "numpy >=1.23.5",
+        "python >=3.12,<3.13.0a0",
+        "python_abi 3.12.* *_cp312"
+      ],
       "license_family": "BSD"
     },
     "simdjson-3.11.3-h9275861_0.conda": {
