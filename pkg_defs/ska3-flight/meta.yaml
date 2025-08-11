@@ -18,7 +18,7 @@ requirements:
     - chandra_limits ==0.10.1
     - chandra_maneuver ==4.4.0
     - chandra_time ==4.2.0
-    - cheta ==4.63.2
+    - cheta ==4.64.0
     - cxotime ==3.10.2
     - fot-matlab ==2.5.0
     - hopper ==4.6.0
