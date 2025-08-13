@@ -4,6 +4,7 @@ package:
 
 build:
   script: pip install .
+  number: 1
 
 source:
   path: {{ SKA_TOP_SRC_DIR }}/razl
@@ -34,7 +35,7 @@ requirements:
     - parse_cm
     - proseco
     - quaternion
-    - ska_matplotib
+    - ska_matplotlib
     - ska_helpers
     - sparkles
     - testr
