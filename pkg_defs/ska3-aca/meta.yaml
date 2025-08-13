@@ -9,7 +9,7 @@ build:
 requirements:
   run:
     # The following packages are common to ska3-<flight|matlab|aca>
-    - aca_view ==0.16.0
+    - aca_view ==0.17.0
     - acis_taco ==4.2.3
     - acis_thermal_check ==5.3.1
     - acispy ==2.8.0
@@ -19,7 +19,7 @@ requirements:
     - chandra_limits ==0.10.1
     - chandra_maneuver ==4.4.0
     - chandra_time ==4.2.0
-    - cheta ==4.63.2
+    - cheta ==4.64.0
     - cxotime ==3.10.2
     - fot-matlab ==2.5.0
     - hopper ==4.6.0
