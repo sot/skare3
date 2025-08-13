@@ -30,6 +30,7 @@ requirements:
     - proseco ==5.16.2
     - pyyaks ==4.5.0
     - quaternion ==4.3.1
+    - razl ==0.1.0
     - ska-sphinx-theme ==1.3.0
     - ska3-core ==2025.5
     - ska3-template ==2022.06.02
