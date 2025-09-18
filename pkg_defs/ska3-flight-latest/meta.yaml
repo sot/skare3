@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: 2025.1
+  version: 2025.10
 
 build:
   noarch: generic
@@ -30,6 +30,7 @@ requirements:
     - proseco
     - pyyaks
     - quaternion
+    - razl
     - ska-sphinx-theme
     - ska_arc5gl
     - ska_astro
