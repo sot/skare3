@@ -20,7 +20,7 @@ requirements:
     - chandra_time ==4.2.0
     - cheta ==4.65.0
     - cxotime ==3.11.0
-    - fot-matlab == 2.5.1
+    - fot-matlab ==2.5.1
     - hopper ==4.6.0
     - kadi ==7.17.3
     - maude ==3.14.0
