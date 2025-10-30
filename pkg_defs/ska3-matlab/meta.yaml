@@ -22,7 +22,7 @@ requirements:
     - cxotime ==3.11.0
     - fot-matlab ==2.5.1
     - hopper ==4.6.0
-    - kadi ==7.17.3
+    - kadi ==7.17.4
     - maude ==3.14.0
     - mica ==4.39.1
     - parse_cm ==3.18.0
