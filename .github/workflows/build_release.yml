@@ -63,6 +63,8 @@ jobs:
         channels: conda-forge
     - name: Add flight channel
       run: conda config --env --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test
+    - name: temprarily use classic solver
+      run: conda config --set solver classic
     - name: Update Conda Environment
       run: conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Build Package
