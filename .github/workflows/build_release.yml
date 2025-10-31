@@ -54,7 +54,7 @@ jobs:
         ref: master
         path: skare3_tools
     - name: Setup Conda Environment
-      uses: conda-incubator/setup-miniconda@v3
+      uses: conda-incubator/setup-miniconda@v3.2.0
       with:
         auto-update-conda: true
         miniforge-version: latest

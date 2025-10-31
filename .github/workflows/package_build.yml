@@ -101,7 +101,7 @@ jobs:
         path: skare3_tools
     - name: Setup Conda Environment
       if: ${{ (matrix.os == 'ubuntu-latest') || !inputs.noarch }}
-      uses: conda-incubator/setup-miniconda@v3.0.4
+      uses: conda-incubator/setup-miniconda@v3.2.0
       with:
         miniforge-version: latest
         python-version: ${{ inputs.python_version }}
@@ -117,7 +117,6 @@ jobs:
           echo "adding conda-forge channel"
           conda config --add channels conda-forge
         fi
-        conda config --remove channels defaults  # defaults is added "implicitly" by conda in the previous lines
         conda config --show-sources
         conda config --show channels
     - name: Update Conda Environment

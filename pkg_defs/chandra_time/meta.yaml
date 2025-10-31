@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   script: pip install .
 
 source:
@@ -15,6 +16,7 @@ requirements:
   # listed explicitly if they are required.
   build:
     - {{ compiler('cxx') }}
+    - libcxx ==19.1.6
   host:
     - python
     - cython
