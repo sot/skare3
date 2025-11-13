@@ -8,22 +8,22 @@ build:
 
 requirements:
   run:
-    - aca_view ==0.17.0
+    - aca_view ==0.18.0
     - acis_taco ==4.2.3
-    - acis_thermal_check ==5.3.1
+    - acis_thermal_check ==5.3.2
     - acispy ==2.8.0
     - agasc ==4.23.2
     - backstop_history ==3.2.1
-    - chandra_aca ==4.51.1
-    - chandra_limits ==0.11.0
+    - chandra_aca ==4.52.0
+    - chandra_limits ==0.11.1
     - chandra_maneuver ==4.4.1
     - chandra_time ==4.3.0
-    - cheta ==4.65.0
+    - cheta ==4.66.0
     - cxotime ==3.11.0
     - fot-matlab ==2.5.1
     - hopper ==4.6.0
-    - kadi ==7.17.4
-    - maude ==3.14.0
+    - kadi ==7.17.5
+    - maude ==3.15.0
     - mica ==4.39.1
     - parse_cm ==3.18.0
     - proseco ==5.17.0
@@ -38,7 +38,7 @@ requirements:
     - ska_dbi ==5.2.0
     - ska_file ==4.0.0
     - ska_ftp ==4.0.1
-    - ska_helpers ==0.19.0
+    - ska_helpers ==0.20.0
     - ska_matplotlib ==4.0.1
     - ska_numpy ==4.0.1
     - ska_parsecm ==4.0.1
