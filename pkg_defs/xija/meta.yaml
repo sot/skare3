@@ -18,6 +18,8 @@ requirements:
   # listed explicitly if they are required.
   build:
     - {{ compiler('cxx') }}
+    - libcxx ==19.1.6  # [osx]
+    - libgcc-ng ==14.2.0  # [linux]
   host:
     - python
     - setuptools
