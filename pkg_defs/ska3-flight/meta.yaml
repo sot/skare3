@@ -38,7 +38,7 @@ requirements:
     - ska_dbi ==5.2.0
     - ska_file ==4.0.0
     - ska_ftp ==4.0.1
-    - ska_helpers ==0.20.0
+    - ska_helpers ==0.20.1
     - ska_matplotlib ==4.0.1
     - ska_numpy ==4.0.1
     - ska_parsecm ==4.0.1
