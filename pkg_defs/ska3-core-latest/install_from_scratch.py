@@ -28,7 +28,7 @@ def get_package_list():
             "options": [],
             "packages": [
                 "numpy",
-                "matplotlib",
+                "matplotlib-base",
                 "scipy",
                 "pandas",
                 "astropy",
