@@ -1,6 +1,6 @@
 package:
   name: ska3-flight-latest
-  version: "2025.10"
+  version: "2026.0"
 
 build:
   noarch: generic
