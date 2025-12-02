@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   script: pip install .
   noarch: python
 
@@ -27,7 +28,7 @@ requirements:
     - python
     - six
     - numpy
-    - matplotlib
+    - matplotlib-base
     - pytest
     - jinja2
     - requests

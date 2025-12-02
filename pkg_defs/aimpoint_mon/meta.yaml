@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   script: pip install .
 
 source:
@@ -26,7 +27,7 @@ requirements:
     - pytables
     - jinja2
     - numpy
-    - matplotlib
+    - matplotlib-base
     - astropy
     - chandra_time
     - kadi

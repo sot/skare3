@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   script: pip install .
   noarch: python
 
@@ -34,7 +35,7 @@ requirements:
     - astropy
     - agasc
     - ska_quatutil
-    - matplotlib
+    - matplotlib-base
     - six
 
 

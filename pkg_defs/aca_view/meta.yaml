@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   script: pip install .
   entry_points:
     - aca_view=aca_view.scripts.aca_viewer:main
@@ -30,7 +31,7 @@ requirements:
     - psutil
     - numpy
     - scipy
-    - matplotlib
+    - matplotlib-base
     - ipython
     - pyqt
     - qtconsole

@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   script: pip install .
 
 source:
@@ -16,7 +17,7 @@ requirements:
     - setuptools_scm_git_archive
   run:
     - python
-    - matplotlib
+    - matplotlib-base
 
 about:
   home: https://github.com/sot/obc_rate_noise_plots
