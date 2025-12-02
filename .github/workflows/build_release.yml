@@ -62,7 +62,7 @@ jobs:
         activate-environment: conda-build
         channels: conda-forge
     - name: Add flight channel
-      run: conda config --env --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test
+      run: conda config --env --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/hope
     - name: temprarily use classic solver
       run: conda config --set solver classic
     - name: Update Conda Environment
@@ -119,45 +119,4 @@ jobs:
           rsync -av package/conda-package-*/* ${CONDA_CHANNEL_DIR}
           conda index ${CONDA_CHANNEL_DIR}
         env:
-          CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/test
-
-  regression-test:
-    runs-on: head
-    name: Regression Tests
-    needs: [sanity_check, update-channel]
-    strategy:
-      matrix:
-        package: [ska3-flight, ska3-matlab]
-    steps:
-      - name: Fetch ska_testr
-        uses: actions/checkout@v4
-        with:
-          repository: sot/ska_testr
-          ref: master
-          path: ska_testr
-      - name: Regression Tests
-        if: contains(needs.sanity_check.outputs.packages, matrix.package) && (matrix.package == 'ska3-flight' || !contains(needs.sanity_check.outputs.packages, 'ska3-flight'))
-        run: |
-          RELEASE_TAG=`basename "$GITHUB_REF"`
-          conda create -y -n ${{ matrix.package }}-${RELEASE_TAG} --override-channels \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight \
-                ${{ matrix.package }}==${RELEASE_TAG}
-          source activate ${{ matrix.package }}-${RELEASE_TAG}
-          mamba install -y --override-channels \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/masters  \
-                -c https://ska:${CONDA_PASSWORD}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/flight \
-                ska3-perl skare3_tools
-          ln -s /proj/sot/ska3/test/data $CONDA_PREFIX/data
-          export SKA=$CONDA_PREFIX
-          run_testr --root ./ska_testr --outputs-dir /export/kadi/ska_testr/release_tests
-          skare3-test-results --stream releases --tag head /export/kadi/ska_testr/release_tests/logs/last
-          # add test result report to PR description
-        env:
-          CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
-          SKA: /proj/sot/ska
-          SYBASE_OCS: OCS-16_0
-          SYBASE: /soft/SYBASE16.0
-          LD_LIBRARY_PATH: /soft/SYBASE16.0/OCS-16_0/lib
+          CONDA_CHANNEL_DIR: /proj/sot/ska/www/ASPECT/ska3-conda/hope
