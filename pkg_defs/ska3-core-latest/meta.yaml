@@ -27,6 +27,7 @@ requirements:
    - h5py
    - ipympl
    - ipython
+   - ipyparallel  # cheta
    - jinja2
    - jira
    - jplephem
@@ -51,6 +52,7 @@ requirements:
    - pandas
    - autopep8
    - openpyxl
+   - paramiko  # ska_ftp
    - pillow
    - pip
    - plotly
@@ -65,6 +67,7 @@ requirements:
    - pyqtwebengine
    - pyyaml
    - qt
+   - qtconsole  # aca_view
    - regions
    - requests
    - rope
