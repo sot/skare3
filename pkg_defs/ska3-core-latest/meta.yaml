@@ -35,7 +35,8 @@ requirements:
    - line_profiler
    - lxml
    - mamba
-   - matplotlib
+   - matplotlib [osx]
+   - matplotlib-base
    - mpld3
    - nb_conda
    - nbconvert
