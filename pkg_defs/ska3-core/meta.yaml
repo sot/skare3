@@ -71,11 +71,13 @@ requirements:
     - backports ==1.0
     - backports.tarfile ==1.2.0
     - backports.zoneinfo ==0.2.1
+    - bcrypt ==5.0.0
     - beautifulsoup4 ==4.14.3
     - black ==25.1.0
     - bleach ==6.3.0
     - bleach-with-css ==6.3.0
     - blinker ==1.9.0
+    - blosc ==1.21.6
     - bokeh ==3.8.1
     - boltons ==25.0.0
     - botocore ==1.40.70
@@ -89,6 +91,7 @@ requirements:
     - brotli-python ==1.2.0  # [win]
     - bzip2 ==1.0.8
     - c-ares ==1.34.5
+    - c-blosc2 ==2.22.0
     - ca-certificates ==2025.11.12
     - cached-property ==1.5.2
     - cached_property ==1.5.2
@@ -181,12 +184,14 @@ requirements:
     - icu ==75.1
     - identify ==2.6.15
     - idna ==3.11
+    - invoke ==2.2.1
     - imagesize ==1.4.1
     - importlib-metadata ==8.7.0
     - importlib_resources ==6.5.2
     - iniconfig ==2.3.0
     - ipydatagrid ==1.4.0
     - ipympl ==0.9.8
+    - ipyparallel ==9.0.2
     - ipython ==9.7.0
     - ipython_genutils ==0.2.0
     - ipython_pygments_lexers ==1.1.1
@@ -399,6 +404,7 @@ requirements:
     - nodeenv ==1.9.1
     - nodejs ==24.9.0
     - nomkl ==1.0  # [linux or win]
+    - nose ==1.3.7
     - notebook ==6.5.7
     - notebook-shim ==0.2.4
     - nspr ==4.38  # [linux or osx]
@@ -419,6 +425,7 @@ requirements:
     - pandas ==2.3.3
     - pandoc ==3.8.3
     - pandocfilters ==1.5.0
+    - paramiko ==4.0.0
     - parso ==0.8.5
     - partd ==1.4.2
     - patch ==2.8  # [linux or osx]
@@ -456,10 +463,12 @@ requirements:
     - pycodestyle ==2.14.0
     - pycosat ==0.6.6
     - pycparser ==2.22
+    - py-cpuinfo ==9.0.0
     - pydata-sphinx-theme ==0.16.1
     - pyerfa ==2.0.1.5
     - pygments ==2.19.2
     - pyjwt ==2.10.1
+    - pynacl ==1.6.1
     - pyobjc-core ==12.1  # [osx]
     - pyobjc-framework-cocoa ==12.1  # [osx]
     - pyparsing ==3.2.5
@@ -468,6 +477,7 @@ requirements:
     - pyqtgraph ==0.14.0
     - pyqtwebengine ==5.15.11
     - pysocks ==1.7.1
+    - pytables ==3.10.2
     - pytest ==9.0.1
     - pytest-timeout ==2.4.0
     - python ==3.13.9
@@ -492,6 +502,9 @@ requirements:
     - qt ==5.15.15
     - qt-main ==5.15.15
     - qt-webengine ==5.15.15
+    - qtconsole ==5.7.0
+    - qtconsole-base ==5.7.0
+    - qtpy ==2.4.3
     - re2 ==2025.11.05
     - readline ==8.2  # [linux or osx]
     - referencing ==0.37.0
