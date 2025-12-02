@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   script: pip install .
   entry_points:
     - sparkles=sparkles.core:main
@@ -26,7 +27,7 @@ requirements:
   run:
     - python
     - numpy
-    - matplotlib
+    - matplotlib-base
     - astropy
     - pytest
     - chandra_aca
