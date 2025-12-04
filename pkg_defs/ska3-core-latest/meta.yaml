@@ -50,6 +50,7 @@ requirements:
    - numpy
    - numpydoc
    - pandas
+   - pytables
    - autopep8
    - openpyxl
    - paramiko  # ska_ftp
