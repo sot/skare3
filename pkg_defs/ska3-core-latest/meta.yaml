@@ -38,8 +38,8 @@ requirements:
    - mamba
    - matplotlib [osx]
    - matplotlib-base
+   - mkl
    - mpld3
-   - nb_conda
    - nbconvert
    - nbsphinx
    - networkx
