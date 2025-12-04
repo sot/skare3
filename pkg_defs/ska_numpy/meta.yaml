@@ -32,7 +32,6 @@ requirements:
     - python
     - six
     - numpy
-    - nose
     - testr
     - ska_helpers
 
