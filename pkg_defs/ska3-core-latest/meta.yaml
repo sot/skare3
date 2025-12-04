@@ -38,7 +38,7 @@ requirements:
    - mamba
    - matplotlib [osx]
    - matplotlib-base
-   - mkl
+   - mkl  # [linux or win]
    - mpld3
    - nbconvert
    - nbsphinx
