@@ -3,6 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
+  number: 1
   script: pip install .
   entry_points:
     - xija_gui_fit=xija.gui_fit.app:main
@@ -33,7 +34,7 @@ requirements:
     - scipy
     - numba
     - numpy
-    - matplotlib
+    - matplotlib-base
     - ska_matplotlib
     - ska_numpy
     - pyyaks
