@@ -27,17 +27,23 @@ assignees: ''
 - [ ] FOT gives green light to install release candidate.
 - [ ] Install on GRETA test as SOT user (`ska3/matlab/test`).
 - [ ] `python -m compileall $SKA/lib`
+- [ ] `chmod -R g-w ${SKA}/lib`
+- [ ] Confirm installed versions of ska3-flight and ska3-perl on HEAD with `conda list` (there should be no `pypi`)
 - [ ] Confirm that test data (SKA/data) is appropriate for release testing (any custom test data is set or previous test data cleaned out)
-- [ ] FOT tests and approves.
-- [ ] Promote packages to main conda channel (`skare3-promote ...`).
+- [ ] FOT Matlab CB approves.
+- [ ] Create release `{version}` at the same commit as RC
+
 ### Promote:
 
-- [ ] Announce to aca@cfa/slack.
+- [ ] Promote packages to main conda channel (`skare3-promote ...`).
+- [ ] FOT gives green light to install release
 - [ ] Update ska3/matlab on cheru as SOT user.
 - [ ] `python -m compileall $SKA/lib`
+- [ ] `chmod -R g-w ${SKA}/lib`
+- [ ] Confirm installed versions of ska3-flight and ska3-perl on HEAD with `conda list` (there should be no `pypi`)
 - [ ] Make sure $SKA/data is updated on GRETA
 - [ ] Run ska_testr on cheru.
 - [ ] Document test results (`skare3-test-dashboard ...`).
 - [ ] Announce to aca@cfa/slack.
-- [ ] Notify FOT team.
+- [ ] Notify FOT.
 - [ ] Merge PR.
