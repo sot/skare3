@@ -133,7 +133,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
 
   upload:
-    if: ${{ needs.arguments.outputs.upload }}
+    if: ${{ needs.arguments.outputs.upload == 'true' }}
     needs: [build, arguments]  # this job needs the arguments job because it uses the outputs
     uses: sot/skare3/.github/workflows/package_upload.yml@master
     with:
