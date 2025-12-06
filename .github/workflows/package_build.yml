@@ -174,7 +174,7 @@ jobs:
       uses: egor-tensin/vs-shell@v2
       with:
         arch: x64
-    - name: Build Package
+    - name: Build Package (Windows)
       if: ${{ matrix.config.windows && !inputs.noarch }}
       shell: pwsh
       run: |
@@ -184,7 +184,7 @@ jobs:
         GIT_USERNAME: chandra-xray
         GIT_ASKPASS: ${{ github.workspace }}/skare3_tools/actions/build/files/git_pass.py
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
-    - name: Build Package
+    - name: Build Package (Others)
       if: ${{ !matrix.config.windows && (matrix.config.noarch_builder || !inputs.noarch)}}
       run: |
         python skare3_tools/actions/build/files/build.py ${{ matrix.config.arch_arg }} ${{ inputs.repository }} --tag ${{ inputs.tag }} --python ${{ inputs.python_version }} --numpy ${{ inputs.numpy_version }} --skare3-branch ${{ inputs.skare3_branch }} -c https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }} -c conda-forge
