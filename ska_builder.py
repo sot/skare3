@@ -181,7 +181,7 @@ def build_list_packages(pkg_names, args, src_dir, build_dir, conda_args=None):
     failures = []
     tstart = time.time()
 
-    for pkg_name in pkg_names:
+    for idx, pkg_name in enumerate(pkg_names):
         print()
         print('*' * 80)
         print(f'*** {pkg_name} (build start: {time.time() - tstart:.1f} secs)')
@@ -210,9 +210,12 @@ def build_list_packages(pkg_names, args, src_dir, build_dir, conda_args=None):
             build_package(pkg_name, args, src_dir, build_dir, conda_args=conda_args)
             print('')
         except Exception:
-            # If there's a failure, confirm before continuing
-            print(f'{pkg_name} failed, continue anyway (y/n)?')
-            if input().lower().strip().startswith('y'):
+            # If there's a failure, confirm before continuing (only if there are more packages)
+            stop = True
+            if idx < len(pkg_names) - 1:
+                print(f'{pkg_name} failed, continue anyway (y/n)?')
+                stop = not input().lower().strip().startswith('y')
+            if not stop:
                 failures.append(pkg_name)
                 continue
             else:
