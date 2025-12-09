@@ -174,11 +174,16 @@ jobs:
       uses: egor-tensin/vs-shell@v2
       with:
         arch: x64
+    - name: Set repository and tag variables
+      if: ${{ matrix.config.noarch_builder || !inputs.noarch }}
+      run: |
+        echo "REPOSITORY=${{ inputs.repository }}" >> $GITHUB_ENV
+        echo "TAG=${{ inputs.tag }}" >> $GITHUB_ENV
     - name: Build Package (Windows)
       if: ${{ matrix.config.windows && !inputs.noarch }}
       shell: pwsh
       run: |
-        python skare3_tools/actions/build/files/build.py ${{ matrix.config.arch_arg }} ${{ inputs.repository }} --tag ${{ inputs.tag }} --python ${{ inputs.python_version }} --numpy ${{ inputs.numpy_version }} --skare3-branch ${{ inputs.skare3_branch }} -c https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }} -c conda-forge
+        python skare3_tools/actions/build/files/build.py ${{ matrix.config.arch_arg }} $Env:REPOSITORY --tag $Env:TAG --python ${{ inputs.python_version }} --numpy ${{ inputs.numpy_version }} --skare3-branch ${{ inputs.skare3_branch }} -c https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ inputs.channel }} -c conda-forge
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
