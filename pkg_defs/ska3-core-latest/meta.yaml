@@ -76,7 +76,7 @@ requirements:
    - scipy
    - setuptools
    - setuptools_scm
-  #  - sherpa # [not win]
+   - sherpa # [not win]
    - sphinx-argparse
    - sphinx-autoapi
    - sphinx-copybutton
