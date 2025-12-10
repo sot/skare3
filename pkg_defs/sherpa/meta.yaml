@@ -1,35 +1,38 @@
 package:
   name: sherpa
-  version: {{ environ.get('SHERPA_TAG') }}
+  version: {{ environ.get('SKA_PKG_VERSION') }}
 
 source:
-  git_rev: {{ environ.get('SHERPA_TAG') }}
   git_url: https://github.com/sherpa/sherpa.git
+  git_rev: {{ environ.get('SKA_PKG_VERSION') }}
+
+build:
+  number: {{ environ.get('SKA_BUILD_NUMBER', 0) }}
+  skip: True  # [win]
 
 requirements:
   build:
-    - python=3.11
-    - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - conda-build
-    - conda-verify
+    - {{ compiler('c') }}
+    - make
     - bison
-    - setuptools <60.0.0
+    - flex
 
   host:
-    - python 3.11
-    - setuptools <60.0.0
-    - pip
-    - numpy 1.21.* # [py<=310]
-    - numpy 1.23.* # [py>310]
-    - matplotlib >3.3.0
+    - python
+    - numpy
+    - setuptools
+    - six
 
   run:
     - python
     - {{ pin_compatible('numpy') }}
+    - setuptools
+    - pytest
+    - six
 
 about:
-  home: https://github.com/sherpa/sherpa
-  license: GPL3
-  license_file: LICENSE
-
+  home: https://cxc.cfa.harvard.edu/sherpa/
+  dev_url: https://github.com/sherpa/sherpa
+  summary: Sherpa is the CIAO modeling and fitting application. It enables the user to construct complex models from simple definitions and fit those models to data, using a variety of statistics and optimization methods
+  license: GPLv3
