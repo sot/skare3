@@ -8,8 +8,8 @@ name: Build Ska Package
 #   - tag: the tag to use for the package
 #   - arch: whether to build it for all architectures or as noarch (default is false)
 #   - upload: whether to upload the package to the ska3-conda channel (default is false)
-#   - python_version: the python version to use for the build (default is 3.12)
-#   - numpy_version: the numpy version to use for the build (default is 1.26.2)
+#   - python_version: the python version to use for the build (default is 3.13)
+#   - numpy_version: the numpy version to use for the build (default is 2.3)
 #   - channel_in: the channel to use for the build environment (default is flight).
 #     This channel gets passed to package_build workflow, which also adds conda-forge
 #   - channel_out: the channel to upload the package to (default is test)
@@ -88,8 +88,8 @@ jobs:
         set_boolean_default arch "${{ github.event.client_payload.arch }}" false
         set_boolean_default install_ska_helpers "${{ github.event.client_payload.install_ska_helpers }}" true
         set_boolean_default upload "${{ github.event.client_payload.upload }}" false
-        set_default python_version "${{ github.event.client_payload.python_version }}" 3.12
-        set_default numpy_version "${{ github.event.client_payload.numpy_version }}" 1.26.2
+        set_default python_version "${{ github.event.client_payload.python_version }}" 3.13
+        set_default numpy_version "${{ github.event.client_payload.numpy_version }}" 2.3
         set_default channel_in "${{ github.event.client_payload.channel_in }}" "test"
         set_default channel_out "${{ github.event.client_payload.channel_out }}" "test"
         set_boolean_default with_conda_forge "${{ github.event.client_payload.with_conda_forge }}" false
