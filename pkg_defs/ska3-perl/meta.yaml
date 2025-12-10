@@ -46,7 +46,6 @@ requirements:
     - pkg-config ==0.29.2  # [linux or osx]
     - sysroot_linux-64 ==2.17  # [linux]
     - task_schedule ==4.3.0  # [linux or osx]
-    - tbb ==2021.13.0  # [linux]
     - watch_cron_logs ==4.2.1  # [linux]
     - watch_cron_logs ==4.2.2  # [osx]
     - xorg-libxft ==2.3.8  # [linux]
