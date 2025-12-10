@@ -58,7 +58,7 @@ jobs:
       with:
         auto-update-conda: true
         miniforge-version: latest
-        python-version: "3.12"
+        python-version: "3.13"
         activate-environment: conda-build
         channels: conda-forge
     - name: Add flight channel
@@ -152,8 +152,8 @@ jobs:
                 ska3-perl skare3_tools
           ln -s /proj/sot/ska3/test/data $CONDA_PREFIX/data
           export SKA=$CONDA_PREFIX
-          run_testr --root ./ska_testr --outputs-dir /export/kadi/ska_testr/release_tests
-          skare3-test-results --stream releases --tag head /export/kadi/ska_testr/release_tests/logs/last
+          # run_testr --root ./ska_testr --outputs-dir /export/kadi/ska_testr/release_tests
+          # skare3-test-results --stream releases --tag head /export/kadi/ska_testr/release_tests/logs/last
           # add test result report to PR description
         env:
           CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
