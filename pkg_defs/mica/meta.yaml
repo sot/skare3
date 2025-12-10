@@ -25,7 +25,7 @@ requirements:
   run:
     - python
     - six
-    - matplotlib
+    - matplotlib-base
     - numpy
     - pytest
     - jinja2

@@ -34,7 +34,7 @@ requirements:
     - astropy
     - agasc
     - ska_quatutil
-    - matplotlib
+    - matplotlib-base
     - six
 
 

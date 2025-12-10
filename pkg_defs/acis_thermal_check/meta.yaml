@@ -27,7 +27,7 @@ requirements:
     - python
     - six
     - numpy
-    - matplotlib
+    - matplotlib-base
     - pytest
     - jinja2
     - requests

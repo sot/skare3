@@ -27,7 +27,7 @@ requirements:
     - setuptools_scm
     - numpy
     - scipy
-    - matplotlib
+    - matplotlib-base
     - sqlite
     - jinja2
     - astropy

@@ -25,7 +25,7 @@ requirements:
   run:
     - python
     - numpy
-    - matplotlib
+    - matplotlib-base
     - agasc
     - cxotime
     - proseco

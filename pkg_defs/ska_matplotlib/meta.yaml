@@ -23,7 +23,7 @@ requirements:
   run:
     - python
     - six
-    - matplotlib
+    - matplotlib-base
     - chandra_time
     - numpy
 
