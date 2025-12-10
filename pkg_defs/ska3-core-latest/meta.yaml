@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2025.4
+  version: 2026.1
 
 requirements:
   run:
@@ -27,6 +27,7 @@ requirements:
    - h5py
    - ipympl
    - ipython
+   - ipyparallel  # cheta
    - jinja2
    - jira
    - jplephem
@@ -35,9 +36,10 @@ requirements:
    - line_profiler
    - lxml
    - mamba
-   - matplotlib
+   - matplotlib [osx]
+   - matplotlib-base
+   - mkl  # [linux or win]
    - mpld3
-   - nb_conda
    - nbconvert
    - nbsphinx
    - networkx
@@ -48,8 +50,10 @@ requirements:
    - numpy
    - numpydoc
    - pandas
+   - pytables
    - autopep8
    - openpyxl
+   - paramiko  # ska_ftp
    - pillow
    - pip
    - plotly
@@ -64,6 +68,7 @@ requirements:
    - pyqtwebengine
    - pyyaml
    - qt
+   - qtconsole  # aca_view
    - regions
    - requests
    - rope
