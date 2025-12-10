@@ -12,21 +12,21 @@ requirements:
     - acis_taco ==4.2.3
     - acis_thermal_check ==5.3.2
     - acispy ==2.8.0
-    - agasc ==4.23.2
+    - agasc ==4.23.3
     - backstop_history ==3.2.1
-    - chandra_aca ==4.52.0
+    - chandra_aca ==4.52.1
     - chandra_limits ==0.11.1
     - chandra_maneuver ==4.4.1
-    - chandra_time ==4.3.0
-    - cheta ==4.66.0
-    - cxotime ==3.11.0
+    - chandra_time ==4.3.1
+    - cheta ==4.66.1
+    - cxotime ==3.11.1
     - fot-matlab ==2.5.1
     - hopper ==4.6.0
-    - kadi ==7.17.5
+    - kadi ==7.17.6
     - maude ==3.15.0
-    - mica ==4.39.1
-    - parse_cm ==3.18.0
-    - proseco ==5.17.0
+    - mica ==4.39.2
+    - parse_cm ==3.18.1
+    - proseco ==5.17.1
     - pyyaks ==4.5.1
     - quaternion ==4.3.1
     - razl ==0.1.0
@@ -48,7 +48,7 @@ requirements:
     - ska_sun ==3.15.0
     - ska_sync ==4.13.0
     - ska_tdb ==4.1.0
-    - sparkles ==4.31.0
+    - sparkles ==4.31.1
     - starcheck ==14.15.0
     - testr ==4.13.0
     - xija ==4.35.0
