@@ -30,7 +30,7 @@ requirements:
     - psutil
     - numpy
     - scipy
-    - matplotlib
+    - matplotlib-base
     - ipython
     - pyqt
     - qtconsole
