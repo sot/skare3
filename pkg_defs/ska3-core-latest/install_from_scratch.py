@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-import os
-import subprocess
-import pathlib
 import logging
+import os
+import pathlib
+import subprocess
 
 assert (
     "CONDA_PASSWORD" in os.environ
@@ -28,7 +28,7 @@ def get_package_list():
             "options": [],
             "packages": [
                 "numpy",
-                "matplotlib",
+                "matplotlib-base",
                 "scipy",
                 "pandas",
                 "astropy",
@@ -36,27 +36,27 @@ def get_package_list():
                 "pyqt",
             ],
         },
-        {  # 0.60 is incompatible with VS code debugger
-            "channels": CHANNELS,
-            "options": [],
-            "packages": ["numba==0.59.1"],
-        },
-        {  # this version is set so it is not the latest
-            "channels": CHANNELS,
-            "options": [],
-            "packages": ["django==3.1.7"],
-        },
+        # {  # 0.60 is incompatible with VS code debugger
+        #     "channels": CHANNELS,
+        #     "options": [],
+        #     "packages": ["numba==0.59.1"],
+        # },
+        # {  # this version is set so it is not the latest
+        #     "channels": CHANNELS,
+        #     "options": [],
+        #     "packages": ["django==3.1.7"],
+        # },
         # {  # later versions cause a conflict with nb_conda
         #     "channels": CHANNELS,
         #     "options": [],
         #     "packages": ["notebook==6.5.6"],
         # },
-        {  # this is not in defaults or conda-forge (for now?)
-            "channels": ["https://cxc.cfa.harvard.edu/conda/sherpa"] + CHANNELS,
-            "options": [],
-            "packages": ["sherpa"],
-            "platform": ["linux-64", "osx-64", "osx-arm64"],
-        },
+        # {  # this is not in defaults or conda-forge (for now?)
+        #     "channels": ["https://cxc.cfa.harvard.edu/conda/sherpa"] + CHANNELS,
+        #     "options": [],
+        #     "packages": ["sherpa"],
+        #     "platform": ["linux-64", "osx-64", "osx-arm64"],
+        # },
     ]
 
 
