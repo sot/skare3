@@ -1,30 +1,30 @@
 ---
 package:
   name: ska3-perl
-  version: 2025.1
+  version: 2026.0
 
 build:
   skip: True  # [win]
 
 requirements:
   run:
-    - blas ==2.126  # [linux]
-    - blas-devel ==3.9.0  # [linux]
+    - blas ==2.304  # [linux]
+    - blas-devel ==3.11.0  # [linux]
     - cfitsio ==4.5.0  # [linux]
-    - expat ==2.6.4  # [osx]
+    - expat ==2.7.3  # [linux]
     - gsl ==2.7  # [linux]
     - kernel-headers_linux-64 ==3.10.0  # [linux]
     - libhwloc ==2.11.2  # [linux]
-    - liblapacke ==3.9.0  # [linux]
+    - liblapacke ==3.11.0  # [linux]
     - libx11-common-cos7-x86_64 ==1.6.7  # [linux]
     - libx11-cos7-x86_64 ==1.6.7  # [linux]
     - libx11-devel-cos7-x86_64 ==1.6.7  # [linux]
     - llvm-openmp ==19.1.6  # [linux]
-    - mkl ==2024.2.2  # [linux]
-    - mkl-devel ==2024.2.2  # [linux]
-    - mkl-include ==2024.2.2  # [linux]
-    - mkl-service ==2.4.2  # [linux]
-    - mkl_fft ==1.3.11  # [linux]
+    - mkl ==2025.3.0  # [linux]
+    - mkl-devel ==2025.3.0  # [linux]
+    - mkl-include ==2025.3.0  # [linux]
+    - mkl-service ==2.6.0  # [linux]
+    - mkl_fft ==2.1.1  # [linux]
     - perl ==5.32.1  # [linux or osx]
     - perl-app-cpanminus ==1.7048  # [linux or osx]
     - perl-app-env-ascds ==0.04  # [linux]
