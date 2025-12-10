@@ -40,7 +40,7 @@ requirements:
     - ska_ftp ==4.0.1
     - ska_helpers ==0.20.1
     - ska_matplotlib ==4.0.1
-    - ska_numpy ==4.0.1
+    - ska_numpy ==4.0.2
     - ska_parsecm ==4.0.1
     - ska_path ==3.1.2
     - ska_quatutil ==4.0.0
