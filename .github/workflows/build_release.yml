@@ -58,7 +58,7 @@ jobs:
       with:
         auto-update-conda: true
         miniforge-version: latest
-        python-version: "3.12"
+        python-version: "3.13"
         activate-environment: conda-build
         channels: conda-forge
     - name: Add flight channel
