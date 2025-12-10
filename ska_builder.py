@@ -79,7 +79,7 @@ def clone_repo(name, args, src_dir, meta):
     clone_path = os.path.join(src_dir, name)
 
     # Upstream (home) URL is for the tags
-    upstream_url = meta['about']['home']
+    upstream_url = meta['about'].get("dev_url", meta['about']['home'])
 
     # URL for cloning
     if args.repo_url:
@@ -113,6 +113,7 @@ def clone_repo(name, args, src_dir, meta):
             print(f"  - Auto-checked out at {tags[-1].name} which is also tip of {head_name}")
         else:
             print(f"  - Auto-checked out at {tags[-1].name} NOT AT tip of {head_name}")
+        args.tag = tags[-1].name  # set for later use
     else:
         repo.git.checkout(tag)
         print(f'  - Checked out at {tag} and pulled')
@@ -134,9 +135,11 @@ def build_package(name, args, src_dir, build_dir, conda_args=None):
         version = subprocess.check_output(['python', '-m', 'setuptools_scm'],
                                           cwd=os.path.join(src_dir, name))
         version = version.decode().split()[-1].strip()
-        print(f'  - SKA_PKG_VERSION={version}')
+        print(f'  - SKA_PKG_VERSION={version} (from setuptools_scm)')
     except Exception:
-        version = ''
+        version = args.tag
+        print(f'  - SKA_PKG_VERSION={version} (from tag)')
+
     os.environ['SKA_PKG_VERSION'] = version
 
     cmd_list = ["conda", "build", str(pkg_path),
@@ -177,6 +180,13 @@ def build_package(name, args, src_dir, build_dir, conda_args=None):
     subprocess.run(cmd_list, check=True, shell=is_windows).check_returncode()
 
 
+# these are macros to be able to parse meta.yaml files which use them
+# clearly, these do not do anything useful, just allow parsing to proceed
+JINJA_MACROS = """
+{% macro compiler(arg) %}{% endmacro %}
+{% macro pin_compatible(arg) %}arg{% endmacro %}
+"""
+
 def build_list_packages(pkg_names, args, src_dir, build_dir, conda_args=None):
     failures = []
     tstart = time.time()
@@ -192,8 +202,7 @@ def build_list_packages(pkg_names, args, src_dir, build_dir, conda_args=None):
         has_git = re.search(r'SKA_PKG_VERSION|GIT_DESCRIBE_TAG', meta_text)
 
         # Stub out the jinja context variables and parse meta.yaml
-        macro = '{% macro compiler(arg) %}{% endmacro %}\n'
-        meta = yaml.safe_load(jinja2.Template(macro + meta_text).render())
+        meta = yaml.safe_load(jinja2.Template(JINJA_MACROS + meta_text).render(environ=os.environ))
 
         if args.arch_specific and 'noarch' in meta.get('build', {}):
             print(f'Skipping noarch package {pkg_name}')
