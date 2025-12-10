@@ -8,8 +8,6 @@ source:
 
 build:
   number: {{ environ.get('SKA_BUILD_NUMBER', 0) }}
-
-build:
   skip: True  # [win]
 
 requirements:
