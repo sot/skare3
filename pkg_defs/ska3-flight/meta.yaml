@@ -51,4 +51,4 @@ requirements:
     - sparkles ==4.31.1
     - starcheck ==14.15.0
     - testr ==4.13.0
-    - xija ==4.35.0
+    - xija ==4.36.0
