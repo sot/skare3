@@ -21,12 +21,14 @@ jobs:
           python-version: ${{ github.event.client_payload.python_version }}
           activate-environment: conda-build
       - name: Set Conda Channels
-        # for some reason, defaults is added when we add our channel
         run: |
+          python --version
+          echo "adding ${{ github.event.client_payload.channel }} channel"
           conda config --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }}
+          echo "adding conda-forge channel"
           conda config --add channels conda-forge
-          conda config --remove channels defaults
           conda config --show-sources
+          conda config --show channels
       - name: Checkout Skare3
         uses: actions/checkout@v2
         with:
