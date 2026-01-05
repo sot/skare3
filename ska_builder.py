@@ -47,14 +47,14 @@ def get_opt():
                         action="store_true",
                         help="Build only architecture-specific packages")
     parser.add_argument("--python",
-                        default="3.12",
-                        help="Target version of Python (default=3.12)")
+                        default="3.13",
+                        help="Target version of Python (default=3.13)")
     parser.add_argument("--perl",
                         default="5.32.1",
                         help="Target version of Perl (default=5.32.1)")
     parser.add_argument("--numpy",
-                        default="1.26.4",
-                        help="Build version of NumPy")
+                        default="2.3",
+                        help="Build version of NumPy (default=2.3)")
     parser.add_argument("--github-https", action="store_true", default=False,
                         help="Authenticate using basic auth and https. Default is ssh "
                         "except on Windows")
