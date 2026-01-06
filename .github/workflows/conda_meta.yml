@@ -174,10 +174,21 @@ jobs:
           repository: sot/skare3
           ref: ${{ github.event.client_payload.skare3_branch }}
           path: skare3
+      - name: Set Conda Channels
+        run: |
+          python --version
+          echo "adding ${{ github.event.client_payload.channel }} channel"
+          conda config --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/${{ github.event.client_payload.channel }}
+          echo "adding conda-forge channel"
+          conda config --add channels conda-forge
+          conda config --show-sources
+          conda config --show channels
       - name: Setup build environment
         shell: bash -l -e {0}
         run: |
           conda env update -n conda-build -f ./skare3/build-environment.yml
+      - name: Env List
+        run: conda list
       - name: Copy yaml files
         shell: bash -l -e {0}
         run: |
