@@ -40,7 +40,10 @@ jobs:
         run: |
           conda info
           conda env update -f skare3/pkg_defs/ska3-core-latest/base_environment.yml
-          python ./skare3/pkg_defs/ska3-core-latest/install_from_scratch.py
+          # ska3-core packages come from conda-forge, but we build our own sherpa package
+          # and this is placed in a ska3-conda channel, so we need to add that channel.
+          # a side effect is that any core package already in the channel will take precedence.
+          python ./skare3/pkg_defs/ska3-core-latest/install_from_scratch.py --ska-channel ${{ github.event.client_payload.channel }}
           conda list --json > ska3-core-${ARCH}.json
       - name: ska3-flight
         shell: bash -l -e {0}
