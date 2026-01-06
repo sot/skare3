@@ -24,7 +24,7 @@ requirements:
   run:
     - python
     - numpy
-    - matplotlib
+    - matplotlib-base
     - astropy
     - pytest
     - cheta

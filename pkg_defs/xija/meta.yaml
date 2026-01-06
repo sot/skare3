@@ -33,7 +33,7 @@ requirements:
     - scipy
     - numba
     - numpy
-    - matplotlib
+    - matplotlib-base
     - ska_matplotlib
     - ska_numpy
     - pyyaks

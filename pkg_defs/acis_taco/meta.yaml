@@ -27,7 +27,7 @@ requirements:
     - python
     - six
     - numpy
-    - matplotlib
+    - matplotlib-base
     - ska_quatutil
     - chandra_time
     - ska_matplotlib
