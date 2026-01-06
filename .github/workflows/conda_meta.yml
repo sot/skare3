@@ -168,6 +168,7 @@ jobs:
         with:
           miniforge-version: latest
           python-version: ${{ github.event.client_payload.python_version }}
+          activate-environment: conda-build
       - name: Checkout Skare3
         uses: actions/checkout@v2
         with:
