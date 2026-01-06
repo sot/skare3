@@ -200,13 +200,13 @@ jobs:
         shell: bash -l -e {0}
         working-directory: ./skare3
         run: >
-          python ./ska_builder.py ska3-flight
+          python ./ska_builder.py ska3-flight --tag ${{ github.event.client_payload.skare3_branch }}
       - name: Build ska3-core and ska3-perl
         shell: bash -l -e {0}
         working-directory: ./skare3
         run: |
-          python ./ska_builder.py ska3-core
-          python ./ska_builder.py ska3-perl
+          python ./ska_builder.py ska3-core --tag ${{ github.event.client_payload.skare3_branch }}
+          python ./ska_builder.py ska3-perl --tag ${{ github.event.client_payload.skare3_branch }}
       - name: Gather packages
         shell: bash -l -e {0}
         working-directory: ./skare3
