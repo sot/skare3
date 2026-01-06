@@ -143,7 +143,8 @@ def get_parser():
 def main():
     logging.basicConfig(level="INFO")
 
-    args = get_parser().parse_args()
+    parser = get_parser()
+    args = parser.parse_args()
 
     if not args.conda_channel:
         args.conda_channel.append("conda-forge")
@@ -163,7 +164,7 @@ def main():
         meta_yaml = pathlib.Path(__file__).parent / "meta.yaml"
         install_yaml_requirements(meta_yaml)
     except Exception as e:
-        logging.error(f"Error: {e}")
+        parser.exit(1, f"Error: {e}")
 
 
 if __name__ == "__main__":
