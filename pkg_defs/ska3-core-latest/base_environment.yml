@@ -1,7 +1,7 @@
 channels:
   - conda-forge
 dependencies:
-  - python=3.12
+  - python=3.13
   - numexpr
   - libblas         # on conda-forge, libblas uses open_blas by default
   - libarchive      # libarchive from defaults is not good for mamba
