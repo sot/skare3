@@ -11,23 +11,23 @@ requirements:
     - accessible-pygments ==0.0.5
     - aiobotocore ==2.25.2
     - aiohappyeyeballs ==2.6.1
-    - aiohttp ==3.13.2
+    - aiohttp ==3.13.3
     - aioitertools ==0.12.0
     - aiosignal ==1.4.0
     - alabaster ==1.0.0
-    - alsa-lib ==1.2.14  # [linux]
-    - anyio ==4.12.0
+    - alsa-lib ==1.2.15.1  # [linux]
+    - anyio ==4.12.1
     - appnope ==0.1.4  # [osx]
     - archspec ==0.2.5
     - argon2-cffi ==25.1.0
     - argon2-cffi-bindings ==25.1.0
     - arrow ==1.4.0
     - asgiref ==3.11.0
-    - astroid ==4.0.2
+    - astroid ==4.0.3
     - astropy ==7.2.0
     - astropy-base ==7.2.0
     - astropy-healpix ==1.1.2
-    - astropy-iers-data ==0.2025.12.1.0.45.12
+    - astropy-iers-data ==0.2026.1.5.0.43.43
     - astropy-sphinx-theme ==2.0
     - astroquery ==0.4.11
     - asttokens ==3.0.1
@@ -35,27 +35,26 @@ requirements:
     - attr ==2.5.2  # [linux]
     - attrs ==25.4.0
     - autopep8 ==2.3.2
-    - aws-c-auth ==0.9.1
-    - aws-c-cal ==0.9.10  # [win]
+    - aws-c-auth ==0.9.1  # [linux]
+    - aws-c-auth ==0.9.3  # [osx or win]
+    - aws-c-cal ==0.9.13  # [osx or win]
     - aws-c-cal ==0.9.2  # [linux]
-    - aws-c-cal ==0.9.8  # [osx]
     - aws-c-common ==0.12.4  # [linux]
-    - aws-c-common ==0.12.5  # [osx or win]
+    - aws-c-common ==0.12.6  # [osx or win]
     - aws-c-compression ==0.3.1
-    - aws-c-event-stream ==0.5.6
+    - aws-c-event-stream ==0.5.6  # [linux]
+    - aws-c-event-stream ==0.5.7  # [osx or win]
     - aws-c-http ==0.10.4  # [linux]
     - aws-c-http ==0.10.7  # [osx or win]
     - aws-c-io ==0.22.0  # [linux]
-    - aws-c-io ==0.23.2  # [osx]
-    - aws-c-io ==0.23.3  # [win]
+    - aws-c-io ==0.23.3  # [osx or win]
     - aws-c-mqtt ==0.13.3
-    - aws-c-s3 ==0.10.1  # [win]
-    - aws-c-s3 ==0.8.6  # [linux or osx]
+    - aws-c-s3 ==0.11.3  # [osx or win]
+    - aws-c-s3 ==0.8.6  # [linux]
     - aws-c-sdkutils ==0.2.4
     - aws-checksums ==0.2.7
     - aws-crt-cpp ==0.34.4  # [linux]
-    - aws-crt-cpp ==0.35.0  # [osx]
-    - aws-crt-cpp ==0.35.2  # [win]
+    - aws-crt-cpp ==0.35.4  # [osx or win]
     - aws-sdk-cpp ==1.11.606
     - azure-core-cpp ==1.16.0  # [linux]
     - azure-core-cpp ==1.16.1  # [osx]
@@ -71,34 +70,35 @@ requirements:
     - backports ==1.0
     - backports.tarfile ==1.2.0
     - backports.zoneinfo ==0.2.1
+    - backports.zstd ==1.3.0
     - bcrypt ==5.0.0
     - beautifulsoup4 ==4.14.3
-    - black ==25.1.0
+    - black ==25.12.0
     - bleach ==6.3.0
     - bleach-with-css ==6.3.0
     - blinker ==1.9.0
-    - blosc ==1.21.6  # [linux or osx]
+    - blosc ==1.21.6
     - bokeh ==3.8.1
     - boltons ==25.0.0
     - botocore ==1.40.70
     - bottleneck ==1.6.0
     - bqplot ==0.12.45
-    - brotli ==1.1.0  # [linux or osx]
-    - brotli ==1.2.0  # [win]
-    - brotli-bin ==1.1.0  # [linux or osx]
-    - brotli-bin ==1.2.0  # [win]
-    - brotli-python ==1.1.0  # [linux or osx]
-    - brotli-python ==1.2.0  # [win]
+    - brotli ==1.1.0  # [linux]
+    - brotli ==1.2.0  # [osx or win]
+    - brotli-bin ==1.1.0  # [linux]
+    - brotli-bin ==1.2.0  # [osx or win]
+    - brotli-python ==1.1.0  # [linux]
+    - brotli-python ==1.2.0  # [osx or win]
     - bzip2 ==1.0.8
-    - c-ares ==1.34.5
-    - c-blosc2 ==2.22.0  # [linux or osx]
-    - ca-certificates ==2025.11.12
+    - c-ares ==1.34.6
+    - c-blosc2 ==2.22.0
+    - ca-certificates ==2026.1.4
     - cached-property ==1.5.2
     - cached_property ==1.5.2
     - cairo ==1.18.4  # [linux]
     - cctools ==1030.6.3  # [osx]
     - cctools_impl_osx-arm64 ==1030.6.3  # [osx]
-    - certifi ==2025.11.12
+    - certifi ==2026.1.4
     - cffi ==2.0.0
     - cfgv ==3.5.0
     - chardet ==5.2.0
@@ -109,36 +109,36 @@ requirements:
     - colorama ==0.4.6
     - comm ==0.2.3
     - commonmark ==0.9.1
-    - conda ==25.11.0
-    - conda-build ==25.11.0
+    - conda ==25.11.1
+    - conda-build ==25.11.1
     - conda-index ==0.7.0
     - conda-libmamba-solver ==25.11.0
     - conda-package-handling ==2.4.0
     - conda-package-streaming ==0.12.0
     - configobj ==5.0.9
     - contourpy ==1.3.3
-    - coverage ==7.12.0
+    - coverage ==7.13.1
     - cpp-expected ==1.3.1
-    - cpython ==3.13.10
+    - cpython ==3.13.11
     - cryptography ==46.0.3
     - cycler ==0.12.1
     - cyrus-sasl ==2.1.28  # [linux or osx]
-    - cython ==3.2.2
-    - dask-core ==2025.11.0
+    - cython ==3.2.4
+    - dask-core ==2025.12.0
     - dbus ==1.16.2  # [linux]
-    - debugpy ==1.8.17
+    - debugpy ==1.8.19
     - decorator ==5.2.1
     - defusedxml ==0.7.1
     - distlib ==0.4.0
     - distro ==1.9.0
     - django ==6.0
-    - docutils ==0.22.3
+    - docutils ==0.22.4
     - docxtpl ==0.11.5
     - et_xmlfile ==2.0.0
     - evalidate ==2.0.5
     - exceptiongroup ==1.3.1
     - executing ==2.2.1
-    - filelock ==3.20.0
+    - filelock ==3.20.2
     - fmt ==11.2.0  # [linux]
     - fmt ==12.0.0  # [osx or win]
     - font-ttf-dejavu-sans-mono ==2.37  # [linux]
@@ -148,7 +148,7 @@ requirements:
     - fontconfig ==2.15.0  # [linux]
     - fonts-conda-ecosystem ==1  # [linux]
     - fonts-conda-forge ==1  # [linux]
-    - fonttools ==4.61.0
+    - fonttools ==4.61.1
     - fqdn ==1.5.1
     - freetype ==2.14.1
     - frozendict ==2.4.7
@@ -156,18 +156,16 @@ requirements:
     - fsspec ==2025.12.0
     - future ==1.0.0
     - gast ==0.4.0
-    - gettext ==0.25.1  # [linux]
-    - gettext-tools ==0.25.1  # [linux]
     - gflags ==2.2.2  # [linux or osx]
     - giflib ==5.2.2  # [linux or osx]
     - git ==2.52.0  # [win]
     - gitdb ==4.0.12
-    - gitpython ==3.1.45
-    - glib ==2.86.2
-    - glib-tools ==2.86.2
+    - gitpython ==3.1.46
+    - glib ==2.86.3
+    - glib-tools ==2.86.3
     - glog ==0.7.1  # [linux or osx]
     - graphite2 ==1.3.14  # [linux]
-    - greenlet ==3.2.4
+    - greenlet ==3.3.0
     - gst-plugins-base ==1.24.11
     - gstreamer ==1.24.11
     - h11 ==0.16.0
@@ -175,6 +173,7 @@ requirements:
     - h5py ==3.15.1
     - harfbuzz ==12.2.0  # [linux]
     - hdf5 ==1.14.6
+    - hepmc2 ==2.06.11  # [linux]
     - hpack ==4.1.0
     - html5lib ==1.1
     - httpcore ==1.0.9
@@ -192,13 +191,13 @@ requirements:
     - ipykernel ==7.1.0
     - ipympl ==0.9.8
     - ipyparallel ==9.0.2
-    - ipython ==9.8.0
+    - ipython ==9.9.0
     - ipython_pygments_lexers ==1.1.1
     - ipywidgets ==8.1.8
     - isoduration ==20.11.0
     - jaraco.classes ==3.4.0
-    - jaraco.context ==6.0.1
-    - jaraco.functools ==4.3.0
+    - jaraco.context ==6.0.2
+    - jaraco.functools ==4.4.0
     - jedi ==0.19.2
     - jeepney ==0.9.0  # [linux]
     - jinja2 ==3.1.6
@@ -206,9 +205,9 @@ requirements:
     - jira-base ==3.10.5
     - jira-with-cli ==3.10.5
     - jmespath ==1.0.1
-    - joblib ==1.5.2
+    - joblib ==1.5.3
     - jplephem ==2.23
-    - json5 ==0.12.1
+    - json5 ==0.13.0
     - jsonpatch ==1.33
     - jsonpointer ==3.0.0
     - jsonschema ==4.25.1
@@ -216,13 +215,13 @@ requirements:
     - jsonschema-with-format-nongpl ==4.25.1
     - jupyter ==1.1.1
     - jupyter-lsp ==2.3.0
-    - jupyter_client ==8.6.3
+    - jupyter_client ==8.7.0
     - jupyter_console ==6.6.3
     - jupyter_core ==5.9.1
     - jupyter_events ==0.12.0
     - jupyter_server ==2.17.0
     - jupyter_server_terminals ==0.5.3
-    - jupyterlab ==4.5.0
+    - jupyterlab ==4.5.1
     - jupyterlab_pygments ==0.3.0
     - jupyterlab_server ==2.28.0
     - jupyterlab_widgets ==3.0.16
@@ -237,10 +236,11 @@ requirements:
     - ld64_osx-arm64 ==956.6  # [osx]
     - ld_impl_linux-64 ==2.45  # [linux]
     - lerc ==4.0.0
+    - lhapdf ==6.5.5  # [linux]
     - libabseil ==20250512.1
     - libaec ==1.1.4
     - libarchive ==3.8.1  # [linux]
-    - libarchive ==3.8.2  # [osx or win]
+    - libarchive ==3.8.5  # [osx or win]
     - libarrow ==21.0.0  # [linux]
     - libarrow ==22.0.0  # [osx or win]
     - libarrow-acero ==21.0.0  # [linux]
@@ -251,15 +251,13 @@ requirements:
     - libarrow-dataset ==22.0.0  # [osx or win]
     - libarrow-substrait ==21.0.0  # [linux]
     - libarrow-substrait ==22.0.0  # [osx or win]
-    - libasprintf ==0.25.1  # [linux]
-    - libasprintf-devel ==0.25.1  # [linux]
     - libblas ==3.11.0
-    - libbrotlicommon ==1.1.0  # [linux or osx]
-    - libbrotlicommon ==1.2.0  # [win]
-    - libbrotlidec ==1.1.0  # [linux or osx]
-    - libbrotlidec ==1.2.0  # [win]
-    - libbrotlienc ==1.1.0  # [linux or osx]
-    - libbrotlienc ==1.2.0  # [win]
+    - libbrotlicommon ==1.1.0  # [linux]
+    - libbrotlicommon ==1.2.0  # [osx or win]
+    - libbrotlidec ==1.1.0  # [linux]
+    - libbrotlidec ==1.2.0  # [osx or win]
+    - libbrotlienc ==1.1.0  # [linux]
+    - libbrotlienc ==1.2.0  # [osx or win]
     - libcap ==2.77  # [linux]
     - libcblas ==3.11.0
     - libclang-cpp18.1 ==18.1.8  # [osx]
@@ -270,7 +268,7 @@ requirements:
     - libcrc32c ==1.1.2
     - libcups ==2.3.3  # [linux]
     - libcurl ==8.17.0
-    - libcxx ==21.1.7  # [osx]
+    - libcxx ==21.1.8  # [osx]
     - libdeflate ==1.25
     - libdrm ==2.4.125  # [linux]
     - libedit ==3.1.20250104  # [linux or osx]
@@ -279,17 +277,15 @@ requirements:
     - libevent ==2.1.12
     - libexpat ==2.7.3
     - libffi ==3.5.2
-    - libflac ==1.4.3  # [linux]
+    - libflac ==1.5.0  # [linux]
     - libfreetype ==2.14.1
     - libfreetype6 ==2.14.1
     - libgcc ==15.2.0
     - libgcc-ng ==15.2.0  # [linux]
-    - libgettextpo ==0.25.1  # [linux]
-    - libgettextpo-devel ==0.25.1  # [linux]
     - libgfortran ==15.2.0  # [linux or osx]
     - libgfortran5 ==15.2.0  # [linux or osx]
     - libgl ==1.7.0  # [linux]
-    - libglib ==2.86.2
+    - libglib ==2.86.3
     - libglvnd ==1.7.0  # [linux]
     - libglx ==1.7.0  # [linux]
     - libgomp ==15.2.0  # [linux or win]
@@ -308,7 +304,7 @@ requirements:
     - libllvm18 ==18.1.8  # [osx]
     - libllvm20 ==20.1.8  # [linux or osx]
     - libllvm21 ==21.1.0  # [linux]
-    - libllvm21 ==21.1.7  # [osx]
+    - libllvm21 ==21.1.8  # [osx]
     - liblzma ==5.8.1
     - libmamba ==2.3.2  # [linux]
     - libmamba ==2.4.0  # [osx or win]
@@ -326,11 +322,12 @@ requirements:
     - libparquet ==21.0.0  # [linux]
     - libparquet ==22.0.0  # [osx or win]
     - libpciaccess ==0.18  # [linux]
-    - libpng ==1.6.51
+    - libpng ==1.6.53
     - libpq ==17.7  # [linux]
     - libpq ==18.1  # [osx]
     - libprotobuf ==6.31.1
     - libre2-11 ==2025.11.05
+    - libsigtool ==0.1.3  # [osx]
     - libsndfile ==1.2.2  # [linux]
     - libsodium ==1.0.20
     - libsolv ==0.7.35
@@ -342,7 +339,7 @@ requirements:
     - libthrift ==0.22.0
     - libtiff ==4.7.1
     - libutf8proc ==2.11.2
-    - libuuid ==2.41.2  # [linux]
+    - libuuid ==2.41.3  # [linux]
     - libuv ==1.51.0  # [linux or osx]
     - libvorbis ==1.3.7
     - libwebp ==1.6.0
@@ -357,10 +354,10 @@ requirements:
     - libxslt ==1.1.43
     - libzlib ==1.3.1
     - line_profiler ==5.0.0
-    - llvm-openmp ==21.1.7
+    - llvm-openmp ==21.1.8
     - llvm-tools ==20.1.8  # [osx]
     - llvm-tools-20 ==20.1.8  # [osx]
-    - llvmlite ==0.45.1
+    - llvmlite ==0.46.0
     - locket ==1.0.0
     - logistro ==2.0.1
     - lxml ==6.0.2
@@ -376,19 +373,19 @@ requirements:
     - matplotlib-base ==3.10.8
     - matplotlib-inline ==0.2.1
     - mbedtls ==3.6.3.1
-    - menuinst ==2.4.1
-    - mistune ==3.1.4
+    - menuinst ==2.4.2
+    - mistune ==3.2.0
     - mkl ==2025.3.0  # [linux or win]
     - more-itertools ==10.8.0
     - mpg123 ==1.32.9  # [linux]
     - mpld3 ==0.5.12
     - mpmath ==1.3.0
     - msgpack-python ==1.1.2
-    - multidict ==6.6.3
+    - multidict ==6.7.0
     - munkres ==1.1.4
     - mypy_extensions ==1.1.0
-    - narwhals ==2.13.0
-    - nbclient ==0.10.2
+    - narwhals ==2.15.0
+    - nbclient ==0.10.4
     - nbconvert ==7.16.6
     - nbconvert-core ==7.16.6
     - nbconvert-pandoc ==7.16.6
@@ -396,17 +393,17 @@ requirements:
     - nbsphinx ==0.9.8
     - ncurses ==6.5  # [linux or osx]
     - nest-asyncio ==1.6.0
-    - networkx ==3.6
+    - networkx ==3.6.1
     - nlohmann_json ==3.12.0  # [linux or osx]
     - nlohmann_json-abi ==3.12.0
-    - nodeenv ==1.9.1
-    - nodejs ==24.10.0
-    - nose ==1.3.7  # [linux or osx]
-    - notebook ==7.5.0
+    - nodeenv ==1.10.0
+    - nodejs ==24.10.0  # [linux]
+    - nodejs ==25.2.1  # [osx or win]
+    - notebook ==7.5.1
     - notebook-shim ==0.2.4
     - nspr ==4.38  # [linux or osx]
     - nss ==3.118  # [linux or osx]
-    - numba ==0.62.1
+    - numba ==0.63.1
     - numexpr ==2.14.1
     - numpy ==2.3.5
     - numpydoc ==1.10.0
@@ -416,7 +413,8 @@ requirements:
     - openpyxl ==3.1.5
     - openssl ==3.6.0
     - orc ==2.2.1
-    - orjson ==3.11.4
+    - orjson ==3.11.4  # [win]
+    - orjson ==3.11.5  # [linux or osx]
     - overrides ==7.7.0
     - packaging ==25.0
     - pandas ==2.3.3
@@ -427,29 +425,29 @@ requirements:
     - partd ==1.4.2
     - patch ==2.8  # [linux or osx]
     - patchelf ==0.17.2  # [linux]
-    - pathspec ==0.12.1
+    - pathspec ==1.0.0
     - pcre2 ==10.47
-    - pexpect ==4.9.0  # [linux or osx]
-    - pillow ==12.0.0
+    - pexpect ==4.9.0
+    - pillow ==12.1.0
     - pip ==25.3
     - pixman ==0.46.4  # [linux]
     - pkginfo ==1.12.1.2
-    - platformdirs ==4.5.0
+    - platformdirs ==4.5.1
     - plotly ==6.5.0
     - pluggy ==1.6.0
     - ply ==3.11
-    - pre-commit ==4.5.0
+    - pre-commit ==4.5.1
     - prometheus-cpp ==1.3.0  # [linux or osx]
     - prometheus_client ==0.23.1
     - prompt-toolkit ==3.0.52
     - prompt_toolkit ==3.0.52
     - propcache ==0.3.1
-    - psutil ==7.1.3
+    - psutil ==7.2.1
     - pthread-stubs ==0.4
-    - ptyprocess ==0.7.0  # [linux or osx]
+    - ptyprocess ==0.7.0
     - pulseaudio-client ==17.0  # [linux]
     - pure_eval ==0.2.3
-    - py-cpuinfo ==9.0.0  # [linux or osx]
+    - py-cpuinfo ==9.0.0
     - py-lief ==0.16.6
     - py2vega ==0.6.1
     - pyarrow ==21.0.0  # [linux]
@@ -465,28 +463,29 @@ requirements:
     - pyerfa ==2.0.1.5
     - pygments ==2.19.2
     - pyjwt ==2.10.1
-    - pynacl ==1.6.1
+    - pynacl ==1.6.2
     - pyobjc-core ==12.1  # [osx]
     - pyobjc-framework-cocoa ==12.1  # [osx]
-    - pyparsing ==3.2.5
+    - pyparsing ==3.3.1
     - pyqt ==5.15.11
     - pyqt5-sip ==12.17.0
     - pyqtgraph ==0.14.0
     - pyqtwebengine ==5.15.11
     - pysocks ==1.7.1
-    - pytables ==3.10.2  # [linux or osx]
-    - pytest ==9.0.1
+    - pytables ==3.10.2
+    - pytest ==9.0.2
     - pytest-timeout ==2.4.0
-    - python ==3.13.10
+    - python ==3.13.11
     - python-dateutil ==2.9.0.post0
     - python-docx ==1.2.0
     - python-fastjsonschema ==2.21.2
-    - python-gil ==3.13.10
+    - python-gil ==3.13.11
     - python-json-logger ==2.0.7
     - python-kaleido ==1.2.0
     - python-libarchive-c ==5.3
-    - python-tzdata ==2025.2
+    - python-tzdata ==2025.3
     - python_abi ==3.13
+    - pytokens ==0.3.0
     - pytoolconfig ==1.2.5
     - pytz ==2025.2
     - pyvo ==1.8
@@ -503,7 +502,7 @@ requirements:
     - qtconsole-base ==5.7.0
     - qtpy ==2.4.3
     - re2 ==2025.11.05
-    - readline ==8.2  # [linux or osx]
+    - readline ==8.3  # [linux or osx]
     - referencing ==0.37.0
     - regions ==0.11
     - reproc ==14.2.5.post0
@@ -515,35 +514,36 @@ requirements:
     - rfc3986-validator ==0.1.1
     - rfc3987-syntax ==1.1.0
     - ripgrep ==15.1.0
-    - roman-numerals ==3.1.0
+    - roman-numerals ==4.1.0
     - rope ==1.14.0
     - rpds-py ==0.30.0
-    - ruamel.yaml ==0.18.16
-    - ruamel.yaml.clib ==0.2.14
+    - ruamel.yaml ==0.18.17
+    - ruamel.yaml.clib ==0.2.15
     - s2n ==1.5.26  # [linux]
     - s3fs ==2025.12.0
     - scikit-learn ==1.7.2
     - scipy ==1.16.3
     - secretstorage ==3.4.1  # [linux]
-    - send2trash ==1.8.3
+    - send2trash ==2.0.0
     - setuptools ==80.9.0
     - setuptools-scm ==9.2.2
     - setuptools_scm ==9.2.2
-    - sherpa ==4.18.0  # [not win]
-    - sigtool ==0.1.3  # [osx]
+    - sherpa ==2.2.16  # [linux]
+    - sherpa ==4.18.0  # [osx]
+    - sigtool-codesign ==0.1.3  # [osx]
     - simdjson ==4.0.7  # [linux]
-    - simdjson ==4.2.2  # [osx or win]
+    - simdjson ==4.2.4  # [osx or win]
     - simplejson ==3.20.2
     - sip ==6.10.0  # [linux or win]
-    - sip ==6.14.0  # [osx]
+    - sip ==6.15.0  # [osx]
     - six ==1.17.0
     - smmap ==5.0.2
     - snappy ==1.2.2
     - sniffio ==1.3.1
     - snowballstemmer ==3.0.1
     - sortedcontainers ==2.4.0
-    - soupsieve ==2.8
-    - sphinx ==9.0.4
+    - soupsieve ==2.8.1
+    - sphinx ==9.1.0
     - sphinx-argparse ==0.5.2
     - sphinx-autoapi ==3.6.1
     - sphinx-copybutton ==0.5.2
@@ -553,9 +553,9 @@ requirements:
     - sphinxcontrib-jsmath ==1.0.1
     - sphinxcontrib-qthelp ==2.0.0
     - sphinxcontrib-serializinghtml ==1.1.10
-    - sqlalchemy ==2.0.44
+    - sqlalchemy ==2.0.45
     - sqlite ==3.51.1
-    - sqlparse ==0.5.4
+    - sqlparse ==0.5.5
     - stack_data ==0.6.3
     - stdlib-list ==0.12.0
     - tapi ==1600.0.11.8  # [osx]
@@ -567,20 +567,21 @@ requirements:
     - toml ==0.10.2
     - tomli ==2.3.0
     - toolz ==1.1.0
-    - tornado ==6.5.2
+    - tornado ==6.5.3
     - tqdm ==4.67.1
     - traitlets ==5.14.3
     - traittypes ==0.2.3
-    - truststore ==0.10.3
+    - truststore ==0.10.4
     - typing-extensions ==4.15.0
     - typing_extensions ==4.15.0
     - typing_utils ==0.1.0
-    - tzdata ==2025b
+    - tzdata ==2025c
     - ucrt ==10.0.26100.0  # [win]
     - ukkonen ==1.0.1
     - uncompresspy ==0.4.1
     - uri-template ==1.3.0
-    - urllib3 ==2.5.0
+    - urllib3 ==2.5.0  # [linux]
+    - urllib3 ==2.6.2  # [osx or win]
     - vc ==14.3  # [win]
     - vc14_runtime ==14.44.35208  # [win]
     - vcomp14 ==14.44.35208  # [win]
