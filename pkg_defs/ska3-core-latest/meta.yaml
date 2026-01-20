@@ -87,3 +87,13 @@ requirements:
    - tk
    - tqdm
    - yaml
+   # the following packages are added to be consistent with what is in ska3-core
+   # not clear what pulls them
+   - backports.zstd
+   - hepmc2  # [linux]
+   - lhapdf  # [linux]
+   - libclang-cpp21.1  # [linux]
+   - libgomp  # [linux or win]
+   - libopenblas  # [linux or osx]
+   - pexpect
+   - ptyprocess
