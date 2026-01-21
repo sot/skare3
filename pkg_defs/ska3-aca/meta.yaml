@@ -51,3 +51,26 @@ requirements:
     - starcheck ==14.16.0
     - testr ==4.13.0
     - xija ==4.36.0
+    # The following packages are specific to ACA
+    - attitude_error_mon
+    - aca_hi_bgd
+    - aca_weekly_report
+    - acq_stat_reports
+    - acdc
+    - aimpoint_mon
+    - aperoll
+    - astromon
+    - annie
+    - fid_drift_mon
+    - find_attitude
+    - fss_check
+    - jobwatch
+    - kalman_watch
+    - perigee_health_plots
+    - schedule_view3
+    - ska_report_ranges
+    - ska_trend
+    - skare3_tools
+    - vv_trending
+    - twiki-wg
+    - obc_rate_noise_plots
