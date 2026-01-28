@@ -18,11 +18,11 @@ requirements:
     - chandra_limits ==0.11.2
     - chandra_maneuver ==4.4.1
     - chandra_time ==4.3.1
-    - cheta ==4.67.0
+    - cheta ==4.67.1
     - cxotime ==3.11.1
     - fot-matlab ==2.5.1
     - hopper ==4.6.0
-    - kadi ==7.18.0
+    - kadi ==7.18.1
     - maude ==3.15.1
     - mica ==4.39.2
     - parse_cm ==3.18.1
