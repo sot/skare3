@@ -1,5 +1,5 @@
 package:
-  name: replan_central
+  name: arc
   version:  {{ SKA_PKG_VERSION }}
 
 build:
@@ -19,7 +19,7 @@ build:
     - replan-central-plot-hrc=replan_central.plot_hrc:main
 
 source:
-  path: {{ SKA_TOP_SRC_DIR }}/xija
+  path: {{ SKA_TOP_SRC_DIR }}/arc
 
 
 # the build and runtime requirements. Dependencies of these requirements
