@@ -1,0 +1,57 @@
+package:
+  name: arc
+  version:  {{ SKA_PKG_VERSION }}
+
+build:
+  script: pip install .
+  entry_points:
+    - replan-central-arc-time-machine=replan_central.run_arc_time_machine_pl:main
+    - replan-central-get-web-content=replan_central.run_get_web_content_pl:main
+    - replan-central-get-iFOT-events=replan_central.run_get_iFOT_events_pl:main
+    - replan-central-arc=replan_central.run_arc_pl:main
+    - replan-central-calc-fluence-dist=replan_central.calc_fluence_dist:main
+    - replan-central-get-ace=replan_central.get_ace:main
+    - replan-central-get-goes-x=replan_central.get_goes_x:main
+    - replan-central-get-hrc=replan_central.get_hrc:main
+    - replan-central-get-solar-flare-png=replan_central.get_solar_flare_png:main
+    - replan-central-make-timeline=replan_central.make_timeline:main
+    - replan-central-plot-goes-x=replan_central.plot_goes_x:main
+    - replan-central-plot-hrc=replan_central.plot_hrc:main
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/arc
+
+
+# the build and runtime requirements. Dependencies of these requirements
+# are included automatically.
+requirements:
+  # Packages required to build the package. python and numpy must be
+  # listed explicitly if they are required.
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+    - setuptools_scm_git_archive
+  # Packages required to run the package. These are the dependencies that
+  # will be installed automatically whenever the package is installed.
+  run:
+    - python
+    - numpy
+    - perl
+    - perl-extended-deps
+    - perl-ska-convert
+    - perl-ska-classic
+    - matplotlib-base
+    - ska_matplotlib
+    - ska_numpy
+    - chandra_time
+    - testr
+    - ska_helpers
+
+test:
+  imports:
+    - replan_central
+
+
+about:
+  home: https://github.com/sot/arc
