@@ -152,7 +152,7 @@ jobs:
                 ska3-perl skare3_tools
           ln -s /proj/sot/ska3/test/data $CONDA_PREFIX/data
           export SKA=$CONDA_PREFIX
-          run_testr --root ./ska_testr --outputs-dir /export/kadi/ska_testr/release_tests --test-spec test_spec_fast
+          run_testr --root ./ska_testr --outputs-dir /export/kadi/ska_testr/release_tests --test-spec /export/kadi/ska_testr/release_tests/test_spec_fast
           skare3-test-results --stream releases --tag head /export/kadi/ska_testr/release_tests/logs/last
           # add test result report to PR description
         env:
