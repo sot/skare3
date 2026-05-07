@@ -63,10 +63,13 @@ jobs:
         channels: conda-forge
     - name: Add flight channel
       run: conda config --env --add channels https://ska:${{ secrets.CONDA_PASSWORD }}@cxc.cfa.harvard.edu/mta/ASPECT/ska3-conda/test
-    - name: temprarily use classic solver
+    - name: temporarily use classic solver
       run: conda config --set solver classic
     - name: Update Conda Environment
       run: conda env update -n conda-build -f ./skare3/build-environment.yml
+    - name: Install Conda Build in base environment
+      # this is needed so the build command is actually found. If it is missing, `conda build` will fail on Windows 
+      run: conda install -n base -c conda-forge conda-build
     - name: Build Package
       run: |
         os="${{ matrix.os }}"
