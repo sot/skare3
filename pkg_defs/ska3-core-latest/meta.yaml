@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2026.7
+  version: 2026.1
 
 requirements:
   run:
@@ -9,7 +9,6 @@ requirements:
    - astropy-sphinx-theme
    - astropy-healpix
    - astroquery
-   - attrs
    - backports
    - backports.zoneinfo
    - beautifulsoup4
@@ -17,6 +16,7 @@ requirements:
    - black
    - cloudpickle # [win]
    - conda
+   - conda-build  # [linux or osx]
    - configobj
    - coverage
    - cython
@@ -50,7 +50,6 @@ requirements:
    - numpy
    - numpydoc
    - pandas
-   - psutil
    - pytables
    - autopep8
    - openpyxl
@@ -78,7 +77,6 @@ requirements:
    - setuptools
    - setuptools_scm
    - sherpa # [not win]
-   - soupsieve
    - sphinx-argparse
    - sphinx-autoapi
    - sphinx-copybutton
