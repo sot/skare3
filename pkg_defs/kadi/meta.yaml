@@ -3,7 +3,7 @@ package:
   version:  {{ SKA_PKG_VERSION }}
 
 build:
-  number: 1
+  number: 2
   script: pip install .
   entrypoints:
     - get_chandra_states=kadi.commands.states:get_chandra_states
