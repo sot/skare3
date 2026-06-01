@@ -154,6 +154,7 @@ jobs:
         conda list ^python$ --export | grep python >> $CONDA_PREFIX/conda-meta/pinned
         conda env update -n conda-build -f ./skare3/build-environment.yml
     - name: Install Conda Build in base environment
+      if: ${{ matrix.config.noarch_builder || !inputs.noarch }}
       # this is needed so the build command is actually found. If it is missing, `conda build` will fail on Windows 
       run: conda install -n base -c conda-forge conda-build
     - name: Install ska_helpers
