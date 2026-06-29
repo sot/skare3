@@ -1,6 +1,6 @@
 package:
   name: ska3-core-latest
-  version: 2026.1
+  version: 2026.7
 
 requirements:
   run:
@@ -16,7 +16,7 @@ requirements:
    - black
    - cloudpickle # [win]
    - conda
-   - conda-build
+   - conda-build  # [linux or osx]
    - configobj
    - coverage
    - cython

@@ -1,7 +1,7 @@
 ---
 package:
   name: ska3-core
-  version: 2026.6
+  version: 2026.7
 
 requirements:
   run:
@@ -109,7 +109,7 @@ requirements:
     - comm ==0.2.3
     - commonmark ==0.9.1
     - conda ==25.11.1
-    - conda-build ==25.11.1
+    - conda-build ==25.11.1  # [linux or osx]
     - conda-index ==0.7.0
     - conda-libmamba-solver ==25.11.0
     - conda-package-handling ==2.4.0
@@ -209,9 +209,9 @@ requirements:
     - json5 ==0.13.0
     - jsonpatch ==1.33
     - jsonpointer ==3.0.0
-    - jsonschema ==4.25.1
-    - jsonschema-specifications ==2025.9.1
-    - jsonschema-with-format-nongpl ==4.25.1
+    - jsonschema ==4.25.1  # [linux or osx]
+    - jsonschema-specifications ==2025.9.1  # [linux or osx]
+    - jsonschema-with-format-nongpl ==4.25.1  # [linux or osx]
     - jupyter ==1.1.1
     - jupyter-lsp ==2.3.0
     - jupyter_client ==8.7.0
@@ -362,9 +362,6 @@ requirements:
     - lxml ==6.0.2
     - lz4-c ==1.10.0
     - lzo ==2.10
-    - m2-conda-epoch ==20250515  # [win]
-    - m2-msys2-runtime ==3.6.1.4  # [win]
-    - m2-patch ==2.7.6.3  # [win]
     - mamba ==2.3.2  # [linux]
     - mamba ==2.4.0  # [osx or win]
     - markupsafe ==3.0.3
@@ -502,7 +499,7 @@ requirements:
     - qtpy ==2.4.3
     - re2 ==2025.11.05
     - readline ==8.3  # [linux or osx]
-    - referencing ==0.37.0
+    - referencing ==0.37.0  # [linux or osx]
     - regions ==0.11
     - reproc ==14.2.5.post0
     - reproc-cpp ==14.2.5.post0
@@ -515,7 +512,7 @@ requirements:
     - ripgrep ==15.1.0
     - roman-numerals ==4.1.0
     - rope ==1.14.0
-    - rpds-py ==0.30.0
+    - rpds-py ==0.30.0  # [linux or osx]
     - ruamel.yaml ==0.18.17
     - ruamel.yaml.clib ==0.2.15
     - s2n ==1.5.26  # [linux]
