@@ -87,7 +87,7 @@ jobs:
       env:
         CONDA_PASSWORD: ${{ secrets.CONDA_PASSWORD }}
         GIT_USERNAME: chandra-xray
-        GIT_ASKPASS: ${{ github.workspace }}/skare3_tools/actions/build/files/git_pass.py
+        GIT_ASKPASS: ${{ github.workspace }}/skare3_tools/skare3_tools/scripts/git_pass.py
         GIT_PASSWORD: ${{ secrets.CHANDRA_XRAY_TOKEN }}
     - name: Review built packages
       run: ls -l builds/*
