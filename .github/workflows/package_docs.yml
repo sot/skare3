@@ -26,9 +26,12 @@ jobs:
           # this is so git fetches all metadata required by setuptools_scm to get the version
           fetch-depth: 0
       - name: Build docs
+        # SKA_CONDA_ROOT / SKA_DOCS_ENV come from the runner's .env file
+        # (managed by the github_runner ansible role in skare3_deploy); the
+        # defaults keep this working on runners provisioned before that.
         run: |
-          eval "$(/export/kadi/miniconda3/bin/conda shell.bash hook)"
-          conda activate ska3-masters
+          eval "$("${SKA_CONDA_ROOT:-/export/kadi/miniconda3}"/bin/conda shell.bash hook)"
+          conda activate "${SKA_DOCS_ENV:-ska3-masters}"
           mkdir -p _static
           make html
         working-directory: source/docs
@@ -48,9 +51,12 @@ jobs:
           rm -fr gh-pages/docs/*
           cp -fr source/docs/_build/html/* gh-pages/docs
       - name: Commit changes
+        # chandra-xray is the machine user whose PAT pushes this commit.
+        # Repo-local git identity: a --global config here would mutate the
+        # runner user's home and leak into every other job on this runner.
         run: |
-          git config --global user.name 'Javier Gonzalez'
-          git config --global user.email 'javierggt@yahoo.com'
+          git config user.name 'chandra-xray'
+          git config user.email 'chandra-xray@users.noreply.github.com'
           git add docs
           git commit -am "Deploy docs"
           git push
