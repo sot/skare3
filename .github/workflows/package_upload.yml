@@ -9,7 +9,7 @@ on:
         default: test
 jobs:
   update-channel:
-    runs-on: head
+    runs-on: head-linux
     name: Update Conda Channel
     steps:
       - name: Get linux package

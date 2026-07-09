@@ -78,7 +78,7 @@ jobs:
           !builds/*/index.html
 
   update-channel:
-    runs-on: head
+    runs-on: head-linux
     name: Update Conda Channel
     needs: [build]
     steps:

@@ -15,7 +15,7 @@ on:
 
 jobs:
   build-linux:
-    runs-on: head
+    runs-on: head-linux
     name: Deploy Docs
     steps:
       - name: Fetch source
