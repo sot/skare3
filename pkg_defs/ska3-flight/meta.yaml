@@ -8,23 +8,23 @@ build:
 
 requirements:
   run:
-    - aca_view ==0.18.0
+    - aca_view ==0.19.0
     - acis_taco ==4.2.3
     - acis_thermal_check ==5.3.3
     - acispy ==2.8.0
-    - agasc ==4.23.3
+    - agasc ==4.24.0
     - backstop_history ==3.2.1
     - chandra_aca ==4.55.0
     - chandra_limits ==0.11.2
     - chandra_maneuver ==4.4.1
     - chandra_time ==4.3.1
-    - cheta ==4.68.0
+    - cheta ==4.69.0
     - cxotime ==3.11.1
     - fot-matlab ==2.5.3
     - hopper ==4.6.0
     - kadi ==7.22.0
     - maude ==3.15.1
-    - mica ==4.40.0
+    - mica ==4.41.0
     - parse_cm ==3.19.0
     - proseco ==5.19.0
     - pyyaks ==4.5.1
