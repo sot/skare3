@@ -12,6 +12,7 @@ dependencies:
   - annie
   - fid_drift_mon
   - fss_check
+  - guide_stat_reports
   - jobwatch
   - kalman_watch
   - perigee_health_plots
