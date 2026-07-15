@@ -35,7 +35,7 @@ requirements:
     - ska3-template ==2022.06.02
     - ska_arc5gl ==4.0.1
     - ska_astro ==4.0.0
-    - ska_dbi ==5.2.0
+    - ska_dbi ==5.3.0
     - ska_file ==4.0.0
     - ska_ftp ==4.0.1
     - ska_helpers ==0.20.1
