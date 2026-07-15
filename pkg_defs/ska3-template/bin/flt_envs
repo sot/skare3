@@ -41,9 +41,9 @@ envs = dict(('SKA_' + suffix.upper(), os.path.join(ska, suffix))
         for suffix in ('arch', 'data', 'lib', 'share', 'bin', 'idl'))
 envs['SKA'] = ska
 envs['SKA_ARCH_OS'] = ska
-envs['SYBASE_OCS'] = 'OCS-16_0'
+envs['SYBASE_OCS'] = 'OCS-16_1'
 envs['PGPLOT_DIR'] = os.path.join(ska, 'pgplot')
-envs['SYBASE'] = '/soft/SYBASE16.0'
+envs['SYBASE'] = '/soft/SYBASE16.1'
 envs['APP_ENV_ASCDS_STR'] ='/home/ascds/DS.release/config/system/.ascrc'
 envs['CFITSIO'] = ska
 
