@@ -29,8 +29,10 @@ requirements:
   run:
     - gitpython
     - jinja2
+    - pyjwt
     - python
     - pyyaml
+    - requests
     - setuptools_scm
     - sphinx-argparse
 
