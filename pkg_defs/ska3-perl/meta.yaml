@@ -29,7 +29,7 @@ requirements:
     - perl-astro-fits-cfitsio-simple ==0.20  # [linux]
     - perl-chandra-time ==0.9.2  # [linux]
     - perl-core-deps ==0.5.0
-    - perl-cxc-sysarch ==1.00  # [linux]
+    - perl-cxc-sysarch ==1.1  # [linux]
     - perl-dbd-sybase ==1.24  # [linux]
     - perl-extended-deps ==0.5.0  # [linux]
     - perl-io-tty ==1.20
