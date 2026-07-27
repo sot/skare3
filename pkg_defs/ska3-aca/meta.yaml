@@ -67,6 +67,7 @@ requirements:
     - jobwatch
     - kalman_watch
     - perigee_health_plots
+    - replan_central
     - schedule_view3
     - ska_report_ranges
     - ska_trend
