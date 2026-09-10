@@ -38,8 +38,8 @@ requirements:
     - python
     - numpy
     - perl
-    - perl-extended-deps
-    - perl-ska-convert
+    - perl-extended-deps  # [linux]
+    - perl-ska-convert  # [linux]
     - perl-ska-classic
     - matplotlib-base
     - ska_matplotlib
