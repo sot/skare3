@@ -37,10 +37,10 @@ requirements:
   run:
     - python
     - numpy
-    - perl
+    - perl  # [osx or linux]
     - perl-extended-deps  # [linux]
     - perl-ska-convert  # [linux]
-    - perl-ska-classic
+    - perl-ska-classic  # [osx or linux]
     - matplotlib-base
     - ska_matplotlib
     - ska_numpy
