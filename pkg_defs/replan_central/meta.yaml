@@ -4,6 +4,7 @@ package:
 
 build:
   script: pip install .
+  number: 1
   entry_points:
     - replan-central-arc-time-machine=replan_central.run_arc_time_machine_pl:main
     - replan-central-get-web-content=replan_central.run_get_web_content_pl:main
