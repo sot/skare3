@@ -1,0 +1,30 @@
+package:
+  name: mazy
+  version: {{ SKA_PKG_VERSION }}
+
+build:
+  script: pip install .
+  noarch: python
+
+source:
+  path: {{ SKA_TOP_SRC_DIR }}/mazy
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - setuptools_scm
+  run:
+    - python
+    - astropy
+    - cxotime
+    - kadi
+    - parse_cm
+    - requests
+
+test:
+  imports:
+    - mazy.main
+
+about:
+  home: https://github.com/sot/mazy
