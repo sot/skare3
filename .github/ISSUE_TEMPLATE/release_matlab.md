@@ -19,7 +19,6 @@ assignees: ''
 - [ ] Check packages are built and copied to test channel.
 - [ ] List in PR any data products that need to be promoted to $SKA/data (check PR's interface impacts).
 - [ ] Document all changes (`skare3-changes-summary ...`).
-- [ ] Document test status (`skare3-test-dashboard ...`).
 - [ ] Promote packages from `masters` to `test` channel (`skare3-promote ...`).
 - [ ] Add related issues to PR (`skare3-milestone-issues ...`).
 - [ ] Write summary + highlight relevant changes.
@@ -28,9 +27,11 @@ assignees: ''
 - [ ] Install on GRETA test as SOT user (`ska3/matlab/test`).
 - [ ] `python -m compileall $SKA/lib`
 - [ ] `chmod -R g-w ${SKA}/lib`
-- [ ] Confirm installed versions of ska3-flight and ska3-perl on HEAD with `conda list` (there should be no `pypi`)
+- [ ] Confirm installed versions of ska3-flight and ska3-perl on GRETA with `conda list` (there should be no `pypi`)
 - [ ] Confirm that test data (SKA/data) is appropriate for release testing (any custom test data is set or previous test data cleaned out)
-- [ ] FOT Matlab CB approves.
+- [ ] Run testr on GRETA and Windows VM
+- [ ] Document test status (`skare3-test-dashboard ...`).
+- [ ] FOT Matlab CB + FD approves.
 - [ ] Create release `{version}` at the same commit as RC
 
 ### Promote:

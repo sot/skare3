@@ -24,10 +24,10 @@ assignees: ''
 - [ ] `chmod -R g-w ${SKA}/lib`
 - [ ] Confirm installed versions of ska3-flight and ska3-perl on HEAD with `conda list` (there should be no `pypi`)
 - [ ] Confirm that test data (SKA/data) is appropriate for release testing (any custom test data is set or previous test data cleaned out)
-- [ ] Run testr on HEAD and GRETA
 - [ ] Add related issues to PR (`skare3-milestone-issues ...`).
 - [ ] Document all changes (`skare3-changes-summary ...`).
 - [ ] Write summary + highlight relevant changes.
+- [ ] Run testr on HEAD and GRETA
 - [ ] Document test results (`skare3-test-dashboard ...`).
 - [ ] Create FSDS Jira ticket.
 - [ ] Remember to release ska3-aca
