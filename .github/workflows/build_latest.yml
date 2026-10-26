@@ -90,7 +90,7 @@ jobs:
           path: package
       - name: Update channel
         run: |
-          rsync -a package/ ${CONDA_CHANNEL_DIR}
+          rsync -a --insecure-links package/ ${CONDA_CHANNEL_DIR}
           for d in noarch linux-64 osx-64 osx-arm64 win-64;
           do
             if [ -d "${CONDA_CHANNEL_DIR}/$d" ];
