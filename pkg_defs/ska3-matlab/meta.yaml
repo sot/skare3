@@ -26,7 +26,7 @@ requirements:
     - maude ==3.15.1
     - mica ==4.41.0
     - parse_cm ==3.19.0
-    - proseco ==5.19.0
+    - proseco ==5.20.0
     - pyyaks ==4.5.1
     - quaternion ==4.3.2
     - razl ==0.2.0
